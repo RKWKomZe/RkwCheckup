@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-11-12T16:01:44Z" product-name="rkw_checkup">
+		<header/>
+		<body>
+			<trans-unit id="tx_rkwcheckup_domain_model_checkup">
+                <source>Checkup</source>
+                <target>Check</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_checkup.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_checkup.description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_checkup.chapter">
+                <source>Chapter</source>
+                <target>Kapitel / Abschnitt</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_checkup.context_question">
+                <source>Context Question</source>
+                <target>Kontext-Frage (XXX wirklich umsetzen?? XXX)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_chapter">
+                <source>Chapter</source>
+                <target>Kapitel / Abschnitt</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_chapter.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_chapter.description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_chapter.step">
+                <source>Step</source>
+                <target>Schritt</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_chapter.hide_cond">
+                <source>Hide Cond</source>
+                <target>Bedingung (nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_chapter.interim_result">
+                <source>Interim Result</source>
+                <target>Zwischenergebnis</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_step">
+                <source>Step</source>
+                <target>Schritt</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_step.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_step.description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_step.question">
+                <source>Question</source>
+                <target>Frage</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
+                <source>Hide Cond</source>
+                <target>Bedingung (nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_step.interim_result">
+                <source>Interim Result</source>
+                <target>Zwischenergebnis</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question">
+                <source>Question</source>
+                <target>Frage</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.type">
+                <source>Type</source>
+                <target>Typ</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.mandatory">
+                <source>Mandatory</source>
+                <target>Ist pflichtfrage</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.min_check">
+                <source>Min Check</source>
+                <target>Müssen mindestens ausgewählt werden</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.max_check">
+                <source>Max Check</source>
+                <target>Dürfen maximal ausgewählt werden</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.answer">
+                <source>Answer</source>
+                <target>Antwort</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.hide_cond">
+                <source>Hide Cond</source>
+                <target>Bedingung (nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_answer">
+                <source>Answer</source>
+                <target>Antwort</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_answer.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_answer.description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_answer.image">
+                <source>Image</source>
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_answer.file">
+                <source>File</source>
+                <target>Datei</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_answer.link">
+                <source>Link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_result">
+                <source>Result</source>
+                <target>Ergebnis</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_result.hash">
+                <source>Hash</source>
+                <target>Hash</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
+                <source>Checkup</source>
+                <target>CheckUp</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_result.answer">
+                <source>Answer</source>
+                <target>Antwort</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_interimresult">
+                <source>Interim Result</source>
+                <target>Zwischenergebnis</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_interimresult.type">
+                <source>Type</source>
+                <target>Typ</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_interimresult.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_interimresult.description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_interimresult.image">
+                <source>Image</source>
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_interimresult.file">
+                <source>File</source>
+                <target>Datei</target>
+            </trans-unit>
+
+		</body>
+	</file>
+</xliff>

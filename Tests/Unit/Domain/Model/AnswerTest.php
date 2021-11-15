@@ -77,25 +77,25 @@ class AnswerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getFigureReturnsInitialValueForFileReference()
+    public function getImageeturnsInitialValueForFileReference()
     {
         self::assertEquals(
             null,
-            $this->subject->getFigure()
+            $this->subject->getImage()
         );
     }
 
     /**
      * @test
      */
-    public function setFigureForFileReferenceSetsFigure()
+    public function setImageForFileReferenceSetsFigure()
     {
         $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $this->subject->setFigure($fileReferenceFixture);
+        $this->subject->setImage($fileReferenceFixture);
 
         self::assertAttributeEquals(
             $fileReferenceFixture,
-            'figure',
+            'image',
             $this->subject
         );
     }

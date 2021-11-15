@@ -28,30 +28,30 @@ class CheckupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * action list
      *
-     * @param RKW\RkwCheckupup\Domain\Model\Checkupup
+     * @param \RKW\RkwCheckup\Domain\Model\Checkup
      * @return void
      */
     public function listAction()
     {
-        $checks = $this->checkRepository->findAll();
+        $checks = $this->checkupRepository->findAll();
         $this->view->assign('checks', $checks);
     }
 
     /**
      * action show
      *
-     * @param RKW\RkwCheckupup\Domain\Model\Checkupup
+     * @param \RKW\RkwCheckup\Domain\Model\Checkup
      * @return void
      */
     public function showAction(\RKW\RkwCheckup\Domain\Model\Checkup $checkup)
     {
-        $this->view->assign('check', $check);
+        $this->view->assign('checkup', $checkup);
     }
 
     /**
      * action new
      *
-     * @param RKW\RkwCheckupup\Domain\Model\Checkupup
+     * @param \RKW\RkwCheckup\Domain\Model\Checkup
      * @return void
      */
     public function newAction()
@@ -62,13 +62,13 @@ class CheckupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * action create
      *
-     * @param RKW\RkwCheckupup\Domain\Model\Checkupup
+     * @param \RKW\RkwCheckup\Domain\Model\Checkup
      * @return void
      */
     public function createAction(\RKW\RkwCheckup\Domain\Model\Checkup $newCheckup)
     {
         $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
-        $this->checkRepository->add($newCheck);
+        $this->checkupRepository->add($newCheckup);
         $this->redirect('list');
     }
 }

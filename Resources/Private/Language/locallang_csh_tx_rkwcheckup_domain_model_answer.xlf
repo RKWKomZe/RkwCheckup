@@ -9,8 +9,8 @@
 			<trans-unit id="description.description">
 				<source>description</source>
 			</trans-unit>
-			<trans-unit id="figure.description">
-				<source>figure</source>
+			<trans-unit id="image.description">
+				<source>image</source>
 			</trans-unit>
 			<trans-unit id="file.description">
 				<source>file</source>

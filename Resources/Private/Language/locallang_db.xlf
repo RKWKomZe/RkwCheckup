@@ -90,8 +90,8 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.description">
 				<source>Description</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer.figure">
-				<source>Figure</source>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.image">
+				<source>Image</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.file">
 				<source>File</source>
@@ -129,6 +129,20 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.file">
 				<source>File</source>
 			</trans-unit>
+
+
+            <!-- flexforms -->
+            <trans-unit id="tx_rkwcheckup_flexform.checkup">
+                <source>CheckUp</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_flexform.backendUser">
+                <source>BackendUser</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_flexform.terms">
+                 <source>Page with Terms and Conditions</source>
+            </trans-unit>
+
+
 		</body>
 	</file>
 </xliff>

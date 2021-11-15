@@ -1,5 +1,5 @@
 
-plugin.{extension.shortExtensionKey}_{plugin.key} {
+plugin.tx_rkwcheckup {
     view {
         templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Templates/
         templateRootPaths.1 = {$plugin.tx_rkwcheckup_check.view.templateRootPath}
@@ -23,6 +23,9 @@ plugin.{extension.shortExtensionKey}_{plugin.key} {
         #callDefaultActionIfActionCantBeResolved = 1
     }
 }
+
+# plugin
+plugin.tx_rkwcheckup_check < plugin.tx_rkwcheckup
 
 # these classes are only used in auto-generated templates
 plugin.tx_rkwcheckup._CSS_DEFAULT_STYLE (

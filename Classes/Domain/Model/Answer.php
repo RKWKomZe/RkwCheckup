@@ -32,12 +32,12 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $description = '';
 
     /**
-     * figure
+     * image
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @cascade remove
      */
-    protected $figure = null;
+    protected $image = null;
 
     /**
      * file
@@ -97,24 +97,24 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the figure
+     * Returns the image
      *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $figure
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
      */
-    public function getFigure()
+    public function getImage()
     {
-        return $this->figure;
+        return $this->image;
     }
 
     /**
-     * Sets the figure
+     * Sets the image
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $figure
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
      * @return void
      */
-    public function setFigure(\TYPO3\CMS\Extbase\Domain\Model\FileReference $figure)
+    public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
     {
-        $this->figure = $figure;
+        $this->image = $image;
     }
 
     /**

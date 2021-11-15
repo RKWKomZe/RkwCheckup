@@ -453,7 +453,7 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
-                            "propertyName": "figure",
+                            "propertyName": "image",
                             "propertyType": "Image",
                             "uid": "315069004797"
                         },
