@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-11-12T16:01:44Z" product-name="rkw_checkup">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="step.description">
+				<source>step</source>
+			</trans-unit>
+			<trans-unit id="hide_cond.description">
+				<source>hideCond</source>
+			</trans-unit>
+			<trans-unit id="interim_result.description">
+				<source>interimResult</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-11-12T16:01:44Z" product-name="rkw_checkup">
+		<header/>
+		<body>
+			<trans-unit id="tx_rkwcheckup_domain_model_checkup">
+				<source>Checkup</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_checkup.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_checkup.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_checkup.chapter">
+				<source>Chapter</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_checkup.context_question">
+				<source>Context Question</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_chapter">
+				<source>Chapter</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_chapter.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_chapter.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_chapter.step">
+				<source>Step</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_chapter.hide_cond">
+				<source>Hide Cond</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_chapter.interim_result">
+				<source>Interim Result</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_step">
+				<source>Step</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_step.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_step.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_step.question">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
+				<source>Hide Cond</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_step.interim_result">
+				<source>Interim Result</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.mandatory">
+				<source>Mandatory</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.min_check">
+				<source>Min Check</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.max_check">
+				<source>Max Check</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.answer">
+				<source>Answer</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.hide_cond">
+				<source>Hide Cond</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer">
+				<source>Answer</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.figure">
+				<source>Figure</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.file">
+				<source>File</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.link">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result">
+				<source>Result</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.hash">
+				<source>Hash</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
+				<source>Checkup</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.answer">
+				<source>Answer</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_interimresult">
+				<source>Interim Result</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.file">
+				<source>File</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
