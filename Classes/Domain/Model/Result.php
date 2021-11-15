@@ -25,11 +25,25 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $hash = '';
 
     /**
+     * finished
+     *
+     * @var bool
+     */
+    protected $finished = 0;
+
+    /**
      * checkup
      *
      * @var \RKW\RkwCheckup\Domain\Model\Checkup
      */
     protected $checkup = null;
+
+    /**
+     * step
+     *
+     * @var \RKW\RkwCheckup\Domain\Model\Step
+     */
+    protected $step = null;
 
     /**
      * answer
@@ -83,6 +97,22 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * @return bool
+     */
+    public function isFinished()
+    {
+        return $this->finished;
+    }
+
+    /**
+     * @param bool $finished
+     */
+    public function setFinished($finished): void
+    {
+        $this->finished = $finished;
+    }
+
+    /**
      * Returns the checkup
      *
      * @return \RKW\RkwCheckup\Domain\Model\Checkup $checkup
@@ -101,6 +131,27 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCheckup(\RKW\RkwCheckup\Domain\Model\Checkup $checkup)
     {
         $this->checkup = $checkup;
+    }
+
+    /**
+     * Returns the step
+     *
+     * @return \RKW\RkwCheckup\Domain\Model\Step $step
+     */
+    public function getStep()
+    {
+        return $this->step;
+    }
+
+    /**
+     * Sets the step
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Step $step
+     * @return void
+     */
+    public function setStep(\RKW\RkwCheckup\Domain\Model\Step $step)
+    {
+        $this->step = $step;
     }
 
     /**

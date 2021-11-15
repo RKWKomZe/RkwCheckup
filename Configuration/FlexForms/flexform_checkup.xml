@@ -4,7 +4,7 @@
             <ROOT>
                 <type>array</type>
                 <el>
-                    <settings.check>
+                    <settings.checkup>
                         <TCEforms>
                             <label>
                                 LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_flexform.checkup
@@ -20,7 +20,7 @@
                                 <show_thumbs>1</show_thumbs>
                             </config>
                         </TCEforms>
-                    </settings.check>
+                    </settings.checkup>
                     <settings.notificationBackendUser>
                         <TCEforms>
                             <label>LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_flexform.backendUser</label>

@@ -4,8 +4,8 @@
 		<header/>
 		<body>
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup">
-				<source>Checkup</source>
-			</trans-unit>
+                <source>RKW Checkup: Checkup</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup.title">
 				<source>Title</source>
 			</trans-unit>
@@ -105,9 +105,15 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_result.hash">
 				<source>Hash</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.finished">
+                <source>Finished</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
 				<source>Checkup</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.step">
+                <source>Step</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.answer">
 				<source>Answer</source>
 			</trans-unit>

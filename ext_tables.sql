@@ -238,7 +238,9 @@ CREATE TABLE tx_rkwcheckup_domain_model_result (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	hash varchar(255) DEFAULT '' NOT NULL,
+    finished smallint(5) unsigned DEFAULT '0' NOT NULL,
 	checkup int(11) unsigned DEFAULT '0',
+    step int(11) unsigned DEFAULT '0',
 	answer int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
