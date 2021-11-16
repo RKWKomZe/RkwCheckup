@@ -9,8 +9,8 @@
 			<trans-unit id="description.description">
 				<source>description</source>
 			</trans-unit>
-			<trans-unit id="chapter.description">
-				<source>chapter</source>
+			<trans-unit id="section.description">
+				<source>section</source>
 			</trans-unit>
 			<trans-unit id="context_question.description">
 				<source>contextQuestion</source>

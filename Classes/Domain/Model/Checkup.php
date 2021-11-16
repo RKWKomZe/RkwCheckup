@@ -32,12 +32,12 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $description = '';
 
     /**
-     * chapter
+     * section
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Chapter>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section>
      * @cascade remove
      */
-    protected $chapter = null;
+    protected $section = null;
 
     /**
      * contextQuestion
@@ -65,7 +65,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->chapter = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->section = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -111,46 +111,46 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a Chapter
+     * Adds a Section
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Chapter $chapter
+     * @param \RKW\RkwCheckup\Domain\Model\Section $section
      * @return void
      */
-    public function addChapter(\RKW\RkwCheckup\Domain\Model\Chapter $chapter)
+    public function addSection(\RKW\RkwCheckup\Domain\Model\Section $section)
     {
-        $this->chapter->attach($chapter);
+        $this->section->attach($section);
     }
 
     /**
-     * Removes a Chapter
+     * Removes a Section
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Chapter $chapterToRemove The Chapter to be removed
+     * @param \RKW\RkwCheckup\Domain\Model\Section $sectionToRemove The Section to be removed
      * @return void
      */
-    public function removeChapter(\RKW\RkwCheckup\Domain\Model\Chapter $chapterToRemove)
+    public function removeSection(\RKW\RkwCheckup\Domain\Model\Section $sectionToRemove)
     {
-        $this->chapter->detach($chapterToRemove);
+        $this->section->detach($sectionToRemove);
     }
 
     /**
-     * Returns the chapter
+     * Returns the section
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Chapter> $chapter
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section> $section
      */
-    public function getChapter()
+    public function getSection()
     {
-        return $this->chapter;
+        return $this->section;
     }
 
     /**
-     * Sets the chapter
+     * Sets the section
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Chapter> $chapter
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section> $section
      * @return void
      */
-    public function setChapter(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $chapter)
+    public function setSection(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $section)
     {
-        $this->chapter = $chapter;
+        $this->section = $section;
     }
 
     /**

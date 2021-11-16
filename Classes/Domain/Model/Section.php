@@ -13,9 +13,9 @@ namespace RKW\RkwCheckup\Domain\Model;
  ***/
 
 /**
- * Chapter
+ * Section
  */
-class Chapter extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
      * title

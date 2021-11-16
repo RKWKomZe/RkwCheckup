@@ -15,35 +15,35 @@
                 <source>Description</source>
                 <target>Beschreibung</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_checkup.chapter">
-                <source>Chapter</source>
+            <trans-unit id="tx_rkwcheckup_domain_model_checkup.section">
+                <source>Section</source>
                 <target>Kapitel / Abschnitt</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_checkup.context_question">
                 <source>Context Question</source>
                 <target>Kontext-Frage (XXX wirklich umsetzen?? XXX)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_chapter">
-                <source>Chapter</source>
+            <trans-unit id="tx_rkwcheckup_domain_model_section">
+                <source>Section</source>
                 <target>Kapitel / Abschnitt</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_chapter.title">
+            <trans-unit id="tx_rkwcheckup_domain_model_section.title">
                 <source>Title</source>
                 <target>Titel</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_chapter.description">
+            <trans-unit id="tx_rkwcheckup_domain_model_section.description">
                 <source>Description</source>
                 <target>Beschreibung</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_chapter.step">
+            <trans-unit id="tx_rkwcheckup_domain_model_section.step">
                 <source>Step</source>
                 <target>Schritt</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_chapter.hide_cond">
+            <trans-unit id="tx_rkwcheckup_domain_model_section.hide_cond">
                 <source>Hide Cond</source>
                 <target>Bedingung (nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_chapter.interim_result">
+            <trans-unit id="tx_rkwcheckup_domain_model_section.interim_result">
                 <source>Interim Result</source>
                 <target>Zwischenergebnis</target>
             </trans-unit>

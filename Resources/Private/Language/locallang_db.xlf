@@ -12,28 +12,28 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup.description">
 				<source>Description</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_checkup.chapter">
-				<source>Chapter</source>
+			<trans-unit id="tx_rkwcheckup_domain_model_checkup.section">
+				<source>Section</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup.context_question">
 				<source>Context Question</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_chapter">
-				<source>Chapter</source>
+			<trans-unit id="tx_rkwcheckup_domain_model_section">
+				<source>Section</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_chapter.title">
+			<trans-unit id="tx_rkwcheckup_domain_model_section.title">
 				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_chapter.description">
+			<trans-unit id="tx_rkwcheckup_domain_model_section.description">
 				<source>Description</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_chapter.step">
+			<trans-unit id="tx_rkwcheckup_domain_model_section.step">
 				<source>Step</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_chapter.hide_cond">
+			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_cond">
 				<source>Hide Cond</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_chapter.interim_result">
+			<trans-unit id="tx_rkwcheckup_domain_model_section.interim_result">
 				<source>Interim Result</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step">

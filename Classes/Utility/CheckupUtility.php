@@ -44,18 +44,18 @@ class CheckupUtility
     {
 
         // check
-        /** @var \RKW\RkwCheckup\Domain\Model\Chapter $chapter */
+        /** @var \RKW\RkwCheckup\Domain\Model\Section $section */
 
 
-        $chapterList = $checkup->getChapter();
+        $sectionList = $checkup->getSection();
 
-        foreach ($chapterList as $chapter) {
+        foreach ($sectionList as $section) {
 
             // iterate Steps until the given (current) $step is found. Then make a ->next() and return it
 
-            //$chapter->getStep()->next();
+            //$section->getStep()->next();
 
-            // @toDo: Abgleich Ausschlussfelder beachten, falls gesetzt bei "chapter" oder "step"
+            // @toDo: Abgleich Ausschlussfelder beachten, falls gesetzt bei "section" oder "step"
 
             // @toDo: Wie die Sache mit dem Zwischenergenis einbauen?
         }

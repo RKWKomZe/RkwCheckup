@@ -186,7 +186,7 @@ return [
             ],
         ],
     
-        'chapter' => [
+        'section' => [
             'config' => [
                 'type' => 'passthrough',
             ],

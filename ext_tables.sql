@@ -8,7 +8,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_checkup (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text,
-	chapter int(11) unsigned DEFAULT '0' NOT NULL,
+	section int(11) unsigned DEFAULT '0' NOT NULL,
 	context_question int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -43,9 +43,9 @@ CREATE TABLE tx_rkwcheckup_domain_model_checkup (
 );
 
 #
-# Table structure for table 'tx_rkwcheckup_domain_model_chapter'
+# Table structure for table 'tx_rkwcheckup_domain_model_section'
 #
-CREATE TABLE tx_rkwcheckup_domain_model_chapter (
+CREATE TABLE tx_rkwcheckup_domain_model_section (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_step (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	chapter int(11) unsigned DEFAULT '0' NOT NULL,
+    section int(11) unsigned DEFAULT '0' NOT NULL,
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text,
@@ -318,9 +318,9 @@ CREATE TABLE tx_rkwcheckup_domain_model_interimresult (
 );
 
 #
-# Table structure for table 'tx_rkwcheckup_domain_model_chapter'
+# Table structure for table 'tx_rkwcheckup_domain_model_section'
 #
-CREATE TABLE tx_rkwcheckup_domain_model_chapter (
+CREATE TABLE tx_rkwcheckup_domain_model_section (
 
 	checkup int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -331,7 +331,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_chapter (
 #
 CREATE TABLE tx_rkwcheckup_domain_model_step (
 
-	chapter int(11) unsigned DEFAULT '0' NOT NULL,
+	section int(11) unsigned DEFAULT '0' NOT NULL,
 
 );
 

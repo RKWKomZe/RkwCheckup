@@ -1,7 +1,7 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_chapter',
+        'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section',
         'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -17,7 +17,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'title,description,step,hide_cond,interim_result',
-        'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_chapter.gif'
+        'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_section.gif'
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, step, hide_cond, interim_result',
@@ -53,8 +53,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_rkwcheckup_domain_model_chapter',
-                'foreign_table_where' => 'AND tx_rkwcheckup_domain_model_chapter.pid=###CURRENT_PID### AND tx_rkwcheckup_domain_model_chapter.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_section',
+                'foreign_table_where' => 'AND tx_rkwcheckup_domain_model_section.pid=###CURRENT_PID### AND tx_rkwcheckup_domain_model_section.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -116,7 +116,7 @@ return [
 
         'title' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_chapter.title',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.title',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -125,7 +125,7 @@ return [
         ],
         'description' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_chapter.description',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.description',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -135,11 +135,11 @@ return [
         ],
         'step' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_chapter.step',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.step',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_step',
-                'foreign_field' => 'chapter',
+                'foreign_field' => 'section',
                 'maxitems' => 9999,
                 'appearance' => [
                     'collapseAll' => 0,
@@ -153,7 +153,7 @@ return [
         ],
         'hide_cond' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_chapter.hide_cond',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.hide_cond',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_answer',
@@ -170,7 +170,7 @@ return [
         ],
         'interim_result' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_chapter.interim_result',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.interim_result',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_interimresult',
