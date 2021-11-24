@@ -78,28 +78,25 @@ class ResultTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getAnswerReturnsInitialValueForAnswer()
+    public function getCurrentSectionReturnsInitialValueForSection()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getAnswer()
+            null,
+            $this->subject->getCurrentSection()
         );
     }
 
     /**
      * @test
      */
-    public function setAnswerForObjectStorageContainingAnswerSetsAnswer()
+    public function setCurrentSectionForSectionSetsCurrentSection()
     {
-        $answer = new \RKW\RkwCheckup\Domain\Model\Answer();
-        $objectStorageHoldingExactlyOneAnswer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneAnswer->attach($answer);
-        $this->subject->setAnswer($objectStorageHoldingExactlyOneAnswer);
+        $currentSectionFixture = new \RKW\RkwCheckup\Domain\Model\Section();
+        $this->subject->setCurrentSection($currentSectionFixture);
 
         self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneAnswer,
-            'answer',
+            $currentSectionFixture,
+            'currentSection',
             $this->subject
         );
     }
@@ -107,34 +104,115 @@ class ResultTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function addAnswerToObjectStorageHoldingAnswer()
+    public function getCurrentStepReturnsInitialValueForStep()
     {
-        $answer = new \RKW\RkwCheckup\Domain\Model\Answer();
-        $answerObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $answerObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($answer));
-        $this->inject($this->subject, 'answer', $answerObjectStorageMock);
-
-        $this->subject->addAnswer($answer);
+        self::assertEquals(
+            null,
+            $this->subject->getCurrentStep()
+        );
     }
 
     /**
      * @test
      */
-    public function removeAnswerFromObjectStorageHoldingAnswer()
+    public function setCurrentStepForStepSetsCurrentStep()
     {
-        $answer = new \RKW\RkwCheckup\Domain\Model\Answer();
-        $answerObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $currentStepFixture = new \RKW\RkwCheckup\Domain\Model\Step();
+        $this->subject->setCurrentStep($currentStepFixture);
+
+        self::assertAttributeEquals(
+            $currentStepFixture,
+            'currentStep',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getCurrentQuestionReturnsInitialValueForQuestion()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getCurrentQuestion()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCurrentQuestionForQuestionSetsCurrentQuestion()
+    {
+        $currentQuestionFixture = new \RKW\RkwCheckup\Domain\Model\Question();
+        $this->subject->setCurrentQuestion($currentQuestionFixture);
+
+        self::assertAttributeEquals(
+            $currentQuestionFixture,
+            'currentQuestion',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getResultAnswerReturnsInitialValueForResultAnswer()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getResultAnswer()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setResultAnswerForObjectStorageContainingResultAnswerSetsResultAnswer()
+    {
+        $resultAnswer = new \RKW\RkwCheckup\Domain\Model\ResultAnswer();
+        $objectStorageHoldingExactlyOneResultAnswer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneResultAnswer->attach($resultAnswer);
+        $this->subject->setResultAnswer($objectStorageHoldingExactlyOneResultAnswer);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneResultAnswer,
+            'resultAnswer',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function addResultAnswerToObjectStorageHoldingResultAnswer()
+    {
+        $resultAnswer = new \RKW\RkwCheckup\Domain\Model\ResultAnswer();
+        $resultAnswerObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $resultAnswerObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($resultAnswer));
+        $this->inject($this->subject, 'resultAnswer', $resultAnswerObjectStorageMock);
+
+        $this->subject->addResultAnswer($resultAnswer);
+    }
+
+    /**
+     * @test
+     */
+    public function removeResultAnswerFromObjectStorageHoldingResultAnswer()
+    {
+        $resultAnswer = new \RKW\RkwCheckup\Domain\Model\ResultAnswer();
+        $resultAnswerObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $answerObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($answer));
-        $this->inject($this->subject, 'answer', $answerObjectStorageMock);
+        $resultAnswerObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($resultAnswer));
+        $this->inject($this->subject, 'resultAnswer', $resultAnswerObjectStorageMock);
 
-        $this->subject->removeAnswer($answer);
+        $this->subject->removeResultAnswer($resultAnswer);
     }
 }

@@ -62,7 +62,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * answer
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Answer
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
      */
     protected $answer = null;
 
@@ -72,6 +72,19 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \RKW\RkwCheckup\Domain\Model\Answer
      */
     protected $hideCond = null;
+
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->answer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
     /**
      * Returns the title
@@ -189,9 +202,31 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Adds a Answer
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Answer $answer
+     * @return void
+     */
+    public function addAnswer(\RKW\RkwCheckup\Domain\Model\Answer $answer)
+    {
+        $this->answer->attach($answer);
+    }
+
+    /**
+     * Removes a Answer
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Answer $answerToRemove The Answer to be removed
+     * @return void
+     */
+    public function removeAnswer(\RKW\RkwCheckup\Domain\Model\Answer $answerToRemove)
+    {
+        $this->answer->detach($answerToRemove);
+    }
+
+    /**
      * Returns the answer
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Answer $answer
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $answer
      */
     public function getAnswer()
     {
@@ -201,10 +236,10 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the answer
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Answer $answer
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $answer
      * @return void
      */
-    public function setAnswer(\RKW\RkwCheckup\Domain\Model\Answer $answer)
+    public function setAnswer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $answer)
     {
         $this->answer = $answer;
     }

@@ -6,22 +6,47 @@ namespace RKW\RkwCheckup\Tests\Unit\Domain\Model;
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  */
-class AnswerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class StepFeedbackTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
-     * @var \RKW\RkwCheckup\Domain\Model\Answer
+     * @var \RKW\RkwCheckup\Domain\Model\StepFeedback
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \RKW\RkwCheckup\Domain\Model\Answer();
+        $this->subject = new \RKW\RkwCheckup\Domain\Model\StepFeedback();
     }
 
     protected function tearDown()
     {
         parent::tearDown();
+    }
+
+    /**
+     * @test
+     */
+    public function getTypeReturnsInitialValueForInt()
+    {
+        self::assertSame(
+            0,
+            $this->subject->getType()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setTypeForIntSetsType()
+    {
+        $this->subject->setType(12);
+
+        self::assertAttributeEquals(
+            12,
+            'type',
+            $this->subject
+        );
     }
 
     /**
@@ -122,31 +147,6 @@ class AnswerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         self::assertAttributeEquals(
             $fileReferenceFixture,
             'file',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getLinkReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getLink()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setLinkForStringSetsLink()
-    {
-        $this->subject->setLink('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'link',
             $this->subject
         );
     }

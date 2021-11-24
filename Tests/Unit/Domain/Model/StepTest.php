@@ -166,25 +166,25 @@ class StepTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getInterimResultReturnsInitialValueForInterimResult()
+    public function getStepFeedbackReturnsInitialValueForStepFeedback()
     {
         self::assertEquals(
             null,
-            $this->subject->getInterimResult()
+            $this->subject->getStepFeedback()
         );
     }
 
     /**
      * @test
      */
-    public function setInterimResultForInterimResultSetsInterimResult()
+    public function setStepFeedbackForStepFeedbackSetsStepFeedback()
     {
-        $interimResultFixture = new \RKW\RkwCheckup\Domain\Model\InterimResult();
-        $this->subject->setInterimResult($interimResultFixture);
+        $stepFeedbackFixture = new \RKW\RkwCheckup\Domain\Model\StepFeedback();
+        $this->subject->setStepFeedback($stepFeedbackFixture);
 
         self::assertAttributeEquals(
-            $interimResultFixture,
-            'interimResult',
+            $stepFeedbackFixture,
+            'stepFeedback',
             $this->subject
         );
     }

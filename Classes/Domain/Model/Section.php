@@ -32,7 +32,14 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $description = '';
 
     /**
-     * step
+     * hideText
+     *
+     * @var bool
+     */
+    protected $hideText = false;
+
+    /**
+     * section
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Step>
      * @cascade remove
@@ -45,13 +52,6 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \RKW\RkwCheckup\Domain\Model\Answer
      */
     protected $hideCond = null;
-
-    /**
-     * interimResult
-     *
-     * @var \RKW\RkwCheckup\Domain\Model\InterimResult
-     */
-    protected $interimResult = null;
 
     /**
      * __construct
@@ -72,7 +72,7 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->step = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->section = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -115,6 +115,37 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * Returns the hideText
+     *
+     * @return bool $hideText
+     */
+    public function getHideText()
+    {
+        return $this->hideText;
+    }
+
+    /**
+     * Sets the hideText
+     *
+     * @param bool $hideText
+     * @return void
+     */
+    public function setHideText($hideText)
+    {
+        $this->hideText = $hideText;
+    }
+
+    /**
+     * Returns the boolean state of hideText
+     *
+     * @return bool
+     */
+    public function isHideText()
+    {
+        return $this->hideText;
     }
 
     /**
@@ -179,26 +210,5 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond)
     {
         $this->hideCond = $hideCond;
-    }
-
-    /**
-     * Returns the interimResult
-     *
-     * @return \RKW\RkwCheckup\Domain\Model\InterimResult $interimResult
-     */
-    public function getInterimResult()
-    {
-        return $this->interimResult;
-    }
-
-    /**
-     * Sets the interimResult
-     *
-     * @param \RKW\RkwCheckup\Domain\Model\InterimResult $interimResult
-     * @return void
-     */
-    public function setInterimResult(\RKW\RkwCheckup\Domain\Model\InterimResult $interimResult)
-    {
-        $this->interimResult = $interimResult;
     }
 }

@@ -1,5 +1,5 @@
 
-plugin.tx_rkwcheckup {
+plugin.tx_rkwcheckup_check {
     view {
         # cat=plugin.tx_rkwcheckup_check/file; type=string; label=Path to template root (FE)
         templateRootPath = EXT:rkw_checkup/Resources/Private/Templates/

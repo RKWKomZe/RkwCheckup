@@ -1,6 +1,7 @@
 <?php
 return [
     'ctrl' => [
+        'hideTable' => true,
         'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer',
         'label' => 'title',
         'tstamp' => 'tstamp',
@@ -23,7 +24,7 @@ return [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, image, file, link',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, image, file, link, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'title, description, image, file, link, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -129,7 +130,7 @@ return [
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
-                'rows' => 15,
+                'rows' => 5,
                 'eval' => 'trim'
             ]
         ],
@@ -164,11 +165,12 @@ return [
                 'eval' => 'trim'
             ],
         ],
-    
-        'result' => [
+
+        'question' => [
             'config' => [
                 'type' => 'passthrough',
             ],
         ],
+    
     ],
 ];

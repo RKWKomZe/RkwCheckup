@@ -1,8 +1,9 @@
 <?php
 return [
     'ctrl' => [
+        'hideTable' => true,
         'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question',
-        'label' => 'type',
+        'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -23,7 +24,7 @@ return [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, mandatory, min_check, max_check, answer, hide_cond',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, mandatory, min_check, max_check, answer, hide_cond, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'type, title, description, mandatory, min_check, max_check, answer, hide_cond, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -118,9 +119,18 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'default' => 1,
+                'items' => [
+                    //['LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type.I.0', 0],
+                    ['LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type.I.1', 1],
+                    ['LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type.I.2', 2],
+                ],
+                'size' => 1,
+                'minitems' => 1,
+                'maxitems' => 1,
+                'eval' => 'required'
             ],
         ],
         'title' => [
@@ -138,7 +148,7 @@ return [
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
-                'rows' => 15,
+                'rows' => 5,
                 'eval' => 'trim'
             ]
         ],
@@ -160,8 +170,17 @@ return [
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.min_check',
             'config' => [
                 'type' => 'input',
-                'size' => 4,
-                'eval' => 'int'
+                'size' => 10,
+                'eval' => 'trim,int',
+                'default' => 0,
+                'slider' => [
+                    'step' => 1,
+                    'width' => 200,
+                ],
+                'range' => [
+                    'lower' => 0,
+                    'upper' => 20,
+                ]
             ]
         ],
         'max_check' => [
@@ -169,8 +188,17 @@ return [
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.max_check',
             'config' => [
                 'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'size' => 10,
+                'eval' => 'trim,int',
+                'default' => 0,
+                'slider' => [
+                    'step' => 1,
+                    'width' => 200,
+                ],
+                'range' => [
+                    'lower' => 0,
+                    'upper' => 20,
+                ]
             ],
         ],
         'answer' => [
@@ -179,10 +207,11 @@ return [
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_answer',
-                'minitems' => 0,
-                'maxitems' => 1,
+                'foreign_field' => 'question',
+                'minitems' => 2,
+                'maxitems' => 99,
                 'appearance' => [
-                    'collapseAll' => 0,
+                    'collapseAll' => 1,
                     'levelLinksPosition' => 'top',
                     'showSynchronizationLink' => 1,
                     'showPossibleLocalizationRecords' => 1,

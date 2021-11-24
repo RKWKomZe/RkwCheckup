@@ -18,18 +18,18 @@ namespace RKW\RkwCheckup\Domain\Model;
 class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * For unique link building
-     *
-     * @var string
-     */
-    protected $hash = '';
-
-    /**
      * finished
      *
      * @var bool
      */
     protected $finished = 0;
+
+    /**
+     * For unique link building
+     *
+     * @var string
+     */
+    protected $hash = '';
 
     /**
      * checkup
@@ -39,19 +39,33 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $checkup = null;
 
     /**
-     * step
+     * currentSection
+     *
+     * @var \RKW\RkwCheckup\Domain\Model\Section
+     */
+    protected $currentSection = null;
+
+    /**
+     * currentStep
      *
      * @var \RKW\RkwCheckup\Domain\Model\Step
      */
-    protected $step = null;
+    protected $currentStep = null;
 
     /**
-     * answer
+     * currentQuestion
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
+     * @var \RKW\RkwCheckup\Domain\Model\Question
+     */
+    protected $currentQuestion = null;
+
+    /**
+     * resultAnswer
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer>
      * @cascade remove
      */
-    protected $answer = null;
+    protected $resultAnswer = null;
 
     /**
      * __construct
@@ -72,7 +86,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->answer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->resultAnswer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -107,7 +121,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param bool $finished
      */
-    public function setFinished($finished): void
+    public function setFinished($finished)
     {
         $this->finished = $finished;
     }
@@ -134,66 +148,87 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the step
-     *
-     * @return \RKW\RkwCheckup\Domain\Model\Step $step
-     */
-    public function getStep()
-    {
-        return $this->step;
-    }
-
-    /**
-     * Sets the step
-     *
-     * @param \RKW\RkwCheckup\Domain\Model\Step $step
-     * @return void
-     */
-    public function setStep(\RKW\RkwCheckup\Domain\Model\Step $step)
-    {
-        $this->step = $step;
-    }
-
-    /**
      * Adds a Answer
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Answer $answer
+     * @param \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer
      * @return void
      */
-    public function addAnswer(\RKW\RkwCheckup\Domain\Model\Answer $answer)
+    public function addResultAnswer(\RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer)
     {
-        $this->answer->attach($answer);
+        $this->resultAnswer->attach($resultAnswer);
     }
 
     /**
      * Removes a Answer
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Answer $answerToRemove The Answer to be removed
+     * @param \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswerToRemove The ResultAnswer to be removed
      * @return void
      */
-    public function removeAnswer(\RKW\RkwCheckup\Domain\Model\Answer $answerToRemove)
+    public function removeResultAnswer(\RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswerToRemove)
     {
-        $this->answer->detach($answerToRemove);
+        $this->resultAnswer->detach($resultAnswerToRemove);
     }
 
     /**
-     * Returns the answer
+     * Returns the resultAnswer
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $answer
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer> resultAnswer
      */
-    public function getAnswer()
+    public function getResultAnswer()
     {
-        return $this->answer;
+        return $this->resultAnswer;
     }
 
     /**
-     * Sets the answer
+     * Sets the resultAnswer
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $answer
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer> $resultAnswer
      * @return void
      */
-    public function setAnswer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $answer)
+    public function setResultAnswer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $resultAnswer)
     {
-        $this->answer = $answer;
+        $this->resultAnswer = $resultAnswer;
+    }
+
+    /**
+     * Returns the currentQuestion
+     *
+     * @return \RKW\RkwCheckup\Domain\Model\Question $currentQuestion
+     */
+    public function getCurrentQuestion()
+    {
+        return $this->currentQuestion;
+    }
+
+    /**
+     * Sets the currentQuestion
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Question $currentQuestion
+     * @return void
+     */
+    public function setCurrentQuestion(\RKW\RkwCheckup\Domain\Model\Question $currentQuestion)
+    {
+        $this->currentQuestion = $currentQuestion;
+    }
+
+    /**
+     * Returns the currentStep
+     *
+     * @return \RKW\RkwCheckup\Domain\Model\Step currentStep
+     */
+    public function getCurrentStep()
+    {
+        return $this->currentStep;
+    }
+
+    /**
+     * Sets the currentStep
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Step $currentStep
+     * @return void
+     */
+    public function setCurrentStep(\RKW\RkwCheckup\Domain\Model\Step $currentStep)
+    {
+        $this->currentStep = $currentStep;
     }
 }

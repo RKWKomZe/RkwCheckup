@@ -18,6 +18,14 @@ namespace RKW\RkwCheckup\Domain\Model;
 class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
+     * section
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section>
+     * @cascade remove
+     */
+    protected $section = null;
+
+    /**
      * title
      *
      * @var string
@@ -30,14 +38,6 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $description = '';
-
-    /**
-     * section
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section>
-     * @cascade remove
-     */
-    protected $section = null;
 
     /**
      * contextQuestion

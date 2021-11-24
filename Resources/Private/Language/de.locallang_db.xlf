@@ -17,7 +17,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup.section">
 				<source>Section</source>
-				<target>Kapitel / Abschnitt</target>
+				<target>Abschnitt</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup.context_question">
 				<source>Context Question</source>
@@ -25,7 +25,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section">
 				<source>Section</source>
-				<target>Kapitel / Abschnitt</target>
+				<target>Abschnitt</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.title">
 				<source>Title</source>
@@ -39,6 +39,10 @@
 				<source>Step</source>
 				<target>Schritt</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_text">
+                <source>Hide Text</source>
+                <target>Text verbergen</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_cond">
 				<source>Hide Cond</source>
 				<target>Bedingung (nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde)</target>
@@ -79,6 +83,18 @@
 				<source>Type</source>
 				<target>Typ</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.type.I.0">
+                <source>Please choose</source>
+                <target>Bitte wählen</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.1">
+                <source>Single choice</source>
+                <target>Einzelauswahl</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.2">
+                <source>Multiple choice</source>
+                <target>Mehrfachauswahl</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.title">
 				<source>Title</source>
 				<target>Titel</target>
@@ -101,7 +117,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.answer">
 				<source>Answer</source>
-				<target>Antwort</target>
+				<target>Antwort (Minimum: 2)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.hide_cond">
 				<source>Hide Cond</source>
@@ -155,27 +171,27 @@
 				<source>Answer</source>
 				<target>Antwort</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
 				<source>Interim Result</source>
 				<target>Zwischenergebnis</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.type">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.type">
 				<source>Type</source>
 				<target>Typ</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.title">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.title">
 				<source>Title</source>
 				<target>Titel</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.description">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.description">
 				<source>Description</source>
 				<target>Beschreibung</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.image">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.image">
 				<source>Image</source>
 				<target>Bild</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.file">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.file">
 				<source>File</source>
 				<target>Datei</target>
 			</trans-unit>

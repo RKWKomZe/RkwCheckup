@@ -6,17 +6,17 @@ namespace RKW\RkwCheckup\Tests\Unit\Domain\Model;
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  */
-class ChapterTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class SectionTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
-     * @var \RKW\RkwCheckup\Domain\Model\Chapter
+     * @var \RKW\RkwCheckup\Domain\Model\Section
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \RKW\RkwCheckup\Domain\Model\Chapter();
+        $this->subject = new \RKW\RkwCheckup\Domain\Model\Section();
     }
 
     protected function tearDown()
@@ -77,7 +77,32 @@ class ChapterTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getSectionReturnsInitialValueForSection()
+    public function getHideTextReturnsInitialValueForBool()
+    {
+        self::assertSame(
+            false,
+            $this->subject->getHideText()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setHideTextForBoolSetsHideText()
+    {
+        $this->subject->setHideText(true);
+
+        self::assertAttributeEquals(
+            true,
+            'hideText',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getSectionReturnsInitialValueForStep()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
@@ -89,9 +114,9 @@ class ChapterTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function setSectionForObjectStorageContainingSectionSetsSection()
+    public function setSectionForObjectStorageContainingStepSetsSection()
     {
-        $section = new \RKW\RkwCheckup\Domain\Model\Section();
+        $section = new \RKW\RkwCheckup\Domain\Model\Step();
         $objectStorageHoldingExactlyOneSection = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneSection->attach($section);
         $this->subject->setSection($objectStorageHoldingExactlyOneSection);
@@ -108,7 +133,7 @@ class ChapterTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function addSectionToObjectStorageHoldingSection()
     {
-        $section = new \RKW\RkwCheckup\Domain\Model\Section();
+        $section = new \RKW\RkwCheckup\Domain\Model\Step();
         $sectionObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
@@ -125,7 +150,7 @@ class ChapterTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function removeSectionFromObjectStorageHoldingSection()
     {
-        $section = new \RKW\RkwCheckup\Domain\Model\Section();
+        $section = new \RKW\RkwCheckup\Domain\Model\Step();
         $sectionObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()

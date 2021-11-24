@@ -18,6 +18,13 @@ namespace RKW\RkwCheckup\Domain\Model;
 class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
+     * hideText
+     *
+     * @var bool
+     */
+    protected $hideText = false;
+
+    /**
      * title
      *
      * @var string
@@ -47,11 +54,11 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $hideCond = null;
 
     /**
-     * interimResult
+     * stepFeedback
      *
-     * @var \RKW\RkwCheckup\Domain\Model\InterimResult
+     * @var \RKW\RkwCheckup\Domain\Model\StepFeedback
      */
-    protected $interimResult = null;
+    protected $stepFeedback = null;
 
     /**
      * __construct
@@ -118,49 +125,6 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a Question
-     *
-     * @param \RKW\RkwCheckup\Domain\Model\Question $question
-     * @return void
-     */
-    public function addQuestion(\RKW\RkwCheckup\Domain\Model\Question $question)
-    {
-        $this->question->attach($question);
-    }
-
-    /**
-     * Removes a Question
-     *
-     * @param \RKW\RkwCheckup\Domain\Model\Question $questionToRemove The Question to be removed
-     * @return void
-     */
-    public function removeQuestion(\RKW\RkwCheckup\Domain\Model\Question $questionToRemove)
-    {
-        $this->question->detach($questionToRemove);
-    }
-
-    /**
-     * Returns the question
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question> $question
-     */
-    public function getQuestion()
-    {
-        return $this->question;
-    }
-
-    /**
-     * Sets the question
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question> $question
-     * @return void
-     */
-    public function setQuestion(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $question)
-    {
-        $this->question = $question;
-    }
-
-    /**
      * Returns the hideCond
      *
      * @return \RKW\RkwCheckup\Domain\Model\Answer $hideCond
@@ -182,23 +146,33 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the interimResult
+     * Returns the hideText
      *
-     * @return \RKW\RkwCheckup\Domain\Model\InterimResult $interimResult
+     * @return bool $hideText
      */
-    public function getInterimResult()
+    public function getHideText()
     {
-        return $this->interimResult;
+        return $this->hideText;
     }
 
     /**
-     * Sets the interimResult
+     * Sets the hideText
      *
-     * @param \RKW\RkwCheckup\Domain\Model\InterimResult $interimResult
+     * @param bool $hideText
      * @return void
      */
-    public function setInterimResult(\RKW\RkwCheckup\Domain\Model\InterimResult $interimResult)
+    public function setHideText($hideText)
     {
-        $this->interimResult = $interimResult;
+        $this->hideText = $hideText;
+    }
+
+    /**
+     * Returns the boolean state of hideText
+     *
+     * @return bool
+     */
+    public function isHideText()
+    {
+        return $this->hideText;
     }
 }

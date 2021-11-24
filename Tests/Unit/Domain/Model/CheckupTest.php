@@ -77,28 +77,28 @@ class CheckupTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getChapterReturnsInitialValueForChapter()
+    public function getSectionReturnsInitialValueForSection()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
-            $this->subject->getChapter()
+            $this->subject->getSection()
         );
     }
 
     /**
      * @test
      */
-    public function setChapterForObjectStorageContainingChapterSetsChapter()
+    public function setSectionForObjectStorageContainingSectionSetsSection()
     {
-        $chapter = new \RKW\RkwCheckup\Domain\Model\Chapter();
-        $objectStorageHoldingExactlyOneChapter = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneChapter->attach($chapter);
-        $this->subject->setChapter($objectStorageHoldingExactlyOneChapter);
+        $section = new \RKW\RkwCheckup\Domain\Model\Section();
+        $objectStorageHoldingExactlyOneSection = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneSection->attach($section);
+        $this->subject->setSection($objectStorageHoldingExactlyOneSection);
 
         self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneChapter,
-            'chapter',
+            $objectStorageHoldingExactlyOneSection,
+            'section',
             $this->subject
         );
     }
@@ -106,35 +106,35 @@ class CheckupTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function addChapterToObjectStorageHoldingChapter()
+    public function addSectionToObjectStorageHoldingSection()
     {
-        $chapter = new \RKW\RkwCheckup\Domain\Model\Chapter();
-        $chapterObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $section = new \RKW\RkwCheckup\Domain\Model\Section();
+        $sectionObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $chapterObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($chapter));
-        $this->inject($this->subject, 'chapter', $chapterObjectStorageMock);
+        $sectionObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($section));
+        $this->inject($this->subject, 'section', $sectionObjectStorageMock);
 
-        $this->subject->addChapter($chapter);
+        $this->subject->addSection($section);
     }
 
     /**
      * @test
      */
-    public function removeChapterFromObjectStorageHoldingChapter()
+    public function removeSectionFromObjectStorageHoldingSection()
     {
-        $chapter = new \RKW\RkwCheckup\Domain\Model\Chapter();
-        $chapterObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $section = new \RKW\RkwCheckup\Domain\Model\Section();
+        $sectionObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $chapterObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($chapter));
-        $this->inject($this->subject, 'chapter', $chapterObjectStorageMock);
+        $sectionObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($section));
+        $this->inject($this->subject, 'section', $sectionObjectStorageMock);
 
-        $this->subject->removeChapter($chapter);
+        $this->subject->removeSection($section);
     }
 
     /**

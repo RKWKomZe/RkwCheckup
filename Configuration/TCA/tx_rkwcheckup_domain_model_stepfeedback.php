@@ -1,7 +1,8 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_interimresult',
+        'hideTable' => true,
+        'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_stepfeedback',
         'label' => 'type',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -17,13 +18,13 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'type,title,description,image,file',
-        'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_interimresult.gif'
+        'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_stepfeedback.gif'
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, image, file',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, image, file, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'type, title, description, image, file, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -53,8 +54,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_rkwcheckup_domain_model_interimresult',
-                'foreign_table_where' => 'AND tx_rkwcheckup_domain_model_interimresult.pid=###CURRENT_PID### AND tx_rkwcheckup_domain_model_interimresult.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_stepfeedback',
+                'foreign_table_where' => 'AND tx_rkwcheckup_domain_model_stepfeedback.pid=###CURRENT_PID### AND tx_rkwcheckup_domain_model_stepfeedback.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -116,7 +117,7 @@ return [
 
         'type' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_interimresult.type',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_stepfeedback.type',
             'config' => [
                 'type' => 'input',
                 'size' => 4,
@@ -125,7 +126,7 @@ return [
         ],
         'title' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_interimresult.title',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_stepfeedback.title',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -134,7 +135,7 @@ return [
         ],
         'description' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_interimresult.description',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_stepfeedback.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -143,23 +144,24 @@ return [
         ],
         'image' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_interimresult.image',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_stepfeedback.image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'image',
                 [
-                    'maxitems' => 1
+                    'maxitems' => 9999
                 ],
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ],
         'file' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_interimresult.file',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_stepfeedback.file',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'file',
                 [
                     'maxitems' => 1
-                ]
+                ],
+                'pdf'
             ),
         ],
     

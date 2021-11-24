@@ -15,7 +15,7 @@ namespace RKW\RkwCheckup\Domain\Model;
 /**
  * InterimResult
  */
-class InterimResult extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
      * Maybe for a special presentation

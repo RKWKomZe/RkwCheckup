@@ -9,28 +9,32 @@ call_user_func(
             'RKW.RkwCheckup',
             'Check',
             [
-                'Checkup' => 'index, show, new, progress, create'
+                'Checkup' => 'index, show, new, create'
             ],
             // non-cacheable actions
             [
-                'Checkup' => 'index, show, new, progress, create'
+                'Checkup' => 'index, show, new, create'
             ]
         );
 
-        //=================================================================
-        // Register Logger
-        //=================================================================
-        $GLOBALS['TYPO3_CONF_VARS']['LOG']['RKW']['RkwCheckup']['writerConfiguration'] = array(
-
-            // configuration for WARNING severity, including all
-            // levels with higher severity (ERROR, CRITICAL, EMERGENCY)
-            \TYPO3\CMS\Core\Log\LogLevel::DEBUG => array(
-                // add a FileWriter
-                'TYPO3\\CMS\\Core\\Log\\Writer\\FileWriter' => array(
-                    // configuration for the writer
-                    'logFile' => 'typo3temp/var/logs/tx_rkwcheckup.log'
-                )
-            ),
-        );
+    // wizards
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+        'mod {
+            wizards.newContentElement.wizardItems.plugins {
+                elements {
+                    check {
+                        icon = ' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('rkw_checkup') . 'Resources/Public/Icons/user_plugin_check.svg
+                        title = LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkw_checkup_domain_model_check
+                        description = LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkw_checkup_domain_model_check.description
+                        tt_content_defValues {
+                            CType = list
+                            list_type = rkwcheckup_check
+                        }
+                    }
+                }
+                show = *
+            }
+       }'
+    );
     }
 );

@@ -6,7 +6,6 @@ use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Service\ResultService;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-
 /***
  *
  * This file is part of the "RKW Checkup" Extension for TYPO3 CMS.
@@ -38,7 +37,6 @@ class CheckupController extends ActionController
      */
     protected $resultService = null;
 
-
     /**
      * initializeAction
      */
@@ -46,7 +44,6 @@ class CheckupController extends ActionController
     {
         $this->resultService = $this->objectManager->get(ResultService::class);
     }
-
 
     /**
      * action index
@@ -68,7 +65,6 @@ class CheckupController extends ActionController
     public function showAction(Checkup $checkup)
     {
         // NOT USED YET
-
         $this->view->assign('checkup', $checkup);
     }
 
@@ -80,10 +76,8 @@ class CheckupController extends ActionController
     public function newAction()
     {
         $checkup = $this->checkupRepository->findByUid(intval($this->settings['checkup']));
-DebuggerUtility::var_dump($checkup); exit;
         $this->resultService->new($checkup);
         $this->resultService->persist();
-
         $this->view->assign('result', $this->resultService->get());
     }
 
@@ -95,7 +89,6 @@ DebuggerUtility::var_dump($checkup); exit;
      */
     public function progressAction(Result $result)
     {
-
         $this->view->assign('result', $this->resultService->get());
     }
 
@@ -111,4 +104,5 @@ DebuggerUtility::var_dump($checkup); exit;
         $this->checkupRepository->add($newCheckup);
         $this->redirect('list');
     }
+
 }

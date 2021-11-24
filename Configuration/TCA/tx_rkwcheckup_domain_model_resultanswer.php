@@ -2,8 +2,8 @@
 return [
     'ctrl' => [
         'hideTable' => true,
-        'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step',
-        'label' => 'title',
+        'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_resultanswer',
+        'label' => 'answer',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -17,14 +17,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,description,question,hide_cond,step_feedback',
-        'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_step.gif'
+        'searchFields' => 'answer,question,step,section',
+        'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_resultanswer.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, question, hide_cond, step_feedback',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, answer, question, step, section',
     ],
     'types' => [
-        '1' => ['showitem' => 'title, description, question, hide_cond, step_feedback, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'answer, question, step, section, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -54,8 +54,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_rkwcheckup_domain_model_step',
-                'foreign_table_where' => 'AND tx_rkwcheckup_domain_model_step.pid=###CURRENT_PID### AND tx_rkwcheckup_domain_model_step.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_resultanswer',
+                'foreign_table_where' => 'AND tx_rkwcheckup_domain_model_resultanswer.pid=###CURRENT_PID### AND tx_rkwcheckup_domain_model_resultanswer.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -114,45 +114,10 @@ return [
                 ]
             ],
         ],
-        'title' => [
+
+        'answer' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.title',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'description' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.description',
-            'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 5,
-                'eval' => 'trim'
-            ]
-        ],
-        'question' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.question',
-            'config' => [
-                'type' => 'inline',
-                'foreign_table' => 'tx_rkwcheckup_domain_model_question',
-                'foreign_field' => 'step',
-                'maxitems' => 9999,
-                'appearance' => [
-                    'collapseAll' => 0,
-                    'levelLinksPosition' => 'top',
-                    'showSynchronizationLink' => 1,
-                    'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1
-                ],
-            ],
-        ],
-        'hide_cond' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.hide_cond',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_resultanswer.answer',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_answer',
@@ -167,12 +132,46 @@ return [
                 ],
             ],
         ],
-        'step_feedback' => [
+        'question' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.step_feedback',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_resultanswer.question',
             'config' => [
                 'type' => 'inline',
-                'foreign_table' => 'tx_rkwcheckup_domain_model_stepfeedback',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_question',
+                'minitems' => 0,
+                'maxitems' => 1,
+                'appearance' => [
+                    'collapseAll' => 0,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1
+                ],
+            ],
+        ],
+        'step' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_resultanswer.step',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_step',
+                'minitems' => 0,
+                'maxitems' => 1,
+                'appearance' => [
+                    'collapseAll' => 0,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1
+                ],
+            ],
+        ],
+        'section' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_resultanswer.section',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_section',
                 'minitems' => 0,
                 'maxitems' => 1,
                 'appearance' => [
@@ -185,10 +184,5 @@ return [
             ],
         ],
     
-        'section' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
     ],
 ];

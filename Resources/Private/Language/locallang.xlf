@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2021-11-12T16:01:44Z" product-name="rkw_checkup">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-11-24T11:02:27Z" product-name="rkw_checkup">
 		<header/>
 		<body>
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup">
@@ -27,14 +27,14 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_section.description">
 				<source>Description</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_section.step">
-				<source>Step</source>
+			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_text">
+				<source>Hide Text</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_section.section">
+				<source>Section</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_cond">
 				<source>Hide Cond</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_section.interim_result">
-				<source>Interim Result</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step">
 				<source>Step</source>
@@ -51,8 +51,8 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
 				<source>Hide Cond</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.interim_result">
-				<source>Interim Result</source>
+			<trans-unit id="tx_rkwcheckup_domain_model_step.step_feedback">
+				<source>Step Feedback</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question">
 				<source>Question</source>
@@ -108,26 +108,50 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
 				<source>Checkup</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_result.answer">
-				<source>Answer</source>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.current_section">
+				<source>Current Section</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult">
-				<source>Interim Result</source>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.current_step">
+				<source>Current Step</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.type">
+			<trans-unit id="tx_rkwcheckup_domain_model_result.current_question">
+				<source>Current Question</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.result_answer">
+				<source>Result Answer</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
+				<source>Step Feedback</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.type">
 				<source>Type</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.title">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.title">
 				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.description">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.description">
 				<source>Description</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.image">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.image">
 				<source>Image</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_interimresult.file">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.file">
 				<source>File</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer">
+				<source>Result Answer</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.answer">
+				<source>Answer</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.question">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.step">
+				<source>Step</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.section">
+				<source>Section</source>
 			</trans-unit>
 		</body>
 	</file>
