@@ -9,32 +9,13 @@ call_user_func(
             'RKW.RkwCheckup',
             'Check',
             [
-                'Checkup' => 'index, show, new, create'
+                'Checkup' => 'index, show, new, create, progress, validate'
             ],
             // non-cacheable actions
             [
-                'Checkup' => 'index, show, new, create'
+                'Checkup' => 'index, show, new, create, progress, validate'
             ]
         );
 
-    // wizards
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        'mod {
-            wizards.newContentElement.wizardItems.plugins {
-                elements {
-                    check {
-                        icon = ' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('rkw_checkup') . 'Resources/Public/Icons/user_plugin_check.svg
-                        title = LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkw_checkup_domain_model_check
-                        description = LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkw_checkup_domain_model_check.description
-                        tt_content_defValues {
-                            CType = list
-                            list_type = rkwcheckup_check
-                        }
-                    }
-                }
-                show = *
-            }
-       }'
-    );
     }
 );

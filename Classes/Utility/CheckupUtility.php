@@ -59,8 +59,19 @@ class CheckupUtility
 
             // @toDo: Wie die Sache mit dem Zwischenergenis einbauen?
         }
+    }
 
 
+
+    /**
+     * which step comes next?
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Step $step
+     * @param \RKW\RkwCheckup\Domain\Model\Result $result
+     * @return void
+     */
+    public static function assignAnswersToQuestion ($step, $result)
+    {
 
     }
 

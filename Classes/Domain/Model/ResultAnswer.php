@@ -17,6 +17,7 @@ namespace RKW\RkwCheckup\Domain\Model;
  */
 class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
     /**
      * answer
      *

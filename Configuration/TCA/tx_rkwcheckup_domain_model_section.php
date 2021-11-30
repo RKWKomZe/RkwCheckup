@@ -21,10 +21,10 @@ return [
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_section.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_text, step, hide_cond',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_text, hide_cond, step',
     ],
     'types' => [
-        '1' => ['showitem' => 'title, description, hide_text, step, hide_cond, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'title, description, hide_text, hide_cond, step, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -154,6 +154,7 @@ return [
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_step',
                 'foreign_field' => 'section',
+                'minitems' => 1,
                 'maxitems' => 9999,
                 'appearance' => [
                     'collapseAll' => 0,

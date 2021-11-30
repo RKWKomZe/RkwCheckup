@@ -175,4 +175,68 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->hideText;
     }
+
+    /**
+     * Returns the stepFeedback
+     *
+     * @return \RKW\RkwCheckup\Domain\Model\StepFeedback $stepFeedback
+     */
+    public function getStepFeedback()
+    {
+        return $this->stepFeedback;
+    }
+
+    /**
+     * Sets the stepFeedback
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\StepFeedback $stepFeedback
+     * @return void
+     */
+    public function setStepFeedback(\RKW\RkwCheckup\Domain\Model\StepFeedback $stepFeedback)
+    {
+        $this->stepFeedback = $stepFeedback;
+    }
+
+    /**
+     * Adds a Question
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Question $question
+     * @return void
+     */
+    public function addQuestion(\RKW\RkwCheckup\Domain\Model\Question $question)
+    {
+        $this->question->attach($question);
+    }
+
+    /**
+     * Removes a Question
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Question $questionToRemove The Question to be removed
+     * @return void
+     */
+    public function removeQuestion(\RKW\RkwCheckup\Domain\Model\Question $questionToRemove)
+    {
+        $this->question->detach($questionToRemove);
+    }
+
+    /**
+     * Returns the Question
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question> $question
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Sets the Question
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question> $question
+     * @return void
+     */
+    public function setQuestion(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $question)
+    {
+        $this->question = $question;
+    }
 }

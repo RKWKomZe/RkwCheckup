@@ -1,0 +1,25 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <table class="tx-rkw-checkup" >
+        <tr>
+            <td>
+                <f:translate key="tx_rkwcheckup_domain_model_step.title" />
+            </td>
+            <td>
+                {result.currentStep.title}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <f:translate key="tx_rkwcheckup_domain_model_step.description" />
+            </td>
+            <td>
+                {result.currentStep.description}
+            </td>
+        </tr>
+    </table>
+
+
+    <f:if condition="{result.currentStep.question}">
+        <f:render partial="Question/FormFields" arguments="{_all}" />
+    </f:if>
+</html>

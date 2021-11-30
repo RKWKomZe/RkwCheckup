@@ -123,12 +123,12 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_result.current_step">
 				<source>Current Step</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_result.current_question">
-				<source>Current Question</source>
-			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.result_answer">
 				<source>Result Answer</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.new_result_answer">
+                <source>New Answer</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
 				<source>Step Feedback</source>
 			</trans-unit>

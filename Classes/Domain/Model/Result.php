@@ -53,19 +53,21 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $currentStep = null;
 
     /**
-     * currentQuestion
-     *
-     * @var \RKW\RkwCheckup\Domain\Model\Question
-     */
-    protected $currentQuestion = null;
-
-    /**
      * resultAnswer
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer>
      * @cascade remove
      */
     protected $resultAnswer = null;
+
+    /**
+     * newResultAnswer
+     * Hint: Should never persistent. Just needed for FE form to validate and creating new answers
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer>
+     * @cascade remove
+     */
+    protected $newResultAnswer = null;
 
     /**
      * __construct
@@ -87,6 +89,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected function initStorageObjects()
     {
         $this->resultAnswer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->newResultAnswer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -191,24 +194,67 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the currentQuestion
+     * Adds a Answer
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Question $currentQuestion
+     * @param \RKW\RkwCheckup\Domain\Model\ResultAnswer $newResultAnswer
+     * @return void
      */
-    public function getCurrentQuestion()
+    public function addNewResultAnswer(\RKW\RkwCheckup\Domain\Model\ResultAnswer $newResultAnswer)
     {
-        return $this->currentQuestion;
+        $this->newResultAnswer->attach($newResultAnswer);
     }
 
     /**
-     * Sets the currentQuestion
+     * Removes a Answer
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Question $currentQuestion
+     * @param \RKW\RkwCheckup\Domain\Model\ResultAnswer $newResultAnswerToRemove The ResultAnswer to be removed
      * @return void
      */
-    public function setCurrentQuestion(\RKW\RkwCheckup\Domain\Model\Question $currentQuestion)
+    public function removeNewResultAnswer(\RKW\RkwCheckup\Domain\Model\ResultAnswer $newResultAnswerToRemove)
     {
-        $this->currentQuestion = $currentQuestion;
+        $this->newResultAnswer->detach($newResultAnswerToRemove);
+    }
+
+    /**
+     * Returns the newResultAnswer
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer> newResultAnswer
+     */
+    public function getNewResultAnswer()
+    {
+        return $this->newResultAnswer;
+    }
+
+    /**
+     * Sets the newResultAnswer
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer> $newResultAnswer
+     * @return void
+     */
+    public function setNewResultAnswer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $newResultAnswer)
+    {
+        $this->newResultAnswer = $newResultAnswer;
+    }
+
+    /**
+     * Returns the currentSection
+     *
+     * @return \RKW\RkwCheckup\Domain\Model\Section $currentSection
+     */
+    public function getCurrentSection()
+    {
+        return $this->currentSection;
+    }
+
+    /**
+     * Sets the currentSection
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Section $currentSection
+     * @return void
+     */
+    public function setCurrentSection(\RKW\RkwCheckup\Domain\Model\Section $currentSection)
+    {
+        $this->currentSection = $currentSection;
     }
 
     /**

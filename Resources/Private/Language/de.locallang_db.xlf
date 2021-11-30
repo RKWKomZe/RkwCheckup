@@ -163,14 +163,22 @@
 				<source>Checkup</source>
 				<target>CheckUp</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.current_section">
+                <source>Current Section</source>
+                <target>Aktueller Abschnitt</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.step">
                 <source>Step</source>
-                <target>Step</target>
+                <target>Aktuelle Schritt</target>
             </trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_result.answer">
+			<trans-unit id="tx_rkwcheckup_domain_model_result.result_answer">
 				<source>Answer</source>
-				<target>Antwort</target>
+				<target>Antworten</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.new_result_answer">
+                <source>New Answer</source>
+                <target>Antworten (wird im FE Formular aus Logikgründen benötigt)</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
 				<source>Interim Result</source>
 				<target>Zwischenergebnis</target>

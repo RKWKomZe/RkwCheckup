@@ -121,7 +121,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ],
         ],
         'description' => [
@@ -152,6 +152,7 @@ return [
             ],
 
         ],
+        /*
         'context_question' => [
             'exclude' => true,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_checkup.context_question',
@@ -169,6 +170,7 @@ return [
                 ],
             ],
         ],
+        */
     
     ],
 ];

@@ -1,5 +1,5 @@
 
-plugin.{extension.shortExtensionKey}_{plugin.key} {
+plugin.rkw_checkup {
     view {
         templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Templates/
         templateRootPaths.1 = {$plugin.tx_rkwcheckup_check.view.templateRootPath}
@@ -24,39 +24,19 @@ plugin.{extension.shortExtensionKey}_{plugin.key} {
     }
 }
 
-# these classes are only used in auto-generated templates
-plugin.tx_rkwcheckup._CSS_DEFAULT_STYLE (
-    textarea.f3-form-error {
-        background-color:#FF9F9F;
-        border: 1px #FF0000 solid;
-    }
 
-    input.f3-form-error {
-        background-color:#FF9F9F;
-        border: 1px #FF0000 solid;
-    }
+[globalVar = LIT:1 = {$plugin.tx_rkwcheckup.settings.includeCss}]
+    page.includeCSS.txRkwSurvey = EXT:rkw_survey/Resources/Public/Css/webcheck-2.0.css
+[global]
 
-    .tx-rkw-checkup table {
-        border-collapse:separate;
-        border-spacing:10px;
-    }
+[!userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('rkw_webcheck')]
+    page.includeJSFooter.txRkwSurvey = EXT:rkw_survey/Resources/Public/Scripts/webcheck-2.0.js
+[global]
 
-    .tx-rkw-checkup table th {
-        font-weight:bold;
-    }
+[!userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('rkw_webcheck')] && [globalVar = LIT:1 = {$plugin.tx_rkwsurvey.settings.includeJQuery}]
+    page.includeJSFooterlibs.txRkwSurvey  = EXT:rkw_survey/Resources/Public/Scripts/jquery-3.4.1.min.js
+[global]
 
-    .tx-rkw-checkup table td {
-        vertical-align:top;
-    }
-
-    .typo3-messages .message-error {
-        color:red;
-    }
-
-    .typo3-messages .message-ok {
-        color:green;
-    }
-)
 
 # Module configuration
 module.tx_rkwcheckup_web_rkwcheckupstatistics {

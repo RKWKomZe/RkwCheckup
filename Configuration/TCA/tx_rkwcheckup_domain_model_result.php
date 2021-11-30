@@ -234,6 +234,25 @@ return [
             ],
             
         ],
+
+        'new_result_answer' => [
+            'readOnly' => true,
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.new_result_answer',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_resultanswer',
+                'minitems' => 0,
+                'maxitems' => 1,
+                'appearance' => [
+                    'collapseAll' => 0,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1
+                ],
+            ],
+        ],
     
     ],
 ];
