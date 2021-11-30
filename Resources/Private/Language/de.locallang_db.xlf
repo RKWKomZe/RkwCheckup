@@ -159,6 +159,10 @@
                 <source>Finished</source>
                 <target>Abgeschlossen</target>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_result.last_step">
+                <source>Last step</source>
+                <target>Letzter Schritt</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
 				<source>Checkup</source>
 				<target>CheckUp</target>

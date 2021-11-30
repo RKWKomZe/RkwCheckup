@@ -61,18 +61,6 @@ class CheckupController extends ActionController
     }
 
     /**
-     * action show
-     *
-     * @param \RKW\RkwCheckup\Domain\Model\Checkup
-     * @return void
-     */
-    public function showAction(Checkup $checkup)
-    {
-        // NOT USED YET
-        $this->view->assign('checkup', $checkup);
-    }
-
-    /**
      * action new
      *
      * @return void
@@ -94,8 +82,9 @@ class CheckupController extends ActionController
      */
     public function progressAction(Result $result)
     {
-
-     //   DebuggerUtility::var_dump($result); exit;
+        if ($result->isFinished()) {
+            $this->redirect('show', null, null, ['result' => $result]);
+        }
 
         $this->view->assign('result', $result);
     }
@@ -118,7 +107,10 @@ class CheckupController extends ActionController
 
                 // remove empty entries
                 foreach ($newResultAnswer['newResultAnswer'] as $key => $answer) {
-                    if (!key_exists('answer', $answer) || !$answer['answer']['__identity']) {
+                    if (
+                        is_array($answer)
+                        && (!key_exists('answer', $answer) || !$answer['answer']['__identity'])
+                    ) {
                         unset($newResultAnswer['newResultAnswer'][$key]);
                     }
                 }
@@ -148,16 +140,15 @@ class CheckupController extends ActionController
     }
 
     /**
-     * action create
+     * action show
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Checkup
+     * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
      */
-    public function createAction(Checkup $newCheckup)
+    public function showAction(Result $result)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
-        $this->checkupRepository->add($newCheckup);
-        $this->redirect('list');
+        $this->view->assign('result', $result);
     }
+
 
 }

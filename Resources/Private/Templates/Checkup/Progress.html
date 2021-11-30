@@ -22,9 +22,29 @@
         <f:render partial="FormErrors" arguments="{object:Result}" />
 
         <f:form action="validate" enctype="multipart/form-data" name="result" object="{result}">
+
+            <f:if condition="{result.lastStep}">
+                <f:comment><!-- if this is the last step, set "finished" flag to result --></f:comment>
+                <f:form.hidden property="finished" value="1" />
+            </f:if>
+
             <f:render partial="Checkup/FormFields" arguments="{_all}" />
 
-            <f:form.submit value="Weiter" />
+            <div class="button-footer flex space-between flex-basis-12 mt-2">
+                <div></div>
+                <div class="steps">
+                    <span>Frage 6/15</span>
+                </div>
+                <f:if condition="{result.lastStep}">
+                    <f:then>
+                        <f:form.submit class="btn btn--primary" value="Abschließen" />
+                    </f:then>
+                    <f:else>
+                        <f:form.submit class="btn btn--primary" value="Weiter" />
+                    </f:else>
+                </f:if>
+            </div>
+
         </f:form>
     </f:section>
 </html>

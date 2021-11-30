@@ -22,7 +22,14 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var bool
      */
-    protected $finished = 0;
+    protected $finished = false;
+
+    /**
+     * lastStep
+     *
+     * @var bool
+     */
+    protected $lastStep = false;
 
     /**
      * For unique link building
@@ -127,6 +134,22 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setFinished($finished)
     {
         $this->finished = $finished;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLastStep()
+    {
+        return $this->lastStep;
+    }
+
+    /**
+     * @param bool $lastStep
+     */
+    public function setLastStep($lastStep)
+    {
+        $this->lastStep = $lastStep;
     }
 
     /**

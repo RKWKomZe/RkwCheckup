@@ -114,6 +114,12 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_result.hash">
 				<source>Hash</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_result.finished">
+                <source>Finished</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_result.last_step">
+                <source>Last step</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
 				<source>Checkup</source>
 			</trans-unit>

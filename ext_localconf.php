@@ -9,11 +9,11 @@ call_user_func(
             'RKW.RkwCheckup',
             'Check',
             [
-                'Checkup' => 'index, show, new, create, progress, validate'
+                'Checkup' => 'index, show, new, progress, validate'
             ],
             // non-cacheable actions
             [
-                'Checkup' => 'index, show, new, create, progress, validate'
+                'Checkup' => 'index, show, new, progress, validate'
             ]
         );
 

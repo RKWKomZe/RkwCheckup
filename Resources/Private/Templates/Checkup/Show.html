@@ -13,11 +13,9 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<h1>Single View for Checkup</h1>
+<h1>Single View for Result</h1>
 
 <f:flashMessages />
-<f:render partial="Checkup/Properties" arguments="{checkup:checkup}" />
-<f:link.action action="list">Back to list</f:link.action><br />
-<f:link.action action="new">New Checkup</f:link.action>
+<f:render partial="Result/Properties" arguments="{result:result}" />
 	</f:section>
 </html>

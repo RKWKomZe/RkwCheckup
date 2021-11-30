@@ -17,14 +17,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'hash,checkup,current_section,current_step,current_question,result_answer',
+        'searchFields' => 'hash,checkup,current_section,current_step,current_question,result_answer,finished,last_step',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_result.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, hash, checkup, current_section, current_step, current_question, result_answer',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, hash, checkup, current_section, current_step, current_question, result_answer,finished,last_step',
     ],
     'types' => [
-        '1' => ['showitem' => 'hash, checkup, current_section, current_step, current_question, result_answer, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'hash, checkup, current_section, current_step, current_question, result_answer, finished, last_step, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -123,6 +123,32 @@ return [
                 'size' => 30,
                 'eval' => 'trim'
             ],
+        ],
+        'finished' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.finished',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
+                    ]
+                ],
+                'default' => 0,
+            ]
+        ],
+        'last_step' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.last_step',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
+                    ]
+                ],
+                'default' => 0,
+            ]
         ],
         'checkup' => [
             'exclude' => true,
