@@ -17,14 +17,19 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,description,image,file,link',
+        'searchFields' => 'title,description,response,image,file,link',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_answer.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, image, file, link',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, response, image, file, link',
     ],
     'types' => [
-        '1' => ['showitem' => 'title, description, image, file, link, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
+        '1' => [
+            'showitem' =>
+                'title, description, 
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.tab.extend, response, image, file, link,
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -127,6 +132,16 @@ return [
         'description' => [
             'exclude' => true,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 5,
+                'eval' => 'trim'
+            ]
+        ],
+        'response' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.response',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,

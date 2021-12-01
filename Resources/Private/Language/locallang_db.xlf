@@ -21,6 +21,9 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_section">
 				<source>Section</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_section.tab.extend">
+                <source>Extended</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.title">
 				<source>Title</source>
 			</trans-unit>
@@ -39,6 +42,9 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_step">
 				<source>Step</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_step.tab.extend">
+                <source>Extended</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.title">
 				<source>Title</source>
 			</trans-unit>
@@ -57,6 +63,9 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_question">
 				<source>Question</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.tab.extend">
+                <source>Extended</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.type">
 				<source>Type</source>
 			</trans-unit>
@@ -93,12 +102,18 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_answer">
 				<source>Answer</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.tab.extend">
+                <source>Extended</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.title">
 				<source>Title</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.description">
 				<source>Description</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.response">
+                <source>Response</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.image">
 				<source>Image</source>
 			</trans-unit>

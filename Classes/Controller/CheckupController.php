@@ -32,6 +32,14 @@ class CheckupController extends ActionController
     protected $checkupRepository = null;
 
     /**
+     * resultRepository
+     *
+     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
+     * @inject
+     */
+    protected $resultRepository = null;
+
+    /**
      * resultService
      *
      * @var \RKW\RkwCheckup\Service\ResultService
@@ -43,10 +51,20 @@ class CheckupController extends ActionController
      */
     public function initializeAction()
     {
-        // @toDo: Get and set Result records by hash? Would makes "set" obsolete
-        // -> Needs result hash in URL
-
         $this->resultService = $this->objectManager->get(ResultService::class);
+
+        $getParams = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('tx_rkwcheckup_check');
+
+    //    DebuggerUtility::var_dump($getParams['result']); exit;
+
+        if ($getParams['result']) {
+            // alternative: Find by hash
+                $result = $this->resultRepository->findByHash(strval($getParams['result']));
+            if ($result instanceof \RKW\RkwCheckup\Domain\Model\Result) {
+                $this->resultService->set($result);
+            }
+        }
+
     }
 
     /**
@@ -63,10 +81,26 @@ class CheckupController extends ActionController
     /**
      * action new
      *
+     * @param int $terms
      * @return void
      */
-    public function newAction()
+    public function newAction($terms = 0)
     {
+        /*
+        // check terms
+        if (!$terms) {
+            $this->addFlashMessage(
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                    'checkupController.warning.terms',
+                    'rkw_checkup'
+                ),
+                null,
+                \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR
+            );
+            $this->redirect('index');
+        }
+        */
+
         $checkup = $this->checkupRepository->findByUid(intval($this->settings['checkup']));
         $this->resultService->new($checkup);
         $this->resultService->persist();
@@ -104,7 +138,6 @@ class CheckupController extends ActionController
                 is_array($newResultAnswer)
                 && is_array($newResultAnswer['newResultAnswer'])
             ) {
-
                 // remove empty entries
                 foreach ($newResultAnswer['newResultAnswer'] as $key => $answer) {
                     if (
@@ -114,7 +147,6 @@ class CheckupController extends ActionController
                         unset($newResultAnswer['newResultAnswer'][$key]);
                     }
                 }
-
                 // override
                 $this->request->setArgument('result', $newResultAnswer);
             }
@@ -144,9 +176,14 @@ class CheckupController extends ActionController
      *
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
     public function showAction(Result $result)
     {
+        if (!$result->isFinished()) {
+            $this->forward('progress', null, null, ['result' => $result]);
+        }
+
         $this->view->assign('result', $result);
     }
 

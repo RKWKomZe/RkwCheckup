@@ -32,6 +32,13 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $description = '';
 
     /**
+     * response
+     *
+     * @var string
+     */
+    protected $response = '';
+
+    /**
      * image
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
@@ -94,6 +101,22 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getResponse(): string
+    {
+        return $this->response;
+    }
+
+    /**
+     * @param string $response
+     */
+    public function setResponse(string $response): void
+    {
+        $this->response = $response;
     }
 
     /**

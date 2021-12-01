@@ -195,6 +195,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_answer (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text,
+    response text,
 	image int(11) unsigned NOT NULL default '0',
 	file int(11) unsigned NOT NULL default '0',
 	link varchar(255) DEFAULT '' NOT NULL,

@@ -27,6 +27,10 @@
 				<source>Section</source>
 				<target>Abschnitt</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_section.tab.extend">
+                <source>Extended</source>
+                <target>Erweitert</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.title">
 				<source>Title</source>
 				<target>Titel</target>
@@ -55,6 +59,10 @@
 				<source>Step</source>
 				<target>Schritt</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_step.tab.extend">
+                <source>Extended</source>
+                <target>Erweitert</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.title">
 				<source>Title</source>
 				<target>Titel</target>
@@ -79,6 +87,10 @@
 				<source>Question</source>
 				<target>Frage</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.tab.extend">
+                <source>Extended</source>
+                <target>Erweitert</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.type">
 				<source>Type</source>
 				<target>Typ</target>
@@ -127,6 +139,10 @@
 				<source>Answer</source>
 				<target>Antwort</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.tab.extend">
+                <source>Extended</source>
+                <target>Erweitert</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.title">
 				<source>Title</source>
 				<target>Titel</target>
@@ -135,6 +151,10 @@
 				<source>Description</source>
 				<target>Beschreibung</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.response">
+                <source>Response text</source>
+                <target>Text</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.image">
 				<source>Image</source>
 				<target>Bild</target>

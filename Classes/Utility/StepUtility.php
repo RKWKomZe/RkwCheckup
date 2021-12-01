@@ -2,13 +2,7 @@
 
 namespace RKW\RkwCheckup\Utility;
 
-use RKW\RkwBasics\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Domain\Repository\ResultRepository;
-use RKW\RkwRegistration\Domain\Repository\FrontendUserRepository;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /*
  * This file is part of the TYPO3 CMS project.

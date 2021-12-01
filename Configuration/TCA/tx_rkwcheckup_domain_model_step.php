@@ -24,7 +24,12 @@ return [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_cond, step_feedback, question',
     ],
     'types' => [
-        '1' => ['showitem' => 'title, description, hide_cond, step_feedback, question, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
+        '1' => [
+            'showitem' => '
+                title, description, question, 
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.tab.extend, hide_cond, step_feedback,
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime
+            '],
     ],
     'columns' => [
         'sys_language_uid' => [

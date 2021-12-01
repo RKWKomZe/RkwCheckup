@@ -114,6 +114,20 @@ return [
                 ]
             ],
         ],
+        'crdate' => [
+            'readOnly' => true,
+            'exclude' => true,
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'size' => 13,
+                'eval' => 'datetime',
+                'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
+            ],
+        ],
 
         'hash' => [
             'exclude' => true,

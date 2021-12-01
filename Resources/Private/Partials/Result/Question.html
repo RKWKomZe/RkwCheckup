@@ -1,0 +1,23 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+    <f:comment><!-- if question has answers (could be skipped) --> </f:comment>
+    <f:if condition="{rkw:checkQuestionForAnswers(question: '{question}', result: '{result}')}" >
+        <h5>{question.title}</h5>
+        <p>{question.description}</p>
+
+        <f:comment><!-- the given answers of the user --></f:comment>
+        <f:for each="{rkw:getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="answer">
+            <p>{answer.title}</p>
+        </f:for>
+
+        <f:comment><!-- the feedback we want to give --></f:comment>
+        <f:for each="{rkw:getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="answer">
+            <p>{answer.title}</p>
+        </f:for>
+        <p>Unser(e) Hinweis(e)</p>
+
+    </f:if>
+
+</html>
