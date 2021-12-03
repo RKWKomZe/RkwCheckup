@@ -56,7 +56,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_section (
 	description text,
 	hide_text smallint(5) unsigned DEFAULT '0' NOT NULL,
 	step int(11) unsigned DEFAULT '0' NOT NULL,
-	hide_cond int(11) unsigned DEFAULT '0',
+	hide_cond varchar(255) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_step (
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text,
 	question int(11) unsigned DEFAULT '0' NOT NULL,
-	hide_cond int(11) unsigned DEFAULT '0',
+	hide_cond varchar(255) DEFAULT '' NOT NULL,
 	step_feedback int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -151,7 +151,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_question (
 	min_check int(11) DEFAULT '0' NOT NULL,
 	max_check varchar(255) DEFAULT '' NOT NULL,
 	answer int(11) unsigned DEFAULT '0',
-	hide_cond int(11) unsigned DEFAULT '0',
+	hide_cond varchar(255) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

@@ -49,7 +49,7 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * hideCond
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Answer
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
      */
     protected $hideCond = null;
 
@@ -80,6 +80,7 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected function initStorageObjects()
     {
         $this->section = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->hideCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -199,9 +200,31 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Adds a hideCond
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Answer $hideCond
+     * @return void
+     */
+    public function addHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond)
+    {
+        $this->hideCond->attach($hideCond);
+    }
+
+    /**
+     * Removes a hideCond
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Answer $hideCondToRemove The hideCond to be removed
+     * @return void
+     */
+    public function removeHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond)
+    {
+        $this->hideCond->detach($hideCond);
+    }
+
+    /**
      * Returns the hideCond
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Answer $hideCond
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $hideCond
      */
     public function getHideCond()
     {
@@ -211,10 +234,10 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the hideCond
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Answer $hideCond
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $hideCond
      * @return void
      */
-    public function setHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond)
+    public function setHideCond(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $hideCond)
     {
         $this->hideCond = $hideCond;
     }

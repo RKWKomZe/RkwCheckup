@@ -2,6 +2,8 @@
 
 namespace RKW\RkwCheckup\Utility;
 
+use RKW\RkwCheckup\Domain\Model\Answer;
+use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
 
 /*
@@ -60,6 +62,12 @@ class StepUtility
 
         // set next step
         self::setNextStepToResult();
+
+        // check if next step will show at least one question (check section, step and questions "hide"-condition)
+        if(!self::showNextStep()) {
+            // go ahead, if the recent set section or step should not be shown to the user
+            self::next(self::$result);
+        }
 
         // check and set flag on last step
         self::toggleLastStepFlag();
@@ -122,6 +130,10 @@ class StepUtility
      */
     public static function setNextStepToResult (Result $result = null)
     {
+        if ($result) {
+            self::$result = $result;
+        }
+
         // set next step and / or next section
         // fast forward to next step
         self::$currentSection->getStep()->next();
@@ -145,6 +157,66 @@ class StepUtility
         }
     }
 
+    /**
+     * showNextStep
+     * return false if the current section or step should be skipped
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Result $result
+     * @return bool
+     * @throws \Exception
+     */
+    public static function showNextStep (Result $result = null)
+    {
+        if ($result) {
+            self::$result = $result;
+        }
+
+        // check if whole section should be skipped
+        /** @var Answer $hideCondition */
+        foreach (self::$result->getCurrentSection()->getHideCond() as $hideCondition) {
+            foreach (self::$result->getResultAnswer() as $resultAnswer) {
+                if ($resultAnswer->getAnswer() === $hideCondition) {
+                    // hide condition match: hide section!
+                    return false;
+                }
+            }
+        }
+
+        // check if step should be skipped
+        /** @var Answer $hideCondition */
+        foreach (self::$result->getCurrentStep()->getHideCond() as $hideCondition) {
+            foreach (self::$result->getResultAnswer() as $resultAnswer) {
+                if ($resultAnswer->getAnswer() === $hideCondition) {
+                    // hide condition match: hide step!
+                    return false;
+                }
+            }
+        }
+
+        // check if at least one question would shown. Otherwise also skip this step
+        $atLeastOneQuestionWillShown = false;
+        /** @var Question $question */
+        foreach (self::$result->getCurrentStep()->getQuestion() as $question) {
+            /** @var Answer $hideCondition */
+            foreach ($question->getHideCond() as $hideCondition) {
+                foreach (self::$result->getResultAnswer() as $resultAnswer) {
+                    if ($resultAnswer->getAnswer() !== $hideCondition) {
+                        // at least one question would shown at this step. Set variable to true and make a break!
+                        $atLeastOneQuestionWillShown = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!$atLeastOneQuestionWillShown) {
+            // no question would be shown at this step. So we have to skip
+            return false;
+        }
+
+        return true;
+    }
+
 
     /**
      * toggleLastStepFlag
@@ -155,6 +227,15 @@ class StepUtility
      */
     public static function toggleLastStepFlag (Result $result = null)
     {
+        if ($result) {
+            self::$result = $result;
+        }
+
+        // @toDo: Prüfen, ob der letzte Schritt via Condition bereits ausgeschlossen ist?
+        // -> Problem: Wenn wir erst im vorletzten Schritt eine Antwort wählen könnten, die den letzten Schritt ausschließen kann,
+        // dann können wir hier die Flagge gar nicht setzen (und damit etwa den "weiter" Button in "Check abschließen" umbennen)
+        // (wäre also eine logische Lücke, sollte der vorletzte Step den letzten ausschließen)
+
         // check if there are is one more step
         self::$currentSection->getStep()->next();
         if (self::$currentSection->getStep()->current()) {
