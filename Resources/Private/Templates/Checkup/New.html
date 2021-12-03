@@ -12,16 +12,16 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
-<f:section name="main">
-<h1>New Checkup</h1>
+    <f:section name="main">
+        <h1>New Checkup</h1>
 
-<f:flashMessages />
+        <f:render partial="FlashMessages" arguments="{_all}" />
 
-<f:render partial="FormErrors" arguments="{object:Checkup}" />
+        <f:render partial="FormErrors" arguments="{object:Checkup}" />
 
-<f:form action="create"  enctype="multipart/form-data"  name="newCheckup" object="{newCheckup}">
-<f:render partial="Checkup/FormFields" />
-<f:form.submit value="Create new" />
-</f:form>
-</f:section>
+        <f:form action="create"  enctype="multipart/form-data"  name="newCheckup" object="{newCheckup}">
+            <f:render partial="Checkup/FormFields" />
+            <f:form.submit value="Create new" />
+        </f:form>
+    </f:section>
 </html>

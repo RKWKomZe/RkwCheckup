@@ -1,15 +1,15 @@
 
-plugin.rkw_checkup {
+plugin.tx_rkwcheckup {
     view {
         templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Templates/
-        templateRootPaths.1 = {$plugin.tx_rkwcheckup_check.view.templateRootPath}
+        templateRootPaths.1 = {$plugin.tx_rkwcheckup.view.templateRootPath}
         partialRootPaths.0 = EXT:rkw_checkup/Resources/Private/Partials/
-        partialRootPaths.1 = {$plugin.tx_rkwcheckup_check.view.partialRootPath}
+        partialRootPaths.1 = {$plugin.tx_rkwcheckup.view.partialRootPath}
         layoutRootPaths.0 = EXT:rkw_checkup/Resources/Private/Layouts/
-        layoutRootPaths.1 = {$plugin.tx_rkwcheckup_check.view.layoutRootPath}
+        layoutRootPaths.1 = {$plugin.tx_rkwcheckup.view.layoutRootPath}
     }
     persistence {
-        storagePid = {$plugin.tx_rkwcheckup_check.persistence.storagePid}
+        storagePid = {$plugin.tx_rkwcheckup.persistence.storagePid}
         #recursive = 1
     }
     features {
@@ -23,6 +23,8 @@ plugin.rkw_checkup {
         #callDefaultActionIfActionCantBeResolved = 1
     }
 }
+
+plugin.tx_rkwcheckup < plugin.tx_rkwcheckup_check
 
 
 [globalVar = LIT:1 = {$plugin.tx_rkwcheckup.settings.includeCss}]

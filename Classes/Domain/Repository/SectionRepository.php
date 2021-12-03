@@ -13,9 +13,9 @@ namespace RKW\RkwCheckup\Domain\Repository;
  ***/
 
 /**
- * The repository for Result
+ * The repository for Section
  */
-class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class SectionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
      * @var array

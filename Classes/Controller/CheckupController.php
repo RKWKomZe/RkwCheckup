@@ -55,11 +55,9 @@ class CheckupController extends ActionController
 
         $getParams = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('tx_rkwcheckup_check');
 
-    //    DebuggerUtility::var_dump($getParams['result']); exit;
-
+        // if someone comes from outside with checkup HASH inside the url
         if ($getParams['result']) {
-            // alternative: Find by hash
-                $result = $this->resultRepository->findByHash(strval($getParams['result']));
+            $result = $this->resultRepository->findByHash(strval($getParams['result']));
             if ($result instanceof \RKW\RkwCheckup\Domain\Model\Result) {
                 $this->resultService->set($result);
             }
@@ -86,7 +84,6 @@ class CheckupController extends ActionController
      */
     public function newAction($terms = 0)
     {
-        /*
         // check terms
         if (!$terms) {
             $this->addFlashMessage(
@@ -99,7 +96,6 @@ class CheckupController extends ActionController
             );
             $this->redirect('index');
         }
-        */
 
         $checkup = $this->checkupRepository->findByUid(intval($this->settings['checkup']));
         $this->resultService->new($checkup);

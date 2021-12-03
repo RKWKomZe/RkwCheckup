@@ -54,6 +54,13 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $hideCond = null;
 
     /**
+     * checkup
+     *
+     * @var \RKW\RkwCheckup\Domain\Model\Checkup
+     */
+    protected $checkup = null;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -210,5 +217,26 @@ class Section extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond)
     {
         $this->hideCond = $hideCond;
+    }
+
+    /**
+     * Returns the checkup
+     *
+     * @return \RKW\RkwCheckup\Domain\Model\Checkup $checkup
+     */
+    public function getCheckup()
+    {
+        return $this->checkup;
+    }
+
+    /**
+     * Sets the checkup
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
+     * @return void
+     */
+    public function setCheckup(\RKW\RkwCheckup\Domain\Model\Checkup $checkup)
+    {
+        $this->checkup = $checkup;
     }
 }

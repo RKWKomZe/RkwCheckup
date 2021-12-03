@@ -20,7 +20,7 @@
         <p>Dein CHECKLINK zum später fortsetzen <f:link.action action="progress" arguments="{result: result}" absolute="true"> Dieser Link </f:link.action> </p>
 
 
-        <f:flashMessages />
+        <f:render partial="FlashMessages" arguments="{_all}" />
 
         <f:render partial="FormErrors" arguments="{object:Result}" />
 

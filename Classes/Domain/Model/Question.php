@@ -74,6 +74,13 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $hideCond = null;
 
     /**
+     * step
+     *
+     * @var \RKW\RkwCheckup\Domain\Model\Step
+     */
+    protected $step = null;
+
+    /**
      * Initializes all ObjectStorage properties
      * Do not modify this method!
      * It will be rewritten on each save in the extension builder
@@ -284,5 +291,26 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond)
     {
         $this->hideCond = $hideCond;
+    }
+
+    /**
+     * Returns the step
+     *
+     * @return \RKW\RkwCheckup\Domain\Model\Step step
+     */
+    public function getStep()
+    {
+        return $this->step;
+    }
+
+    /**
+     * Sets the step
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Step $step
+     * @return void
+     */
+    public function setStep(\RKW\RkwCheckup\Domain\Model\Step $step)
+    {
+        $this->step = $step;
     }
 }

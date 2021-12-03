@@ -172,6 +172,35 @@
                 <target>Datei</target>
             </trans-unit>
 
+
+	        <!--
+			=========================== CONTROLLER ============================================
+			-->
+
+            <!-- Flash-Messages -->
+            <trans-unit id="checkupController.warning.terms">
+                <source>You have to accept our terms and conditions.</source>
+                <target>Das muss leider sein: Bitte akzeptieren Sie unsere Nutzungsbedingungen, um den Check starten zu können.</target>
+            </trans-unit>
+
+            <!--
+            =========================== TEMPLATES ============================================
+            -->
+
+            <!-- Templates/Checkup/Index.html -->
+            <trans-unit id="templates_checkup_index.iAcceptThe">
+                <source>I accept the</source>
+                <target>Ich akzeptiere die</target>
+            </trans-unit>
+            <trans-unit id="templates_checkup_index.terms">
+                <source>terms and conditions.</source>
+                <target>Nutzungsbedingungen.</target>
+            </trans-unit>
+            <trans-unit id="templates_checkup_index.startCheck">
+                <source>Start Check Now</source>
+                <target>Check jetzt starten</target>
+            </trans-unit>
+
 		</body>
 	</file>
 </xliff>
