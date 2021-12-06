@@ -41,6 +41,13 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $lastStep = false;
 
     /**
+     * showStepFeedback
+     *
+     * @var bool
+     */
+    protected $showStepFeedback = false;
+
+    /**
      * For unique link building
      *
      * @var string
@@ -175,6 +182,22 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setLastStep($lastStep)
     {
         $this->lastStep = $lastStep;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isShowStepFeedback()
+    {
+        return $this->showStepFeedback;
+    }
+
+    /**
+     * @param bool $showStepFeedback
+     */
+    public function setShowStepFeedback($showStepFeedback)
+    {
+        $this->showStepFeedback = $showStepFeedback;
     }
 
     /**

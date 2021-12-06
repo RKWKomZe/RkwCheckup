@@ -52,6 +52,11 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
     {
         $isValid = true;
 
+        // do not validate a stepFeedback
+        if ($newResult->isShowStepFeedback()) {
+            return $isValid;
+        }
+
         // get current questions
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         /** @var \RKW\RkwCheckup\Service\ResultService $resultService */

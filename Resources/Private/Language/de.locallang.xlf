@@ -201,6 +201,12 @@
                 <target>Check jetzt starten</target>
             </trans-unit>
 
+            <!-- Templates/Checkup/Progress.html -->
+            <trans-unit id="templates_checkup_progress.progress">
+                <source>Progress</source>
+                <target>Fortschritt</target>
+            </trans-unit>
+
 		</body>
 	</file>
 </xliff>

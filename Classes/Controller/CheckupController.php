@@ -5,8 +5,11 @@ use RKW\RkwBasics\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Service\ResultService;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+
 /***
  *
  * This file is part of the "RKW Checkup" Extension for TYPO3 CMS.
@@ -52,17 +55,6 @@ class CheckupController extends ActionController
     public function initializeAction()
     {
         $this->resultService = $this->objectManager->get(ResultService::class);
-
-        $getParams = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('tx_rkwcheckup_check');
-
-        // if someone comes from outside with checkup HASH inside the url
-        if ($getParams['result']) {
-            $result = $this->resultRepository->findByHash(strval($getParams['result']));
-            if ($result instanceof \RKW\RkwCheckup\Domain\Model\Result) {
-                $this->resultService->set($result);
-            }
-        }
-
     }
 
     /**
@@ -87,12 +79,12 @@ class CheckupController extends ActionController
         // check terms
         if (!$terms) {
             $this->addFlashMessage(
-                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                LocalizationUtility::translate(
                     'checkupController.warning.terms',
                     'rkw_checkup'
                 ),
                 null,
-                \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR
+                AbstractMessage::ERROR
             );
             $this->redirect('index');
         }
@@ -121,7 +113,7 @@ class CheckupController extends ActionController
 
     /**
      * initializeValidateAction
-     * Remove all not selected answers
+     * Remove all not selected answers (would otherwise throw an error)
      *
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentNameException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
@@ -129,22 +121,22 @@ class CheckupController extends ActionController
     public function initializeValidateAction()
     {
         if ($this->request->hasArgument('result')) {
-            $newResultAnswer = $this->request->getArgument('result');
+            $result = $this->request->getArgument('result');
             if (
-                is_array($newResultAnswer)
-                && is_array($newResultAnswer['newResultAnswer'])
+                is_array($result)
+                && is_array($result['newResultAnswer'])
             ) {
                 // remove empty entries
-                foreach ($newResultAnswer['newResultAnswer'] as $key => $answer) {
+                foreach ($result['newResultAnswer'] as $key => $answer) {
                     if (
                         is_array($answer)
                         && (!key_exists('answer', $answer) || !$answer['answer']['__identity'])
                     ) {
-                        unset($newResultAnswer['newResultAnswer'][$key]);
+                        unset($result['newResultAnswer'][$key]);
                     }
                 }
                 // override
-                $this->request->setArgument('result', $newResultAnswer);
+                $this->request->setArgument('result', $result);
             }
         }
     }

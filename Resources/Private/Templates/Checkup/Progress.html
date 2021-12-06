@@ -1,4 +1,8 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    xmlns:rkwAjax="http://typo3.org/ns/RKW/RkwAjax/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
     <f:layout name="Default" />
 
     This template displays a NEW form for the current domain object.
@@ -17,7 +21,7 @@
 
         <p>{result.checkup.description}</p>
 
-        <p>Dein CHECKLINK zum später fortsetzen <f:link.action action="progress" arguments="{result: result}" absolute="true"> Dieser Link </f:link.action> </p>
+        <p>Dein CHECKLINK zum später fortsetzen <f:link.action noCacheHash="true" action="progress" arguments="{result: result}" absolute="true"> Dieser Link </f:link.action> </p>
 
 
         <f:render partial="FlashMessages" arguments="{_all}" />
@@ -36,14 +40,17 @@
             <div class="button-footer flex space-between flex-basis-12 mt-2">
                 <div></div>
                 <div class="steps">
-                    <span>Frage 6/15</span>
+                    <span>
+                        {f:translate(key: 'templates_checkup_progress.progress')}
+                        {rkw:calculateProgress(result: '{result}')} %
+                    </span>
                 </div>
                 <f:if condition="{result.lastStep}">
                     <f:then>
-                        <f:form.submit class="btn btn--primary" value="Abschließen" />
+                        <f:form.submit class="btn btn--primary ajax" value="Abschließen" />
                     </f:then>
                     <f:else>
-                        <f:form.submit class="btn btn--primary" value="Weiter" />
+                        <f:form.submit class="btn btn--primary ajax" value="Weiter" />
                     </f:else>
                 </f:if>
             </div>

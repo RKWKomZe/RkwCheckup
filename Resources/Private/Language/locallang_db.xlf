@@ -135,6 +135,9 @@
             <trans-unit id="tx_rkwcheckup_domain_model_result.last_step">
                 <source>Last step</source>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_result.show_step_feedback">
+                <source>Show step feedback</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
 				<source>Checkup</source>
 			</trans-unit>

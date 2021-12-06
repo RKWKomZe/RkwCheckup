@@ -247,6 +247,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_result (
     new_result_answer int(11) unsigned DEFAULT '0' NOT NULL,
     finished smallint(5) unsigned DEFAULT '0' NOT NULL,
     last_step smallint(5) unsigned DEFAULT '0' NOT NULL,
+    show_step_feedback smallint(5) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

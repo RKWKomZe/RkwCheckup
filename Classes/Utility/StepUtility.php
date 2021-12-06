@@ -5,6 +5,8 @@ namespace RKW\RkwCheckup\Utility;
 use RKW\RkwCheckup\Domain\Model\Answer;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
+use RKW\RkwCheckup\Domain\Model\Step;
+use RKW\RkwCheckup\Domain\Model\StepFeedback;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -60,17 +62,22 @@ class StepUtility
         // get current step
         self::fastForwardToCurrentStep();
 
-        // set next step
-        self::setNextStepToResult();
+        // do we have to show a step feedback?
+        $showStepFeedback = self::showStepFeedback();
 
-        // check if next step will show at least one question (check section, step and questions "hide"-condition)
-        if(!self::showNextStep()) {
-            // go ahead, if the recent set section or step should not be shown to the user
-            self::next(self::$result);
+        if (!$showStepFeedback) {
+            // set next step
+            self::setNextStepToResult();
+
+            // check if next step will show at least one question (check section, step and questions "hide"-condition)
+            if(!self::showNextStep()) {
+                // go ahead, if the recent set section or step should not be shown to the user
+                self::next(self::$result);
+            }
+
+            // check and set flag on last step
+            self::toggleLastStepFlag();
         }
-
-        // check and set flag on last step
-        self::toggleLastStepFlag();
     }
 
 
@@ -118,6 +125,32 @@ class StepUtility
                 break;
             }
         }
+    }
+
+
+    /**
+     * showStepFeedback
+     * do we have to show a step feedback before forwarding to the next step?
+     *
+     * @return bool
+     */
+    protected static function showStepFeedback ()
+    {
+        // is already true? Then reset the value and return false (we'll never show a feedback twice)
+        if (self::$result->isShowStepFeedback()) {
+            self::$result->setShowStepFeedback(false);
+            return false;
+        }
+
+        // check for stepFeedback of current step
+        /** @var Step $currentStep */
+        $currentStep = self::$currentSection->getStep()->current();
+        if ($currentStep->getStepFeedback() instanceof StepFeedback) {
+            self::$result->setShowStepFeedback(true);
+            return true;
+        }
+
+        return false;
     }
 
 

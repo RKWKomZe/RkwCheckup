@@ -181,6 +181,12 @@
              <trans-unit id="templates_checkup_index.startCheck">
                  <source>Start Check Now</source>
              </trans-unit>
+
+
+             <!-- Templates/Checkup/Progress.html -->
+             <trans-unit id="templates_checkup_progress.progress">
+                 <source>Progress</source>
+             </trans-unit>
 		</body>
 	</file>
 </xliff>
