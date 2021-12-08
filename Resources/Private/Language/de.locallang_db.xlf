@@ -101,11 +101,19 @@
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.1">
                 <source>Single choice</source>
-                <target>Einzelauswahl</target>
+                <target>Einzelauswahl (vertikal; große Darstellung)</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.2">
+                <source>Single choice</source>
+                <target>Einzelauswahl (horizontal; minimalistische Darstellung)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.3">
                 <source>Multiple choice</source>
                 <target>Mehrfachauswahl</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.4">
+                <source>Free integer input</source>
+                <target>Freie Zahleneingabe</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.title">
 				<source>Title</source>
@@ -119,6 +127,10 @@
 				<source>Mandatory</source>
 				<target>Ist pflichtfrage</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.sum_to_100">
+                <source>Sum to 100</source>
+                <target>Summe aller Antworten muss 100 (%) ergeben</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.min_check">
 				<source>Min Check</source>
 				<target>Müssen mindestens ausgewählt werden</target>
@@ -127,6 +139,14 @@
 				<source>Max Check</source>
 				<target>Dürfen maximal ausgewählt werden</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.scale_left">
+                <source>Scale left</source>
+                <target>Skala links (z.B. "Stimme nicht zu")</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.scale_right">
+                <source>Scale right</source>
+                <target>Skala rechts (z.B. "Stimme zu")</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.answer">
 				<source>Answer</source>
 				<target>Antwort (Minimum: 2)</target>

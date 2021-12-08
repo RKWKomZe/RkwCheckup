@@ -4,12 +4,14 @@ namespace RKW\RkwCheckup\Service;
 
 use RKW\RkwBasics\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Result;
+use RKW\RkwCheckup\Domain\Model\ResultAnswer;
 use RKW\RkwCheckup\Domain\Repository\ResultRepository;
 use RKW\RkwCheckup\Utility\StepUtility;
 use RKW\RkwRegistration\Domain\Repository\FrontendUserRepository;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -80,7 +82,7 @@ class ResultService
             throw new \Exception('No result set.', 1638189967);
         }
 
-        // 1. Assign answers to
+        // 1. Assign answers to given question
         $assignedAnswerList = [];
         /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $newResultAnswer */
         foreach ($this->result->getNewResultAnswer() as $newResultAnswer) {
@@ -93,32 +95,65 @@ class ResultService
         // 2. Check it
         // 2.1 Mandatory
         if (
-            $question->getType() == 1
+            ($question->getType() == 1 || $question->getType() == 2)
             && $question->isMandatory()
             && empty($assignedAnswerList)
         ) {
-            // @toDo: MANDATORY!
-            return "Pflichtfeld!";
+            // mandatory!
+            return LocalizationUtility::translate(
+                'resultService.error.mandatory',
+                'rkw_checkup'
+            );
         }
 
         // 2.2 Minimum
         if (
-            $question->getType() == 2
+            $question->getType() == 3
             && $question->getMinCheck() != 0
             && $question->getMinCheck() > count($assignedAnswerList)
         ) {
-            // @toDo: Not enough selected!
-            return "Sie müssen mindestens X auswählen!";
+            // not enough selected!
+            return LocalizationUtility::translate(
+                'resultService.error.min',
+                'rkw_checkup',
+                [$question->getMinCheck()]
+            );
         }
 
         // 2.3 Maximum
         if (
-            $question->getType() == 2
+            $question->getType() == 3
             && $question->getMaxCheck() != 0
             && $question->getMaxCheck() < count($assignedAnswerList)
         ) {
-            // @toDo: Too much selected!
-            return "Sie dürfen maximal X auswählen!";
+            // too much selected!
+            return LocalizationUtility::translate(
+                'resultService.error.max',
+                'rkw_checkup',
+                [$question->getMaxCheck()]
+            );
+        }
+
+        // 2.4 SumTo100
+        if (
+            $question->getType() == 4
+            && $question->isSumTo100()
+        ) {
+            $sumTotal = 0;
+            /** @var ResultAnswer $resultAnswer */
+            DebuggerUtility::var_dump($assignedAnswerList); exit;
+            foreach ($assignedAnswerList as $resultAnswer) {
+                $sumTotal += $resultAnswer->getFreeNumericInput();
+            }
+
+            if (!$sumTotal == 100) {
+                // not enough!
+                return LocalizationUtility::translate(
+                    'resultService.error.sumTo100',
+                    'rkw_checkup'
+                );
+            }
+
         }
 
         return '';

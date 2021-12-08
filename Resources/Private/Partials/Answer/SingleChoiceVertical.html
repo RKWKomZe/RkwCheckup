@@ -1,0 +1,46 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+
+    <f:form.validationResults>
+        <div class="webcheck__questions mt-1 {rkw:addErrorClass(question: '{question}', error: '{validationResults.flattenedErrors}')}">
+            <p class="webcheck__hint">
+                <f:if condition="{question.mandatory}">
+                    <f:then>
+                        Bitte wählen Sie eine Option aus. Dies ist ein Pflichtfeld!
+                    </f:then>
+                    <f:else>
+                        (Optional) Bitte wählen Sie eine Option aus.
+                    </f:else>
+                </f:if>
+
+            </p>
+        </div>
+    </f:form.validationResults>
+
+    <f:comment><!-- additional fields of resultAnswer--></f:comment>
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.question" value="{question}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.step" value="{result.currentStep}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.section" value="{result.currentSection}" />
+
+
+    <f:for each="{question.answer}" as="answer" iteration="answerIter">
+        <div class="form__field form__field--webcheck">
+
+            <f:form.radio
+                id="answer{answer.uid}"
+                class="radio"
+                property="newResultAnswer.{questionIter.index}.answer"
+                value="{answer}"
+            />
+
+            <label class="radio-label radio-label--webcheck answer" for="answer{answer.uid}">
+                {answer.title}
+            </label>
+        </div>
+
+    </f:for>
+
+
+</html>

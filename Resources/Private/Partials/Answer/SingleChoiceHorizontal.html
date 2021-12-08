@@ -1,0 +1,64 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+
+<div class="webcheck__questions mt-1">
+
+    <f:form.validationResults>
+        <div class="webcheck__questions mt-1 {rkw:addErrorClass(question: '{question}', error: '{validationResults.flattenedErrors}')}">
+            <p class="webcheck__hint">
+                <f:if condition="{question.mandatory}">
+                    <f:then>
+                        Bitte wählen Sie eine Option aus. Dies ist ein Pflichtfeld!
+                    </f:then>
+                    <f:else>
+                        (Optional) Bitte wählen Sie eine Option aus.
+                    </f:else>
+                </f:if>
+
+            </p>
+        </div>
+    </f:form.validationResults>
+
+    <f:comment><!-- additional fields of resultAnswer--></f:comment>
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.question" value="{question}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.step" value="{result.currentStep}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.section" value="{result.currentSection}" />
+
+    <div class="scale-group">
+
+        <f:if condition="{question.scaleLeft}">
+            <div class="scale-group__item scale-group__item--label">
+                {question.scaleLeft}
+            </div>
+        </f:if>
+
+        <f:for each="{question.answer}" as="answer" iteration="answerIter">
+
+            <div class="form__field scale-group__item">
+                <f:form.radio
+                    id="answer{answer.uid}"
+                    class="radio"
+                    property="newResultAnswer.{questionIter.index}.answer"
+                    value="{answer}"
+                />
+                <label for="answer{answer.uid}" class="radio-label">
+                    <span>
+                        <f:format.raw>{rkw:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
+                    </span>
+                </label>
+            </div>
+
+        </f:for>
+
+        <f:if condition="{question.scaleRight}">
+            <div class="scale-group__item scale-group__item--label">
+                {question.scaleRight}
+            </div>
+        </f:if>
+
+    </div>
+
+</div>
+</html>

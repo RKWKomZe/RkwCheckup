@@ -24,7 +24,10 @@
         <p>Dein CHECKLINK zum später fortsetzen <f:link.action noCacheHash="true" action="progress" arguments="{result: result}" absolute="true"> Dieser Link </f:link.action> </p>
 
 
-        <f:render partial="FlashMessages" arguments="{_all}" />
+        <f:comment>
+            <!-- does we need FlashMessages here? -->
+            <f:render partial="FlashMessages" arguments="{_all}" />
+        </f:comment>
 
         <f:render partial="FormErrors" arguments="{object:Result}" />
 

@@ -54,7 +54,8 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
 
         // do not validate a stepFeedback
         if ($newResult->isShowStepFeedback()) {
-            return $isValid;
+            // do not use "return true;" here. Throws an error, if some uses the browser back button and sends another form again
+            $isValid = true;
         }
 
         // get current questions

@@ -183,6 +183,30 @@
                 <target>Das muss leider sein: Bitte akzeptieren Sie unsere Nutzungsbedingungen, um den Check starten zu können.</target>
             </trans-unit>
 
+
+
+            <!--
+            =========================== SERVICE ============================================
+            -->
+            <trans-unit id="resultService.error.mandatory">
+                <source>Mandatory</source>
+                <target>Bitte füllen Sie alle Pflichtfelder aus</target>
+            </trans-unit>
+            <trans-unit id="resultService.error.min">
+                <source>You have to fill out minimum %s options</source>
+                <target>Sie müssen mindestens %s Optionen auswählen</target>
+            </trans-unit>
+            <trans-unit id="resultService.error.max">
+                <source>You have to fill out maximum %s options</source>
+                <target>Sie dürfen maximal %s Optionen auswählen</target>
+            </trans-unit>
+            <trans-unit id="resultService.error.sumTo100">
+                <source>All values have to sum to 100</source>
+                <target>Alle Werte zusammengerechnet müssen den Wert 100 ergeben</target>
+            </trans-unit>
+
+
+
             <!--
             =========================== TEMPLATES ============================================
             -->

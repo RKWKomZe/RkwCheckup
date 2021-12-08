@@ -17,6 +17,12 @@ namespace RKW\RkwCheckup\Domain\Model;
  */
 class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+    /**
+     * freeNumericInput
+     *
+     * @var int
+     */
+    protected $freeNumericInput = 0;
 
     /**
      * answer
@@ -45,6 +51,22 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \RKW\RkwCheckup\Domain\Model\Section
      */
     protected $section = null;
+
+    /**
+     * @return int
+     */
+    public function getFreeNumericInput(): int
+    {
+        return $this->freeNumericInput;
+    }
+
+    /**
+     * @param int $freeNumericInput
+     */
+    public function setFreeNumericInput(int $freeNumericInput): void
+    {
+        $this->freeNumericInput = $freeNumericInput;
+    }
 
     /**
      * Returns the answer

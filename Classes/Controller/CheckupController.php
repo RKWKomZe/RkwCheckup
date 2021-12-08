@@ -105,7 +105,7 @@ class CheckupController extends ActionController
     public function progressAction(Result $result)
     {
         if ($result->isFinished()) {
-            $this->redirect('show', null, null, ['result' => $result]);
+            $this->redirect('result', null, null, ['result' => $result]);
         }
 
         $this->view->assign('result', $result);
@@ -122,19 +122,28 @@ class CheckupController extends ActionController
     {
         if ($this->request->hasArgument('result')) {
             $result = $this->request->getArgument('result');
+
             if (
                 is_array($result)
                 && is_array($result['newResultAnswer'])
             ) {
+
                 // remove empty entries
                 foreach ($result['newResultAnswer'] as $key => $answer) {
                     if (
                         is_array($answer)
-                        && (!key_exists('answer', $answer) || !$answer['answer']['__identity'])
+                        && (
+                            !key_exists('answer', $answer)
+                            || !$answer['answer']['__identity']
+                        )
                     ) {
-                        unset($result['newResultAnswer'][$key]);
+                        // but not if it's special answer type
+                        if (!key_exists('freeNumericInput', $answer)) {
+                            unset($result['newResultAnswer'][$key]);
+                        }
                     }
                 }
+
                 // override
                 $this->request->setArgument('result', $result);
             }
@@ -160,13 +169,13 @@ class CheckupController extends ActionController
     }
 
     /**
-     * action show
+     * action result
      *
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
-    public function showAction(Result $result)
+    public function resultAction(Result $result)
     {
         if (!$result->isFinished()) {
             $this->forward('progress', null, null, ['result' => $result]);

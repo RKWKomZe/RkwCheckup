@@ -1,8 +1,11 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
     <div class="frame show-first-headline">
-        <h2 class="h2">Abschnitt: {result.currentSection.title}</h2>
-        <p>{result.currentSection.description}</p>
-
+        <f:if condition="{result.currentSection.hideText}">
+            <f:else>
+                <h2 class="h2">Abschnitt: {result.currentSection.title}</h2>
+                <p>{result.currentSection.description}</p>
+            </f:else>
+        </f:if>
 
         <f:if condition="{result.currentStep}">
             <f:render partial="Step/FormFields" arguments="{_all}" />

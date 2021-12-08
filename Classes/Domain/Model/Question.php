@@ -46,6 +46,13 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $mandatory = false;
 
     /**
+     * sumTo100
+     *
+     * @var bool
+     */
+    protected $sumTo100 = false;
+
+    /**
      * minCheck
      *
      * @var int
@@ -58,6 +65,20 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $maxCheck = '';
+
+    /**
+     * scaleLeft
+     *
+     * @var string
+     */
+    protected $scaleLeft = '';
+
+    /**
+     * scaleRight
+     *
+     * @var string
+     */
+    protected $scaleRight = '';
 
     /**
      * answer
@@ -168,6 +189,37 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the sumTo100
+     *
+     * @return bool $sumTo100
+     */
+    public function getSumTo100()
+    {
+        return $this->sumTo100;
+    }
+
+    /**
+     * Sets the sumTo100
+     *
+     * @param bool $sumTo100
+     * @return void
+     */
+    public function setSumTo100($sumTo100)
+    {
+        $this->sumTo100 = $sumTo100;
+    }
+
+    /**
+     * Returns the boolean state of sumTo100
+     *
+     * @return bool
+     */
+    public function isSumTo100()
+    {
+        return $this->sumTo100;
+    }
+
+    /**
      * Returns the minCheck
      *
      * @return int $minCheck
@@ -207,6 +259,38 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setMaxCheck($maxCheck)
     {
         $this->maxCheck = $maxCheck;
+    }
+
+    /**
+     * @return string
+     */
+    public function getScaleLeft(): string
+    {
+        return $this->scaleLeft;
+    }
+
+    /**
+     * @param string $scaleLeft
+     */
+    public function setScaleLeft(string $scaleLeft): void
+    {
+        $this->scaleLeft = $scaleLeft;
+    }
+
+    /**
+     * @return string
+     */
+    public function getScaleRight(): string
+    {
+        return $this->scaleRight;
+    }
+
+    /**
+     * @param string $scaleRight
+     */
+    public function setScaleRight(string $scaleRight): void
+    {
+        $this->scaleRight = $scaleRight;
     }
 
     /**

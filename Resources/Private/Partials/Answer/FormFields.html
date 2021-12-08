@@ -4,75 +4,35 @@
 
 
 
-    <f:comment><!-- SINGLE CHOICE --></f:comment>
+    <f:comment><!-- SINGLE CHOICE (big; vertical) --></f:comment>
     <f:if condition="{question.type} == 1">
 
-        <f:form.validationResults>
-            <div class="webcheck__questions mt-1 {rkw:addErrorClass(question: '{question}', error: '{validationResults.flattenedErrors}')}">
-                <p class="webcheck__hint">Bitte auswählen. Nur eine Auswahl möglich.</p>
-            </div>
-        </f:form.validationResults>
+        <f:render partial="Answer/SingleChoiceVertical" arguments="{_all}" />
 
-        <f:comment><!-- additional fields of resultAnswer--></f:comment>
-        <f:form.hidden property="newResultAnswer.{questionIter.index}.question" value="{question}" />
-        <f:form.hidden property="newResultAnswer.{questionIter.index}.step" value="{result.currentStep}" />
-        <f:form.hidden property="newResultAnswer.{questionIter.index}.section" value="{result.currentSection}" />
+    </f:if>
 
 
-        <f:for each="{question.answer}" as="answer" iteration="answerIter">
-            <div class="form__field form__field--webcheck">
+    <f:comment><!-- SINGLE CHOICE (small; horizontal) --></f:comment>
+    <f:if condition="{question.type} == 2">
 
-                <f:form.radio
-                    id="answer{answer.uid}"
-                    class="radio"
-                    property="newResultAnswer.{questionIter.index}.answer"
-                    value="{answer}"
-                />
-
-                <label class="radio-label radio-label--webcheck answer" for="answer{answer.uid}">
-                    {answer.title}
-                    ({answer.description})
-                </label>
-            </div>
-
-        </f:for>
+        <f:render partial="Answer/SingleChoiceHorizontal" arguments="{_all}" />
 
     </f:if>
 
 
     <f:comment><!-- MULTIPLE CHOICE --></f:comment>
-    <f:if condition="{question.type} == 2">
+    <f:if condition="{question.type} == 3">
 
-        <f:form.validationResults>
-            <div class="webcheck__questions mt-1 {rkw:addErrorClass(question: '{question}', error: '{validationResults.flattenedErrors}')}">
-                <p class="webcheck__hint">Bitte auswählen. Mehrfachauswahl möglich.</p>
-            </div>
-        </f:form.validationResults>
-
-        <f:for each="{question.answer}" as="answer" iteration="answerIter">
-
-            <f:comment><!-- additional fields of resultAnswer--></f:comment>
-            <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.question" value="{question}" />
-            <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.step" value="{result.currentStep}" />
-            <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.section" value="{result.currentSection}" />
-
-            <div class="form__field form__field--webcheck">
-                <f:form.checkbox
-                    id="answer{answer.uid}"
-                    class="checkbox"
-                    property="newResultAnswer.{questionIter.index}{answerIter.index}.answer"
-                    value="{answer}"
-                />
-                <label class="checkbox-label checkbox-label--webcheck answer" for="answer{answer.uid}">
-                    {answer.title}
-                    ({answer.description})
-                </label>
-            </div>
-
-
-        </f:for>
+        <f:render partial="Answer/MultipleChoice" arguments="{_all}" />
 
     </f:if>
 
+
+    <f:comment><!-- Free in(t)put --></f:comment>
+    <f:if condition="{question.type} == 4">
+
+        <f:render partial="Answer/FreeNumericInput" arguments="{_all}" />
+
+    </f:if>
 
 </html>

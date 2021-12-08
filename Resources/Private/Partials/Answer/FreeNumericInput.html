@@ -1,0 +1,42 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:form.validationResults>
+    <div class="webcheck__questions mt-1 {rkw:addErrorClass(question: '{question}', error: '{validationResults.flattenedErrors}')}">
+        <p class="webcheck__hint">
+            <f:if condition="{question.sumTo100}">
+                <f:then>
+                    Alle Zahlen müssen zusammenaddiert den Wert 100 ergeben.
+                </f:then>
+                <f:else>
+                    (Optional) Bitte wählen Sie eine Option aus.
+                </f:else>
+            </f:if>
+
+        </p>
+    </div>
+</f:form.validationResults>
+
+<f:for each="{question.answer}" as="answer" iteration="answerIter">
+
+    <f:comment><!-- additional fields of resultAnswer--></f:comment>
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.question" value="{question}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.step" value="{result.currentStep}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.section" value="{result.currentSection}" />
+
+
+    <div class="form__field form__field--webcheck">
+        <label>
+            {answer.title}
+        </label>
+        <f:form.textfield
+            property="newResultAnswer.{questionIter.index}{answerIter.index}.freeNumericInput"
+        />
+    </div>
+
+
+</f:for>
+
+
+</html>

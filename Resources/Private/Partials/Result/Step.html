@@ -2,17 +2,16 @@
     xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-    <f:comment><!-- if step has answers (could be skipped) --> </f:comment>
-    <f:if condition="{rkw:checkStepForAnswers(step: '{step}', result: '{result}')}" >
+    <h3>{step.title}</h3>
+    <p>{step.description}</p>
 
-        <h3>{step.title}</h3>
-        <p>{step.description}</p>
-
-        <f:for each="{step.question}" as="question">
+    <f:for each="{step.question}" as="question">
+        <f:comment><!-- if question has answers (could be skipped) --> </f:comment>
+        <f:if condition="{rkw:checkQuestionForAnswers(question: '{question}', result: '{result}')}" >
             <div class="webcheck-graph contentbox contentbox--white mt-1">
                 <f:render partial="Result/Question" arguments="{_all}" />
             </div>
-        </f:for>
+        </f:if>
+    </f:for>
 
-    </f:if>
 </html>

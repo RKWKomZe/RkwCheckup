@@ -115,7 +115,6 @@ return [
             ],
         ],
         'crdate' => [
-            'readOnly' => true,
             'exclude' => true,
             'config' => [
                 'type' => 'input',

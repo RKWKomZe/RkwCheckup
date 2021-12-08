@@ -1,0 +1,55 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:form.validationResults>
+    <div class="webcheck__questions mt-1 {rkw:addErrorClass(question: '{question}', error: '{validationResults.flattenedErrors}')}">
+        <p class="webcheck__hint">
+            <f:if condition="{question.minCheck} || {question.maxCheck}">
+                <f:then>
+                    <f:if condition="{question.minCheck} && {question.maxCheck}">
+                        <f:then>
+                            Bitte wählen sie mindestens {question.minCheck} und maximal {question.maxCheck} Optionen aus.
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{question.minCheck}">
+                                Bitte wählen Sie mindestens {question.minCheck} Optionen aus.
+                            </f:if>
+                            <f:if condition="{question.maxCheck}">
+                                Bitte auswählen Sie bis zu {question.maxCheck} Optionen aus.
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    (Optional) Bitte auswählen. Mehrfachauswahl möglich.
+                </f:else>
+            </f:if>
+        </p>
+    </div>
+</f:form.validationResults>
+
+<f:for each="{question.answer}" as="answer" iteration="answerIter">
+
+    <f:comment><!-- additional fields of resultAnswer--></f:comment>
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.question" value="{question}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.step" value="{result.currentStep}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.section" value="{result.currentSection}" />
+
+    <div class="form__field form__field--webcheck">
+        <f:form.checkbox
+            id="answer{answer.uid}"
+            class="checkbox"
+            property="newResultAnswer.{questionIter.index}{answerIter.index}.answer"
+            value="{answer}"
+        />
+        <label class="checkbox-label checkbox-label--webcheck answer" for="answer{answer.uid}">
+            {answer.title}
+        </label>
+    </div>
+
+
+</f:for>
+
+
+</html>

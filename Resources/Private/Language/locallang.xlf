@@ -153,6 +153,9 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.section">
 				<source>Section</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.free_numeric_input">
+                <source>Free numeric answer</source>
+            </trans-unit>
 
 
 			<!--
@@ -162,7 +165,23 @@
             <!-- Flash-Messages -->
             <trans-unit id="checkupController.warning.terms">
                 <source>You have to accept our terms and conditions.</source>
-                <target>Das muss leider sein: Bitte akzeptieren Sie unsere Nutzungsbedingungen, um den Check starten zu können.</target>
+            </trans-unit>
+
+
+            <!--
+            =========================== SERVICE ============================================
+            -->
+            <trans-unit id="resultService.error.mandatory">
+                <source>Mandatory</source>
+            </trans-unit>
+            <trans-unit id="resultService.error.min">
+                <source>You have to fill out minimum %s options</source>
+            </trans-unit>
+            <trans-unit id="resultService.error.max">
+                <source>You have to fill out maximum %s options</source>
+            </trans-unit>
+            <trans-unit id="resultService.error.sumTo100">
+                <source>All values have to sum to 100</source>
             </trans-unit>
 
 

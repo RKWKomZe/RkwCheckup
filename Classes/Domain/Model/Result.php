@@ -23,8 +23,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var int
      */
-    protected $crdate = 0;
-
+    protected $crdate;
 
     /**
      * finished

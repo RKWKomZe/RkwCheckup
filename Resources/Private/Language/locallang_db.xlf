@@ -76,7 +76,13 @@
                 <source>Single choice</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.2">
+                <source>Single choice</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.3">
                 <source>Multiple choice</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.4">
+                <source>Free integer input</source>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.title">
 				<source>Title</source>
@@ -87,12 +93,21 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_question.mandatory">
 				<source>Mandatory</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.sum_to_100">
+                <source>Sum to 100</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.min_check">
 				<source>Min Check</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.max_check">
 				<source>Max Check</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.scale_left">
+                <source>Scale left</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.scale_right">
+                <source>Scale right</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.answer">
 				<source>Answer</source>
 			</trans-unit>
@@ -186,6 +201,9 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.section">
 				<source>Section</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.free_numeric_input">
+                <source>Free numeric answer</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

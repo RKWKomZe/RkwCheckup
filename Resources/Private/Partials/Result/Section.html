@@ -2,20 +2,21 @@
     xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-    <f:comment><!-- if section has answers (could be skipped) --> </f:comment>
-    <f:if condition="{rkw:checkSectionForAnswers(section: '{section}', result: '{result}')}" >
-
-        <div class="webcheck-accordion__header flex-basis-12">
+    <f:comment><!-- do only show title and description if we've more then one section --> </f:comment>
+    <f:if condition="<f:count>{result.checkup.section}</f:count> > 1">
+        <div id="{rkw:stringToUrl(string: '{section.title}')}" class="webcheck-accordion__header flex-basis-12">
             <h3>{section.title}</h3>
             <p>{section.description}</p>
         </div>
+    </f:if>
 
-        <f:for each="{section.step}" as="step">
+    <f:for each="{section.step}" as="step">
+        <f:comment><!-- if step has answers (could be skipped) --> </f:comment>
+        <f:if condition="{rkw:checkStepForAnswers(step: '{step}', result: '{result}')}" >
             <div class="webcheck-graph contentbox contentbox--gray mt-1">
                 <f:render partial="Result/Step" arguments="{_all}" />
             </div>
-        </f:for>
-
-    </f:if>
+        </f:if>
+    </f:for>
 
 </html>
