@@ -88,7 +88,7 @@ class ResultService
         foreach ($this->result->getNewResultAnswer() as $newResultAnswer) {
 
             if ($question === $newResultAnswer->getQuestion()) {
-                $assignedAnswerList[] = $newResultAnswer->getQuestion();
+                $assignedAnswerList[] = $newResultAnswer;
             }
         }
 
@@ -134,26 +134,67 @@ class ResultService
             );
         }
 
-        // 2.4 SumTo100
+        // 2.4 FreeInput SumTo100
         if (
             $question->getType() == 4
             && $question->isSumTo100()
         ) {
             $sumTotal = 0;
             /** @var ResultAnswer $resultAnswer */
-            DebuggerUtility::var_dump($assignedAnswerList); exit;
             foreach ($assignedAnswerList as $resultAnswer) {
                 $sumTotal += $resultAnswer->getFreeNumericInput();
             }
 
-            if (!$sumTotal == 100) {
-                // not enough!
+            if ($sumTotal != 100) {
+                // not correct!
                 return LocalizationUtility::translate(
                     'resultService.error.sumTo100',
                     'rkw_checkup'
                 );
             }
+        }
 
+        // 2.4 FreeInput min max value
+        if (
+            $question->getType() == 4
+            && (
+                $question->getMinCheck()
+                || $question->getMaxCheck()
+            )
+        ) {
+            /** @var ResultAnswer $resultAnswer */
+            foreach ($assignedAnswerList as $resultAnswer) {
+                if (
+                    $resultAnswer->getFreeNumericInput() < $question->getMinCheck()
+                    || $resultAnswer->getFreeNumericInput() > $question->getMaxCheck()
+            ) {
+                    // not inside given range!
+                    if (
+                        ($question->getMinCheck() && $resultAnswer->getFreeNumericInput() < $question->getMinCheck())
+                        && ($question->getMaxCheck() && $resultAnswer->getFreeNumericInput() > $question->getMaxCheck())
+                    ) {
+                        return LocalizationUtility::translate(
+                            'resultService.error.range',
+                            'rkw_checkup',
+                            [$question->getMinCheck(), $question->getMaxCheck()]
+                        );
+                    } elseif ($question->getMinCheck() && $resultAnswer->getFreeNumericInput() < $question->getMinCheck()) {
+                        // min value
+                        return LocalizationUtility::translate(
+                            'resultService.error.rangeMin',
+                            'rkw_checkup',
+                            [$question->getMinCheck()]
+                        );
+                    } elseif ($question->getMaxCheck() && $resultAnswer->getFreeNumericInput() > $question->getMaxCheck()) {
+                        // max value
+                        return LocalizationUtility::translate(
+                            'resultService.error.rangeMax',
+                            'rkw_checkup',
+                            [$question->getMaxCheck()]
+                        );
+                    }
+                }
+            }
         }
 
         return '';

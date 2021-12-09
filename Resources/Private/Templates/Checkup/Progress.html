@@ -17,47 +17,56 @@
     Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
     <f:section name="main">
-        <h1>{result.checkup.title}</h1>
 
-        <p>{result.checkup.description}</p>
-
-        <p>Dein CHECKLINK zum später fortsetzen <f:link.action noCacheHash="true" action="progress" arguments="{result: result}" absolute="true"> Dieser Link </f:link.action> </p>
-
+        <f:comment>
+            <p>Dein CHECKLINK zum später fortsetzen <f:link.action noCacheHash="true" action="progress" arguments="{result: result}" absolute="true"> Dieser Link </f:link.action> </p>
+        </f:comment>
 
         <f:comment>
             <!-- does we need FlashMessages here? -->
             <f:render partial="FlashMessages" arguments="{_all}" />
         </f:comment>
+        <rkwAjax:ajaxWrapper ajaxHelper="{ajaxHelper}" ajaxAction="replace" ajaxId="1">
+            <div>
 
-        <f:render partial="FormErrors" arguments="{object:Result}" />
+                <f:render partial="FormErrors" arguments="{object:Result}" />
 
-        <f:form action="validate" enctype="multipart/form-data" name="result" object="{result}">
+                <f:form
+                    action="validate"
+                    enctype="multipart/form-data"
+                    name="result"
+                    object="{result}"
+                    class="ajax"
+                    additionalParams="{rkw_ajax: '{key: ajaxHelper.key, cid: ajaxHelper.contentUid, idl: \'1\'}'}"
+                >
 
-            <f:if condition="{result.lastStep}">
-                <f:comment><!-- if this is the last step, set "finished" flag to result --></f:comment>
-                <f:form.hidden property="finished" value="1" />
-            </f:if>
+                    <f:if condition="{result.lastStep}">
+                        <f:comment><!-- if this is the last step, set "finished" flag to result --></f:comment>
+                        <f:form.hidden property="finished" value="1" />
+                    </f:if>
 
-            <f:render partial="Checkup/FormFields" arguments="{_all}" />
+                    <f:render partial="Checkup/FormFields" arguments="{_all}" />
 
-            <div class="button-footer flex space-between flex-basis-12 mt-2">
-                <div></div>
-                <div class="steps">
-                    <span>
-                        {f:translate(key: 'templates_checkup_progress.progress')}
-                        {rkw:calculateProgress(result: '{result}')} %
-                    </span>
-                </div>
-                <f:if condition="{result.lastStep}">
-                    <f:then>
-                        <f:form.submit class="btn btn--primary ajax" value="Abschließen" />
-                    </f:then>
-                    <f:else>
-                        <f:form.submit class="btn btn--primary ajax" value="Weiter" />
-                    </f:else>
-                </f:if>
+                    <div class="button-footer flex space-between flex-basis-12 mt-2">
+                        <div></div>
+                        <div class="steps">
+                            <span>
+                                {f:translate(key: 'templates_checkup_progress.progress')}
+                                {rkw:calculateProgress(result: '{result}')} %
+                            </span>
+                        </div>
+                        <f:if condition="{result.lastStep}">
+                            <f:then>
+                                <f:form.submit class="btn btn--primary" value="Abschließen" />
+                            </f:then>
+                            <f:else>
+                                <f:form.submit class="btn btn--primary" value="Weiter" />
+                            </f:else>
+                        </f:if>
+                    </div>
+
+                </f:form>
             </div>
-
-        </f:form>
+        </rkwAjax:ajaxWrapper>
     </f:section>
 </html>

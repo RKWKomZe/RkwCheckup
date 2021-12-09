@@ -25,6 +25,7 @@ use RKW\RkwCheckup\Domain\Repository\StepRepository;
 use RKW\RkwCheckup\Utility\AnswerUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class TcaProcFunc
@@ -163,5 +164,19 @@ class TcaProcFunc
 
         return $entityToStop;
     }
+
+
+
+    /**
+     * displayCondByParentType
+     *
+     * @param array $params
+     * @return bool
+     */
+    public function displayCondByParentType($params)
+    {
+        DebuggerUtility::var_dump($params); exit;
+    }
+
 
 }

@@ -7,13 +7,29 @@
         <p class="webcheck__hint">
             <f:if condition="{question.sumTo100}">
                 <f:then>
-                    Alle Zahlen müssen zusammenaddiert den Wert 100 ergeben.
+                    Alle Werte müssen zusammenaddiert den Wert 100 ergeben.
                 </f:then>
                 <f:else>
                     (Optional) Bitte wählen Sie eine Option aus.
                 </f:else>
             </f:if>
-
+            <f:if condition="{question.minCheck} || {question.maxCheck}">
+                <f:if condition="{question.minCheck} && {question.maxCheck}">
+                    <f:then>
+                        Alle Werte müssen zwischen {question.minCheck} und {question.maxCheck} liegen.
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{question.minCheck}">
+                            <f:then>
+                                Alle Werte müssen mindestens {question.minCheck} betragen.
+                            </f:then>
+                            <f:else>
+                                Alle Werte dürfen maximal {question.maxCheck} betragen.
+                            </f:else>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </f:if>
         </p>
     </div>
 </f:form.validationResults>

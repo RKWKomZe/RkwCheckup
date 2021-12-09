@@ -3,7 +3,7 @@ return [
     'ctrl' => [
         'hideTable' => true,
         'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_stepfeedback',
-        'label' => 'type',
+        'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -114,7 +114,7 @@ return [
                 ]
             ],
         ],
-
+        /*
         'type' => [
             'exclude' => true,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_stepfeedback.type',
@@ -123,7 +123,7 @@ return [
                 'size' => 4,
                 'eval' => 'int'
             ]
-        ],
+        ],*/
         'title' => [
             'exclude' => true,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_stepfeedback.title',
@@ -137,8 +137,9 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_stepfeedback.description',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 5,
                 'eval' => 'trim'
             ],
         ],

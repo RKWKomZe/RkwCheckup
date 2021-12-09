@@ -147,7 +147,8 @@ return [
                 'cols' => 40,
                 'rows' => 5,
                 'eval' => 'trim'
-            ]
+            ],
+            'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
         ],
         'image' => [
             'exclude' => true,
@@ -159,6 +160,7 @@ return [
                 ],
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
+            'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
         ],
         'file' => [
             'exclude' => true,
@@ -170,6 +172,7 @@ return [
                 ],
                 'pdf'
             ),
+            'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
         ],
         'link' => [
             'exclude' => true,
@@ -179,6 +182,7 @@ return [
                 'size' => 30,
                 'eval' => 'trim'
             ],
+            'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
         ],
 
         'question' => [

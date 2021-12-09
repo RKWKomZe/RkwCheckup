@@ -24,7 +24,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 /**
  * CheckupController
  */
-class CheckupController extends ActionController
+class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
 {
     /**
      * checkupRepository

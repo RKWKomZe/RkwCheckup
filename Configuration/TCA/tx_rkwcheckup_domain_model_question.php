@@ -132,7 +132,7 @@ return [
                     ['LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type.I.1', 1],
                     ['LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type.I.2', 2],
                     ['LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type.I.3', 3],
-                    ['LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type.I.4', 4],
+                    //['LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type.I.4', 4],
                 ],
                 'size' => 1,
                 'minitems' => 1,
@@ -210,7 +210,12 @@ return [
                     'upper' => 20,
                 ]
             ],
-            'displayCond' => 'FIELD:type:=:3',
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:type:=:3',
+                    'FIELD:type:=:4',
+                ],
+            ],
         ],
         'max_check' => [
             'exclude' => true,
@@ -229,7 +234,12 @@ return [
                     'upper' => 20,
                 ]
             ],
-            'displayCond' => 'FIELD:type:=:3',
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:type:=:3',
+                    'FIELD:type:=:4',
+                ],
+            ],
         ],
         'scale_left' => [
             'exclude' => true,
