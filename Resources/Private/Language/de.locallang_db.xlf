@@ -161,7 +161,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.tab.extend">
                 <source>Extended</source>
-                <target>Erweitert</target>
+                <target>Feedback</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.title">
 				<source>Title</source>

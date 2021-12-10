@@ -39,8 +39,6 @@
                     additionalParams="{rkw_ajax: '{key: ajaxHelper.key, cid: ajaxHelper.contentUid, idl: \'1\'}'}"
                 >
 
-                    <f:render partial="FormErrors" arguments="{object:Result}" />
-
                     <f:if condition="{result.lastStep}">
                         <f:comment><!-- if this is the last step, set "finished" flag to result --></f:comment>
                         <f:form.hidden property="finished" value="1" />

@@ -72,7 +72,10 @@ class StepUtility
             // check if next step will show at least one question (check section, step and questions "hide"-condition)
             if(!self::showNextStep()) {
                 // go ahead, if the recent set section or step should not be shown to the user
-                self::next(self::$result);
+
+                // @toDo: PROBLEM IF THERE ARE IS NO MORE STEP!!
+
+                //self::next(self::$result);
             }
 
             // check and set flag on last step

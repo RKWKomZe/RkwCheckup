@@ -141,6 +141,7 @@ return [
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_section',
                 'foreign_field' => 'checkup',
+                'foreign_sortby' => 'sorting',
                 'maxitems' => 9999,
                 'appearance' => [
                     'collapseAll' => 1,

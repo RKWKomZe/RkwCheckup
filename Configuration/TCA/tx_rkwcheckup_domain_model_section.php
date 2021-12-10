@@ -160,6 +160,7 @@ return [
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_step',
                 'foreign_field' => 'section',
+                'foreign_sortby' => 'sorting',
                 'minitems' => 1,
                 'maxitems' => 9999,
                 'appearance' => [

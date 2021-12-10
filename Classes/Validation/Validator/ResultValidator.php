@@ -53,30 +53,33 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
         $isValid = true;
 
         // do not validate a stepFeedback
+        $doNotValidate = false;
         if ($newResult->isShowStepFeedback()) {
             // do not use "return true;" here. Throws an error, if some uses the browser back button and sends another form again
-            $isValid = true;
+            $doNotValidate = true;
         }
 
-        // get current questions
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        /** @var \RKW\RkwCheckup\Service\ResultService $resultService */
-        $resultService = $objectManager->get(ResultService::class);
-        $resultService->set($newResult);
+        if (!$doNotValidate) {
+            // get current questions
+            $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+            /** @var \RKW\RkwCheckup\Service\ResultService $resultService */
+            $resultService = $objectManager->get(ResultService::class);
+            $resultService->set($newResult);
 
-        /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
-        foreach ($newResult->getCurrentStep()->getQuestion() as $question) {
+            /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
+            foreach ($newResult->getCurrentStep()->getQuestion() as $question) {
 
-            if ($validationResult = $resultService->validateQuestion($question)) {
+                if ($validationResult = $resultService->validateQuestion($question)) {
 
-                // do not add error message to specific answer (makes no deeper sense in this extension!)
-                $this->result->forProperty('question' . $question->getUid())->addError(
-                    new \TYPO3\CMS\Extbase\Error\Error(
-                        $validationResult,
-                        1638191288
-                    )
-                );
-                $isValid = false;
+                    // do not add error message to specific answer (makes no deeper sense in this extension!)
+                    $this->result->forProperty('question' . $question->getUid())->addError(
+                        new \TYPO3\CMS\Extbase\Error\Error(
+                            $validationResult,
+                            1638191288
+                        )
+                    );
+                    $isValid = false;
+                }
             }
         }
 

@@ -30,7 +30,9 @@
                     <p class="anchor-nav__header">Direktlinks</p>
                     <ul class="anchor-nav__list">
                         <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
-                            <li><a href="#{rkw:stringToUrl(string: '{section.title}')}" data-target="#{rkw:stringToUrl(string: '{section.title}')}">{result.checkup.title}</a></li>
+                            <li><a href="#{rkw:stringToUrl(string: '{section.title}')}" data-target="#{rkw:stringToUrl(string: '{section.title}')}">
+                                {section.title}
+                            </a></li>
                         </f:for>
                     </ul>
                 </f:then>

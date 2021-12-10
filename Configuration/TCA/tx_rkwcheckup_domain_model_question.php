@@ -249,7 +249,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim, required'
+                'eval' => 'trim'
             ],
             'displayCond' => 'FIELD:type:=:2',
         ],
@@ -270,6 +270,7 @@ return [
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_answer',
                 'foreign_field' => 'question',
+                'foreign_sortby' => 'sorting',
                 'minitems' => 2,
                 'maxitems' => 99,
                 'appearance' => [

@@ -2,8 +2,15 @@
 
 
     <div class="frame show-first-headline">
-        <h2 class="h2">Schritt: {result.currentStep.title}</h2>
+        <div class="contentbox__webcheck-header flex webcheck-info">
+            <h2 class="h2">{result.currentStep.title}</h2>
+            <div class="info-flag info-flag--right flex-basis-3">
+                <span class="info-flag__progress">{result.currentSection.title}</span>
+            </div>
+        </div>
         <p>{result.currentStep.description}</p>
+
+        <f:render partial="FormErrors" arguments="{object:Result}" />
 
         <f:if condition="{result.showStepFeedback}">
             <f:then>

@@ -146,6 +146,7 @@ return [
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_question',
                 'foreign_field' => 'step',
+                'foreign_sortby' => 'sorting',
                 'minitems' => 1,
                 'maxitems' => 9999,
                 'appearance' => [
