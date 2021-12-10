@@ -161,9 +161,11 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
     public function validateAction(Result $result)
     {
         $this->resultService->set($result);
-        $this->resultService->moveNewResultAnswers();
-        $this->resultService->setNextStep();
-        $this->resultService->persist();
+        if ($this->resultService->progressValidation()){
+            $this->resultService->moveNewResultAnswers();
+            $this->resultService->setNextStep();
+            $this->resultService->persist();
+        }
 
         $this->forward('progress', null, null, ['result' => $result]);
     }

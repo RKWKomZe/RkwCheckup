@@ -29,16 +29,17 @@
         <rkwAjax:ajaxWrapper ajaxHelper="{ajaxHelper}" ajaxAction="replace" ajaxId="1">
             <div>
 
-                <f:render partial="FormErrors" arguments="{object:Result}" />
-
                 <f:form
                     action="validate"
+                    method="post"
                     enctype="multipart/form-data"
                     name="result"
                     object="{result}"
-                    class="ajax"
+                    class="ajax-scroll-top {f:if(condition: '{result.lastStep}', else: 'ajax ajax-submit-only')}"
                     additionalParams="{rkw_ajax: '{key: ajaxHelper.key, cid: ajaxHelper.contentUid, idl: \'1\'}'}"
                 >
+
+                    <f:render partial="FormErrors" arguments="{object:Result}" />
 
                     <f:if condition="{result.lastStep}">
                         <f:comment><!-- if this is the last step, set "finished" flag to result --></f:comment>

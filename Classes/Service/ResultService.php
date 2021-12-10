@@ -236,6 +236,34 @@ class ResultService
     }
 
     /**
+     * progressValidation
+     * for secure: Check if the "step of the answer" are identical with "current step" which is set in the result object
+     * (someone could step back via browser and send answers again. In this case the answer-step and the result-step
+     * would be different)
+     *
+     * @return bool returns true, if the results are related to the current step
+     */
+    public function progressValidation ()
+    {
+        // for secure: Check if the step of the answer are identical with current step which is set in the result object
+        // (someone could step back via browser and send answers again. In this case the answer-step and the result-step
+        // would be different)
+        if (!$this->result) {
+            throw new \Exception('No result set.', 1638189967);
+        }
+
+        /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
+        foreach ($this->result->getNewResultAnswer() as $resultAnswer) {
+            if ($resultAnswer->getStep() !== $this->result->getCurrentStep()) {
+                // do absolutely nothing (if this condition failed once, the whole request is garbage)
+               return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * persist
      *
      * @return void

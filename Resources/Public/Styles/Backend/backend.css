@@ -2,4 +2,14 @@
 .form-section {
     background-color: green;
 }
-*/
+
+
+div[id^="data-3930-tx_rkwcheckup_domain_model_checkup-"] {
+    background-color: red;
+}
+
+
+div[id^="data-3930-tx_rkwcheckup_domain_model_checkup-1-section-tx_rkwcheckup_domain_model_section-"] {
+    background-color: yellowgreen;
+}
+ */

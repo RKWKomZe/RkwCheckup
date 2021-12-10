@@ -267,7 +267,7 @@ class StepUtility
         // @toDo: Prüfen, ob der letzte Schritt via Condition bereits ausgeschlossen ist?
         // -> Problem: Wenn wir erst im vorletzten Schritt eine Antwort wählen könnten, die den letzten Schritt ausschließen kann,
         // dann können wir hier die Flagge gar nicht setzen (und damit etwa den "weiter" Button in "Check abschließen" umbennen)
-        // (wäre also eine logische Lücke, sollte der vorletzte Step den letzten ausschließen)
+        // (wäre also eine logische Lücke: Sollte der vorletzte Step den letzten Step ausschließen)
 
         // check if there are is one more step
         self::$currentSection->getStep()->next();

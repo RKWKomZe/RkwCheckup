@@ -26,7 +26,6 @@ plugin.tx_rkwcheckup {
 
 plugin.tx_rkwcheckup < plugin.tx_rkwcheckup_check
 
-
 [globalVar = LIT:1 = {$plugin.tx_rkwcheckup.settings.includeCss}]
     page.includeCSS.txRkwSurvey = EXT:rkw_survey/Resources/Public/Css/webcheck-2.0.css
 [global]

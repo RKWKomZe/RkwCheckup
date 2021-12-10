@@ -147,7 +147,12 @@ return [
                     'levelLinksPosition' => 'top',
                     'showSynchronizationLink' => 1,
                     'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1
+                    'showAllLocalizationLink' => 1,
+                    'enabledControls' => [
+                        'new' => true,
+                        'dragdrop' => true,
+                        'sort' => true,
+                    ],
                 ],
             ],
 

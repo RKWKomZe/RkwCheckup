@@ -7,6 +7,7 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
+        'sortby' => 'sorting',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -148,11 +149,17 @@ return [
                 'minitems' => 1,
                 'maxitems' => 9999,
                 'appearance' => [
+                    'useSortable' => true,
                     'collapseAll' => 1,
                     'levelLinksPosition' => 'top',
                     'showSynchronizationLink' => 1,
                     'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1
+                    'showAllLocalizationLink' => 1,
+                    'enabledControls' => [
+                        'new' => true,
+                        'dragdrop' => true,
+                        'sort' => true,
+                    ],
                 ],
             ],
         ],

@@ -69,7 +69,7 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
 
             if ($validationResult = $resultService->validateQuestion($question)) {
 
-                // do not add error message to specific answer (makes no deeper sense!)
+                // do not add error message to specific answer (makes no deeper sense in this extension!)
                 $this->result->forProperty('question' . $question->getUid())->addError(
                     new \TYPO3\CMS\Extbase\Error\Error(
                         $validationResult,
