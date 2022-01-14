@@ -144,7 +144,7 @@ return [
                 'foreign_sortby' => 'sorting',
                 'maxitems' => 9999,
                 'appearance' => [
-                    'collapseAll' => 1,
+                    'collapseAll' => 0,
                     'levelLinksPosition' => 'top',
                     'showSynchronizationLink' => 1,
                     'showPossibleLocalizationRecords' => 1,

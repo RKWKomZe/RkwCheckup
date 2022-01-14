@@ -28,12 +28,25 @@
     <f:for each="{question.answer}" as="answer" iteration="answerIter">
         <div class="form__field form__field--webcheck">
 
-            <f:form.radio
-                id="answer{answer.uid}"
-                class="radio"
-                property="newResultAnswer.{questionIter.index}.answer"
-                value="{answer}"
-            />
+            <f:if condition="{resultReadOnly}">
+                <f:then>
+                    <f:form.radio
+                        class="radio"
+                        value="1"
+                        disabled="false"
+                        checked="{rkw:checkSpecificAnswerOfQuestion(resultSet: '{answerList}', answer: '{answer}')}"
+                    />
+                </f:then>
+                <f:else>
+                    <f:form.radio
+                        id="answer{answer.uid}"
+                        class="radio"
+                        property="newResultAnswer.{questionIter.index}.answer"
+                        value="{answer.uid}"
+                    />
+                </f:else>
+            </f:if>
+
 
             <label class="radio-label radio-label--webcheck answer" for="answer{answer.uid}">
                 {answer.title}

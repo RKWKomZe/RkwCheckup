@@ -51,7 +51,7 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_step.description">
 				<source>Description</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.question">
+			<trans-unit id="tx_rkwcheckup_domain_model_step.question_container">
 				<source>Question</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
@@ -60,6 +60,21 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_step.step_feedback">
 				<source>Step Feedback</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_questioncontainer">
+                <source>Question container</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.1">
+                <source>Single choice</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.2">
+                <source>Single choice</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.3">
+                <source>Multiple choice</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.4">
+                <source>Free integer input</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question">
 				<source>Question</source>
 			</trans-unit>

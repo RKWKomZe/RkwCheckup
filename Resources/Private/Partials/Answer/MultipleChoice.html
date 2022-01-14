@@ -32,17 +32,29 @@
 <f:for each="{question.answer}" as="answer" iteration="answerIter">
 
     <f:comment><!-- additional fields of resultAnswer--></f:comment>
-    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.question" value="{question}" />
-    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.step" value="{result.currentStep}" />
-    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.section" value="{result.currentSection}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.question" value="{question.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.step" value="{result.currentStep.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.section" value="{result.currentSection.uid}" />
 
     <div class="form__field form__field--webcheck">
-        <f:form.checkbox
-            id="answer{answer.uid}"
-            class="checkbox"
-            property="newResultAnswer.{questionIter.index}{answerIter.index}.answer"
-            value="{answer}"
-        />
+
+        <f:if condition="{resultReadOnly}">
+            <f:then>
+                <f:form.checkbox
+                    class="checkbox"
+                    value="1"
+                    checked="{rkw:checkSpecificAnswerOfQuestion(resultSet: '{answerList}', answer: '{answer}')}"
+                />
+            </f:then>
+            <f:else>
+                <f:form.checkbox
+                    id="answer{answer.uid}"
+                    class="checkbox"
+                    property="newResultAnswer.{questionIter.index}{answerIter.index}.answer"
+                    value="{answer.uid}"
+                />
+            </f:else>
+        </f:if>
         <label class="checkbox-label checkbox-label--webcheck answer" for="answer{answer.uid}">
             {answer.title}
         </label>

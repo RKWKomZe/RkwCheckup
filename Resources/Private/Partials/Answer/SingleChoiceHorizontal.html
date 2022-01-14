@@ -22,9 +22,9 @@
     </f:form.validationResults>
 
     <f:comment><!-- additional fields of resultAnswer--></f:comment>
-    <f:form.hidden property="newResultAnswer.{questionIter.index}.question" value="{question}" />
-    <f:form.hidden property="newResultAnswer.{questionIter.index}.step" value="{result.currentStep}" />
-    <f:form.hidden property="newResultAnswer.{questionIter.index}.section" value="{result.currentSection}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.question" value="{question.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.step" value="{result.currentStep.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.section" value="{result.currentSection.uid}" />
 
     <div class="scale-group">
 
@@ -41,7 +41,7 @@
                     id="answer{answer.uid}"
                     class="radio"
                     property="newResultAnswer.{questionIter.index}.answer"
-                    value="{answer}"
+                    value="{answer.uid}"
                 />
                 <label for="answer{answer.uid}" class="radio-label">
                     <span>

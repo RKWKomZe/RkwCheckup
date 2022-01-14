@@ -66,6 +66,9 @@ class ResultService
         // initial: Set first section & first step
         $this->result->setCurrentSection($checkup->getSection()->current());
         $this->result->setCurrentStep($checkup->getSection()->current()->getStep()->current());
+
+        // check for last step (a check could be have only one step!)
+        StepUtility::toggleLastStepFlag($this->result);
     }
 
     /**

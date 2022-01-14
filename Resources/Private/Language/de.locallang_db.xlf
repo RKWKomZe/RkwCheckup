@@ -71,9 +71,9 @@
 				<source>Description</source>
 				<target>Beschreibung</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.question">
+			<trans-unit id="tx_rkwcheckup_domain_model_step.question_container">
 				<source>Question</source>
-				<target>Frage</target>
+				<target>Frage (Innerhalb einer Frage gilt: Immer nur einen Fragetyp auswählen. Werden mehrere Fragetypen gleichzeitig ausgefüllt, wird nur einer genutzt)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
 				<source>Hide Cond</source>
@@ -83,6 +83,30 @@
 				<source>Interim Result</source>
 				<target>Zwischenergebnis</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_questioncontainer">
+                <source>Question container</source>
+                <target>Frage</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.label">
+                <source>Question container</source>
+                <target>Container</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.1">
+                <source>Single choice</source>
+                <target>Einzelauswahl (vertikal; große Darstellung)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.2">
+                <source>Single choice</source>
+                <target>Einzelauswahl (horizontal; minimalistische Darstellung)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.3">
+                <source>Multiple choice</source>
+                <target>Mehrfachauswahl</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.4">
+                <source>Free integer input</source>
+                <target>Freie Zahleneingabe</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question">
 				<source>Question</source>
 				<target>Frage</target>

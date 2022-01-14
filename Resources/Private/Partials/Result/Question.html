@@ -2,13 +2,10 @@
     xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-    <h5>{question.title}</h5>
+    <h2>{question.title}</h2>
     <p>{question.description}</p>
+    <f:render partial="Answer/FormFields" arguments="{resultReadOnly: 1, question: question, answerList: '{rkw:getAnswersOfQuestion(question: \'{question}\', result: \'{result}\')}' }" />
 
-    <f:comment><!-- the given answers of the user --></f:comment>
-    <f:for each="{rkw:getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="resultAnswer">
-        <p>Deine Antwort: {resultAnswer.answer.title}</p>
-    </f:for>
 
     <f:comment><!-- the feedback we want to give --></f:comment>
     <f:for each="{rkw:getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="resultAnswer">
@@ -16,6 +13,5 @@
         <p>Unser(e) Hinweis(e)</p>
         Bild? Datei? Link?
     </f:for>
-
 
 </html>

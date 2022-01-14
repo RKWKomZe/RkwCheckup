@@ -130,11 +130,15 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
 
                 // remove empty entries
                 foreach ($result['newResultAnswer'] as $key => $answer) {
+
                     if (
                         is_array($answer)
                         && (
                             !key_exists('answer', $answer)
-                            || !$answer['answer']['__identity']
+                            || (
+                                is_array($answer['answer'])
+                                && !$answer['answer']['__identity']
+                            )
                         )
                     ) {
                         // but not if it's special answer type
@@ -143,6 +147,8 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
                         }
                     }
                 }
+
+                DebuggerUtility::var_dump($result); exit;
 
                 // override
                 $this->request->setArgument('result', $result);

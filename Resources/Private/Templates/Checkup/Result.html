@@ -42,9 +42,7 @@
             <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
                 <f:comment><!-- if section has answers (could be skipped) --> </f:comment>
                 <f:if condition="{rkw:checkSectionForAnswers(section: '{section}', result: '{result}')}" >
-                    <div class="contentbox contentbox--border feedback-box mt-1">
-                        <f:render partial="Result/Section" arguments="{_all}" />
-                    </div>
+                    <f:render partial="Result/Section" arguments="{_all}" />
                 </f:if>
             </f:for>
 

@@ -97,9 +97,9 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * step
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Step
+     * @var \RKW\RkwCheckup\Domain\Model\QuestionContainer
      */
-    protected $step = null;
+    protected $questionContainer = null;
 
     /**
      * Initializes all ObjectStorage properties
@@ -401,23 +401,23 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the step
+     * Returns the questionContainer
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Step step
+     * @return \RKW\RkwCheckup\Domain\Model\QuestionContainer questionContainer
      */
-    public function getStep()
+    public function getQuestionContainer()
     {
-        return $this->step;
+        return $this->questionContainer;
     }
 
     /**
-     * Sets the step
+     * Sets the questionContainer
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Step $step
+     * @param \RKW\RkwCheckup\Domain\Model\QuestionContainer $questionContainer
      * @return void
      */
-    public function setStep(\RKW\RkwCheckup\Domain\Model\Step $step)
+    public function setQuestionContainer(\RKW\RkwCheckup\Domain\Model\QuestionContainer $questionContainer)
     {
-        $this->step = $step;
+        $this->questionContainer = $questionContainer;
     }
 }

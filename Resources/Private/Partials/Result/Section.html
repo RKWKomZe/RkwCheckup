@@ -4,7 +4,7 @@
 
     <f:comment><!-- do only show title and description if we've more then one section --> </f:comment>
     <f:if condition="<f:count>{result.checkup.section}</f:count> > 1">
-        <div id="{rkw:stringToUrl(string: '{section.title}')}" class="webcheck-accordion__header flex-basis-12">
+        <div id="{rkw:stringToUrl(string: '{section.title}')}">
             <h3>{section.title}</h3>
             <p>{section.description}</p>
         </div>

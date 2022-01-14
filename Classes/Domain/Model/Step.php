@@ -39,12 +39,12 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $description = '';
 
     /**
-     * question
+     * questionContainer
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\QuestionContainer>
      * @cascade remove
      */
-    protected $question = null;
+    protected $questionContainer = null;
 
     /**
      * hideCond
@@ -79,7 +79,7 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->question = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->questionContainer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->hideCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
@@ -221,45 +221,45 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a Question
+     * Adds a QuestionContainer
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Question $question
+     * @param \RKW\RkwCheckup\Domain\Model\QuestionContainer $questionContainer
      * @return void
      */
-    public function addQuestion(\RKW\RkwCheckup\Domain\Model\Question $question)
+    public function addQuestionContainer(\RKW\RkwCheckup\Domain\Model\QuestionContainer $questionContainer)
     {
-        $this->question->attach($question);
+        $this->questionContainer->attach($questionContainer);
     }
 
     /**
-     * Removes a Question
+     * Removes a QuestionContainer
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Question $questionToRemove The Question to be removed
+     * @param \RKW\RkwCheckup\Domain\Model\QuestionContainer $questionContainerToRemove The QuestionContainer to be removed
      * @return void
      */
-    public function removeQuestion(\RKW\RkwCheckup\Domain\Model\Question $questionToRemove)
+    public function removeQuestionContainer(\RKW\RkwCheckup\Domain\Model\QuestionContainer $questionContainerToRemove)
     {
-        $this->question->detach($questionToRemove);
+        $this->questionContainer->detach($questionContainerToRemove);
     }
 
     /**
-     * Returns the Question
+     * Returns the QuestionContainer
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question> $question
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\QuestionContainer> $questionContainer
      */
-    public function getQuestion()
+    public function getQuestionContainer()
     {
-        return $this->question;
+        return $this->questionContainer;
     }
 
     /**
-     * Sets the Question
+     * Sets the QuestionContainer
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question> $question
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\QuestionContainer> $questionContainer
      * @return void
      */
-    public function setQuestion(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $question)
+    public function setQuestionContainer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $questionContainer)
     {
-        $this->question = $question;
+        $this->questionContainer = $questionContainer;
     }
 }

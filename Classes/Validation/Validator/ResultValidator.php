@@ -66,13 +66,13 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
             $resultService = $objectManager->get(ResultService::class);
             $resultService->set($newResult);
 
-            /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
-            foreach ($newResult->getCurrentStep()->getQuestion() as $question) {
+            /** @var \RKW\RkwCheckup\Domain\Model\QuestionContainer $questionContainer */
+            foreach ($newResult->getCurrentStep()->getQuestionContainer() as $questionContainer) {
 
-                if ($validationResult = $resultService->validateQuestion($question)) {
+                if ($validationResult = $resultService->validateQuestion($questionContainer->getQuestion())) {
 
                     // do not add error message to specific answer (makes no deeper sense in this extension!)
-                    $this->result->forProperty('question' . $question->getUid())->addError(
+                    $this->result->forProperty('question' . $questionContainer->getQuestion()->getUid())->addError(
                         new \TYPO3\CMS\Extbase\Error\Error(
                             $validationResult,
                             1638191288

@@ -13,8 +13,6 @@ namespace RKW\RkwCheckup\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Domain\Model\ResultAnswer;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
@@ -23,14 +21,14 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 
 /**
- * Class CheckQuestionVisibilityViewHelper
+ * Class GetAnswersOfQuestionViewHelper
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class CheckQuestionVisibilityViewHelper extends AbstractViewHelper {
+class CheckSpecificAnswerOfQuestionViewHelper extends AbstractViewHelper {
 
     use CompileWithRenderStatic;
 
@@ -42,11 +40,13 @@ class CheckQuestionVisibilityViewHelper extends AbstractViewHelper {
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('result', '\RKW\RkwCheckup\Domain\Model\Result', 'The result which contains answers');
-        $this->registerArgument('question', '\RKW\RkwCheckup\Domain\Model\Question', 'The question to check', false);
+        $this->registerArgument('resultSet', 'array', 'result set from GetAnswersOfQuestionViewHelper');
+        $this->registerArgument('answer', '\RKW\RkwCheckup\Domain\Model\Answer', 'The answer to check');
     }
 
     /**
+     * Returns array with answers of given question
+     *
      * @param array $arguments
      * @param \Closure $renderChildrenClosure
      * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
@@ -54,24 +54,17 @@ class CheckQuestionVisibilityViewHelper extends AbstractViewHelper {
      */
     public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
     {
-        /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
-        $result = $arguments['result'];
-        /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
-        $question = $arguments['question'];
+        $resultSet = $arguments['resultSet'];
+        /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
+        $answer = $arguments['answer'];
 
-        if ($question instanceof \RKW\RkwCheckup\Domain\Model\Question) {
-            /** @var ResultAnswer $hideCondition */
-            foreach ($question->getHideCond() as $hideCondition) {
-                /** @var ResultAnswer $resultAnswer */
-                foreach ($result->getResultAnswer() as $resultAnswer) {
-                    if ($resultAnswer->getAnswer() === $hideCondition) {
-                        // hide condition match: hide question!
-                        return false;
-                    }
-                }
+        /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
+        foreach ($resultSet as $resultAnswer) {
+            if ($resultAnswer->getAnswer()->getUid() === $answer->getUid()) {
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 }

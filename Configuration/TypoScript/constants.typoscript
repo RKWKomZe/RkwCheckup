@@ -10,7 +10,7 @@ plugin.tx_rkwcheckup {
     }
     persistence {
         # cat=plugin.tx_rkwcheckup_check//a; type=string; label=Default storage PID
-        storagePid =
+        storagePid = 3930
     }
 }
 

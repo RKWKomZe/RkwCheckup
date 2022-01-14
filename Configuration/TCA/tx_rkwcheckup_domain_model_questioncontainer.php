@@ -2,8 +2,10 @@
 return [
     'ctrl' => [
         'hideTable' => true,
-        'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step',
-        'label' => 'title',
+        'title' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_questioncontainer',
+        'label' => 'starttime',
+        'label_userFunc' => \RKW\RkwCheckup\UserFunctions\TcaLabel::class . '->createQuestionContainerLabel',
+
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -18,18 +20,17 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,description,question_container,hide_cond,step_feedback',
-        'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_step.gif'
+        'searchFields' => 'question_type_1, question_type_2, question_type_3',
+        'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_question.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_cond, step_feedback, question_container',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, question_type_1, question_type_2, question_type_3',
     ],
     'types' => [
+        # --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime
         '1' => [
             'showitem' => '
-                title, description, question_container, 
-                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.tab.extend, hide_cond, step_feedback,
-                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime
+                question_type_1, question_type_2, question_type_3, 
             '],
     ],
     'columns' => [
@@ -60,8 +61,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_rkwcheckup_domain_model_step',
-                'foreign_table_where' => 'AND tx_rkwcheckup_domain_model_step.pid=###CURRENT_PID### AND tx_rkwcheckup_domain_model_step.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_question',
+                'foreign_table_where' => 'AND tx_rkwcheckup_domain_model_question.pid=###CURRENT_PID### AND tx_rkwcheckup_domain_model_question.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -120,29 +121,47 @@ return [
                 ]
             ],
         ],
-        'title' => [
+
+        'question_type_1' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.title',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_questioncontainer.type.I.1',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim, required'
+                'overrideChildTca' => [
+                    'columns' => [
+                        'type' => [
+                            'config' => [
+                                'default' => 1
+                            ],
+                        ],
+                    ],
+                ],
+                'type' => 'inline',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_question',
+                'foreign_field' => 'question_container',
+                'foreign_sortby' => 'sorting',
+                'foreign_match_fields' => [
+                    'type' => 1
+                ],
+                'minitems' => 0,
+                'maxitems' => 1,
+                'appearance' => [
+                    'useSortable' => false,
+                    'collapseAll' => 1,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1,
+                    'enabledControls' => [
+                        'new' => true,
+                        'dragdrop' => false,
+                        'sort' => false,
+                    ],
+                ],
             ],
         ],
-        'description' => [
+        'question_type_2' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.description',
-            'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 5,
-                'eval' => 'trim'
-            ]
-        ],
-        /*
-        'question' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.question',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_questioncontainer.type.I.2',
             'config' => [
                 'overrideChildTca' => [
                     'columns' => [
@@ -155,85 +174,67 @@ return [
                 ],
                 'type' => 'inline',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_question',
-                'foreign_field' => 'step',
+                'foreign_field' => 'question_container',
                 'foreign_sortby' => 'sorting',
                 'foreign_match_fields' => [
                     'type' => 2
                 ],
-                'minitems' => 1,
-                'maxitems' => 9999,
-                'appearance' => [
-                    'useSortable' => true,
-                    'collapseAll' => 1,
-                    'levelLinksPosition' => 'top',
-                    'showSynchronizationLink' => 1,
-                    'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1,
-                    'enabledControls' => [
-                        'new' => true,
-                        'dragdrop' => true,
-                        'sort' => true,
-                    ],
-                ],
-            ],
-        ],
-        */
-        'question_container' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.question_container',
-            'config' => [
-                'type' => 'inline',
-                'foreign_table' => 'tx_rkwcheckup_domain_model_questioncontainer',
-                'foreign_field' => 'step',
-                'foreign_sortby' => 'sorting',
-                'minitems' => 1,
-                'maxitems' => 9999,
-                'appearance' => [
-                    'useSortable' => true,
-                    'collapseAll' => 1,
-                    'levelLinksPosition' => 'top',
-                    'showSynchronizationLink' => 1,
-                    'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1,
-                    'enabledControls' => [
-                        'new' => true,
-                        'dragdrop' => true,
-                        'sort' => true,
-                    ],
-                ],
-            ],
-        ],
-        'hide_cond' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.hide_cond',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'itemsProcFunc' => 'RKW\\RkwCheckup\\UserFunctions\\TcaProcFunc->getAnswerList',
-                'maxitems'      => 99,
-                'minitems'      => 0,
-                'size'          => 5,
-            ],
-        ],
-        'step_feedback' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.step_feedback',
-            'config' => [
-                'type' => 'inline',
-                'foreign_table' => 'tx_rkwcheckup_domain_model_stepfeedback',
                 'minitems' => 0,
                 'maxitems' => 1,
                 'appearance' => [
+                    'useSortable' => false,
                     'collapseAll' => 1,
                     'levelLinksPosition' => 'top',
                     'showSynchronizationLink' => 1,
                     'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1
+                    'showAllLocalizationLink' => 1,
+                    'enabledControls' => [
+                        'new' => true,
+                        'dragdrop' => false,
+                        'sort' => false,
+                    ],
+                ],
+            ],
+        ],
+        'question_type_3' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_questioncontainer.type.I.3',
+            'config' => [
+                'overrideChildTca' => [
+                    'columns' => [
+                        'type' => [
+                            'config' => [
+                                'default' => 3
+                            ],
+                        ],
+                    ],
+                ],
+                'type' => 'inline',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_question',
+                'foreign_field' => 'question_container',
+                'foreign_sortby' => 'sorting',
+                'foreign_match_fields' => [
+                    'type' => 3
+                ],
+                'minitems' => 0,
+                'maxitems' => 1,
+                'appearance' => [
+                    'useSortable' => false,
+                    'collapseAll' => 1,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1,
+                    'enabledControls' => [
+                        'new' => true,
+                        'dragdrop' => false,
+                        'sort' => false,
+                    ],
                 ],
             ],
         ],
     
-        'section' => [
+        'step' => [
             'config' => [
                 'type' => 'passthrough',
             ],

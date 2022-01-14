@@ -71,6 +71,22 @@
                 <source>Interim Result</source>
                 <target>Zwischenergebnis</target>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.1">
+                <source>Single choice</source>
+                <target>Einzelauswahl (vertikal; große Darstellung)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.2">
+                <source>Single choice</source>
+                <target>Einzelauswahl (horizontal; minimalistische Darstellung)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.3">
+                <source>Multiple choice</source>
+                <target>Mehrfachauswahl</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.4">
+                <source>Free integer input</source>
+                <target>Freie Zahleneingabe</target>
+            </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question">
                 <source>Question</source>
                 <target>Frage</target>

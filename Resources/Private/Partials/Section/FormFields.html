@@ -1,5 +1,4 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-    <div class="frame show-first-headline">
         <f:comment>
             <!-- Section title is shown in Step/FormFields -->
             <f:if condition="{result.currentSection.hideText}">
@@ -13,5 +12,4 @@
         <f:if condition="{result.currentStep}">
             <f:render partial="Step/FormFields" arguments="{_all}" />
         </f:if>
-    </div>
 </html>

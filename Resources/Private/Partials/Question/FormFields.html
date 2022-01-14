@@ -3,7 +3,9 @@
     data-namespace-typo3-fluid="true">
 
 
-    <f:for each="{result.currentStep.question}" as="question" iteration="questionIter">
+    <f:for each="{result.currentStep.questionContainer}" as="questionContainer" iteration="questionIter">
+        <f:comment><!-- skip additional container nesting (it's a 1to1 relation) --></f:comment>
+        <f:variable name="question" value="{questionContainer.question}"/>
 
         <f:if condition="{rkw:checkQuestionVisibility(result: '{result}', question: '{question}')}" >
 

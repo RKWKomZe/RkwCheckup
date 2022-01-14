@@ -4,6 +4,7 @@ namespace RKW\RkwCheckup\Utility;
 
 use RKW\RkwCheckup\Domain\Model\Answer;
 use RKW\RkwCheckup\Domain\Model\Question;
+use RKW\RkwCheckup\Domain\Model\QuestionContainer;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\Step;
 use RKW\RkwCheckup\Domain\Model\StepFeedback;
@@ -231,10 +232,10 @@ class StepUtility
 
         // check if at least one question would shown. Otherwise also skip this step
         $atLeastOneQuestionWillShown = false;
-        /** @var Question $question */
-        foreach (self::$result->getCurrentStep()->getQuestion() as $question) {
+        /** @var QuestionContainer $questionContainer */
+        foreach (self::$result->getCurrentStep()->getQuestionContainer() as $questionContainer) {
             /** @var Answer $hideCondition */
-            foreach ($question->getHideCond() as $hideCondition) {
+            foreach ($questionContainer->getQuestion()->getHideCond() as $hideCondition) {
                 foreach (self::$result->getResultAnswer() as $resultAnswer) {
                     if ($resultAnswer->getAnswer() !== $hideCondition) {
                         // at least one question would shown at this step. Set variable to true and make a break!
@@ -265,6 +266,11 @@ class StepUtility
     {
         if ($result) {
             self::$result = $result;
+
+            // @toDo: If we need this "fast forward" at some point - should we handle that always inside a initialize function?
+            if (!self::$currentSection) {
+                self::fastForwardToCurrentSection();
+            }
         }
 
         // @toDo: Prüfen, ob der letzte Schritt via Condition bereits ausgeschlossen ist?
