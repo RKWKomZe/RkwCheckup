@@ -168,6 +168,10 @@
             <trans-unit id="tx_rkwcheckup_domain_model_result.show_step_feedback">
                 <source>Show step feedback</source>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_result.show_section_intro">
+                <source>Show section intro</source>
+                <target>Zeige Abschnitt intro</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
 				<source>Checkup</source>
 			</trans-unit>

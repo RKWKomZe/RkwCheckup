@@ -129,13 +129,29 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
             ) {
 
                 // remove empty entries
-                foreach ($result['newResultAnswer'] as $key => $answer) {
+                foreach ($result['newResultAnswer'] as $key => $newResultAnswer) {
+                    if (is_array($newResultAnswer)) {
 
+                        // remove unchecked checkboxes
+                        if (
+                            key_exists('answer', $newResultAnswer)
+                            && empty($newResultAnswer['answer'])
+                        ) {
+                            unset($result['newResultAnswer'][$key]);
+                        }
+
+                        // remove not answered radio-button answers
+                        if (!key_exists('answer', $newResultAnswer)) {
+                            unset($result['newResultAnswer'][$key]);
+                        }
+                    }
+
+                    /*
                     if (
                         is_array($answer)
                         && (
-                            !key_exists('answer', $answer)
-                            || (
+                            key_exists('answer', $answer)
+                            && (
                                 is_array($answer['answer'])
                                 && !$answer['answer']['__identity']
                             )
@@ -146,9 +162,8 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
                             unset($result['newResultAnswer'][$key]);
                         }
                     }
+                    */
                 }
-
-                DebuggerUtility::var_dump($result); exit;
 
                 // override
                 $this->request->setArgument('result', $result);

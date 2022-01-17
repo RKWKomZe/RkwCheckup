@@ -231,6 +231,10 @@
                 <source>Show step feedback</source>
                 <target>Zeige Feedback Zwischenschritt</target>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_result.show_section_intro">
+                <source>Show section intro</source>
+                <target>Zeige Abschnitt intro</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
 				<source>Checkup</source>
 				<target>CheckUp</target>

@@ -37,18 +37,38 @@
         <f:for each="{question.answer}" as="answer" iteration="answerIter">
 
             <div class="form__field scale-group__item">
-                <f:form.radio
-                    id="answer{answer.uid}"
-                    class="radio"
-                    property="newResultAnswer.{questionIter.index}.answer"
-                    value="{answer.uid}"
-                />
-                <label for="answer{answer.uid}" class="radio-label">
-                    <span>
-                        <f:format.raw>{rkw:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
-                    </span>
-                </label>
+                <f:if condition="{resultReadOnly}">
+                    <f:then>
+                        <f:form.radio
+                            class="radio"
+                            value="1"
+                            disabled="false"
+                            checked="{rkw:checkSpecificAnswerOfQuestion(resultSet: '{answerList}', answer: '{answer}')}"
+                        />
+                        <label for="answer{answer.uid}" class="radio-label">
+                            <span>
+                                <f:format.raw>{rkw:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
+                            </span>
+                        </label>
+                    </f:then>
+                    <f:else>
+                        <f:form.radio
+                            id="answer{answer.uid}"
+                            class="radio"
+                            property="newResultAnswer.{questionIter.index}.answer"
+                            value="{answer.uid}"
+                        />
+                        <label for="answer{answer.uid}" class="radio-label">
+                            <span>
+                                <f:format.raw>{rkw:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
+                            </span>
+                        </label>
+                    </f:else>
+                </f:if>
             </div>
+
+
+
 
         </f:for>
 

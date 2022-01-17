@@ -39,11 +39,6 @@
                     additionalParams="{rkw_ajax: '{key: ajaxHelper.key, cid: ajaxHelper.contentUid, idl: \'1\'}'}"
                 >
 
-                    <f:if condition="{result.lastStep}">
-                        <f:comment><!-- if this is the last step, set "finished" flag to result --></f:comment>
-                        <f:form.hidden property="finished" value="1" />
-                    </f:if>
-
                     <f:render partial="Checkup/FormFields" arguments="{_all}" />
 
                     <div class="button-footer flex space-between flex-basis-12 mt-2">
@@ -56,7 +51,30 @@
                         </div>
                         <f:if condition="{result.lastStep}">
                             <f:then>
-                                <f:form.submit class="btn btn--primary" value="Abschließen" />
+                                <f:comment>
+                                    <!-- Final Step WITH step feedback -->
+                                </f:comment>
+                                <f:if condition="{result.currentStep.stepFeedback}">
+                                    <f:if condition="{result.showStepFeedback}">
+                                        <f:else>
+                                            <f:comment>
+                                                <!-- If this is (a) the last step, but has (b) a step feedback which (c) we are want to show next -->
+                                            </f:comment>
+                                            <f:variable name="doNotFinishNow" value="1"/>
+                                            <f:form.submit class="btn btn--primary" value="Weiter" />
+                                        </f:else>
+                                    </f:if>
+                                </f:if>
+                                <f:if condition="{doNotFinishNow}">
+                                    <f:else>
+                                        <f:comment>
+                                            <!-- Final Step and no stepFeedback. Finish it! -->
+                                        </f:comment>
+                                        <f:comment><!-- if this is the last step, set "finished" flag to result --></f:comment>
+                                        <f:form.hidden property="finished" value="1" />
+                                        <f:form.submit class="btn btn--primary" value="Abschließen" />
+                                    </f:else>
+                                </f:if>
                             </f:then>
                             <f:else>
                                 <f:form.submit class="btn btn--primary" value="Weiter" />

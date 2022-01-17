@@ -20,9 +20,9 @@
     </f:form.validationResults>
 
     <f:comment><!-- additional fields of resultAnswer--></f:comment>
-    <f:form.hidden property="newResultAnswer.{questionIter.index}.question" value="{question}" />
-    <f:form.hidden property="newResultAnswer.{questionIter.index}.step" value="{result.currentStep}" />
-    <f:form.hidden property="newResultAnswer.{questionIter.index}.section" value="{result.currentSection}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.question" value="{question.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.step" value="{result.currentStep.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.section" value="{result.currentSection.uid}" />
 
 
     <f:for each="{question.answer}" as="answer" iteration="answerIter">

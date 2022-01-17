@@ -67,7 +67,10 @@ class ResultService
         $this->result->setCurrentSection($checkup->getSection()->current());
         $this->result->setCurrentStep($checkup->getSection()->current()->getStep()->current());
 
-        // check for last step (a check could be have only one step!)
+        // set showSectionIntro to true
+        $this->result->setShowSectionIntro(true);
+
+        // IF A CHECK HAS ONLY ONE STEP
         StepUtility::toggleLastStepFlag($this->result);
     }
 
@@ -217,7 +220,8 @@ class ResultService
         }
 
         /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
-        foreach ($this->result->getNewResultAnswer() as $resultAnswer) {
+        // Hint for fix: By any reason the "->toArray()" function resolves the problem, that some answers are not transferred
+        foreach ($this->result->getNewResultAnswer()->toArray() as $resultAnswer) {
             $this->result->addResultAnswer($resultAnswer);
             $this->result->removeNewResultAnswer($resultAnswer);
         }

@@ -47,6 +47,13 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $showStepFeedback = false;
 
     /**
+     * showSectionIntro
+     *
+     * @var bool
+     */
+    protected $showSectionIntro = false;
+
+    /**
      * For unique link building
      *
      * @var string
@@ -197,6 +204,22 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setShowStepFeedback($showStepFeedback)
     {
         $this->showStepFeedback = $showStepFeedback;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isShowSectionIntro(): bool
+    {
+        return $this->showSectionIntro;
+    }
+
+    /**
+     * @param bool $showSectionIntro
+     */
+    public function setShowSectionIntro(bool $showSectionIntro): void
+    {
+        $this->showSectionIntro = $showSectionIntro;
     }
 
     /**

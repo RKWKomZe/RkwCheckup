@@ -8,6 +8,7 @@ use RKW\RkwCheckup\Domain\Model\QuestionContainer;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\Step;
 use RKW\RkwCheckup\Domain\Model\StepFeedback;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -57,6 +58,12 @@ class StepUtility
     {
         self::$result = $result;
 
+        // if the current step are showing the section intro, just set it to false and show the current step
+        if (self::$result->isShowSectionIntro()) {
+            self::$result->setShowSectionIntro(false);
+            return;
+        }
+
         // get current section
         self::fastForwardToCurrentSection();
 
@@ -71,13 +78,15 @@ class StepUtility
             self::setNextStepToResult();
 
             // check if next step will show at least one question (check section, step and questions "hide"-condition)
-            if(!self::showNextStep()) {
+            /*
+            if (!self::showNextStep()) {
                 // go ahead, if the recent set section or step should not be shown to the user
 
                 // @toDo: PROBLEM IF THERE ARE IS NO MORE STEP!!
 
                 //self::next(self::$result);
             }
+            */
 
             // check and set flag on last step
             self::toggleLastStepFlag();
@@ -190,6 +199,8 @@ class StepUtility
 
                 self::$result->setCurrentSection($nextSection);
                 self::$result->setCurrentStep($nextStep);
+
+                self::$result->setShowSectionIntro(true);
             }
         }
     }
@@ -289,9 +300,12 @@ class StepUtility
         self::$result->getCheckup()->getSection()->next();
         if (!self::$result->getCheckup()->getSection()->current()) {
 
-            // no more sections, no more steps. Set flag, that we're in the last step!
-            self::$result->setLastStep(true);
-            return;
+            // The last step could have a StepFeedback!
+           // if (!$result->isShowStepFeedback()) {
+                // no more sections, no more steps. Set flag, that we're in the last step!
+                self::$result->setLastStep(true);
+                return;
+            //}
         }
 
         self::$result->setLastStep(false);

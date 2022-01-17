@@ -52,6 +52,11 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
     {
         $isValid = true;
 
+        if ($newResult->isShowSectionIntro()) {
+            // if we're shown a section intro, do not validate anything!
+            return $isValid;
+        }
+
         // do not validate a stepFeedback
         $doNotValidate = false;
         if ($newResult->isShowStepFeedback()) {

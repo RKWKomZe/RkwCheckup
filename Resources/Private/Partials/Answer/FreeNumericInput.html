@@ -37,9 +37,9 @@
 <f:for each="{question.answer}" as="answer" iteration="answerIter">
 
     <f:comment><!-- additional fields of resultAnswer--></f:comment>
-    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.question" value="{question}" />
-    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.step" value="{result.currentStep}" />
-    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.section" value="{result.currentSection}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.question" value="{question.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.step" value="{result.currentStep.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}{answerIter.index}.section" value="{result.currentSection.uid}" />
 
 
     <div class="form__field form__field--webcheck">

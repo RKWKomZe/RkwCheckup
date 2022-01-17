@@ -17,9 +17,18 @@
                 <f:render partial="Step/StepFeedback" arguments="{_all}" />
             </f:then>
             <f:else>
-                <f:if condition="{result.currentStep.questionContainer}">
-                    <f:render partial="Question/FormFields" arguments="{_all}" />
+                <f:if condition="{result.showSectionIntro}">
+                    <f:then>
+                        <f:render partial="Step/SectionIntro" arguments="{_all}" />
+                    </f:then>
+                    <f:else>
+                        <f:comment><!-- show standard form --></f:comment>
+                        <f:if condition="{result.currentStep.questionContainer}">
+                            <f:render partial="Question/FormFields" arguments="{_all}" />
+                        </f:if>
+                    </f:else>
                 </f:if>
+
             </f:else>
         </f:if>
     </div>
