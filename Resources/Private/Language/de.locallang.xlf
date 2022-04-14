@@ -204,31 +204,31 @@
             <!--
             =========================== SERVICE ============================================
             -->
-            <trans-unit id="resultService.error.mandatory">
+            <trans-unit id="ProgressHandler.error.mandatory">
                 <source>Mandatory</source>
                 <target>Bitte füllen Sie alle Pflichtfelder aus</target>
             </trans-unit>
-            <trans-unit id="resultService.error.min">
+            <trans-unit id="ProgressHandler.error.min">
                 <source>You have to fill out minimum %s options</source>
                 <target>Sie müssen mindestens %s Optionen auswählen</target>
             </trans-unit>
-            <trans-unit id="resultService.error.max">
+            <trans-unit id="ProgressHandler.error.max">
                 <source>You have to fill out maximum %s options</source>
                 <target>Sie dürfen maximal %s Optionen auswählen</target>
             </trans-unit>
-            <trans-unit id="resultService.error.sumTo100">
+            <trans-unit id="ProgressHandler.error.sumTo100">
                 <source>All values have to sum to 100</source>
                 <target>Alle Werte zusammengerechnet müssen den Wert 100 ergeben</target>
             </trans-unit>
-            <trans-unit id="resultService.error.range">
+            <trans-unit id="ProgressHandler.error.range">
                 <source>All values have to be inside the range of %s and %s</source>
                 <target>Die Werte müssen zwischen %s und %s liegen</target>
             </trans-unit>
-            <trans-unit id="resultService.error.rangeMin">
+            <trans-unit id="ProgressHandler.error.rangeMin">
                 <source>All values have to be about %s.</source>
                 <target>Die Werte müssen mindestens %s betragen</target>
             </trans-unit>
-            <trans-unit id="resultService.error.rangeMax">
+            <trans-unit id="ProgressHandler.error.rangeMax">
                 <source>All values must not about %s</source>
                 <target>Die Werte dürfen maximal %s betragen</target>
             </trans-unit>

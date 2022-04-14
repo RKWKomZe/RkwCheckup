@@ -2,7 +2,7 @@
 
 namespace RKW\RkwCheckup\Validation\Validator;
 
-use RKW\RkwCheckup\Service\ResultService;
+use RKW\RkwCheckup\Step\ProgressHandler;
 use RKW\RkwCheckup\Utility\CheckupUtility;
 use RKW\RkwEvents\Utility\DivUtility;
 use \RKW\RkwBasics\Helper\Common;
@@ -67,14 +67,14 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
         if (!$doNotValidate) {
             // get current questions
             $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-            /** @var \RKW\RkwCheckup\Service\ResultService $resultService */
-            $resultService = $objectManager->get(ResultService::class);
-            $resultService->set($newResult);
+            /** @var \RKW\RkwCheckup\Step\ProgressHandler $ProgressHandler */
+            $ProgressHandler = $objectManager->get(ProgressHandler::class);
+            $ProgressHandler->setResult($newResult);
 
             /** @var \RKW\RkwCheckup\Domain\Model\QuestionContainer $questionContainer */
             foreach ($newResult->getCurrentStep()->getQuestionContainer() as $questionContainer) {
 
-                if ($validationResult = $resultService->validateQuestion($questionContainer->getQuestion())) {
+                if ($validationResult = $ProgressHandler->validateQuestion($questionContainer->getQuestion())) {
 
                     // do not add error message to specific answer (makes no deeper sense in this extension!)
                     $this->result->forProperty('question' . $questionContainer->getQuestion()->getUid())->addError(

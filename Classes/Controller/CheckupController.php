@@ -4,7 +4,7 @@ namespace RKW\RkwCheckup\Controller;
 use RKW\RkwBasics\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Service\ResultService;
+use RKW\RkwCheckup\Step\ProgressHandler;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
@@ -43,18 +43,18 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
     protected $resultRepository = null;
 
     /**
-     * resultService
+     * progressHandler
      *
-     * @var \RKW\RkwCheckup\Service\ResultService
+     * @var \RKW\RkwCheckup\Step\ProgressHandler
      */
-    protected $resultService = null;
+    protected $progressHandler = null;
 
     /**
      * initializeAction
      */
     public function initializeAction()
     {
-        $this->resultService = $this->objectManager->get(ResultService::class);
+        $this->progressHandler = $this->objectManager->get(ProgressHandler::class);
     }
 
     /**
@@ -89,11 +89,12 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
             $this->redirect('index');
         }
 
+        /** @var Checkup $checkup */
         $checkup = $this->checkupRepository->findByUid(intval($this->settings['checkup']));
-        $this->resultService->new($checkup);
-        $this->resultService->persist();
+        $this->progressHandler->newResult($checkup);
+        $this->progressHandler->persist();
 
-        $this->redirect('progress', null, null, ['result' => $this->resultService->get()]);
+        $this->redirect('progress', null, null, ['result' => $this->progressHandler->getResult()]);
     }
 
     /**
@@ -181,11 +182,11 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      */
     public function validateAction(Result $result)
     {
-        $this->resultService->set($result);
-        if ($this->resultService->progressValidation()){
-            $this->resultService->moveNewResultAnswers();
-            $this->resultService->setNextStep();
-            $this->resultService->persist();
+        $this->progressHandler->setResult($result);
+        if ($this->progressHandler->progressValidation()){
+            $this->progressHandler->moveNewResultAnswers();
+            $this->progressHandler->setNextStep();
+            $this->progressHandler->persist();
         }
 
         $this->forward('progress', null, null, ['result' => $result]);

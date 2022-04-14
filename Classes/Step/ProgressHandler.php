@@ -1,8 +1,9 @@
 <?php
 
-namespace RKW\RkwCheckup\Service;
+namespace RKW\RkwCheckup\Step;
 
 use RKW\RkwBasics\Utility\GeneralUtility;
+use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\ResultAnswer;
 use RKW\RkwCheckup\Domain\Repository\ResultRepository;
@@ -27,14 +28,14 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 
 /**
- * Class ResultService
+ * Class ProgressHandler
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class ResultService
+class ProgressHandler
 {
     /**
      * Setting
@@ -53,8 +54,9 @@ class ResultService
      *
      * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
      * @return void
+     * @throws \Exception
      */
-    public function new ($checkup)
+    public function newResult (Checkup $checkup)
     {
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $this->result = $objectManager->get(Result::class);
@@ -107,7 +109,7 @@ class ResultService
         ) {
             // mandatory!
             return LocalizationUtility::translate(
-                'resultService.error.mandatory',
+                'ProgressHandler.error.mandatory',
                 'rkw_checkup'
             );
         }
@@ -120,7 +122,7 @@ class ResultService
         ) {
             // not enough selected!
             return LocalizationUtility::translate(
-                'resultService.error.min',
+                'ProgressHandler.error.min',
                 'rkw_checkup',
                 [$question->getMinCheck()]
             );
@@ -134,7 +136,7 @@ class ResultService
         ) {
             // too much selected!
             return LocalizationUtility::translate(
-                'resultService.error.max',
+                'ProgressHandler.error.max',
                 'rkw_checkup',
                 [$question->getMaxCheck()]
             );
@@ -154,7 +156,7 @@ class ResultService
             if ($sumTotal != 100) {
                 // not correct!
                 return LocalizationUtility::translate(
-                    'resultService.error.sumTo100',
+                    'ProgressHandler.error.sumTo100',
                     'rkw_checkup'
                 );
             }
@@ -180,21 +182,21 @@ class ResultService
                         && ($question->getMaxCheck() && $resultAnswer->getFreeNumericInput() > $question->getMaxCheck())
                     ) {
                         return LocalizationUtility::translate(
-                            'resultService.error.range',
+                            'ProgressHandler.error.range',
                             'rkw_checkup',
                             [$question->getMinCheck(), $question->getMaxCheck()]
                         );
                     } elseif ($question->getMinCheck() && $resultAnswer->getFreeNumericInput() < $question->getMinCheck()) {
                         // min value
                         return LocalizationUtility::translate(
-                            'resultService.error.rangeMin',
+                            'ProgressHandler.error.rangeMin',
                             'rkw_checkup',
                             [$question->getMinCheck()]
                         );
                     } elseif ($question->getMaxCheck() && $resultAnswer->getFreeNumericInput() > $question->getMaxCheck()) {
                         // max value
                         return LocalizationUtility::translate(
-                            'resultService.error.rangeMax',
+                            'ProgressHandler.error.rangeMax',
                             'rkw_checkup',
                             [$question->getMaxCheck()]
                         );
@@ -262,7 +264,7 @@ class ResultService
         /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
         foreach ($this->result->getNewResultAnswer() as $resultAnswer) {
             if ($resultAnswer->getStep() !== $this->result->getCurrentStep()) {
-                // do absolutely nothing (if this condition failed once, the whole request is garbage)
+                // do absolutely nothing (if this condition failed once, because the whole request then is garbage)
                return false;
             }
         }
@@ -298,7 +300,7 @@ class ResultService
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
      */
-    public function set (\RKW\RkwCheckup\Domain\Model\Result $result)
+    public function setResult (\RKW\RkwCheckup\Domain\Model\Result $result)
     {
         $this->result = $result;
     }
@@ -308,7 +310,7 @@ class ResultService
      *
      * @return \RKW\RkwCheckup\Domain\Model\Result $result
      */
-    public function get ()
+    public function getResult ()
     {
         return $this->result;
     }

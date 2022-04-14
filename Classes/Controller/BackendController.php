@@ -3,7 +3,7 @@ namespace RKW\RkwCheckup\Controller;
 
 use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Service\ResultService;
+use RKW\RkwCheckup\Step\ProgressHandler;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 /***
