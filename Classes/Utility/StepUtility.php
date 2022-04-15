@@ -6,8 +6,10 @@ use RKW\RkwCheckup\Domain\Model\Answer;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\QuestionContainer;
 use RKW\RkwCheckup\Domain\Model\Result;
+use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Model\Step;
 use RKW\RkwCheckup\Domain\Model\StepFeedback;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /*
@@ -109,7 +111,7 @@ class StepUtility
             !$i ? self::$result->getCheckup()->getSection()->rewind() : self::$result->getCheckup()->getSection()->next();
             $sectionToCheck = self::$result->getCheckup()->getSection()->current();
 
-            // check if there are more steps inside that section
+            // found current section?
             if ($sectionToCheck === self::$result->getCurrentSection()) {
                 self::$currentSection = self::$result->getCurrentSection();
                 break;
@@ -133,7 +135,7 @@ class StepUtility
             !$j ? self::$currentSection->getStep()->rewind() : self::$currentSection->getStep()->next();
             $stepToCheck = self::$currentSection->getStep()->current();
 
-            // check if there are more steps inside that section
+            // found current step?
             if ($stepToCheck === self::$result->getCurrentStep()) {
                 break;
             }
@@ -174,7 +176,7 @@ class StepUtility
      * @return void
      * @throws \Exception
      */
-    public static function setNextStepToResult (Result $result = null)
+    protected static function setNextStepToResult (Result $result = null)
     {
         if ($result) {
             self::$result = $result;
@@ -209,51 +211,34 @@ class StepUtility
      * showNextStep
      * return false if the current section or step should be skipped
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Result $result
+     * @param \RKW\RkwCheckup\Domain\Model\Step $step
+     * @param \RKW\RkwCheckup\Domain\Model\Section $section
      * @return bool
      * @throws \Exception
      */
-    public static function showNextStep (Result $result = null)
+    protected static function showNextStep (Step $step, Section $section)
     {
-        if ($result) {
-            self::$result = $result;
-        }
 
         // check if whole section should be skipped
-        /** @var Answer $hideCondition */
-        foreach (self::$result->getCurrentSection()->getHideCond() as $hideCondition) {
-            foreach (self::$result->getResultAnswer() as $resultAnswer) {
-                if ($resultAnswer->getAnswer() === $hideCondition) {
-                    // hide condition match: hide section!
-                    return false;
-                }
-            }
+        if (self::checkHideCond($section)) {
+            // hide condition match: don't show section!
+            return false;
         }
 
         // check if step should be skipped
-        /** @var Answer $hideCondition */
-        foreach (self::$result->getCurrentStep()->getHideCond() as $hideCondition) {
-            foreach (self::$result->getResultAnswer() as $resultAnswer) {
-                if ($resultAnswer->getAnswer() === $hideCondition) {
-                    // hide condition match: hide step!
-                    return false;
-                }
-            }
+        if (self::checkHideCond($step)) {
+            // hide condition match: don't show step!
+            return false;
         }
 
         // check if at least one question would shown. Otherwise also skip this step
         $atLeastOneQuestionWillShown = false;
         /** @var QuestionContainer $questionContainer */
-        foreach (self::$result->getCurrentStep()->getQuestionContainer() as $questionContainer) {
-            /** @var Answer $hideCondition */
-            foreach ($questionContainer->getQuestion()->getHideCond() as $hideCondition) {
-                foreach (self::$result->getResultAnswer() as $resultAnswer) {
-                    if ($resultAnswer->getAnswer() !== $hideCondition) {
-                        // at least one question would shown at this step. Set variable to true and make a break!
-                        $atLeastOneQuestionWillShown = true;
-                        break;
-                    }
-                }
+        foreach ($step->getQuestionContainer() as $questionContainer) {
+
+            if (self::checkHideCond($questionContainer->getQuestion())) {
+                $atLeastOneQuestionWillShown = true;
+                break;
             }
         }
 
@@ -278,37 +263,70 @@ class StepUtility
         if ($result) {
             self::$result = $result;
 
-            // @toDo: If we need this "fast forward" at some point - should we handle that always inside a initialize function?
             if (!self::$currentSection) {
                 self::fastForwardToCurrentSection();
             }
         }
 
-        // @toDo: Prüfen, ob der letzte Schritt via Condition bereits ausgeschlossen ist?
-        // -> Problem: Wenn wir erst im vorletzten Schritt eine Antwort wählen könnten, die den letzten Schritt ausschließen kann,
-        // dann können wir hier die Flagge gar nicht setzen (und damit etwa den "weiter" Button in "Check abschließen" umbennen)
-        // (wäre also eine logische Lücke: Sollte der vorletzte Step den letzten Step ausschließen)
+        // check if there is at least one more step
+        // check all remaining steps to check if there is something to show
+        do {
+            /** @var Step $nextStep */
+            $nextStep = self::$currentSection->getStep()->current();
+            /** @var Section $nextSection */
+            $nextSection = self::$result->getCheckup()->getSection()->current();
 
-        // check if there are is one more step
-        self::$currentSection->getStep()->next();
-        if (self::$currentSection->getStep()->current()) {
-            // there is one more step. Do nothing.
-            return;
-        }
+            // no next step? Forward to next section with first step
+            if (!self::$currentSection->getStep()->next()) {
+                // forward one section
+                self::$result->getCheckup()->getSection()->next();
+                if (self::$result->getCheckup()->getSection()->current()) {
+                    $nextSection = self::$result->getCheckup()->getSection()->current();
+                    /** @var \RKW\RkwCheckup\Domain\Model\Step $nextStep */
+                    $nextSection->getStep()->rewind();
+                    $nextStep = $nextSection->getStep()->current();
+                }
+            } else {
+                $nextStep = self::$currentSection->getStep()->next();
+            }
 
-        // no more steps in current section. Does we have more sections?
-        self::$result->getCheckup()->getSection()->next();
-        if (!self::$result->getCheckup()->getSection()->current()) {
-
-            // The last step could have a StepFeedback!
-           // if (!$result->isShowStepFeedback()) {
-                // no more sections, no more steps. Set flag, that we're in the last step!
-                self::$result->setLastStep(true);
+            if (
+                $nextSection instanceof Section
+                && $nextStep instanceof Step
+                && self::showNextStep($nextStep, $nextSection)
+            ) {
+                // there is at least one step. Do nothing else
                 return;
-            //}
-        }
+            }
 
-        self::$result->setLastStep(false);
+        } while(
+            $nextSection instanceof Section
+            && $nextStep instanceof Step
+        );
+
+        // if nothing else happens until here: There is no more step!
+        self::$result->setLastStep(true);
+    }
+
+
+    /**
+     * checkHideCond
+     * returns true on hideCond match
+     *
+     * @param Question|Step|Section $entity
+     *
+     * @return bool
+     */
+    protected static function checkHideCond ($entity) : bool
+    {
+        foreach ($entity->getHideCond() as $hideCondition) {
+            foreach (self::$result->getResultAnswer() as $resultAnswer) {
+                if ($resultAnswer->getAnswer() === $hideCondition) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

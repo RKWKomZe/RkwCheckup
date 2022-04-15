@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+
+    <tx_rkwcheckup_domain_model_result>
+        <uid>1</uid>
+        <pid>1</pid>
+        <hash>1644833920620a2c80f0737</hash>
+        <checkup>1</checkup>
+        <finished>0</finished>
+        <current_section>1</current_section>
+        <current_step>2</current_step>
+        <last_step>0</last_step>
+        <show_step_feedback>0</show_step_feedback>
+        <show_section_intro>0</show_section_intro>
+        <new_result_answer>0</new_result_answer>
+    </tx_rkwcheckup_domain_model_result>
+
+</dataset>
