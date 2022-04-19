@@ -103,7 +103,7 @@ class QuestionContainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \RKW\RkwCheckup\Domain\Model\Question $questionType1
      */
-    public function setQuestionType1(Question $questionType1): void
+    public function setQuestionType1(Question $questionType1)
     {
         $this->questionType1 = $questionType1;
     }
@@ -119,7 +119,7 @@ class QuestionContainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \RKW\RkwCheckup\Domain\Model\Question $questionType2
      */
-    public function setQuestionType2(Question $questionType2): void
+    public function setQuestionType2(Question $questionType2)
     {
         $this->questionType2 = $questionType2;
     }
@@ -135,7 +135,7 @@ class QuestionContainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \RKW\RkwCheckup\Domain\Model\Question $questionType3
      */
-    public function setQuestionType3(Question $questionType3): void
+    public function setQuestionType3(Question $questionType3)
     {
         $this->questionType3 = $questionType3;
     }
@@ -151,7 +151,7 @@ class QuestionContainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \RKW\RkwCheckup\Domain\Model\Question $questionType4
      */
-    public function setQuestionType4(Question $questionType4): void
+    public function setQuestionType4(Question $questionType4)
     {
         $this->questionType4 = $questionType4;
     }

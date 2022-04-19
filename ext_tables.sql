@@ -197,6 +197,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_question (
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text,
 	mandatory smallint(5) unsigned DEFAULT '0' NOT NULL,
+    invert_feedback smallint(5) unsigned DEFAULT '0' NOT NULL,
     sum_to_100 smallint(5) unsigned DEFAULT '0' NOT NULL,
 	min_check int(11) DEFAULT '0' NOT NULL,
 	max_check varchar(255) DEFAULT '' NOT NULL,

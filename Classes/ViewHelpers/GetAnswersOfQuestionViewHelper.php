@@ -13,6 +13,10 @@ namespace RKW\RkwCheckup\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwCheckup\Domain\Model\Answer;
+use RKW\RkwCheckup\Domain\Model\ResultAnswer;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
@@ -63,10 +67,27 @@ class GetAnswersOfQuestionViewHelper extends AbstractViewHelper {
         /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
         foreach ($result->getResultAnswer() as $resultAnswer) {
             if ($resultAnswer->getQuestion() === $question) {
-                $answerArray[] = $resultAnswer;
+                $answerArray[$resultAnswer->getAnswer()->getUid()] = $resultAnswer;
             }
         }
 
-        return $answerArray;
+        // if inverted feedback is selected: Invert answers of $answerArray
+        $invertAnswerArray = [];
+        if ($question->isInvertFeedback()) {
+            /** @var Answer $answer */
+            foreach ($question->getAnswer() as $answer) {
+                if (!array_key_exists($answer->getUid(), $answerArray)) {
+                    // Hint: ResultAnswer is needed for selecting formFields in CheckSpecificAnswerOfQuestionViewHelper
+                    $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+                    /** @var ResultAnswer $resultAnswer */
+                    $resultAnswer = $objectManager->get(ResultAnswer::class);
+                    $resultAnswer->setAnswer($answer);
+                    $resultAnswer->setQuestion($question);
+                    $invertAnswerArray[] = $resultAnswer;
+                }
+            }
+        }
+
+        return $question->isInvertFeedback() ? $invertAnswerArray : $answerArray;
     }
 }

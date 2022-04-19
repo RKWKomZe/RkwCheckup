@@ -15,6 +15,7 @@ namespace RKW\RkwCheckup\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
@@ -62,7 +63,7 @@ class CommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandControl
      */
     protected function initializeController()
     {
-        $this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ObjectManager::class);
+        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
     }
 
 
@@ -126,7 +127,7 @@ class CommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandControl
     protected function getLogger()
     {
         if (!$this->logger instanceof \TYPO3\CMS\Core\Log\Logger) {
-            $this->logger = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Log\\LogManager')->getLogger(__CLASS__);
+            $this->logger = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Log\\LogManager')->getLogger(__CLASS__);
         }
 
         return $this->logger;

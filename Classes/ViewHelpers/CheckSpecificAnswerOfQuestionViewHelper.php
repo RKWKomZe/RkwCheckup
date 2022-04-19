@@ -58,11 +58,20 @@ class CheckSpecificAnswerOfQuestionViewHelper extends AbstractViewHelper {
         /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
         $answer = $arguments['answer'];
 
+
         /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
         foreach ($resultSet as $resultAnswer) {
+
+            $isInvertedFeedback = $resultAnswer->getQuestion()->isInvertFeedback();
+
             if ($resultAnswer->getAnswer()->getUid() === $answer->getUid()) {
-                return true;
+                // if inverted: Don't check answer
+                $returnValue = $isInvertedFeedback ? false : true;
+            } else {
+                // if inverted: Check opposing answer
+                $returnValue = $isInvertedFeedback ? true : false;
             }
+            return $returnValue;
         }
 
         return false;

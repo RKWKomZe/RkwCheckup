@@ -9,7 +9,7 @@
             <div class="tabs js-tabs ui-tabs ui-corner-all ui-widget ui-widget-content">
                 <ul class="tabs__nav ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
                     <f:for each="{step.questionContainer}" as="questionContainer" iteration="iter">
-                        <f:comment><!-- use variable to skip additional container nesting (it's a 1to1 relation) --></f:comment>
+                        <f:comment><!-- use variable to skip additional container nesting (it's a OneToOne relation) --></f:comment>
                         <f:variable name="question" value="{questionContainer.question}" />
                         <f:if condition="{rkw:checkQuestionForAnswers(question: '{question}', result: '{result}')}" >
                             <li

@@ -18,16 +18,16 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'type,title,description,mandatory,sum_to_100,min_check,max_check,scale_left,scale_right,answer,hide_cond',
+        'searchFields' => 'type,title,description,mandatory, invert_feedback,sum_to_100,min_check,max_check,scale_left,scale_right,answer,hide_cond',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_question.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, mandatory, sum_to_100, min_check, max_check, scale_left, scale_right, hide_cond, answer',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, mandatory, invert_feedback, sum_to_100, min_check, max_check, scale_left, scale_right, hide_cond, answer',
     ],
     'types' => [
         '1' => [
             'showitem' => '
-                title, description, mandatory, sum_to_100, min_check, max_check, scale_left, scale_right, answer, 
+                title, description, mandatory, invert_feedback, sum_to_100, min_check, max_check, scale_left, scale_right, answer, 
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
@@ -179,6 +179,19 @@ return [
                     'FIELD:type:=:2',
                 ],
             ],
+        ],
+        'invert_feedback' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.invert_feedback',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
+                    ]
+                ],
+                'default' => 0,
+            ]
         ],
         'sum_to_100' => [
             'exclude' => true,

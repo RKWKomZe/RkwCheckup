@@ -36,15 +36,18 @@ class AnswerUtility
 
     /**
      * fetchAllOfCheckup
+     * - returns all possible answers of a check
+     * - used in UserFunc for condition handling
      *
      * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
-     * @param \TYPO3\CMS\Extbase\DomainObject\AbstractEntity $stopEntity The section, step or question to stop adding more to list
-     * @param bool $asArrayForTca Return answers as small data array if true. Otherwise as objects
+     * @param AbstractEntity|null                  $stopEntity The section, step or question to stop adding more to list
+     * @param bool                                 $asArrayForTca Return answers as small data array if true. Otherwise as objects
      * @return array
      */
     public static function fetchAllOfCheckup (Checkup $checkup, AbstractEntity $stopEntity = null, $asArrayForTca = false)
     {
         $answerListOfCheckup = [];
+        $stopSearching = false;
         /** @var Section $section */
         foreach ($checkup->getSection() as $section) {
 
@@ -52,7 +55,9 @@ class AnswerUtility
             if (
                 $stopEntity instanceof Section
                 && $section === $stopEntity
+                && !$stopSearching
             ) {
+                $stopSearching = true;
                 break;
             }
 
@@ -63,21 +68,25 @@ class AnswerUtility
                 if (
                     $stopEntity instanceof Step
                     && $step === $stopEntity
+                    && !$stopSearching
                 ) {
+                    $stopSearching = true;
                     break;
                 }
 
                 // add all answers of a question to the answer array
-                /** @var Question $question */
-                foreach ($step->getQuestionContainer() as $questionContainer) {
-                    /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
-                    foreach ($questionContainer->getQuestion()->getAnswer() as $answer) {
-                        if ($asArrayForTca) {
-                            // for TCA
-                            $answerListOfCheckup[] = [$step->getTitle() . ' - ' . $answer->getTitle(), $answer->getUid()];
-                        } else {
-                            // as object
-                            $answerListOfCheckup[] = $answer;
+                if (!$stopSearching) {
+                    /** @var Question $question */
+                    foreach ($step->getQuestionContainer() as $questionContainer) {
+                        /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
+                        foreach ($questionContainer->getQuestion()->getAnswer() as $answer) {
+                            if ($asArrayForTca) {
+                                // for TCA
+                                $answerListOfCheckup[] = [$step->getTitle() . ' - ' . $answer->getTitle(), $answer->getUid()];
+                            } else {
+                                // as object
+                                $answerListOfCheckup[] = $answer;
+                            }
                         }
                     }
                 }

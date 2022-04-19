@@ -46,6 +46,13 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $mandatory = false;
 
     /**
+     * invertFeedback
+     *
+     * @var bool
+     */
+    protected $invertFeedback = false;
+
+    /**
      * sumTo100
      *
      * @var bool
@@ -187,6 +194,23 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->mandatory;
     }
+
+    /**
+     * @return bool
+     */
+    public function isInvertFeedback(): bool
+    {
+        return $this->invertFeedback;
+    }
+
+    /**
+     * @param bool $invertFeedback
+     */
+    public function setInvertFeedback(bool $invertFeedback): void
+    {
+        $this->invertFeedback = $invertFeedback;
+    }
+
 
     /**
      * Returns the sumTo100
