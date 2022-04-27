@@ -16,16 +16,16 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'title,description,question_container,hide_cond,step_feedback',
+        'searchFields' => 'title,description,question,hide_cond,step_feedback',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_step.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_cond, step_feedback, question_container',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_cond, step_feedback, question',
     ],
     'types' => [
         '1' => [
             'showitem' => '
-                title, description, question_container, 
+                title, description, question, 
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.tab.extend, hide_cond, step_feedback,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
@@ -106,7 +106,6 @@ return [
                 'eval' => 'trim'
             ]
         ],
-        /*
         'question' => [
             'exclude' => true,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.question',
@@ -127,32 +126,6 @@ return [
                 'foreign_match_fields' => [
                     'type' => 2
                 ],
-                'minitems' => 1,
-                'maxitems' => 9999,
-                'appearance' => [
-                    'useSortable' => true,
-                    'collapseAll' => 1,
-                    'levelLinksPosition' => 'top',
-                    'showSynchronizationLink' => 1,
-                    'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1,
-                    'enabledControls' => [
-                        'new' => true,
-                        'dragdrop' => true,
-                        'sort' => true,
-                    ],
-                ],
-            ],
-        ],
-        */
-        'question_container' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.question_container',
-            'config' => [
-                'type' => 'inline',
-                'foreign_table' => 'tx_rkwcheckup_domain_model_questioncontainer',
-                'foreign_field' => 'step',
-                'foreign_sortby' => 'sorting',
                 'minitems' => 1,
                 'maxitems' => 9999,
                 'appearance' => [

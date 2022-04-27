@@ -77,9 +77,9 @@ class AnswerUtility
                 // add all answers of a question to the answer array
                 if (!$stopSearching) {
                     /** @var Question $question */
-                    foreach ($step->getQuestionContainer() as $questionContainer) {
+                    foreach ($step->getQuestion() as $question) {
                         /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
-                        foreach ($questionContainer->getQuestion()->getAnswer() as $answer) {
+                        foreach ($question->getAnswer() as $answer) {
                             if ($asArrayForTca) {
                                 // for TCA
                                 $answerListOfCheckup[] = [$step->getTitle() . ' - ' . $answer->getTitle(), $answer->getUid()];

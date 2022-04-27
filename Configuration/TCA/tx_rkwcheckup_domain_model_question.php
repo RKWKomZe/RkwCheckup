@@ -93,7 +93,7 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'default' => 1,
+                'default' => 3,
                 'items' => [
                     //['LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type.I.0', 0],
                     ['LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type.I.1', 1],
@@ -279,7 +279,7 @@ return [
             ],
         ],
     
-        'question_container' => [
+        'step' => [
             'config' => [
                 'type' => 'passthrough',
             ],

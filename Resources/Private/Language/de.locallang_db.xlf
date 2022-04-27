@@ -74,9 +74,9 @@
 				<source>Description</source>
 				<target>Beschreibung</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.question_container">
+			<trans-unit id="tx_rkwcheckup_domain_model_step.question">
 				<source>Question</source>
-				<target>Frage (Innerhalb einer Frage gilt: Immer nur einen Fragetyp auswählen. Werden mehrere Fragetypen gleichzeitig ausgefüllt, wird nur einer genutzt)</target>
+				<target>Frage</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
 				<source>Hide Cond</source>

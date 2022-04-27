@@ -8,9 +8,7 @@
         <div class="contentbox contentbox--text typo3-fsc">
             <div class="tabs js-tabs ui-tabs ui-corner-all ui-widget ui-widget-content">
                 <ul class="tabs__nav ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
-                    <f:for each="{step.questionContainer}" as="questionContainer" iteration="iter">
-                        <f:comment><!-- use variable to skip additional container nesting (it's a OneToOne relation) --></f:comment>
-                        <f:variable name="question" value="{questionContainer.question}" />
+                    <f:for each="{step.question}" as="question" iteration="iter">
                         <f:if condition="{rkw:checkQuestionForAnswers(question: '{question}', result: '{result}')}" >
                             <li
                                 class="tabs__nav-item ui-tabs-tab ui-corner-top ui-state-default ui-tab ui-tabs-active ui-state-active"
@@ -34,9 +32,7 @@
                         </f:if>
                     </f:for>
                 </ul>
-                <f:for each="{step.questionContainer}" as="questionContainer" iteration="iter">
-                    <f:comment><!-- use variable to skip additional container nesting (it's a 1to1 relation) --></f:comment>
-                    <f:variable name="question" value="{questionContainer.question}" />
+                <f:for each="{step.question}" as="question" iteration="iter">
                     <f:comment><!-- if question has answers (could be skipped) --> </f:comment>
                     <f:if condition="{rkw:checkQuestionForAnswers(question: '{question}', result: '{result}')}" >
                         <div class="tabs__content ui-tabs-panel ui-corner-bottom ui-widget-content" id="tab-{iter.cycle}" aria-labelledby="ui-id-{iter.cycle}" role="tabpanel" aria-hidden="false" style="">

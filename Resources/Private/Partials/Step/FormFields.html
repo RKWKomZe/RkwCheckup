@@ -16,7 +16,7 @@
                     </f:then>
                     <f:else>
                         <f:comment><!-- show standard form --></f:comment>
-                        <f:if condition="{result.currentStep.questionContainer}">
+                        <f:if condition="{result.currentStep.question}">
                             <f:render partial="Question/FormFields" arguments="{_all}" />
                         </f:if>
                     </f:else>

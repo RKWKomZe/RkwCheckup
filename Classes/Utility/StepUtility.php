@@ -4,7 +4,6 @@ namespace RKW\RkwCheckup\Utility;
 
 use RKW\RkwCheckup\Domain\Model\Answer;
 use RKW\RkwCheckup\Domain\Model\Question;
-use RKW\RkwCheckup\Domain\Model\QuestionContainer;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Model\Step;
@@ -233,10 +232,10 @@ class StepUtility
 
         // check if at least one question would shown. Otherwise also skip this step
         $atLeastOneQuestionWillShown = false;
-        /** @var QuestionContainer $questionContainer */
-        foreach ($step->getQuestionContainer() as $questionContainer) {
+        /** @var Question $question */
+        foreach ($step->getQuestion() as $question) {
 
-            if (self::checkHideCond($questionContainer->getQuestion())) {
+            if (self::checkHideCond($question)) {
                 $atLeastOneQuestionWillShown = true;
                 break;
             }
