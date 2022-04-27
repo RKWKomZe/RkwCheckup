@@ -15,7 +15,7 @@
         <checkup>1</checkup>
         <title>Allgemeine Fragen</title>
         <description>Vorab einige Fragen</description>
-        <step>1</step>
+        <step>2</step>
     </tx_rkwcheckup_domain_model_section>
 
     <tx_rkwcheckup_domain_model_step>
@@ -24,7 +24,7 @@
         <title>Schritt 1</title>
         <description>Geben Sie uns Antworten!</description>
         <section>1</section>
-        <question_container>3</question_container>
+        <question>3</question>
     </tx_rkwcheckup_domain_model_step>
 
     <tx_rkwcheckup_domain_model_step>
@@ -33,24 +33,15 @@
         <title>Schritt 2</title>
         <description>Geben Sie uns mehr Antworten!</description>
         <section>1</section>
-        <question_container>0</question_container>
+        <question>0</question>
     </tx_rkwcheckup_domain_model_step>
 
     <!-- QUESTION 1 -->
 
-    <tx_rkwcheckup_domain_model_questioncontainer>
-        <uid>1</uid>
-        <pid>1</pid>
-        <step>1</step>
-        <question_type_1>1</question_type_1>
-        <question_type_2>0</question_type_2>
-        <question_type_3>0</question_type_3>
-    </tx_rkwcheckup_domain_model_questioncontainer>
-
     <tx_rkwcheckup_domain_model_question>
         <uid>1</uid>
         <pid>1</pid>
-        <question_container>1</question_container>
+        <step>1</step>
         <answer>3</answer>
         <title>Warum beantworten Sie diese Frage?</title>
         <description>Seien Sie bitte ehrlich.</description>
@@ -84,19 +75,10 @@
 
     <!-- QUESTION 2 -->
 
-    <tx_rkwcheckup_domain_model_questioncontainer>
-        <uid>2</uid>
-        <pid>1</pid>
-        <step>1</step>
-        <question_type_1>0</question_type_1>
-        <question_type_2>1</question_type_2>
-        <question_type_3>0</question_type_3>
-    </tx_rkwcheckup_domain_model_questioncontainer>
-
     <tx_rkwcheckup_domain_model_question>
         <uid>2</uid>
         <pid>1</pid>
-        <question_container>2</question_container>
+        <step>1</step>
         <answer>3</answer>
         <title>Ist es wahr?</title>
         <description>Sie dürfen auch lügen.</description>
@@ -131,19 +113,10 @@
 
     <!-- QUESTION 3 -->
 
-    <tx_rkwcheckup_domain_model_questioncontainer>
-        <uid>3</uid>
-        <pid>1</pid>
-        <step>1</step>
-        <question_type_1>0</question_type_1>
-        <question_type_2>0</question_type_2>
-        <question_type_3>1</question_type_3>
-    </tx_rkwcheckup_domain_model_questioncontainer>
-
     <tx_rkwcheckup_domain_model_question>
         <uid>3</uid>
         <pid>1</pid>
-        <question_container>2</question_container>
+        <step>1</step>
         <answer>4</answer>
         <title>Welche Zeitung lesen sie?</title>
         <description>Mehrfachauswahl möglich. Bitte mindestens zwei auswählen.</description>
