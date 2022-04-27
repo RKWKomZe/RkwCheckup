@@ -15,8 +15,6 @@ return [
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
         ],
         'searchFields' => 'type,title,description,mandatory, invert_feedback,sum_to_100,min_check,max_check,scale_left,scale_right,answer,hide_cond',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_question.gif'
@@ -89,38 +87,6 @@ return [
                 ],
             ],
         ],
-        'starttime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 13,
-                'eval' => 'datetime',
-                'default' => 0,
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
-            ],
-        ],
-        'endtime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 13,
-                'eval' => 'datetime',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
-                ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
-            ],
-        ],
-
         'type' => [
             'exclude' => true,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type',
@@ -190,7 +156,7 @@ return [
                         '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
                     ]
                 ],
-                'default' => 0,
+                'default' => 1,
             ]
         ],
         'sum_to_100' => [
@@ -216,10 +182,10 @@ return [
                 'size' => 10,
                 'eval' => 'trim,int',
                 'default' => 0,
-                'slider' => [
+                /*'slider' => [
                     'step' => 1,
                     'width' => 200,
-                ],
+                ],*/
                 'range' => [
                     'lower' => 0,
                     'upper' => 20,
@@ -240,10 +206,10 @@ return [
                 'size' => 10,
                 'eval' => 'trim,int',
                 'default' => 0,
-                'slider' => [
+                /*'slider' => [
                     'step' => 1,
                     'width' => 200,
-                ],
+                ],*/
                 'range' => [
                     'lower' => 0,
                     'upper' => 20,

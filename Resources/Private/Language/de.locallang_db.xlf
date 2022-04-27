@@ -29,7 +29,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.tab.extend">
                 <source>Extended</source>
-                <target>Erweitert</target>
+                <target>Anzeige</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.title">
 				<source>Title</source>
@@ -45,7 +45,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_text">
                 <source>Hide Text</source>
-                <target>Text verbergen</target>
+                <target>Titel und Beschreibung des Abschnitts verbergen</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_cond">
 				<source>Hide Cond</source>
@@ -55,13 +55,16 @@
 				<source>Interim Result</source>
 				<target>Zwischenergebnis</target>
 			</trans-unit>
+			
+			
+			
 			<trans-unit id="tx_rkwcheckup_domain_model_step">
 				<source>Step</source>
 				<target>Schritt</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.tab.extend">
                 <source>Extended</source>
-                <target>Erweitert</target>
+                <target>Anzeige / Bedingungen</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.title">
 				<source>Title</source>
@@ -83,9 +86,11 @@
 				<source>Interim Result</source>
 				<target>Zwischenergebnis</target>
 			</trans-unit>
+			
+			
 			<trans-unit id="tx_rkwcheckup_domain_model_questioncontainer">
                 <source>Question container</source>
-                <target>Frage</target>
+                <target>Fragen</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.label">
                 <source>Question container</source>
@@ -107,6 +112,9 @@
                 <source>Free integer input</source>
                 <target>Freie Zahleneingabe</target>
             </trans-unit>
+            
+            
+            
 			<trans-unit id="tx_rkwcheckup_domain_model_question">
 				<source>Question</source>
 				<target>Frage</target>
@@ -140,8 +148,8 @@
                 <target>Freie Zahleneingabe</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.title">
-				<source>Title</source>
-				<target>Titel</target>
+				<source>Question</source>
+				<target>Frage</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.description">
 				<source>Description</source>
@@ -149,7 +157,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.mandatory">
 				<source>Mandatory</source>
-				<target>Ist pflichtfrage</target>
+				<target>Ist Pflichtfrage</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.invert_feedback">
                 <source>Invert feedback</source>
@@ -183,6 +191,9 @@
 				<source>Hide Cond</source>
 				<target>Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
 			</trans-unit>
+			
+			
+			
 			<trans-unit id="tx_rkwcheckup_domain_model_answer">
 				<source>Answer</source>
 				<target>Antwort</target>
@@ -192,8 +203,8 @@
                 <target>Feedback</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.title">
-				<source>Title</source>
-				<target>Titel</target>
+				<source>Answer</source>
+				<target>Antwort</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.description">
 				<source>Description</source>
@@ -215,6 +226,9 @@
 				<source>Link</source>
 				<target>Link</target>
 			</trans-unit>
+			
+			
+			
 			<trans-unit id="tx_rkwcheckup_domain_model_result">
 				<source>Result</source>
 				<target>Ergebnis</target>
@@ -259,6 +273,9 @@
                 <source>New Answer</source>
                 <target>Antworten (wird im FE Formular aus Logikgründen benötigt)</target>
             </trans-unit>
+            
+            
+            
 			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
 				<source>Interim Result</source>
 				<target>Zwischenergebnis</target>

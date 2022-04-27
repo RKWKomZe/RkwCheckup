@@ -23,6 +23,9 @@
                 <source>Context Question</source>
                 <target>Kontext-Frage (XXX wirklich umsetzen?? XXX)</target>
             </trans-unit>
+            
+            
+            
             <trans-unit id="tx_rkwcheckup_domain_model_section">
                 <source>Section</source>
                 <target>Abschnitt</target>
@@ -47,6 +50,8 @@
                 <source>Interim Result</source>
                 <target>Zwischenergebnis</target>
             </trans-unit>
+            
+            
             <trans-unit id="tx_rkwcheckup_domain_model_step">
                 <source>Step</source>
                 <target>Schritt</target>
@@ -87,6 +92,9 @@
                 <source>Free integer input</source>
                 <target>Freie Zahleneingabe</target>
             </trans-unit>
+            
+            
+            
             <trans-unit id="tx_rkwcheckup_domain_model_question">
                 <source>Question</source>
                 <target>Frage</target>
@@ -147,6 +155,9 @@
                 <source>Link</source>
                 <target>Link</target>
             </trans-unit>
+            
+            
+            
             <trans-unit id="tx_rkwcheckup_domain_model_result">
                 <source>Result</source>
                 <target>Ergebnis</target>
@@ -167,6 +178,8 @@
                 <source>Interim Result</source>
                 <target>Zwischenergebnis</target>
             </trans-unit>
+            
+            
             <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.type">
                 <source>Type</source>
                 <target>Typ</target>
