@@ -71,13 +71,13 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
             $ProgressHandler = $objectManager->get(ProgressHandler::class);
             $ProgressHandler->setResult($newResult);
 
-            /** @var \RKW\RkwCheckup\Domain\Model\QuestionContainer $questionContainer */
-            foreach ($newResult->getCurrentStep()->getQuestionContainer() as $questionContainer) {
+            /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
+            foreach ($newResult->getCurrentStep()->getQuestion() as $question) {
 
-                if ($validationResult = $ProgressHandler->validateQuestion($questionContainer->getQuestion())) {
+                if ($validationResult = $ProgressHandler->validateQuestion($question)) {
 
                     // do not add error message to specific answer (makes no deeper sense in this extension!)
-                    $this->result->forProperty('question' . $questionContainer->getQuestion()->getUid())->addError(
+                    $this->result->forProperty('question' . $question->getUid())->addError(
                         new \TYPO3\CMS\Extbase\Error\Error(
                             $validationResult,
                             1638191288

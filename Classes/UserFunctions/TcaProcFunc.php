@@ -140,7 +140,7 @@ class TcaProcFunc
             /** @var Question $entityToStop */
             $question = $questionRepository->findByIdentifier(intval($params['row']['uid']));
             if ($question instanceof Question) {
-                $stepToStopUid = $question->getQuestionContainer()->getStep()->getUid();
+                $stepToStopUid = $question->getStep()->getUid();
             }
         }
 

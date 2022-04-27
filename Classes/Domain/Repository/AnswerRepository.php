@@ -1,10 +1,6 @@
 <?php
 namespace RKW\RkwCheckup\Domain\Repository;
 
-use RKW\RkwCheckup\Domain\Model\QuestionContainer;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /*
  * This file is part of the TYPO3 CMS project.
