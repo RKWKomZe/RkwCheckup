@@ -15,7 +15,12 @@ namespace RKW\RkwCheckup\Domain\Model;
  */
 
 /**
- * ResultAnswer
+ * Class ResultAnswer
+ *
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwCheckup
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
@@ -26,34 +31,39 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $freeNumericInput = 0;
 
+    
     /**
      * answer
      *
      * @var \RKW\RkwCheckup\Domain\Model\Answer
      */
-    protected $answer = null;
+    protected $answer;
 
+    
     /**
      * question
      *
      * @var \RKW\RkwCheckup\Domain\Model\Question
      */
-    protected $question = null;
+    protected $question;
 
+    
     /**
      * step
      *
      * @var \RKW\RkwCheckup\Domain\Model\Step
      */
-    protected $step = null;
+    protected $step;
 
+    
     /**
      * section
      *
      * @var \RKW\RkwCheckup\Domain\Model\Section
      */
-    protected $section = null;
+    protected $section;
 
+    
     /**
      * @return int
      */
@@ -62,6 +72,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->freeNumericInput;
     }
 
+    
     /**
      * @param int $freeNumericInput
      */
@@ -70,57 +81,63 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->freeNumericInput = $freeNumericInput;
     }
 
+    
     /**
      * Returns the answer
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Answer $answer
+     * @return \RKW\RkwCheckup\Domain\Model\Answer|null $answer
      */
     public function getAnswer()
     {
         return $this->answer;
     }
 
+    
     /**
      * Sets the answer
      *
      * @param \RKW\RkwCheckup\Domain\Model\Answer $answer
      * @return void
      */
-    public function setAnswer(\RKW\RkwCheckup\Domain\Model\Answer $answer)
+    public function setAnswer(\RKW\RkwCheckup\Domain\Model\Answer $answer): void
     {
         $this->answer = $answer;
     }
+    
 
     /**
      * Returns the question
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Question $question
+     * @return \RKW\RkwCheckup\Domain\Model\Question|null $question
      */
     public function getQuestion()
     {
         return $this->question;
     }
 
+    
     /**
      * Sets the question
      *
      * @param \RKW\RkwCheckup\Domain\Model\Question $question
      * @return void
      */
-    public function setQuestion(\RKW\RkwCheckup\Domain\Model\Question $question)
+    public function setQuestion(\RKW\RkwCheckup\Domain\Model\Question $question): void
     {
         $this->question = $question;
     }
 
+    
     /**
      * Returns the step
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Step step
+     * @return \RKW\RkwCheckup\Domain\Model\Step|null step
      */
     public function getStep()
     {
         return $this->step;
     }
+    
 
     /**
      * Sets the step
@@ -128,28 +145,30 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \RKW\RkwCheckup\Domain\Model\Step $step
      * @return void
      */
-    public function setStep(\RKW\RkwCheckup\Domain\Model\Step $step)
+    public function setStep(\RKW\RkwCheckup\Domain\Model\Step $step): void
     {
         $this->step = $step;
     }
 
+    
     /**
      * Returns the section
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Section section
+     * @return \RKW\RkwCheckup\Domain\Model\Section|null section
      */
     public function getSection()
     {
         return $this->section;
     }
 
+    
     /**
      * Sets the section
      *
      * @param \RKW\RkwCheckup\Domain\Model\Section $section
      * @return void
      */
-    public function setSection(\RKW\RkwCheckup\Domain\Model\Section $section)
+    public function setSection(\RKW\RkwCheckup\Domain\Model\Section $section): void
     {
         $this->section = $section;
     }

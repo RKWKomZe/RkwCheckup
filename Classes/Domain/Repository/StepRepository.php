@@ -13,8 +13,14 @@ namespace RKW\RkwCheckup\Domain\Repository;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 /**
- * The repository for Step
+ * Class StepRepository
+ *
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwCheckup
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class StepRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {

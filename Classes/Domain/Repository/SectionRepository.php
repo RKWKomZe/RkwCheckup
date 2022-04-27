@@ -15,7 +15,12 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 
 /**
- * The repository for Section
+ * Class SectionRepository
+ *
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwCheckup
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class SectionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {

@@ -14,6 +14,8 @@ namespace RKW\RkwCheckup\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /**
  * Step
  */
@@ -26,6 +28,7 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $hideText = false;
 
+    
     /**
      * title
      *
@@ -33,6 +36,7 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $title = '';
 
+    
     /**
      * description
      *
@@ -40,28 +44,32 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $description = '';
 
+    
     /**
      * question
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question>
      * @cascade remove
      */
-    protected $question = null;
+    protected $question;
 
+    
     /**
      * hideCond
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
      */
-    protected $hideCond = null;
+    protected $hideCond;
 
+    
     /**
      * stepFeedback
      *
      * @var \RKW\RkwCheckup\Domain\Model\StepFeedback
      */
-    protected $stepFeedback = null;
+    protected $stepFeedback;
 
+    
     /**
      * __construct
      */
@@ -71,6 +79,7 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->initStorageObjects();
     }
 
+    
     /**
      * Initializes all ObjectStorage properties
      * Do not modify this method!
@@ -85,36 +94,40 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->hideCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
+    
     /**
      * Returns the title
      *
      * @return string $title
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
+    
     /**
      * Sets the title
      *
      * @param string $title
      * @return void
      */
-    public function setTitle($title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
 
+    
     /**
      * Returns the description
      *
      * @return string $description
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
+    
 
     /**
      * Sets the description
@@ -122,63 +135,73 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $description
      * @return void
      */
-    public function setDescription($description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
 
+    
     /**
      * Adds a hideCond
      *
      * @param \RKW\RkwCheckup\Domain\Model\Answer $hideCond
      * @return void
+     * @api
      */
-    public function addHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond)
+    public function addHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond): void
     {
         $this->hideCond->attach($hideCond);
     }
+    
 
     /**
      * Removes a hideCond
      *
      * @param \RKW\RkwCheckup\Domain\Model\Answer $hideCondToRemove The hideCond to be removed
      * @return void
+     * @api
      */
-    public function removeHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond)
+    public function removeHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond): void
     {
         $this->hideCond->detach($hideCond);
     }
 
+    
     /**
      * Returns the hideCond
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $hideCond
+     * @api
      */
-    public function getHideCond()
+    public function getHideCond(): ObjectStorage
     {
         return $this->hideCond;
     }
 
+    
     /**
      * Sets the hideCond
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $hideCond
      * @return void
+     * @api
      */
-    public function setHideCond(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $hideCond)
+    public function setHideCond(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $hideCond): void
     {
         $this->hideCond = $hideCond;
     }
 
+    
     /**
      * Returns the hideText
      *
      * @return bool $hideText
      */
-    public function getHideText()
+    public function getHideText(): bool
     {
         return $this->hideText;
     }
+    
 
     /**
      * Sets the hideText
@@ -186,30 +209,33 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param bool $hideText
      * @return void
      */
-    public function setHideText($hideText)
+    public function setHideText(bool $hideText): void
     {
         $this->hideText = $hideText;
     }
 
+    
     /**
      * Returns the boolean state of hideText
      *
      * @return bool
      */
-    public function isHideText()
+    public function isHideText(): bool
     {
         return $this->hideText;
     }
 
+    
     /**
      * Returns the stepFeedback
      *
-     * @return \RKW\RkwCheckup\Domain\Model\StepFeedback $stepFeedback
+     * @return \RKW\RkwCheckup\Domain\Model\StepFeedback|null $stepFeedback
      */
     public function getStepFeedback()
     {
         return $this->stepFeedback;
     }
+    
 
     /**
      * Sets the stepFeedback
@@ -217,50 +243,58 @@ class Step extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \RKW\RkwCheckup\Domain\Model\StepFeedback $stepFeedback
      * @return void
      */
-    public function setStepFeedback(\RKW\RkwCheckup\Domain\Model\StepFeedback $stepFeedback)
+    public function setStepFeedback(\RKW\RkwCheckup\Domain\Model\StepFeedback $stepFeedback): void
     {
         $this->stepFeedback = $stepFeedback;
     }
+    
 
     /**
      * Adds a Question
      *
      * @param \RKW\RkwCheckup\Domain\Model\Question $question
      * @return void
+     * @api
      */
-    public function addQuestion(\RKW\RkwCheckup\Domain\Model\Question $question)
+    public function addQuestion(\RKW\RkwCheckup\Domain\Model\Question $question): void
     {
         $this->question->attach($question);
     }
 
+    
     /**
      * Removes a Question
      *
      * @param \RKW\RkwCheckup\Domain\Model\Question $questionToRemove The Question to be removed
      * @return void
+     * @api
      */
-    public function removeQuestion(\RKW\RkwCheckup\Domain\Model\Question $questionToRemove)
+    public function removeQuestion(\RKW\RkwCheckup\Domain\Model\Question $questionToRemove): void
     {
         $this->question->detach($questionToRemove);
     }
+    
 
     /**
      * Returns the Question
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question> $question
+     * @api
      */
-    public function getQuestion()
+    public function getQuestion(): ObjectStorage
     {
         return $this->question;
     }
+    
 
     /**
      * Sets the Question
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question> $question
      * @return void
+     * @api
      */
-    public function setQuestion(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $question)
+    public function setQuestion(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $question): void
     {
         $this->question = $question;
     }

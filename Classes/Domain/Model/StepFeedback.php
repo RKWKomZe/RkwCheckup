@@ -13,8 +13,14 @@ namespace RKW\RkwCheckup\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 /**
- * InterimResult
+ * Class StepFeedback
+ *
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwCheckup
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
@@ -25,6 +31,7 @@ class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $type = 0;
 
+    
     /**
      * title
      *
@@ -32,6 +39,7 @@ class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $title = '';
 
+    
     /**
      * description
      *
@@ -39,73 +47,81 @@ class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $description = '';
 
+    
     /**
      * image
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @cascade remove
      */
-    protected $image = null;
+    protected $image;
 
+    
     /**
      * file
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @cascade remove
      */
-    protected $file = null;
+    protected $file;
 
+    
     /**
      * Returns the title
      *
      * @return string $title
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
+    
     /**
      * Sets the title
      *
      * @param string $title
      * @return void
      */
-    public function setTitle($title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
 
+    
     /**
      * Returns the description
      *
      * @return string $description
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
+    
     /**
      * Sets the description
      *
      * @param string $description
      * @return void
      */
-    public function setDescription($description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
 
+    
     /**
      * Returns the image
      *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference|null $image
      */
     public function getImage()
     {
         return $this->image;
     }
+    
 
     /**
      * Sets the image
@@ -113,20 +129,22 @@ class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
      * @return void
      */
-    public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
+    public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image): void
     {
         $this->image = $image;
     }
 
+    
     /**
      * Returns the file
      *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference|null $file
      */
     public function getFile()
     {
         return $this->file;
     }
+    
 
     /**
      * Sets the file
@@ -134,20 +152,22 @@ class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
      * @return void
      */
-    public function setFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file)
+    public function setFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file): void
     {
         $this->file = $file;
     }
+    
 
     /**
      * Returns the type
      *
      * @return int $type
      */
-    public function getType()
+    public function getType(): int
     {
         return $this->type;
     }
+    
 
     /**
      * Sets the type
@@ -155,7 +175,7 @@ class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $type
      * @return void
      */
-    public function setType($type)
+    public function setType(int $type): void
     {
         $this->type = $type;
     }

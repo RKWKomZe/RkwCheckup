@@ -15,7 +15,12 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 
 /**
- * The repository for Checks
+ * Class CheckupRepository
+ *
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwCheckup
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CheckupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
