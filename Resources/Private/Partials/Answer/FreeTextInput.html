@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+
+    <f:comment><!-- additional fields of resultAnswer--></f:comment>
+    <f:form.hidden property="newResultAnswer.{questionIter.cycle}.question" value="{question.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.cycle}.step" value="{result.currentStep.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.cycle}.section" value="{result.currentSection.uid}" />
+
+
+    <div class="form__field form__field--webcheck">
+        <label>
+            (Optional) Freitextfeld
+        </label>
+        <f:form.textfield
+            property="newResultAnswer.{questionIter.cycle}.freeTextInput"
+        />
+    </div>
+
+
+</html>

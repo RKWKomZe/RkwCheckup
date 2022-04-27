@@ -66,6 +66,9 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_question.tab.extend">
                 <source>Extended</source>
             </trans-unit>
+             <trans-unit id="tx_rkwcheckup_domain_model_question.tab.extend2">
+                <source>Feedback</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.type">
 				<source>Type</source>
 			</trans-unit>
@@ -96,6 +99,9 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_question.invert_feedback">
                 <source>Invert feedback</source>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.allow_text_input">
+                <source>Allow free text input</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.sum_to_100">
                 <source>Sum to 100</source>
             </trans-unit>
@@ -117,6 +123,9 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_question.hide_cond">
 				<source>Hide Cond</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.standard_feedback">
+                <source>Standard feedback</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer">
 				<source>Answer</source>
 			</trans-unit>
@@ -210,6 +219,9 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.free_numeric_input">
                 <source>Free numeric answer</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_resultanswer.free_text_input">
+                <source>Free text answer</source>
             </trans-unit>
 		</body>
 	</file>

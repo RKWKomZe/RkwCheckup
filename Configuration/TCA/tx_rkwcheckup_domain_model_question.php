@@ -16,28 +16,31 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'type,title,description,mandatory, invert_feedback,sum_to_100,min_check,max_check,scale_left,scale_right,answer,hide_cond',
+        'searchFields' => 'type,title,description,mandatory,invert_feedback,allow_text_input,sum_to_100,min_check,max_check,scale_left,scale_right,answer,hide_cond,standard_feedback',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_question.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, mandatory, invert_feedback, sum_to_100, min_check, max_check, scale_left, scale_right, hide_cond, answer',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, mandatory, invert_feedback, allow_text_input, sum_to_100, min_check, max_check, scale_left, scale_right, hide_cond, answer, standard_feedback',
     ],
     'types' => [
         '1' => [
             'showitem' => '
-                type, title, description, mandatory, invert_feedback, sum_to_100, scale_left, scale_right, answer, 
+                type, title, description, mandatory, invert_feedback, allow_text_input, sum_to_100, scale_left, scale_right, answer, 
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, standard_feedback,
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
         '2' => [
             'showitem' => '
-                type, title, description, mandatory, invert_feedback, sum_to_100, answer, 
+                type, title, description, mandatory, invert_feedback, allow_text_input, sum_to_100, answer, 
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, standard_feedback,
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
         '3' => [
             'showitem' => '
-                type, title, description, mandatory, invert_feedback, sum_to_100, min_check, max_check, scale_left, scale_right, answer, 
+                type, title, description, mandatory, invert_feedback, allow_text_input, sum_to_100, min_check, max_check, scale_left, scale_right, answer, 
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, standard_feedback,
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
@@ -171,6 +174,19 @@ return [
                 'default' => 1,
             ]
         ],
+        'allow_text_input' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.allow_text_input',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
+                    ]
+                ],
+                'default' => 1,
+            ]
+        ],
         'sum_to_100' => [
             'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.sum_to_100',
@@ -289,6 +305,16 @@ return [
                 'minitems'      => 0,
                 'size'          => 5,
             ],
+        ],
+        'standard_feedback' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.standard_feedback',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 5,
+                'eval' => 'trim'
+            ]
         ],
     
         'step' => [

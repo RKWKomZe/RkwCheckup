@@ -6,9 +6,19 @@
     <p>{question.description}</p>
     <f:render partial="Answer/FormFields" arguments="{resultReadOnly: 1, question: question, answerList: '{rkw:getAnswersOfQuestion(question: \'{question}\', result: \'{result}\')}' }" />
 
-
     <f:comment><!-- the feedback we want to give --></f:comment>
     <f:for each="{rkw:getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="resultAnswer">
+
+        <br />
+        <f:if condition="{resultAnswer.freeTextInput}">
+            {resultAnswer.freeTextInput}
+        </f:if>
+        <br />
+        <f:if condition="{question.standardFeedback}">
+            {question.standardFeedback}
+        </f:if>
+        <br />
+
         <p>{resultAnswer.answer.response}</p>
         <p>Unser(e) Hinweis(e)</p>
         Bild? Datei? Link?

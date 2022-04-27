@@ -31,7 +31,15 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $freeNumericInput = 0;
 
-    
+
+    /**
+     * freeTextInput
+     *
+     * @var string
+     */
+    protected $freeTextInput = '';
+
+
     /**
      * answer
      *
@@ -79,6 +87,23 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setFreeNumericInput(int $freeNumericInput): void
     {
         $this->freeNumericInput = $freeNumericInput;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getFreeTextInput()
+    {
+        return $this->freeTextInput;
+    }
+
+    /**
+     * @param string $freeTextInput
+     */
+    public function setFreeTextInput($freeTextInput): void
+    {
+        $this->freeTextInput = $freeTextInput;
     }
 
     

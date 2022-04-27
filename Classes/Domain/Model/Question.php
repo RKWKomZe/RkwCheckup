@@ -65,7 +65,15 @@ class Question extends AbstractCheckupContents
      */
     protected $invertFeedback = false;
 
-    
+
+    /**
+     * allowTextInput
+     *
+     * @var bool
+     */
+    protected $allowTextInput = false;
+
+
     /**
      * sumTo100
      *
@@ -105,7 +113,14 @@ class Question extends AbstractCheckupContents
      */
     protected $scaleRight = '';
 
-    
+    /**
+     * standardFeedback
+     *
+     * @var string
+     */
+    protected $standardFeedback = '';
+
+
     /**
      * answer
      *
@@ -244,6 +259,24 @@ class Question extends AbstractCheckupContents
 
 
     /**
+     * @return bool
+     */
+    public function isAllowTextInput(): bool
+    {
+        return $this->allowTextInput;
+    }
+
+
+    /**
+     * @param bool $allowTextInput
+     */
+    public function setAllowTextInput(bool $allowTextInput): void
+    {
+        $this->allowTextInput = $allowTextInput;
+    }
+
+
+    /**
      * Returns the sumTo100
      *
      * @return bool $sumTo100
@@ -355,6 +388,22 @@ class Question extends AbstractCheckupContents
     public function setScaleRight(string $scaleRight): void
     {
         $this->scaleRight = $scaleRight;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStandardFeedback(): string
+    {
+        return $this->standardFeedback;
+    }
+
+    /**
+     * @param string $standardFeedback
+     */
+    public function setStandardFeedback(string $standardFeedback): void
+    {
+        $this->standardFeedback = $standardFeedback;
     }
 
     

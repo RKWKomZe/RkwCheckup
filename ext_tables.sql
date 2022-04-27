@@ -151,6 +151,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_question (
 	description text,
 	mandatory smallint(5) unsigned DEFAULT '0' NOT NULL,
     invert_feedback smallint(5) unsigned DEFAULT '1' NOT NULL,
+    allow_text_input smallint(5) unsigned DEFAULT '0' NOT NULL,
     sum_to_100 smallint(5) unsigned DEFAULT '0' NOT NULL,
 	min_check int(11) DEFAULT '0' NOT NULL,
 	max_check int(11) DEFAULT '0' NOT NULL,
@@ -158,6 +159,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_question (
 	hide_cond varchar(255) DEFAULT '' NOT NULL,
 	scale_left varchar(255) DEFAULT '' NOT NULL,
     scale_right varchar(255) DEFAULT '' NOT NULL,
+    standard_feedback text,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -345,6 +347,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_resultanswer (
 	step int(11) unsigned DEFAULT '0',
 	section int(11) unsigned DEFAULT '0',
     free_numeric_input varchar(255) DEFAULT '' NOT NULL,
+    free_text_input varchar(255) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

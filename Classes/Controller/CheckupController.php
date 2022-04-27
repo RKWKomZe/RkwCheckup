@@ -114,7 +114,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      */
     public function progressAction(Result $result): void
     {
-        
+
         if ($result->isFinished()) {
             $this->redirect(
                 'result', 
@@ -157,7 +157,11 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
                         }
 
                         // remove not answered radio-button answers
-                        if (!key_exists('answer', $newResultAnswer)) {
+                        // but do not remove freeTextInput answers
+                        if (
+                            !key_exists('answer', $newResultAnswer)
+                            && !key_exists('freeTextInput', $newResultAnswer)
+                        ) {
                             unset($result['newResultAnswer'][$key]);
                         }
                     }
@@ -197,6 +201,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      */
     public function validateAction(Result $result): void
     {
+
         $this->progressHandler->setResult($result);
         if ($this->progressHandler->progressValidation()){
             $this->progressHandler->moveNewResultAnswers();

@@ -70,7 +70,11 @@ class GetAnswersOfQuestionViewHelper extends AbstractViewHelper {
         /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
         foreach ($result->getResultAnswer() as $resultAnswer) {
             if ($resultAnswer->getQuestion() === $question) {
-                $answerArray[$resultAnswer->getAnswer()->getUid()] = $resultAnswer;
+                if ($resultAnswer->getAnswer() instanceof Answer) {
+                    $answerArray[$resultAnswer->getAnswer()->getUid()] = $resultAnswer;
+                } else {
+                    $answerArray[rand(1,9999)] = $resultAnswer;
+                }
             }
         }
 

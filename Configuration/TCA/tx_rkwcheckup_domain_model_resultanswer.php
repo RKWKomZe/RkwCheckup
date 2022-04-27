@@ -15,14 +15,14 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'free_numeric_input,answer,question,step,section',
+        'searchFields' => 'free_numeric_input,free_text_input,answer,question,step,section',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_resultanswer.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, free_numeric_input, answer, question, step, section',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, free_numeric_input, free_text_input, answer, question, step, section',
     ],
     'types' => [
-        '1' => ['showitem' => 'free_numeric_input, answer, question, step, section, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'free_numeric_input, free_text_input, answer, question, step, section, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -88,6 +88,15 @@ return [
                 'type' => 'input',
                 'size' => 5,
                 'eval' => 'int'
+            ],
+        ],
+        'free_text_input' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.free_text_input',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
             ],
         ],
         'answer' => [
