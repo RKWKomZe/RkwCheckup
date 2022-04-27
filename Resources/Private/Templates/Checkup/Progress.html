@@ -1,20 +1,9 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     xmlns:rkwAjax="http://typo3.org/ns/RKW/RkwAjax/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
     <f:layout name="Default" />
-
-    This template displays a NEW form for the current domain object.
-
-    If you modify this template, do not forget to change the overwrite settings
-    in /Configuration/ExtensionBuilder/settings.yaml:
-      Resources:
-        Private:
-          Templates:
-            New.html: keep
-
-    Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
     <f:section name="main">
 
@@ -24,8 +13,9 @@
 
         <f:comment>
             <!-- does we need FlashMessages here? -->
-            <f:render partial="FlashMessages" arguments="{_all}" />
+            <f:render partial="Global/FlashMessages" arguments="{_all}" />
         </f:comment>
+        
         <rkwAjax:ajaxWrapper ajaxHelper="{ajaxHelper}" ajaxAction="replace" ajaxId="1">
             <div>
 
@@ -39,49 +29,15 @@
                     additionalParams="{rkw_ajax: '{key: ajaxHelper.key, cid: ajaxHelper.contentUid, idl: \'1\'}'}"
                 >
 
-                    <f:render partial="Checkup/FormFields" arguments="{_all}" />
-
-                    <div class="button-footer flex space-between flex-basis-12 mt-2">
-                        <div></div>
-                        <div class="steps">
-                            <span>
-                                {f:translate(key: 'templates_checkup_progress.progress')}
-                                {rkw:calculateProgress(result: '{result}')} %
-                            </span>
-                        </div>
-                        <f:if condition="{result.lastStep}">
-                            <f:then>
-                                <f:comment>
-                                    <!-- Final Step WITH step feedback -->
-                                </f:comment>
-                                <f:if condition="{result.currentStep.stepFeedback}">
-                                    <f:if condition="{result.showStepFeedback}">
-                                        <f:else>
-                                            <f:comment>
-                                                <!-- If this is (a) the last step, but has (b) a step feedback which (c) we are want to show next -->
-                                            </f:comment>
-                                            <f:variable name="doNotFinishNow" value="1"/>
-                                            <f:form.submit class="btn btn--primary" value="Weiter" />
-                                        </f:else>
-                                    </f:if>
-                                </f:if>
-                                <f:if condition="{doNotFinishNow}">
-                                    <f:else>
-                                        <f:comment>
-                                            <!-- Final Step and no stepFeedback. Finish it! -->
-                                        </f:comment>
-                                        <f:comment><!-- if this is the last step, set "finished" flag to result --></f:comment>
-                                        <f:form.hidden property="finished" value="1" />
-                                        <f:form.submit class="btn btn--primary" value="Abschließen" />
-                                    </f:else>
-                                </f:if>
-                            </f:then>
-                            <f:else>
-                                <f:form.submit class="btn btn--primary" value="Weiter" />
-                            </f:else>
-                        </f:if>
-                    </div>
-
+                    <f:if condition="{result.showSectionIntro}">
+                        <f:then>
+                            <f:render partial="Section" arguments="{_all}" />
+                        </f:then>
+                        <f:else>
+                            <f:render partial="Step" arguments="{_all}" />
+                        </f:else>
+                    </f:if>
+                    
                 </f:form>
             </div>
         </rkwAjax:ajaxWrapper>

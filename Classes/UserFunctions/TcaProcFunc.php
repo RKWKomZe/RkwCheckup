@@ -175,7 +175,7 @@ class TcaProcFunc
      */
     public function displayCondByParentType($params)
     {
-        DebuggerUtility::var_dump($params); exit;
+        //DebuggerUtility::var_dump($params); exit;
     }
 
 

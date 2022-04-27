@@ -1,0 +1,11 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" 
+    data-namespace-typo3-fluid="true">
+
+    <f:if condition="{result.currentSection}">
+        <f:render partial="Section/Header" arguments="{_all}" />
+        <div class="contentbox contentbox--gray contentbox--webcheck webcheck">
+            <f:render partial="Section/Intro" arguments="{_all}" />
+            <f:render partial="Global/Footer" arguments="{_all}" />
+        </div>
+    </f:if>
+</html>

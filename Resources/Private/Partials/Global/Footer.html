@@ -1,0 +1,45 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+    <div class="button-footer flex space-between flex-basis-12 mt-2">
+        <div></div>
+        <div class="steps">
+            <span>
+                <f:translate key="templates_checkup_progress.progress" />
+                <rkwCheckup:calculateProgress result="{result}" /> %
+            </span>
+        </div>
+        <f:if condition="{result.lastStep}">
+            <f:then>
+                <f:comment>
+                    <!-- Final Step WITH step feedback -->
+                </f:comment>
+                <f:if condition="{result.currentStep.stepFeedback}">
+                    <f:if condition="{result.showStepFeedback}">
+                        <f:else>
+                            <f:comment>
+                                <!-- If this is (a) the last step, but has (b) a step feedback 
+                                which (c) we are want to show next -->
+                            </f:comment>
+                            <f:variable name="doNotFinishNow" value="1"/>
+                            <f:form.submit class="btn btn--primary" value="Weiter" />
+                        </f:else>
+                    </f:if>
+                </f:if>
+                <f:if condition="{doNotFinishNow}">
+                    <f:else>
+                        <f:comment>
+                            <!-- Final step and no stepFeedback. Finish it! -->
+                        </f:comment>
+                        <f:form.hidden property="finished" value="1" />
+                        <f:form.submit class="btn btn--primary" value="Abschließen" />
+                    </f:else>
+                </f:if>
+            </f:then>
+            <f:else>
+                <f:form.submit class="btn btn--primary" value="Weiter" />
+            </f:else>
+        </f:if>
+    </div>
+</html>
