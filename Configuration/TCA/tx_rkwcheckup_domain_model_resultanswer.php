@@ -70,7 +70,7 @@ return [
             ],
         ],
         'hidden' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
@@ -82,7 +82,7 @@ return [
             ],
         ],
         'free_numeric_input' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.free_numeric_input',
             'config' => [
                 'type' => 'input',
@@ -91,7 +91,7 @@ return [
             ],
         ],
         'answer' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_resultanswer.answer',
             'config' => [
                 'type' => 'inline',
@@ -108,7 +108,7 @@ return [
             ],
         ],
         'question' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_resultanswer.question',
             'config' => [
                 'type' => 'inline',
@@ -125,7 +125,7 @@ return [
             ],
         ],
         'step' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_resultanswer.step',
             'config' => [
                 'type' => 'inline',
@@ -142,7 +142,7 @@ return [
             ],
         ],
         'section' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_resultanswer.section',
             'config' => [
                 'type' => 'inline',

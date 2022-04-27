@@ -15,9 +15,7 @@
             <!-- does we need FlashMessages here? -->
             <f:render partial="Global/FlashMessages" arguments="{_all}" />
         </f:comment>
-        
-        <rkwAjax:ajaxWrapper ajaxHelper="{ajaxHelper}" ajaxAction="replace" ajaxId="1">
-            <div>
+
 
                 <f:form
                     action="validate"
@@ -25,8 +23,7 @@
                     enctype="multipart/form-data"
                     name="result"
                     object="{result}"
-                    class="ajax-scroll-top {f:if(condition: '{result.lastStep}', else: 'ajax ajax-submit-only')}"
-                    additionalParams="{rkw_ajax: '{key: ajaxHelper.key, cid: ajaxHelper.contentUid, idl: \'1\'}'}"
+                    section="tx-rkwcheckup-main"
                 >
 
                     <f:if condition="{result.showSectionIntro}">
@@ -39,7 +36,6 @@
                     </f:if>
                     
                 </f:form>
-            </div>
-        </rkwAjax:ajaxWrapper>
+
     </f:section>
 </html>

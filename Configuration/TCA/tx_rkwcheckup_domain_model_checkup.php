@@ -72,7 +72,7 @@ return [
             ],
         ],
         'hidden' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
@@ -84,7 +84,7 @@ return [
             ],
         ],
         'starttime' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
@@ -98,7 +98,7 @@ return [
             ],
         ],
         'endtime' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
@@ -116,7 +116,7 @@ return [
         ],
 
         'title' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_checkup.title',
             'config' => [
                 'type' => 'input',
@@ -125,7 +125,7 @@ return [
             ],
         ],
         'description' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_checkup.description',
             'config' => [
                 'type' => 'text',
@@ -135,7 +135,7 @@ return [
             ]
         ],
         'section' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_checkup.section',
             'config' => [
                 'type' => 'inline',
@@ -160,7 +160,7 @@ return [
         ],
         /*
         'context_question' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_checkup.context_question',
             'config' => [
                 'type' => 'inline',

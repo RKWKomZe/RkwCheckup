@@ -50,7 +50,7 @@ return [
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
+            'exclude' =>true,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
@@ -76,7 +76,7 @@ return [
             ],
         ],
         'hidden' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
@@ -88,7 +88,7 @@ return [
             ],
         ],
         'title' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.title',
             'config' => [
                 'type' => 'input',
@@ -97,7 +97,7 @@ return [
             ],
         ],
         'description' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.description',
             'config' => [
                 'type' => 'text',
@@ -107,7 +107,7 @@ return [
             ]
         ],
         'hide_text' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.hide_text',
             'config' => [
                 'type' => 'check',
@@ -120,7 +120,7 @@ return [
             ]
         ],
         'step' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.step',
             'config' => [
                 'type' => 'inline',
@@ -145,7 +145,7 @@ return [
 
         ],
         'hide_cond' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.hide_cond',
             'config' => [
                 'type' => 'select',

@@ -76,7 +76,7 @@ return [
             ],
         ],
         'hidden' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
@@ -88,7 +88,7 @@ return [
             ],
         ],
         'title' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.title',
             'config' => [
                 'type' => 'input',
@@ -97,7 +97,7 @@ return [
             ],
         ],
         'description' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.description',
             'config' => [
                 'type' => 'text',
@@ -107,7 +107,7 @@ return [
             ]
         ],
         'question' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.question',
             'config' => [
                 'overrideChildTca' => [
@@ -123,9 +123,9 @@ return [
                 'foreign_table' => 'tx_rkwcheckup_domain_model_question',
                 'foreign_field' => 'step',
                 'foreign_sortby' => 'sorting',
-                'foreign_match_fields' => [
+                /*'foreign_match_fields' => [
                     'type' => 2
-                ],
+                ],*/
                 'minitems' => 1,
                 'maxitems' => 9999,
                 'appearance' => [
@@ -144,7 +144,7 @@ return [
             ],
         ],
         'hide_cond' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.hide_cond',
             'config' => [
                 'type' => 'select',
@@ -156,7 +156,7 @@ return [
             ],
         ],
         'step_feedback' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.step_feedback',
             'config' => [
                 'type' => 'inline',

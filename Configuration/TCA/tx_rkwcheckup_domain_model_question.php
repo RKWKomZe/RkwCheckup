@@ -25,7 +25,19 @@ return [
     'types' => [
         '1' => [
             'showitem' => '
-                title, description, mandatory, invert_feedback, sum_to_100, min_check, max_check, scale_left, scale_right, answer, 
+                type, title, description, mandatory, invert_feedback, sum_to_100, scale_left, scale_right, answer, 
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
+            '],
+        '2' => [
+            'showitem' => '
+                type, title, description, mandatory, invert_feedback, sum_to_100, answer, 
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
+            '],
+        '3' => [
+            'showitem' => '
+                type, title, description, mandatory, invert_feedback, sum_to_100, min_check, max_check, scale_left, scale_right, answer, 
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
@@ -76,7 +88,7 @@ return [
             ],
         ],
         'hidden' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
@@ -88,7 +100,7 @@ return [
             ],
         ],
         'type' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.type',
             'config' => [
                 'type' => 'select',
@@ -109,7 +121,7 @@ return [
             'onChange' => 'reload'
         ],
         'title' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.title',
             'config' => [
                 'type' => 'input',
@@ -118,7 +130,7 @@ return [
             ],
         ],
         'description' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.description',
             'config' => [
                 'type' => 'text',
@@ -128,7 +140,7 @@ return [
             ]
         ],
         'mandatory' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.mandatory',
             'config' => [
                 'type' => 'check',
@@ -147,7 +159,7 @@ return [
             ],
         ],
         'invert_feedback' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.invert_feedback',
             'config' => [
                 'type' => 'check',
@@ -160,7 +172,7 @@ return [
             ]
         ],
         'sum_to_100' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.sum_to_100',
             'config' => [
                 'type' => 'check',
@@ -175,7 +187,7 @@ return [
 
         ],
         'min_check' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.min_check',
             'config' => [
                 'type' => 'input',
@@ -199,7 +211,7 @@ return [
             ],
         ],
         'max_check' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.max_check',
             'config' => [
                 'type' => 'input',
@@ -223,7 +235,7 @@ return [
             ],
         ],
         'scale_left' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.scale_left',
             'config' => [
                 'type' => 'input',
@@ -233,7 +245,7 @@ return [
             'displayCond' => 'FIELD:type:=:2',
         ],
         'scale_right' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.scale_right',
             'config' => [
                 'type' => 'input',
@@ -243,7 +255,7 @@ return [
             'displayCond' => 'FIELD:type:=:2',
         ],
         'answer' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.answer',
             'config' => [
                 'type' => 'inline',
@@ -267,7 +279,7 @@ return [
             ],
         ],
         'hide_cond' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.hide_cond',
             'config' => [
                 'type' => 'select',

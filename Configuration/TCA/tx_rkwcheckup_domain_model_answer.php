@@ -76,7 +76,7 @@ return [
             ],
         ],
         'hidden' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
@@ -88,7 +88,7 @@ return [
             ],
         ],
         'title' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.title',
             'config' => [
                 'type' => 'input',
@@ -97,7 +97,7 @@ return [
             ],
         ],
         'description' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.description',
             'config' => [
                 'type' => 'text',
@@ -107,7 +107,7 @@ return [
             ]
         ],
         'response' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.response',
             'config' => [
                 'type' => 'text',
@@ -118,7 +118,7 @@ return [
             'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
         ],
         'image' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'image',
@@ -130,7 +130,7 @@ return [
             'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
         ],
         'file' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.file',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'file',
@@ -142,7 +142,7 @@ return [
             'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
         ],
         'link' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.link',
             'config' => [
                 'type' => 'input',

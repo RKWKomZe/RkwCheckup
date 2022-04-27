@@ -70,7 +70,7 @@ return [
             ],
         ],
         'hidden' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
@@ -82,7 +82,7 @@ return [
             ],
         ],
         'crdate' => [
-            'exclude' => true,
+            'exclude' => false,
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -96,7 +96,7 @@ return [
         ],
 
         'hash' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.hash',
             'config' => [
                 'type' => 'input',
@@ -105,7 +105,7 @@ return [
             ],
         ],
         'finished' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.finished',
             'config' => [
                 'type' => 'check',
@@ -118,7 +118,7 @@ return [
             ]
         ],
         'last_step' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.last_step',
             'config' => [
                 'type' => 'check',
@@ -131,7 +131,7 @@ return [
             ]
         ],
         'show_step_feedback' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.show_step_feedback',
             'config' => [
                 'type' => 'check',
@@ -144,7 +144,7 @@ return [
             ]
         ],
         'show_section_intro' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.show_section_intro',
             'config' => [
                 'type' => 'check',
@@ -157,7 +157,7 @@ return [
             ]
         ],
         'checkup' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.checkup',
             'config' => [
                 'type' => 'inline',
@@ -174,7 +174,7 @@ return [
             ],
         ],
         'current_section' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.current_section',
             'config' => [
                 'type' => 'inline',
@@ -191,7 +191,7 @@ return [
             ],
         ],
         'current_step' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.current_step',
             'config' => [
                 'type' => 'inline',
@@ -208,7 +208,7 @@ return [
             ],
         ],
         'current_question' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.current_question',
             'config' => [
                 'type' => 'inline',
@@ -225,7 +225,7 @@ return [
             ],
         ],
         'result_answer' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.result_answer',
             'config' => [
                 'type' => 'select',
@@ -269,7 +269,7 @@ return [
 
         'new_result_answer' => [
             'readOnly' => true,
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.new_result_answer',
             'config' => [
                 'type' => 'inline',
