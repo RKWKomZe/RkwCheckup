@@ -11,7 +11,15 @@
 
     <div class="form__field form__field--webcheck">
         <label>
-            (Optional) Freitextfeld
+            <f:if condition="{question.titleTextInput}">
+                <f:then>
+                    {question.titleTextInput}
+                </f:then>
+                <f:else>
+                    (Optional) Sonstiges
+                </f:else>
+            </f:if>
+
         </label>
         <f:form.textfield
             property="newResultAnswer.{questionIter.cycle}.freeTextInput"

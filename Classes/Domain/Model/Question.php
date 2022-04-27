@@ -73,6 +73,13 @@ class Question extends AbstractCheckupContents
      */
     protected $allowTextInput = false;
 
+    /**
+     * titleTextInput
+     *
+     * @var string
+     */
+    protected $titleTextInput = '';
+
 
     /**
      * sumTo100
@@ -273,6 +280,24 @@ class Question extends AbstractCheckupContents
     public function setAllowTextInput(bool $allowTextInput): void
     {
         $this->allowTextInput = $allowTextInput;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getTitleTextInput(): string
+    {
+        return $this->titleTextInput;
+    }
+
+
+    /**
+     * @param string $titleTextInput
+     */
+    public function setTitleTextInput(string $titleTextInput): void
+    {
+        $this->titleTextInput = $titleTextInput;
     }
 
 

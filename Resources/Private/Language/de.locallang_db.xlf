@@ -171,6 +171,10 @@
                 <source>Allow free text input</source>
                 <target>Freitext-Feld als Antwortmöglichkeit hinzufügen</target>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.title_text_input">
+                <source>Title text input</source>
+                <target>Titel des Freitextfeldes (z.B. "Sonstige Antwort")</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.sum_to_100">
                 <source>Sum to 100</source>
                 <target>Summe aller Antworten muss 100 (%) ergeben</target>

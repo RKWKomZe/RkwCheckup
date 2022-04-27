@@ -102,6 +102,9 @@
             <trans-unit id="tx_rkwcheckup_domain_model_question.allow_text_input">
                 <source>Allow free text input</source>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.title_text_input">
+                <source>Title text input</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.sum_to_100">
                 <source>Sum to 100</source>
             </trans-unit>

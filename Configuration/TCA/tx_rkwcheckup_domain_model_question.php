@@ -16,34 +16,39 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'type,title,description,mandatory,invert_feedback,allow_text_input,sum_to_100,min_check,max_check,scale_left,scale_right,answer,hide_cond,standard_feedback',
+        'searchFields' => 'type,title,description,mandatory,invert_feedback,allow_text_input,title_text_input,sum_to_100,min_check,max_check,scale_left,scale_right,answer,hide_cond,standard_feedback',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_question.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, mandatory, invert_feedback, allow_text_input, sum_to_100, min_check, max_check, scale_left, scale_right, hide_cond, answer, standard_feedback',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, description, mandatory, invert_feedback, allow_text_input, title_text_input, sum_to_100, min_check, max_check, scale_left, scale_right, hide_cond, answer, standard_feedback',
     ],
     'types' => [
         '1' => [
             'showitem' => '
-                type, title, description, mandatory, invert_feedback, allow_text_input, sum_to_100, scale_left, scale_right, answer, 
+                type, title, description, mandatory, invert_feedback, --palette--;;freeTextPalette, sum_to_100, scale_left, scale_right, answer, 
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, standard_feedback,
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
         '2' => [
             'showitem' => '
-                type, title, description, mandatory, invert_feedback, allow_text_input, sum_to_100, answer, 
+                type, title, description, mandatory, invert_feedback, --palette--;;freeTextPalette, sum_to_100, answer, 
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, standard_feedback,
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
         '3' => [
             'showitem' => '
-                type, title, description, mandatory, invert_feedback, allow_text_input, sum_to_100, min_check, max_check, scale_left, scale_right, answer, 
+                type, title, description, mandatory, invert_feedback, --palette--;;freeTextPalette, sum_to_100, min_check, max_check, scale_left, scale_right, answer, 
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, standard_feedback,
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
+    ],
+    'palettes' => [
+        'freeTextPalette' => [
+            'showitem' => 'allow_text_input, title_text_input',
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -186,6 +191,15 @@ return [
                 ],
                 'default' => 1,
             ]
+        ],
+        'title_text_input' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.title_text_input',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
         ],
         'sum_to_100' => [
             'exclude' => false,
