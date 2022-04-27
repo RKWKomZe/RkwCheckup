@@ -1,6 +1,5 @@
 <?php
-
-namespace RKW\RkwCheckup;
+namespace RKW\RkwCheckup\Domain\Model;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -16,14 +15,14 @@ namespace RKW\RkwCheckup;
  */
 
 /**
- * Class Exception
+ * Class AbstractCheckupContents
  *
- * @author Steffen Kroggel <developer@steffenkroggel.de>
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Exception extends \Exception
+abstract class AbstractCheckupContents extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-
+   
 }

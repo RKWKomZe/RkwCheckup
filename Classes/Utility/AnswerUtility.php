@@ -2,14 +2,6 @@
 
 namespace RKW\RkwCheckup\Utility;
 
-use RKW\RkwCheckup\Domain\Model\Checkup;
-use RKW\RkwCheckup\Domain\Model\Question;
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Domain\Model\Section;
-use RKW\RkwCheckup\Domain\Model\Step;
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -22,6 +14,12 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Model\Question;
+use RKW\RkwCheckup\Domain\Model\Section;
+use RKW\RkwCheckup\Domain\Model\Step;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
  * Class AnswerUtility
@@ -40,12 +38,16 @@ class AnswerUtility
      * - used in UserFunc for condition handling
      *
      * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
-     * @param AbstractEntity|null                  $stopEntity The section, step or question to stop adding more to list
-     * @param bool                                 $asArrayForTca Return answers as small data array if true. Otherwise as objects
+     * @param AbstractEntity|null $stopEntity The section, step or question to stop adding more to list
+     * @param bool $asArrayForTca Return answers as small data array if true. Otherwise as objects
      * @return array
      */
-    public static function fetchAllOfCheckup (Checkup $checkup, AbstractEntity $stopEntity = null, $asArrayForTca = false)
-    {
+    public static function fetchAllOfCheckup (
+        Checkup $checkup, 
+        AbstractEntity $stopEntity = null, 
+        bool $asArrayForTca = false
+    ): array {
+        
         $answerListOfCheckup = [];
         $stopSearching = false;
         /** @var Section $section */

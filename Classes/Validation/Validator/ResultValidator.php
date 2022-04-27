@@ -2,6 +2,7 @@
 
 namespace RKW\RkwCheckup\Validation\Validator;
 
+use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Step\ProgressHandler;
 use RKW\RkwCheckup\Utility\CheckupUtility;
 use RKW\RkwEvents\Utility\DivUtility;
@@ -41,6 +42,7 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
      */
     protected $settings = null;
 
+    
     /**
      * validation
      *

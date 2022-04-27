@@ -23,11 +23,8 @@ use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
 use RKW\RkwCheckup\Domain\Repository\SectionRepository;
 use RKW\RkwCheckup\Domain\Repository\StepRepository;
 use RKW\RkwCheckup\Utility\AnswerUtility;
-use RKW\RkwQuickcheck\Domain\Model\Check;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class TcaProcFunc
@@ -69,9 +66,9 @@ class TcaProcFunc
      * getCheckup
      *
      * @param array $params
-     * @return Checkup $checkup
+     * @return \RKW\RkwCheckup\Domain\Model\Checkup|null $checkup
      */
-    private function getCheckup(array $params): Checkup
+    private function getCheckup(array $params)
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
@@ -97,7 +94,7 @@ class TcaProcFunc
             /** @var SectionRepository $sectionRepository */
             $sectionRepository = $objectManager->get(SectionRepository::class);
             /** @var Section $section */
-            $sectionUid = $stepUid ? $stepUid : intval($params['row']['section']);
+            $sectionUid = $stepUid ?: intval($params['row']['section']);
             $section = $sectionRepository->findByIdentifier($sectionUid);
             if ($section instanceof Section) {
                 $checkupUid = $section->getCheckup()->getUid();
@@ -112,7 +109,7 @@ class TcaProcFunc
             /** @var CheckupRepository $checkupRepository */
             $checkupRepository = $objectManager->get(CheckupRepository::class);
             /** @var Checkup $checkup */
-            $checkupUid = $checkupUid ? $checkupUid : intval($params['row']['checkup']);
+            $checkupUid = $checkupUid ?: intval($params['row']['checkup']);
             $checkup = $checkupRepository->findByIdentifier($checkupUid);
         }
 
@@ -126,9 +123,9 @@ class TcaProcFunc
      * -> by this reason we stop to show further answers at the section or step which is currently shown
      *
      * @param array $params
-     * @return \TYPO3\CMS\Extbase\DomainObject\AbstractEntity $entity
+     * @return \TYPO3\CMS\Extbase\DomainObject\AbstractEntity|null $entity
      */
-    private function getEntityToStop(array $params): AbstractEntity
+    private function getEntityToStop(array $params)
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
@@ -153,7 +150,7 @@ class TcaProcFunc
             /** @var StepRepository $stepRepository */
             $stepRepository = $objectManager->get(StepRepository::class);
             /** @var Step $entityToStop */
-            $stepUid = $stepToStopUid ? $stepToStopUid : intval($params['row']['uid']);
+            $stepUid = $stepToStopUid ?: intval($params['row']['uid']);
             $entityToStop = $stepRepository->findByIdentifier($stepUid);
         }
 
@@ -166,7 +163,6 @@ class TcaProcFunc
 
         return $entityToStop;
     }
-
 
 
     /**

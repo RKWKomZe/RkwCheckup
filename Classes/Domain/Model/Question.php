@@ -24,7 +24,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Question extends AbstractCheckupContents
 {
     /**
      * Single choice or multiple choice

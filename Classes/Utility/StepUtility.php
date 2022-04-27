@@ -1,16 +1,6 @@
 <?php
 
 namespace RKW\RkwCheckup\Utility;
-
-use RKW\RkwCheckup\Domain\Model\Answer;
-use RKW\RkwCheckup\Domain\Model\Question;
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Domain\Model\Section;
-use RKW\RkwCheckup\Domain\Model\Step;
-use RKW\RkwCheckup\Domain\Model\StepFeedback;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -23,6 +13,13 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use RKW\RkwCheckup\Domain\Model\AbstractCheckupContents;
+use RKW\RkwCheckup\Domain\Model\Question;
+use RKW\RkwCheckup\Domain\Model\Result;
+use RKW\RkwCheckup\Domain\Model\Section;
+use RKW\RkwCheckup\Domain\Model\Step;
+use RKW\RkwCheckup\Domain\Model\StepFeedback;
 
 /**
  * Class StepUtility
@@ -39,15 +36,17 @@ class StepUtility
      *
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      */
-    private static $result = null;
+    private static $result;
 
+    
     /**
      * currentSection
      *
      * @param \RKW\RkwCheckup\Domain\Model\Section $sectionToCheck
      */
-    private static $currentSection = null;
+    private static $currentSection;
 
+    
     /**
      * which step comes next? Replace step and / or section of the given result
      *
@@ -55,7 +54,7 @@ class StepUtility
      * @return void
      * @throws \Exception
      */
-    public static function next ($result)
+    public static function next (Result $result): void
     {
         self::$result = $result;
 
@@ -100,7 +99,7 @@ class StepUtility
      *
      * @return void
      */
-    protected static function fastForwardToCurrentSection ()
+    protected static function fastForwardToCurrentSection (): void
     {
         // iterate sections
         $sectionsTotal = self::$result->getCheckup()->getSection()->count();
@@ -124,7 +123,7 @@ class StepUtility
      *
      * @return void
      */
-    protected static function fastForwardToCurrentStep ()
+    protected static function fastForwardToCurrentStep (): void
     {
         // iterate steps
         $stepsTotal = self::$currentSection->getStep()->count();
@@ -148,7 +147,7 @@ class StepUtility
      *
      * @return bool
      */
-    protected static function showStepFeedback ()
+    protected static function showStepFeedback (): bool
     {
         // is already true? Then reset the value and return false (we'll never show a feedback twice)
         if (self::$result->isShowStepFeedback()) {
@@ -171,11 +170,11 @@ class StepUtility
     /**
      * setNextStepToResult
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Result $result
+     * @param \RKW\RkwCheckup\Domain\Model\Result|null $result
      * @return void
      * @throws \Exception
      */
-    protected static function setNextStepToResult (Result $result = null)
+    protected static function setNextStepToResult (Result $result = null): void
     {
         if ($result) {
             self::$result = $result;
@@ -187,6 +186,7 @@ class StepUtility
         if ($nextStep = self::$currentSection->getStep()->current()) {
             // either: Set next step in current section
             self::$result->setCurrentStep($nextStep);
+            
         } else {
             // or: Set next section with it's first step
             // fast forward to next section
@@ -215,7 +215,7 @@ class StepUtility
      * @return bool
      * @throws \Exception
      */
-    protected static function showNextStep (Step $step, Section $section)
+    protected static function showNextStep (Step $step, Section $section): bool
     {
 
         // check if whole section should be skipped
@@ -250,14 +250,15 @@ class StepUtility
     }
 
 
+    
     /**
      * toggleLastStepFlag
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Result $result
+     * @param \RKW\RkwCheckup\Domain\Model\Result|null $result
      * @return void
      * @throws \Exception
      */
-    public static function toggleLastStepFlag (Result $result = null)
+    public static function toggleLastStepFlag (Result $result = null): void
     {
         if ($result) {
             self::$result = $result;
@@ -312,11 +313,10 @@ class StepUtility
      * checkHideCond
      * returns true on hideCond match
      *
-     * @param Question|Step|Section $entity
-     *
+     * @param \RKW\RkwCheckup\Domain\Model\AbstractCheckupContents $entity
      * @return bool
      */
-    protected static function checkHideCond ($entity) : bool
+    protected static function checkHideCond (AbstractCheckupContents $entity) : bool
     {
         foreach ($entity->getHideCond() as $hideCondition) {
             foreach (self::$result->getResultAnswer() as $resultAnswer) {
