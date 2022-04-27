@@ -13,10 +13,8 @@ namespace RKW\RkwCheckup\ViewHelpers\Php;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithContentArgumentAndRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 
@@ -43,7 +41,7 @@ class StrReplaceViewHelper extends AbstractViewHelper {
         $this->registerArgument('search', 'string', 'Search value', true);
         $this->registerArgument('replace', 'string', 'Replace value', true);
         $this->registerArgument('subject', 'string', 'The subject', true);
-        $this->registerArgument('count', 'int', 'The counter', false);
+        $this->registerArgument('count', 'int', 'The counter');
     }
 
     /**
@@ -54,8 +52,11 @@ class StrReplaceViewHelper extends AbstractViewHelper {
      * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
      * @return string
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
-    {
+    public static function renderStatic(
+        array $arguments, 
+        \Closure $renderChildrenClosure, 
+        RenderingContextInterface $renderingContext
+    ) {
         return str_replace($arguments['search'], $arguments['replace'], $arguments['subject'], $arguments['count']);
     }
 }

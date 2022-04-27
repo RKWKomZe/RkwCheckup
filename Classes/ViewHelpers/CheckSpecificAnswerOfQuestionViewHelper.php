@@ -13,10 +13,9 @@ namespace RKW\RkwCheckup\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use RKW\RkwCheckup\Domain\Model\Answer;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithContentArgumentAndRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 
@@ -40,8 +39,8 @@ class CheckSpecificAnswerOfQuestionViewHelper extends AbstractViewHelper {
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('resultSet', 'array', 'result set from GetAnswersOfQuestionViewHelper');
-        $this->registerArgument('answer', '\RKW\RkwCheckup\Domain\Model\Answer', 'The answer to check');
+        $this->registerArgument('resultSet', 'array', 'result set from GetAnswersOfQuestionViewHelper', true);
+        $this->registerArgument('answer', Answer::class, 'The answer to check', true);
     }
 
     /**
