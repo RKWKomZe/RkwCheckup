@@ -4,11 +4,15 @@ namespace RKW\RkwCheckup\Step;
 
 use RKW\RkwBasics\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\ResultAnswer;
 use RKW\RkwCheckup\Domain\Repository\ResultRepository;
+use RKW\RkwCheckup\Exception;
 use RKW\RkwCheckup\Utility\StepUtility;
 use RKW\RkwRegistration\Domain\Repository\FrontendUserRepository;
+use TYPO3\CMS\Core\Log\Logger;
+use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
@@ -37,6 +41,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class ProgressHandler
 {
+    
     /**
      * Setting
      *
@@ -44,11 +49,13 @@ class ProgressHandler
      */
     protected $settings;
 
+    
     /**
      * @var \RKW\RkwCheckup\Domain\Model\Result
      */
     protected $result;
 
+    
     /**
      * create new result
      *
@@ -76,6 +83,7 @@ class ProgressHandler
         StepUtility::toggleLastStepFlag($this->result);
     }
 
+    
     /**
      * validateQuestion
      * Hint: Works with "getNewResultAnswer" (NOT with the persistent "getResultAnswer")
@@ -84,10 +92,10 @@ class ProgressHandler
      * @return string Returns error message if something is wrong
      * @throws \Exception
      */
-    public function validateQuestion ($question)
+    public function validateQuestion (Question $question): string
     {
         if (!$this->result) {
-            throw new \Exception('No result set.', 1638189967);
+            throw new Exception('No result set.', 1638189967);
         }
 
         // 1. Assign answers to given question
@@ -208,6 +216,7 @@ class ProgressHandler
         return '';
     }
 
+    
     /**
      * moveNewResultAnswers
      * Moves answers from "newAnswers" to "answers"
@@ -215,10 +224,10 @@ class ProgressHandler
      * @return void
      * @throws \Exception
      */
-    public function moveNewResultAnswers ()
+    public function moveNewResultAnswers (): void
     {
         if (!$this->result) {
-            throw new \Exception('No result set.', 1638189967);
+            throw new Exception('No result set.', 1638189967);
         }
 
         /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
@@ -228,6 +237,7 @@ class ProgressHandler
             $this->result->removeNewResultAnswer($resultAnswer);
         }
     }
+    
 
     /**
      * setNextStep
@@ -235,14 +245,15 @@ class ProgressHandler
      * @return void
      * @throws \Exception
      */
-    public function setNextStep ()
+    public function setNextStep (): void
     {
         if (!$this->result) {
-            throw new \Exception('No result set.', 1638189967);
+            throw new Exception('No result set.', 1638189967);
         }
 
         StepUtility::next($this->result);
     }
+
 
     /**
      * progressValidation
@@ -251,14 +262,15 @@ class ProgressHandler
      * would be different)
      *
      * @return bool returns true, if the results are related to the current step
+     * @throws Exception
      */
-    public function progressValidation ()
+    public function progressValidation (): bool
     {
         // for secure: Check if the step of the answer are identical with current step which is set in the result object
         // (someone could step back via browser and send answers again. In this case the answer-step and the result-step
         // would be different)
         if (!$this->result) {
-            throw new \Exception('No result set.', 1638189967);
+            throw new Exception('No result set.', 1638189967);
         }
 
         /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
@@ -272,12 +284,15 @@ class ProgressHandler
         return true;
     }
 
+
     /**
      * persist
      *
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
-    public function persist ()
+    public function persist (): void
     {
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
@@ -293,6 +308,7 @@ class ProgressHandler
         $persistenceManager = $objectManager->get(PersistenceManager::class);
         $persistenceManager->persistAll();
     }
+    
 
     /**
      * Set result
@@ -300,45 +316,47 @@ class ProgressHandler
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
      */
-    public function setResult (\RKW\RkwCheckup\Domain\Model\Result $result)
+    public function setResult (\RKW\RkwCheckup\Domain\Model\Result $result): void
     {
         $this->result = $result;
     }
+    
 
     /**
      * Returns result
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Result $result
+     * @return \RKW\RkwCheckup\Domain\Model\Result|null $result
      */
     public function getResult ()
     {
         return $this->result;
     }
 
+    
     /**
      * Returns logger instance
      *
      * @return \TYPO3\CMS\Core\Log\Logger
      */
-    public function getLogger ()
+    public function getLogger (): Logger
     {
-        return GeneralUtility::makeInstance('TYPO3\CMS\Core\Log\LogManager')->getLogger(__CLASS__);
+        return GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
     }
 
+    
     /**
      * Returns TYPO3 settings
      *
      * @return array
      * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
-    protected function getSettings ()
+    protected function getSettings (): array
     {
 
         if (!$this->settings) {
             $this->settings = GeneralUtility::getTyposcriptConfiguration('Rkwcheckup');
         }
-
-
+        
         if (!$this->settings) {
             return array();
         }
