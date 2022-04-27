@@ -3,13 +3,13 @@
 
     <f:if condition="{result.currentStep}">
     
-        <f:render partial="Step/Header" arguments="{_all}" />
-        <f:render partial="Step/Intro" arguments="{_all}" />
+        <f:render partial="Step/Main/Header" arguments="{_all}" />
+        <f:render partial="Step/Main/Intro" arguments="{_all}" />
 
         <div class="contentbox contentbox--gray contentbox--webcheck webcheck">
             <f:if condition="{result.showStepFeedback}">
                 <f:then>
-                    <f:render partial="Step/Feedback" arguments="{_all}" />
+                    <f:render partial="Step/Main/Feedback" arguments="{_all}" />
                 </f:then>
                 <f:else>
                     <f:if condition="{result.currentStep.question}">
