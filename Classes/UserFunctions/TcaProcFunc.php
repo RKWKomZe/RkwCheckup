@@ -23,7 +23,9 @@ use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
 use RKW\RkwCheckup\Domain\Repository\SectionRepository;
 use RKW\RkwCheckup\Domain\Repository\StepRepository;
 use RKW\RkwCheckup\Utility\AnswerUtility;
+use RKW\RkwQuickcheck\Domain\Model\Check;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
@@ -45,16 +47,16 @@ class TcaProcFunc
      */
     protected $configurationManager;
 
+    
     /**
      * Returns answerList of a check
      *
      * @param array $params
      * @return void
      */
-    public function getAnswerList($params)
+    public function getAnswerList(array $params): void
     {
         $checkup = $this->getCheckup($params);
-
         $entityToStop = $this->getEntityToStop($params);
 
         if ($checkup instanceof Checkup) {
@@ -69,7 +71,7 @@ class TcaProcFunc
      * @param array $params
      * @return Checkup $checkup
      */
-    private function getCheckup($params)
+    private function getCheckup(array $params): Checkup
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
@@ -126,7 +128,7 @@ class TcaProcFunc
      * @param array $params
      * @return \TYPO3\CMS\Extbase\DomainObject\AbstractEntity $entity
      */
-    private function getEntityToStop($params)
+    private function getEntityToStop(array $params): AbstractEntity
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
@@ -173,9 +175,10 @@ class TcaProcFunc
      * @param array $params
      * @return bool
      */
-    public function displayCondByParentType($params)
+    public function displayCondByParentType(array $params): bool
     {
         //DebuggerUtility::var_dump($params); exit;
+        return true;
     }
 
 
