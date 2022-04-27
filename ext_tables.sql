@@ -101,6 +101,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_step (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text,
+    hide_text smallint(5) unsigned DEFAULT '1' NOT NULL,
     question int(11) unsigned DEFAULT '0' NOT NULL,
 	hide_cond varchar(255) DEFAULT '' NOT NULL,
 	step_feedback int(11) unsigned DEFAULT '0',

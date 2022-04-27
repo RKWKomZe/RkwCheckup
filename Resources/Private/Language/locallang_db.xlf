@@ -51,6 +51,9 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_step.description">
 				<source>Description</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_step.hide_text">
+                <source>Hide Text</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.question">
                 <source>Question</source>
             </trans-unit>

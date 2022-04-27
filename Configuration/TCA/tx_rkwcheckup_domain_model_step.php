@@ -16,16 +16,16 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'title,description,question,hide_cond,step_feedback',
+        'searchFields' => 'title,description,hide_text,question,hide_cond,step_feedback',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_step.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_cond, step_feedback, question',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_text, hide_cond, step_feedback, question',
     ],
     'types' => [
         '1' => [
             'showitem' => '
-                title, description, question, 
+                title, description, hide_text, question, 
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.tab.extend, hide_cond, step_feedback,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
@@ -104,6 +104,19 @@ return [
                 'cols' => 40,
                 'rows' => 5,
                 'eval' => 'trim'
+            ]
+        ],
+        'hide_text' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.hide_text',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
+                    ]
+                ],
+                'default' => 1,
             ]
         ],
         'question' => [
