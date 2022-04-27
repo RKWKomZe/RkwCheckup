@@ -15,7 +15,12 @@ namespace RKW\RkwCheckup\Domain\Model;
  */
 
 /**
- * QuestionContainer
+ * Class QuestionContainer
+ *
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwCheckup
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class QuestionContainer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {

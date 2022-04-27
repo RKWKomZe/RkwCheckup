@@ -200,7 +200,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_question (
     invert_feedback smallint(5) unsigned DEFAULT '1' NOT NULL,
     sum_to_100 smallint(5) unsigned DEFAULT '0' NOT NULL,
 	min_check int(11) DEFAULT '0' NOT NULL,
-	max_check varchar(255) DEFAULT '' NOT NULL,
+	max_check int(11) DEFAULT '0' NOT NULL,
 	answer int(11) unsigned DEFAULT '0',
 	hide_cond varchar(255) DEFAULT '' NOT NULL,
 	scale_left varchar(255) DEFAULT '' NOT NULL,

@@ -85,9 +85,9 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * maxCheck
      *
-     * @var string
+     * @var int
      */
-    protected $maxCheck = '';
+    protected $maxCheck = 0;
 
     
     /**
@@ -302,20 +302,21 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the maxCheck
      *
-     * @return string $maxCheck
+     * @return int $maxCheck
      */
-    public function getMaxCheck(): string
+    public function getMaxCheck(): int
     {
         return $this->maxCheck;
     }
 
+    
     /**
      * Sets the maxCheck
      *
-     * @param string $maxCheck
+     * @param int $maxCheck
      * @return void
      */
-    public function setMaxCheck(string $maxCheck): void
+    public function setMaxCheck(int $maxCheck): void
     {
         $this->maxCheck = $maxCheck;
     }
