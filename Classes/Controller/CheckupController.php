@@ -26,33 +26,30 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
 {
+    
     /**
      * checkupRepository
      *
      * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
      * @inject
      */
-    protected $checkupRepository = null;
+    protected $checkupRepository;
 
-    /**
-     * resultRepository
-     *
-     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
-     * @inject
-     */
-    protected $resultRepository = null;
+    
 
     /**
      * progressHandler
      *
      * @var \RKW\RkwCheckup\Step\ProgressHandler
      */
-    protected $progressHandler = null;
+    protected $progressHandler;
 
+    
     /**
      * initializeAction
+     * @return void
      */
-    public function initializeAction()
+    public function initializeAction(): void
     {
         $this->progressHandler = $this->objectManager->get(ProgressHandler::class);
     }
@@ -63,18 +60,23 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      * @param \RKW\RkwCheckup\Domain\Model\Checkup
      * @return void
      */
-    public function indexAction()
+    public function indexAction(): void
     {
-        $this->view->assign('checkup', $this->checkupRepository->findByUid(intval($this->settings['checkup'])));
+        $this->view->assign(
+            'checkup', 
+            $this->checkupRepository->findByUid(intval($this->settings['checkup']))
+        );
     }
 
     /**
      * action new
      *
-     * @param int $terms
+     * @param bool $terms
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      */
-    public function newAction($terms = 0)
+    public function newAction(bool $terms = false): void
     {
         // check terms
         if (!$terms) {
@@ -94,7 +96,12 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
         $this->progressHandler->newResult($checkup);
         $this->progressHandler->persist();
 
-        $this->redirect('progress', null, null, ['result' => $this->progressHandler->getResult()]);
+        $this->redirect(
+            'progress', 
+            null, 
+            null, 
+            ['result' => $this->progressHandler->getResult()]
+        );
     }
 
     /**
@@ -102,11 +109,19 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      *
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      */
-    public function progressAction(Result $result)
+    public function progressAction(Result $result): void
     {
+        
         if ($result->isFinished()) {
-            $this->redirect('result', null, null, ['result' => $result]);
+            $this->redirect(
+                'result', 
+                null, 
+                null, 
+                ['result' => $result]
+            );
         }
 
         $this->view->assign('result', $result);
@@ -119,7 +134,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentNameException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      */
-    public function initializeValidateAction()
+    public function initializeValidateAction(): void
     {
         if ($this->request->hasArgument('result')) {
             $result = $this->request->getArgument('result');
@@ -180,7 +195,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      * @return void
      * @throws \Exception
      */
-    public function validateAction(Result $result)
+    public function validateAction(Result $result): void
     {
         $this->progressHandler->setResult($result);
         if ($this->progressHandler->progressValidation()){
@@ -189,7 +204,12 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
             $this->progressHandler->persist();
         }
 
-        $this->forward('progress', null, null, ['result' => $result]);
+        $this->forward(
+            'progress', 
+            null, 
+            null, 
+            ['result' => $result]
+        );
     }
 
     /**
@@ -199,10 +219,15 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
-    public function resultAction(Result $result)
+    public function resultAction(Result $result): void
     {
         if (!$result->isFinished()) {
-            $this->forward('progress', null, null, ['result' => $result]);
+            $this->forward(
+                'progress', 
+                null, 
+                null,
+                ['result' => $result]
+            );
         }
 
         $this->view->assign('result', $result);

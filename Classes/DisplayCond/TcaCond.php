@@ -14,15 +14,8 @@ namespace RKW\RkwCheckup\DisplayCond;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Question;
-use RKW\RkwCheckup\Domain\Model\Section;
-use RKW\RkwCheckup\Domain\Model\Step;
-use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
 use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
-use RKW\RkwCheckup\Domain\Repository\SectionRepository;
-use RKW\RkwCheckup\Domain\Repository\StepRepository;
-use RKW\RkwCheckup\Utility\AnswerUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
@@ -52,13 +45,14 @@ class TcaCond
      * @param array $params
      * @return bool
      */
-    public function answerDisplayCondByParentType($params)
+    public function answerDisplayCondByParentType(array $params): bool
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
         /** @var QuestionRepository $questionRepository */
         $questionRepository = $objectManager->get(QuestionRepository::class);
+        
         /** @var Question $entityToStop */
         $question = $questionRepository->findByIdentifier(intval($params['record']['question']));
         if ($question instanceof Question) {
@@ -70,6 +64,5 @@ class TcaCond
 
         return true;
     }
-
-
+    
 }

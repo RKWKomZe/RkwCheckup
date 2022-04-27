@@ -1,19 +1,26 @@
 <?php
 namespace RKW\RkwCheckup\Domain\Model;
 
-/***
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * This file is part of the "RKW Checkup" Extension for TYPO3 CMS.
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2021 Maximilian Fäßler <maximilian@faesslerweb.de>, Fäßler Web UG
- *
- ***/
+ * The TYPO3 project - inspiring people to share!
+ */
 
 /**
- * Answer
+ * Class Answer
+ *
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwCheckup
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
@@ -24,6 +31,7 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $title = '';
 
+    
     /**
      * description
      *
@@ -31,6 +39,7 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $description = '';
 
+    
     /**
      * response
      *
@@ -38,22 +47,25 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $response = '';
 
+    
     /**
      * image
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @cascade remove
      */
-    protected $image = null;
+    protected $image;
 
+    
     /**
      * file
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @cascade remove
      */
-    protected $file = null;
+    protected $file;
 
+    
     /**
      * link
      *
@@ -61,47 +73,52 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $link = '';
 
+    
     /**
      * Returns the title
      *
      * @return string $title
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
+    
     /**
      * Sets the title
      *
      * @param string $title
      * @return void
      */
-    public function setTitle($title)
+    public function setTitle(string $title)
     {
         $this->title = $title;
     }
 
+    
     /**
      * Returns the description
      *
      * @return string $description
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
+    
     /**
      * Sets the description
      *
      * @param string $description
      * @return void
      */
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
+    
 
     /**
      * @return string
@@ -111,6 +128,7 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->response;
     }
 
+    
     /**
      * @param string $response
      */
@@ -129,13 +147,14 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->image;
     }
 
+    
     /**
      * Sets the image
      *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
      * @return void
      */
-    public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
+    public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image): void
     {
         $this->image = $image;
     }
@@ -143,7 +162,7 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the file
      *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference|null $file
      */
     public function getFile()
     {
@@ -160,24 +179,26 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->file = $file;
     }
+    
 
     /**
      * Returns the link
      *
      * @return string $link
      */
-    public function getLink()
+    public function getLink(): string
     {
         return $this->link;
     }
 
+    
     /**
      * Sets the link
      *
      * @param string $link
      * @return void
      */
-    public function setLink($link)
+    public function setLink(string $link): void
     {
         $this->link = $link;
     }

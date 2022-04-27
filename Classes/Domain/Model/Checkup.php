@@ -1,16 +1,20 @@
 <?php
 namespace RKW\RkwCheckup\Domain\Model;
 
-/***
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * This file is part of the "RKW Checkup" Extension for TYPO3 CMS.
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2021 Maximilian Fäßler <maximilian@faesslerweb.de>, Fäßler Web UG
- *
- ***/
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Check
@@ -25,6 +29,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $section = null;
 
+    
     /**
      * title
      *
@@ -32,6 +37,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $title = '';
 
+    
     /**
      * description
      *
@@ -39,13 +45,15 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $description = '';
 
+    
     /**
      * contextQuestion
      *
      * @var \RKW\RkwCheckup\Domain\Model\Question
      */
-    protected $contextQuestion = null;
+    protected $contextQuestion;
 
+    
     /**
      * __construct
      */
@@ -54,6 +62,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
+    
 
     /**
      * Initializes all ObjectStorage properties
@@ -68,100 +77,114 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->section = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
+    
     /**
      * Returns the title
      *
      * @return string $title
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
+    
     /**
      * Sets the title
      *
      * @param string $title
      * @return void
      */
-    public function setTitle($title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
 
+    
     /**
      * Returns the description
      *
      * @return string $description
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
+    
     /**
      * Sets the description
      *
      * @param string $description
      * @return void
      */
-    public function setDescription($description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
+    
 
     /**
      * Adds a Section
      *
      * @param \RKW\RkwCheckup\Domain\Model\Section $section
      * @return void
+     * @api
      */
-    public function addSection(\RKW\RkwCheckup\Domain\Model\Section $section)
+    public function addSection(\RKW\RkwCheckup\Domain\Model\Section $section): void
     {
         $this->section->attach($section);
     }
 
+    
     /**
      * Removes a Section
      *
      * @param \RKW\RkwCheckup\Domain\Model\Section $sectionToRemove The Section to be removed
      * @return void
+     * @api
      */
-    public function removeSection(\RKW\RkwCheckup\Domain\Model\Section $sectionToRemove)
+    public function removeSection(\RKW\RkwCheckup\Domain\Model\Section $sectionToRemove): void
     {
         $this->section->detach($sectionToRemove);
     }
 
+    
     /**
      * Returns the section
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section> $section
+     * @api
      */
-    public function getSection()
+    public function getSection(): ObjectStorage
     {
         return $this->section;
     }
 
+    
     /**
      * Sets the section
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section> $section
      * @return void
+     * @api
      */
-    public function setSection(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $section)
+    public function setSection(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $section): void
     {
         $this->section = $section;
     }
 
+    
     /**
      * Returns the contextQuestion
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Question $contextQuestion
+     * @return \RKW\RkwCheckup\Domain\Model\Question|null $contextQuestion
      */
     public function getContextQuestion()
     {
         return $this->contextQuestion;
     }
+    
 
     /**
      * Sets the contextQuestion
@@ -169,7 +192,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \RKW\RkwCheckup\Domain\Model\Question $contextQuestion
      * @return void
      */
-    public function setContextQuestion(\RKW\RkwCheckup\Domain\Model\Question $contextQuestion)
+    public function setContextQuestion(\RKW\RkwCheckup\Domain\Model\Question $contextQuestion): void
     {
         $this->contextQuestion = $contextQuestion;
     }

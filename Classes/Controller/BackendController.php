@@ -28,26 +28,28 @@ class BackendController extends ActionController
      * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
      * @inject
      */
-    protected $checkupRepository = null;
+    protected $checkupRepository;
 
+    
     /**
      * action list
      *
      * @return void
      */
-    public function listAction()
+    public function listAction(): void
     {
         $checkups = $this->checkupRepository->findAll();
         $this->view->assign('checkups', $checkups);
     }
 
+    
     /**
      * action show
      *
      * @param \RKW\RkwCheckup\Domain\Model\Checkup
      * @return void
      */
-    public function showAction(Checkup $checkup)
+    public function showAction(Checkup $checkup): void
     {
         $this->view->assign('checkup', $checkup);
     }
