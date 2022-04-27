@@ -26,7 +26,7 @@
         <title>Schritt 1</title>
         <description>Geben Sie uns Antworten!</description>
         <section>1</section>
-        <question_container>3</question_container>
+        <question>3</question>
     </tx_rkwcheckup_domain_model_step>
 
     <tx_rkwcheckup_domain_model_step>
@@ -35,7 +35,7 @@
         <title>Schritt 2</title>
         <description>Geben Sie uns mehr Antworten!</description>
         <section>1</section>
-        <question_container>1</question_container>
+        <question>1</question>
         <step_feedback>1</step_feedback>
     </tx_rkwcheckup_domain_model_step>
 
@@ -52,7 +52,7 @@
         <title>Schritt 3</title>
         <description>Wir wollen meeeehr!</description>
         <section>1</section>
-        <question_container>1</question_container>
+        <question>1</question>
     </tx_rkwcheckup_domain_model_step>
 
     <!-- Section 2 -->
@@ -72,7 +72,7 @@
         <title>Schritt 1 in Sektion 2</title>
         <description>Das wird ein Gaudi!</description>
         <section>2</section>
-        <question_container>1</question_container>
+        <question>1</question>
     </tx_rkwcheckup_domain_model_step>
 
     <!-- Section 3 -->
@@ -92,24 +92,15 @@
         <title>Schritt 1 in Sektion 3</title>
         <description>Noch einmal alles raushauen!</description>
         <section>3</section>
-        <question_container>1</question_container>
+        <question>1</question>
     </tx_rkwcheckup_domain_model_step>
 
     <!-- QUESTION 1 (Section1, Step1) -->
 
-    <tx_rkwcheckup_domain_model_questioncontainer>
-        <uid>1</uid>
-        <pid>1</pid>
-        <step>1</step>
-        <question_type_1>1</question_type_1>
-        <question_type_2>0</question_type_2>
-        <question_type_3>0</question_type_3>
-    </tx_rkwcheckup_domain_model_questioncontainer>
-
     <tx_rkwcheckup_domain_model_question>
         <uid>1</uid>
         <pid>1</pid>
-        <question_container>1</question_container>
+        <step>1</step>
         <answer>3</answer>
         <title>Warum beantworten Sie diese Frage?</title>
         <description>Seien Sie bitte ehrlich.</description>
@@ -143,19 +134,10 @@
 
     <!-- QUESTION 2 (Section1, Step1) -->
 
-    <tx_rkwcheckup_domain_model_questioncontainer>
-        <uid>2</uid>
-        <pid>1</pid>
-        <step>1</step>
-        <question_type_1>0</question_type_1>
-        <question_type_2>1</question_type_2>
-        <question_type_3>0</question_type_3>
-    </tx_rkwcheckup_domain_model_questioncontainer>
-
     <tx_rkwcheckup_domain_model_question>
         <uid>2</uid>
         <pid>1</pid>
-        <question_container>2</question_container>
+        <step>1</step>
         <answer>3</answer>
         <title>Ist es wahr?</title>
         <description>Sie dürfen auch lügen.</description>
@@ -190,19 +172,10 @@
 
     <!-- QUESTION 3 (Section1, Step1) -->
 
-    <tx_rkwcheckup_domain_model_questioncontainer>
-        <uid>3</uid>
-        <pid>1</pid>
-        <step>1</step>
-        <question_type_1>0</question_type_1>
-        <question_type_2>0</question_type_2>
-        <question_type_3>1</question_type_3>
-    </tx_rkwcheckup_domain_model_questioncontainer>
-
     <tx_rkwcheckup_domain_model_question>
         <uid>3</uid>
         <pid>1</pid>
-        <question_container>3</question_container>
+        <step>1</step>
         <answer>4</answer>
         <title>Welche Zeitung lesen sie?</title>
         <description>Mehrfachauswahl möglich. Bitte mindestens zwei auswählen.</description>
@@ -246,19 +219,10 @@
 
     <!-- QUESTION 4 (Section2, Step1) -->
 
-    <tx_rkwcheckup_domain_model_questioncontainer>
-        <uid>4</uid>
-        <pid>1</pid>
-        <step>4</step>
-        <question_type_1>1</question_type_1>
-        <question_type_2>0</question_type_2>
-        <question_type_3>0</question_type_3>
-    </tx_rkwcheckup_domain_model_questioncontainer>
-
     <tx_rkwcheckup_domain_model_question>
         <uid>4</uid>
         <pid>1</pid>
-        <question_container>4</question_container>
+        <step>4</step>
         <answer>1</answer>
         <title>Fischt Fischers Fritz frische Fische?</title>
         <description>Überlegen Sie doch mal.</description>
@@ -284,19 +248,10 @@
 
     <!-- QUESTION 5 (Section3, Step1) -->
 
-    <tx_rkwcheckup_domain_model_questioncontainer>
-        <uid>5</uid>
-        <pid>1</pid>
-        <step>5</step>
-        <question_type_1>0</question_type_1>
-        <question_type_2>1</question_type_2>
-        <question_type_3>0</question_type_3>
-    </tx_rkwcheckup_domain_model_questioncontainer>
-
     <tx_rkwcheckup_domain_model_question>
         <uid>5</uid>
         <pid>1</pid>
-        <question_container>5</question_container>
+        <step>5</step>
         <answer>1</answer>
         <title>Hat Ihnen die Umfrage Spaß gemacht?</title>
         <description>Sie haben die Auswahl zwischen ja und ja.</description>
