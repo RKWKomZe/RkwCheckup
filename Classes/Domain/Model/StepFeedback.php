@@ -29,7 +29,7 @@ class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var int
      */
-    protected $type = 0;
+    protected $recordType = 0;
 
     
     /**
@@ -159,24 +159,24 @@ class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     
 
     /**
-     * Returns the type
+     * Returns the recordType
      *
-     * @return int $type
+     * @return int $recordType
      */
-    public function getType(): int
+    public function getRecordType(): int
     {
-        return $this->type;
+        return $this->recordType;
     }
     
 
     /**
-     * Sets the type
+     * Sets the recordType
      *
-     * @param int $type
+     * @param int $recordType
      * @return void
      */
-    public function setType(int $type): void
+    public function setRecordType(int $recordType): void
     {
-        $this->type = $type;
+        $this->recordType = $recordType;
     }
 }
