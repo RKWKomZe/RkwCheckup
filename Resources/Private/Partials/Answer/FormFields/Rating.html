@@ -29,42 +29,22 @@
             </div>
         </f:if>
 
-        <f:for each="{question.answer}" as="answer" iteration="answerIter">
+        <f:for each="{1:'1', 2:'2', 3:'3']}" as="answerValue" iteration="answerIter">
 
             <div class="form__field scale-group__item">
-                <f:if condition="{resultReadOnly}">
-                    <f:then>
-                        <f:form.radio
-                            class="radio"
-                            value="1"
-                            disabled="false"
-                            checked="{rkw:checkSpecificAnswerOfQuestion(resultSet: '{answerList}', answer: '{answer}')}"
-                        />
-                        <label for="answer{answer.uid}" class="radio-label">
-                            <span>
-                                <f:format.raw>{rkw:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
-                            </span>
-                        </label>
-                    </f:then>
-                    <f:else>
-                        <f:form.radio
-                            id="answer{answer.uid}"
-                            class="radio"
-                            property="newResultAnswer.{questionIter.index}.answer"
-                            value="{answer.uid}"
-                        />
-                        <label for="answer{answer.uid}" class="radio-label">
-                            <span>
-                                <f:format.raw>{rkw:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
-                            </span>
-                        </label>
-                    </f:else>
-                </f:if>
+              
+                <f:form.radio
+                    id="answer{answer.uid}"
+                    class="radio"
+                    property="newResultAnswer.{questionIter.index}.answer"
+                    value="{answer.uid}"
+                />
+                <label for="answer{answer.uid}" class="radio-label">
+                    <span>
+                        <f:format.raw>1</f:format.raw>
+                    </span>
+                </label>
             </div>
-
-
-
-
         </f:for>
 
         <f:if condition="{question.scaleRight}">
