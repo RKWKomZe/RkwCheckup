@@ -26,12 +26,13 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Question extends AbstractCheckupContents
 {
+    
     /**
-     * Single choice or multiple choice
+     * type
      *
-     * @var string
+     * @var int
      */
-    protected $type = '';
+    protected $recordType = 1;
 
     
     /**
@@ -80,14 +81,6 @@ class Question extends AbstractCheckupContents
      */
     protected $titleTextInput = '';
 
-
-    /**
-     * sumTo100
-     *
-     * @var bool
-     */
-    protected $sumTo100 = false;
-
     
     /**
      * minCheck
@@ -120,6 +113,15 @@ class Question extends AbstractCheckupContents
      */
     protected $scaleRight = '';
 
+    
+    /**
+     * scaleMax
+     *
+     * @var string
+     */
+    protected $scaleMax = 3;
+
+    
     /**
      * standardFeedback
      *
@@ -164,6 +166,29 @@ class Question extends AbstractCheckupContents
     {
         $this->answer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->hideCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+
+    /**
+     * Returns the recordType
+     *
+     * @return string $recordType
+     */
+    public function getRecordType(): string
+    {
+        return $this->recordType;
+    }
+
+
+    /**
+     * Sets the recordType
+     *
+     * @param string $recordType
+     * @return void
+     */
+    public function setRecordType(string $recordType): void
+    {
+        $this->recordType = $recordType;
     }
 
     
@@ -301,38 +326,6 @@ class Question extends AbstractCheckupContents
     }
 
 
-    /**
-     * Returns the sumTo100
-     *
-     * @return bool $sumTo100
-     */
-    public function getSumTo100(): bool
-    {
-        return $this->sumTo100;
-    }
-
-    /**
-     * Sets the sumTo100
-     *
-     * @param bool $sumTo100
-     * @return void
-     */
-    public function setSumTo100(bool $sumTo100): void
-    {
-        $this->sumTo100 = $sumTo100;
-    }
-    
-
-    /**
-     * Returns the boolean state of sumTo100
-     *
-     * @return bool
-     */
-    public function isSumTo100(): bool
-    {
-        return $this->sumTo100;
-    }
-
     
     /**
      * Returns the minCheck
@@ -415,6 +408,30 @@ class Question extends AbstractCheckupContents
         $this->scaleRight = $scaleRight;
     }
 
+    
+    /**
+     * Returns the scaleMax
+     *
+     * @return int $scaleMax
+     */
+    public function getScaleMax(): int
+    {
+        return $this->scaleMax;
+    }
+
+
+    /**
+     * Sets the scaleMax
+     *
+     * @param int $scaleMax
+     * @return void
+     */
+    public function setScaleMax(int $scaleMax): void
+    {
+        $this->scaleMax = $scaleMax;
+    }
+    
+    
     /**
      * @return string
      */
@@ -423,6 +440,7 @@ class Question extends AbstractCheckupContents
         return $this->standardFeedback;
     }
 
+    
     /**
      * @param string $standardFeedback
      */
@@ -482,28 +500,6 @@ class Question extends AbstractCheckupContents
     }
 
     
-    /**
-     * Returns the type
-     *
-     * @return string $type
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    
-    /**
-     * Sets the type
-     *
-     * @param string $type
-     * @return void
-     */
-    public function setType(string $type): void
-    {
-        $this->type = $type;
-    }
-
     
     /**
      * Adds a hideCond

@@ -90,34 +90,7 @@
 				<source>Interim Result</source>
 				<target>Zwischenergebnis</target>
 			</trans-unit>
-			
-			
-			<trans-unit id="tx_rkwcheckup_domain_model_questioncontainer">
-                <source>Question container</source>
-                <target>Fragen</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.label">
-                <source>Question container</source>
-                <target>Container</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.1">
-                <source>Single choice</source>
-                <target>Einzelauswahl (vertikal; große Darstellung)</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.2">
-                <source>Single choice</source>
-                <target>Einzelauswahl (horizontal; minimalistische Darstellung)</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.3">
-                <source>Multiple choice</source>
-                <target>Mehrfachauswahl</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.4">
-                <source>Free integer input</source>
-                <target>Freie Zahleneingabe</target>
-            </trans-unit>
-            
-            
+			            
             
 			<trans-unit id="tx_rkwcheckup_domain_model_question">
 				<source>Question</source>
@@ -125,33 +98,33 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.tab.extend">
                 <source>Extended</source>
-                <target>Erweitert</target>
+                <target>Bedingungen</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.tab.extend2">
                 <source>Feedback</source>
                 <target>Feedback</target>
             </trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.type">
+			<trans-unit id="tx_rkwcheckup_domain_model_question.record_type">
 				<source>Type</source>
-				<target>Typ</target>
+				<target>Art der Frage</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.type.I.0">
+			<trans-unit id="tx_rkwcheckup_domain_model_question.record_type.I.0">
                 <source>Please choose</source>
                 <target>Bitte wählen</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.1">
+            <trans-unit id="tx_rkwcheckup_domain_model_question.record_type.I.1">
                 <source>Single choice</source>
-                <target>Einzelauswahl (vertikal; große Darstellung)</target>
+                <target>Einzelauswahl</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.2">
-                <source>Single choice</source>
-                <target>Einzelauswahl (horizontal; minimalistische Darstellung)</target>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.record_type.I.2">
+                <source>Rating</source>
+                <target>Bewertung</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.3">
+            <trans-unit id="tx_rkwcheckup_domain_model_question.record_type.I.3">
                 <source>Multiple choice</source>
                 <target>Mehrfachauswahl</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.type.I.4">
+            <trans-unit id="tx_rkwcheckup_domain_model_question.record_type.I.4">
                 <source>Free integer input</source>
                 <target>Freie Zahleneingabe</target>
             </trans-unit>
@@ -179,25 +152,25 @@
                 <source>Title text input</source>
                 <target>Titel des Freitextfeldes (z.B. "Sonstige Antwort")</target>
             </trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.sum_to_100">
-                <source>Sum to 100</source>
-                <target>Summe aller Antworten muss 100 (%) ergeben</target>
-            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.min_check">
 				<source>Min Check</source>
-				<target>Müssen mindestens ausgewählt werden</target>
+				<target>Mindestens auszuwählende Antworten</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.max_check">
 				<source>Max Check</source>
-				<target>Dürfen maximal ausgewählt werden</target>
+				<target>Maximal auswählbare Antworten</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.scale_left">
                 <source>Scale left</source>
-                <target>Skala links (z.B. "Stimme nicht zu")</target>
+                <target>Skala-Beschriftung links (z.B. "Stimme nicht zu")</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.scale_right">
                 <source>Scale right</source>
-                <target>Skala rechts (z.B. "Stimme zu")</target>
+                <target>Skala-Beschriftung rechts (z.B. "Stimme zu")</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.scale_max">
+                <source>Amount of Grades</source>
+                <target>Anzahl der Bewertungsoptionen (Notensystem)</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.answer">
 				<source>Answer</source>

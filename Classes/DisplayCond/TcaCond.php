@@ -48,19 +48,19 @@ class TcaCond
     public function answerDisplayCondByParentType(array $params): bool
     {
         /** @var ObjectManager $objectManager */
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        //$objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
         /** @var QuestionRepository $questionRepository */
-        $questionRepository = $objectManager->get(QuestionRepository::class);
+        //$questionRepository = $objectManager->get(QuestionRepository::class);
         
         /** @var Question $entityToStop */
-        $question = $questionRepository->findByIdentifier(intval($params['record']['question']));
+        /*$question = $questionRepository->findByIdentifier(intval($params['record']['question']));
         if ($question instanceof Question) {
             // @toDo: Solution with TypoScript??
-            if ($question->getType() == 4) {
+            if ($question->getRecordType() == 4) {
                 return false;
             }
-        }
+        }*/
 
         return true;
     }

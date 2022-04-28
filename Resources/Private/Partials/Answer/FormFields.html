@@ -4,26 +4,20 @@
 
 
     <f:comment><!-- SINGLE CHOICE (big; vertical) --></f:comment>
-    <f:if condition="{question.type} == 1">
+    <f:if condition="{question.recordType} == 1">
         <f:render partial="Answer/SingleChoiceVertical" arguments="{_all}" />
     </f:if>
 
 
     <f:comment><!-- SINGLE CHOICE (small; horizontal) --></f:comment>
-    <f:if condition="{question.type} == 2">
+    <f:if condition="{question.recordType} == 2">
         <f:render partial="Answer/SingleChoiceHorizontal" arguments="{_all}" />
     </f:if>
 
 
     <f:comment><!-- MULTIPLE CHOICE --></f:comment>
-    <f:if condition="{question.type} == 3">
+    <f:if condition="{question.recordType} == 3">
         <f:render partial="Answer/MultipleChoice" arguments="{_all}" />
-    </f:if>
-
-
-    <f:comment><!-- Free in(t)put --></f:comment>
-    <f:if condition="{question.type} == 4">
-        <f:render partial="Answer/FreeNumericInput" arguments="{_all}" />
     </f:if>
 
 </html>

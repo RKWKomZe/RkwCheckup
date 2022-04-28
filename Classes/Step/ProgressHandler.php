@@ -111,7 +111,7 @@ class ProgressHandler
         // 2. Check it
         // 2.1 Mandatory
         if (
-            ($question->getType() == 1 || $question->getType() == 2)
+            ($question->getRecordType() == 1 || $question->getRecordType() == 2)
             && $question->isMandatory()
             && empty($assignedAnswerList)
         ) {
@@ -124,7 +124,7 @@ class ProgressHandler
 
         // 2.2 Minimum
         if (
-            $question->getType() == 3
+            $question->getRecordType() == 3
             && $question->getMinCheck() != 0
             && $question->getMinCheck() > count($assignedAnswerList)
         ) {
@@ -138,7 +138,7 @@ class ProgressHandler
 
         // 2.3 Maximum
         if (
-            $question->getType() == 3
+            $question->getRecordType() == 3
             && $question->getMaxCheck() != 0
             && $question->getMaxCheck() < count($assignedAnswerList)
         ) {
@@ -150,69 +150,7 @@ class ProgressHandler
             );
         }
 
-        // 2.4 FreeInput SumTo100
-        if (
-            $question->getType() == 4
-            && $question->isSumTo100()
-        ) {
-            $sumTotal = 0;
-            /** @var ResultAnswer $resultAnswer */
-            foreach ($assignedAnswerList as $resultAnswer) {
-                $sumTotal += $resultAnswer->getFreeNumericInput();
-            }
-
-            if ($sumTotal != 100) {
-                // not correct!
-                return LocalizationUtility::translate(
-                    'ProgressHandler.error.sumTo100',
-                    'rkw_checkup'
-                );
-            }
-        }
-
-        // 2.4 FreeInput min max value
-        if (
-            $question->getType() == 4
-            && (
-                $question->getMinCheck()
-                || $question->getMaxCheck()
-            )
-        ) {
-            /** @var ResultAnswer $resultAnswer */
-            foreach ($assignedAnswerList as $resultAnswer) {
-                if (
-                    $resultAnswer->getFreeNumericInput() < $question->getMinCheck()
-                    || $resultAnswer->getFreeNumericInput() > $question->getMaxCheck()
-            ) {
-                    // not inside given range!
-                    if (
-                        ($question->getMinCheck() && $resultAnswer->getFreeNumericInput() < $question->getMinCheck())
-                        && ($question->getMaxCheck() && $resultAnswer->getFreeNumericInput() > $question->getMaxCheck())
-                    ) {
-                        return LocalizationUtility::translate(
-                            'ProgressHandler.error.range',
-                            'rkw_checkup',
-                            [$question->getMinCheck(), $question->getMaxCheck()]
-                        );
-                    } elseif ($question->getMinCheck() && $resultAnswer->getFreeNumericInput() < $question->getMinCheck()) {
-                        // min value
-                        return LocalizationUtility::translate(
-                            'ProgressHandler.error.rangeMin',
-                            'rkw_checkup',
-                            [$question->getMinCheck()]
-                        );
-                    } elseif ($question->getMaxCheck() && $resultAnswer->getFreeNumericInput() > $question->getMaxCheck()) {
-                        // max value
-                        return LocalizationUtility::translate(
-                            'ProgressHandler.error.rangeMax',
-                            'rkw_checkup',
-                            [$question->getMaxCheck()]
-                        );
-                    }
-                }
-            }
-        }
-
+        
         return '';
     }
 
