@@ -1,0 +1,78 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+    <f:form.validationResults>
+        <p class="webcheck__hint {rkw:addErrorClass(question: '{question}', error: '{validationResults.flattenedErrors}')}">
+            <f:if condition="{question.mandatory}">
+                <f:then>
+                    Bitte wählen Sie eine Option aus. Dies ist ein Pflichtfeld!
+                </f:then>
+                <f:else>
+                    (Optional) Bitte wählen Sie eine Option aus.
+                </f:else>
+            </f:if>
+
+        </p>
+    </f:form.validationResults>
+
+    <f:comment><!-- additional fields of resultAnswer--></f:comment>
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.question" value="{question.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.step" value="{result.currentStep.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}.section" value="{result.currentSection.uid}" />
+
+    <div class="scale-group">
+
+        <f:if condition="{question.scaleLeft}">
+            <div class="scale-group__item scale-group__item--label">
+                {question.scaleLeft}
+            </div>
+        </f:if>
+
+        <f:for each="{question.answer}" as="answer" iteration="answerIter">
+
+            <div class="form__field scale-group__item">
+                <f:if condition="{resultReadOnly}">
+                    <f:then>
+                        <f:form.radio
+                            class="radio"
+                            value="1"
+                            disabled="false"
+                            checked="{rkw:checkSpecificAnswerOfQuestion(resultSet: '{answerList}', answer: '{answer}')}"
+                        />
+                        <label for="answer{answer.uid}" class="radio-label">
+                            <span>
+                                <f:format.raw>{rkw:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
+                            </span>
+                        </label>
+                    </f:then>
+                    <f:else>
+                        <f:form.radio
+                            id="answer{answer.uid}"
+                            class="radio"
+                            property="newResultAnswer.{questionIter.index}.answer"
+                            value="{answer.uid}"
+                        />
+                        <label for="answer{answer.uid}" class="radio-label">
+                            <span>
+                                <f:format.raw>{rkw:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
+                            </span>
+                        </label>
+                    </f:else>
+                </f:if>
+            </div>
+
+
+
+
+        </f:for>
+
+        <f:if condition="{question.scaleRight}">
+            <div class="scale-group__item scale-group__item--label">
+                {question.scaleRight}
+            </div>
+        </f:if>
+
+    </div>
+
+</html>
