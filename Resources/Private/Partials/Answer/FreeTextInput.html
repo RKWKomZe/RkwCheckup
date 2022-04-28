@@ -4,9 +4,9 @@
 
 
     <f:comment><!-- additional fields of resultAnswer--></f:comment>
-    <f:form.hidden property="newResultAnswer.{questionIter.cycle}.question" value="{question.uid}" />
-    <f:form.hidden property="newResultAnswer.{questionIter.cycle}.step" value="{result.currentStep.uid}" />
-    <f:form.hidden property="newResultAnswer.{questionIter.cycle}.section" value="{result.currentSection.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}999.question" value="{question.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}999.step" value="{result.currentStep.uid}" />
+    <f:form.hidden property="newResultAnswer.{questionIter.index}999.section" value="{result.currentSection.uid}" />
 
 
     <div class="form__field form__field--webcheck">
@@ -22,7 +22,7 @@
 
         </label>
         <f:form.textfield
-            property="newResultAnswer.{questionIter.cycle}.freeTextInput"
+            property="newResultAnswer.{questionIter.index}999.freeTextInput"
         />
     </div>
 

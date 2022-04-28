@@ -30,16 +30,29 @@ class BackendController extends ActionController
      */
     protected $checkupRepository;
 
+    /**
+     * resultRepository
+     *
+     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
+     * @inject
+     */
+    protected $resultRepository;
+
     
     /**
      * action list
      *
+     * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
      * @return void
      */
-    public function listAction(): void
+    public function listAction(Checkup $checkup = null): void
     {
-        $checkups = $this->checkupRepository->findAll();
-        $this->view->assign('checkups', $checkups);
+        if ($checkup) {
+            $this->view->assign('checkResultList', $this->resultRepository->getFinishedByCheck($checkup));
+            $this->view->assign('checkup', $checkup);
+        } else {
+            $this->view->assign('checkList', $this->checkupRepository->findAll());
+        }
     }
 
     
@@ -51,6 +64,7 @@ class BackendController extends ActionController
      */
     public function showAction(Checkup $checkup): void
     {
+        $this->view->assign('checkupResultCountTotal', $this->resultRepository->getFinishedByCheck($checkup)->count());
         $this->view->assign('checkup', $checkup);
     }
 

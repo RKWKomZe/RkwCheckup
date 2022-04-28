@@ -26,26 +26,14 @@ plugin.tx_rkwcheckup {
 
 plugin.tx_rkwcheckup < plugin.tx_rkwcheckup_check
 
-[globalVar = LIT:1 = {$plugin.tx_rkwcheckup.settings.includeCss}]
-    page.includeCSS.txRkwSurvey = EXT:rkw_survey/Resources/Public/Css/webcheck-2.0.css
-[global]
-
-[!userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('rkw_webcheck')]
-    page.includeJSFooter.txRkwSurvey = EXT:rkw_survey/Resources/Public/Scripts/webcheck-2.0.js
-[global]
-
-[!userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('rkw_webcheck')] && [globalVar = LIT:1 = {$plugin.tx_rkwsurvey.settings.includeJQuery}]
-    page.includeJSFooterlibs.txRkwSurvey  = EXT:rkw_survey/Resources/Public/Scripts/jquery-3.4.1.min.js
-[global]
-
-
 # Module configuration
 module.tx_rkwcheckup_web_rkwcheckupstatistics {
     persistence {
+        # !! is overwritten below !!
         storagePid = {$module.tx_rkwcheckup_statistics.persistence.storagePid}
     }
     view {
-        templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Backend/Templates/
+        templateRootPaths.0 = EXT:rkw_checkup/Resources/Private/Backend/Templates/
         templateRootPaths.1 = {$module.tx_rkwcheckup_statistics.view.templateRootPath}
         partialRootPaths.0 = EXT:rkw_checkup/Resources/Private/Backend/Partials/
         partialRootPaths.1 = {$module.tx_rkwcheckup_statistics.view.partialRootPath}
@@ -53,3 +41,18 @@ module.tx_rkwcheckup_web_rkwcheckupstatistics {
         layoutRootPaths.1 = {$module.tx_rkwcheckup_statistics.view.layoutRootPath}
     }
 }
+module.tx_rkwcheckup_web_rkwcheckupstatistics.persistence < plugin.tx_rkwcheckup.persistence
+
+
+
+[globalVar = LIT:1 = {$plugin.tx_rkwcheckup.settings.includeCss}]
+    page.includeCSS.txRkwSurvey = EXT:rkw_survey/Resources/Public/Css/webcheck-2.0.css
+[global]
+
+[!userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('rkw_webcheck')]
+page.includeJSFooter.txRkwSurvey = EXT:rkw_survey/Resources/Public/Scripts/webcheck-2.0.js
+[global]
+
+[!userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('rkw_webcheck')] && [globalVar = LIT:1 = {$plugin.tx_rkwsurvey.settings.includeJQuery}]
+page.includeJSFooterlibs.txRkwSurvey  = EXT:rkw_survey/Resources/Public/Scripts/jquery-3.4.1.min.js
+[global]

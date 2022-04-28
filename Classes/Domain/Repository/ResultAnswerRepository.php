@@ -14,32 +14,31 @@ namespace RKW\RkwCheckup\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Model\Question;
 
 /**
- * Class ResultRepository
+ * Class ResultAnswerRepository
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class ResultAnswerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-
     /**
-     * get CheckResults that are completed by checkId and userId
+     * get answers of specific question with FreeTextInput
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
+     * @param \RKW\RkwCheckup\Domain\Model\Question $question
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function getFinishedByCheck(Checkup $checkup)
+    public function findFreeTextInputAnswersByQuestion(Question $question)
     {
         $query = $this->createQuery();
         $query->matching(
             $query->logicalAnd(
-                $query->equals("checkup", $checkup),
-                $query->equals("finished", 1)
+                $query->equals("question", $question->getUid()),
+                $query->equals("answer", 0)
             )
         );
 
