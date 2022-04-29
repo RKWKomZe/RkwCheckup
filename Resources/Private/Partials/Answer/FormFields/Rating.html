@@ -21,38 +21,35 @@
     <f:form.hidden property="newResultAnswer.{questionIter.index}.step" value="{result.currentStep.uid}" />
     <f:form.hidden property="newResultAnswer.{questionIter.index}.section" value="{result.currentSection.uid}" />
 
-    <div class="scale-group">
-
-        <f:if condition="{question.scaleLeft}">
-            <div class="scale-group__item scale-group__item--label">
-                {question.scaleLeft}
-            </div>
-        </f:if>
-
-        <f:for each="{1:'1', 2:'2', 3:'3']}" as="answerValue" iteration="answerIter">
-
-            <div class="form__field scale-group__item">
-              
-                <f:form.radio
-                    id="answer{answer.uid}"
-                    class="radio"
-                    property="newResultAnswer.{questionIter.index}.answer"
-                    value="{answer.uid}"
-                />
-                <label for="answer{answer.uid}" class="radio-label">
-                    <span>
-                        <f:format.raw>1</f:format.raw>
-                    </span>
-                </label>
-            </div>
-        </f:for>
-
-        <f:if condition="{question.scaleRight}">
-            <div class="scale-group__item scale-group__item--label">
-                {question.scaleRight}
-            </div>
-        </f:if>
-
-    </div>
+    <table class="responsive-table responsive-table--background rating-list">
+        <thead>
+            <tr>
+                <f:if condition="{question.scaleLeft}"><th>&nbsp;</th></f:if>
+                <f:for each="{question.answer}" as="answer" iteration="answerIter">
+                    <th>{answer.title}</th>
+                </f:for>
+            </tr>
+        </thead>         
+        <tbody>
+            <tr>
+                <f:if condition="{question.scaleLeft}"><th>{question.scaleLeft}</th></f:if>
+                <f:for each="{question.answer}" as="answer" iteration="answerIter">
+                    <td>
+                        <f:form.radio
+                            id="answer{answer.uid}"
+                            class="radio"
+                            property="newResultAnswer.{questionIter.index}.answer"
+                            value="{answer.uid}"
+                        />
+                        <label for="answer{answer.uid}" class="radio-label">
+                        <span>
+                            {answer.title}
+                        </span>
+                        </label>
+                    </td>
+                </f:for>
+            </tr>
+        </tbody>
+    </table>
 
 </html>

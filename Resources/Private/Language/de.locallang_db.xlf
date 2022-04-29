@@ -162,11 +162,11 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.scale_left">
                 <source>Scale left</source>
-                <target>Skala-Beschriftung links (z.B. "Stimme nicht zu")</target>
+                <target>Skala-Beschriftung links</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.scale_right">
                 <source>Scale right</source>
-                <target>Skala-Beschriftung rechts (z.B. "Stimme zu")</target>
+                <target>Skala-Beschriftung rechts</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.scale_max">
                 <source>Amount of Grades</source>
