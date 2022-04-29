@@ -214,6 +214,39 @@
              <trans-unit id="templates_checkup_progress.progress">
                  <source>Progress</source>
              </trans-unit>
+
+
+             <!-- Templates/Backend/List.html -->
+             <trans-unit id="templates_backend_list.headline">
+                 <source>Show results</source>
+             </trans-unit>
+             <trans-unit id="templates_backend_list.intro1">
+                 <source>Show results</source>
+             </trans-unit>
+             <trans-unit id="templates_backend_list.intro2">
+                 <source>Existing checks:</source>
+             </trans-unit>
+             <trans-unit id="templates_backend_list.check_results">
+                <source>Check results:</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_list.no_checks">
+                <source>No checks available.</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_list.proceed">
+                <source>Proceed</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_list.total_data">
+                <source>Total data</source>
+            </trans-unit>
+             <trans-unit id="templates_backend_show.record_type.I.1">
+                 <source>Single choice</source>
+             </trans-unit>
+             <trans-unit id="templates_backend_show.record_type.I.2">
+                 <source>Rating</source>
+             </trans-unit>
+             <trans-unit id="templates_backend_show.record_type.I.3">
+                 <source>Multiple choice</source>
+             </trans-unit>
 		</body>
 	</file>
 </xliff>

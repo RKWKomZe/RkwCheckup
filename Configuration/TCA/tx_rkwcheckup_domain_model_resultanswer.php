@@ -95,7 +95,7 @@ return [
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.free_text_input',
             'config' => [
                 'type' => 'input',
-                'size' => 30,
+                'size' => 100,
                 'eval' => 'trim'
             ],
         ],

@@ -1,7 +1,6 @@
 <?php
 namespace RKW\RkwCheckup\Domain\Repository;
 
-
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -16,39 +15,36 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 
 use RKW\RkwCheckup\Domain\Model\Question;
+use RKW\RkwCheckup\Domain\Model\Result;
 
 /**
- * Class AnswerRepository
+ * Class ResultAnswerRepository
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class AnswerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class ResultAnswerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
-     * findByQuestionAlsoDeleted
+     * get answers of specific question with FreeTextInput
      *
-     * Find all questions of a step, also deleted
-     *
-     * @param Question $question
-     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @param \RKW\RkwCheckup\Domain\Model\Question $question
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByQuestionAlsoDeleted(Question $question)
+    public function findFreeTextInputAnswersByQuestion(Question $question)
     {
-
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(false);
-        $query->getQuerySettings()->setIncludeDeleted(true);
-        $query->getQuerySettings()->setIgnoreEnableFields(true);
-
         $query->matching(
-            $query->equals('question', $question)
+            $query->logicalAnd(
+                $query->equals("question", $question->getUid()),
+                $query->equals("answer", 0)
+            )
         );
 
         return $query->execute();
     }
+
 
 }

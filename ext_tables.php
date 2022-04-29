@@ -17,13 +17,13 @@ call_user_func(
                 'RKW.RkwCheckup',
                 'web', // Make module a submodule of 'web'
                 'statistics', // Submodule key
-                '', // Position
+                'before:evaluation', // Position
                 [
-                    'Checkup' => 'list, show',
+                    'Backend' => 'list, show',
                 ],
                 [
                     'access' => 'user,group',
-                    'icon'   => 'EXT:rkw_checkup/Resources/Public/Icons/user_mod_statistics.svg',
+                    'icon'   => 'EXT:rkw_checkup/ext_icon.gif',
                     'labels' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_statistics.xlf',
                 ]
             );

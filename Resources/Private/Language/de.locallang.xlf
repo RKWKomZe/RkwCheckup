@@ -271,6 +271,51 @@
                 <target>Fortschritt</target>
             </trans-unit>
 
+
+            <!-- Templates/Backend/List.html -->
+            <trans-unit id="templates_backend_list.headline">
+                <source>Show results</source>
+                <target>Anzeigen der Checkergebnisse</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_list.intro1">
+                <source>Show results</source>
+                <target>Bitte wählen Sie den Check aus, von dem sie weitere Details betrachten wollen.</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_list.intro2">
+                <source>Existing checks:</source>
+                <target>Vorhandene Checks:</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_list.check_results">
+				<source>Check results:</source>
+				<target>Checkergebnisse:</target>
+			</trans-unit>
+			<trans-unit id="templates_backend_list.no_checks">
+				<source>No checks available.</source>
+				<target>Keine Checks vorhanden.</target>
+			</trans-unit>
+			<trans-unit id="templates_backend_list.proceed">
+				<source>Proceed</source>
+				<target>Fortfahren</target>
+			</trans-unit>
+			<trans-unit id="templates_backend_list.total_data">
+				<source>Total data</source>
+				<target>Gesamtdaten</target>
+			</trans-unit>
+
+
+			<trans-unit id="templates_backend_show.record_type.I.1">
+                <source>Single choice</source>
+                <target>Einzelauswahl</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.record_type.I.2">
+                <source>Rating</source>
+                <target>Bewertung</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.record_type.I.3">
+                <source>Multiple choice</source>
+                <target>Mehrfachauswahl</target>
+            </trans-unit>
+
 		</body>
 	</file>
 </xliff>

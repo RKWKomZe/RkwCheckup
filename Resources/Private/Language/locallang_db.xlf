@@ -193,7 +193,7 @@
 			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
 				<source>Step Feedback</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.type">
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.record_type">
 				<source>Type</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.title">

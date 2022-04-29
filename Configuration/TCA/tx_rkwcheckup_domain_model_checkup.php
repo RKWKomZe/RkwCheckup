@@ -83,6 +83,32 @@ return [
                 ],
             ],
         ],
+        'crdate' => [
+            'exclude' => false,
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'size' => 13,
+                'eval' => 'datetime',
+                'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
+            ],
+        ],
+        'tstamp' => [
+            'exclude' => false,
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'size' => 13,
+                'eval' => 'datetime',
+                'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
+            ],
+        ],
         'starttime' => [
             'exclude' => false,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',

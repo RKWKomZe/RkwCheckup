@@ -14,6 +14,8 @@ namespace RKW\RkwCheckup\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwCheckup\Domain\Model\Checkup;
+
 /**
  * Class ResultRepository
  *
@@ -24,10 +26,48 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+
     /**
-     * @var array
+     * get CheckResults that are completed by checkId and userId
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    protected $defaultOrderings = [
-        'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
-    ];
+    public function getFinishedByCheck(Checkup $checkup)
+    {
+        $query = $this->createQuery();
+        $query->matching(
+            $query->logicalAnd(
+                $query->equals("checkup", $checkup),
+                $query->equals("finished", 1)
+            )
+        );
+
+        return $query->execute();
+    }
+
+
+    /**
+     * findByCheckupAlsoDeleted
+     *
+     * Find all results of check, also deleted
+     *
+     * @param Checkup $checkup
+     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function findByCheckupAlsoDeleted(Checkup $checkup)
+    {
+
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setIncludeDeleted(true);
+        $query->getQuerySettings()->setIgnoreEnableFields(true);
+
+        $query->matching(
+            $query->equals('checkup', $checkup)
+        );
+
+        return $query->execute();
+    }
 }

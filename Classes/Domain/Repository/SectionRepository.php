@@ -14,6 +14,8 @@ namespace RKW\RkwCheckup\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwCheckup\Domain\Model\Checkup;
+
 /**
  * Class SectionRepository
  *
@@ -30,4 +32,28 @@ class SectionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     protected $defaultOrderings = [
         'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
     ];
+
+    /**
+     * findByCheckupAlsoDeleted
+     *
+     * Find all sections of a check, also deleted
+     *
+     * @param Checkup $checkup
+     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function findByCheckupAlsoDeleted(Checkup $checkup)
+    {
+
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setIncludeDeleted(true);
+        $query->getQuerySettings()->setIgnoreEnableFields(true);
+
+        $query->matching(
+            $query->equals('checkup', $checkup)
+        );
+
+        return $query->execute();
+    }
 }
