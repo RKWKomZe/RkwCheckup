@@ -22,20 +22,14 @@ plugin.tx_rkwcheckup {
     mvc {
         #callDefaultActionIfActionCantBeResolved = 1
     }
+    settings {
+        termsPid = {$plugin.tx_rkwcheckup.settings.termsPid}
+    }
 }
 
-plugin.tx_rkwcheckup < plugin.tx_rkwcheckup_check
 
 [globalVar = LIT:1 = {$plugin.tx_rkwcheckup.settings.includeCss}]
-    page.includeCSS.txRkwSurvey = EXT:rkw_survey/Resources/Public/Css/webcheck-2.0.css
-[global]
-
-[!userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('rkw_webcheck')]
-    page.includeJSFooter.txRkwSurvey = EXT:rkw_survey/Resources/Public/Scripts/webcheck-2.0.js
-[global]
-
-[!userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('rkw_webcheck')] && [globalVar = LIT:1 = {$plugin.tx_rkwsurvey.settings.includeJQuery}]
-    page.includeJSFooterlibs.txRkwSurvey  = EXT:rkw_survey/Resources/Public/Scripts/jquery-3.4.1.min.js
+    page.includeCSS.txRkwCheckup = EXT:rkw_checkup/Resources/Public/Styles/webcheck-2.0.css
 [global]
 
 

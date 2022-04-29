@@ -3,18 +3,16 @@
     data-namespace-typo3-fluid="true">
 
 
-    <f:form.validationResults>
-        <p class="webcheck__hint {rkw:addErrorClass(question: '{question}', error: '{validationResults.flattenedErrors}')}">
-            <f:if condition="{question.mandatory}">
-                <f:then>
-                    Bitte wählen Sie eine Option aus. Dies ist ein Pflichtfeld!
-                </f:then>
-                <f:else>
-                    (Optional) Bitte wählen Sie eine Option aus.
-                </f:else>
-            </f:if>
-        </p>
-    </f:form.validationResults>
+    <p class="webcheck__hint">
+        <f:if condition="{question.mandatory}">
+            <f:then>
+                Bitte wählen Sie eine Option aus.
+            </f:then>
+            <f:else>
+                Bitte wählen Sie maximal eine Option aus.
+            </f:else>
+        </f:if>
+    </p>
 
     <f:comment><!-- additional fields of resultAnswer--></f:comment>
     <f:form.hidden property="newResultAnswer.{questionIter.index}.question" value="{question.uid}" />

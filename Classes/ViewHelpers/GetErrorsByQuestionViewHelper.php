@@ -14,20 +14,22 @@ namespace RKW\RkwCheckup\ViewHelpers;
  */
 
 use RKW\RkwCheckup\Domain\Model\Question;
+use TYPO3\CMS\Extbase\Error\Result;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 
 /**
- * Class AddErrorClassViewHelper
+ * Class GetErrorsByQuestionViewHelper
  *
- * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @author Steffen Kroggel <developer@steffenkroggel.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class AddErrorClassViewHelper extends AbstractViewHelper {
+class GetErrorsByQuestionViewHelper extends AbstractViewHelper {
 
     
     use CompileWithRenderStatic;
@@ -40,35 +42,42 @@ class AddErrorClassViewHelper extends AbstractViewHelper {
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('question', Question::class, 'The question', true);
-        $this->registerArgument('error', 'array', 'The flattened error list', true);
-
-
+        $this->registerArgument('question', Question::class, 'The question-object', true);
+        $this->registerArgument('error', Result::class, 'The error-object', true);
     }
 
     /**
-     * Returns error class
+     * Check if given question has error
      *
      * @param array $arguments
      * @param \Closure $renderChildrenClosure
      * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
-     * @return string
+     * @return array
      */
     public static function renderStatic(
         array $arguments, 
         \Closure $renderChildrenClosure, 
         RenderingContextInterface $renderingContext
-    ){
+    )
+    {
+        /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
         $question = $arguments['question'];
 
-        if ($arguments['error']) {
-            foreach ($arguments['error'] as $key => $error) {
-                if ($key == "result.question" . $question->getUid()) {
-                    return "error-msg";
+        /** @var \TYPO3\CMS\Extbase\Error\Result $errors */
+        $errors = $arguments['error'];
+        if ($errors->getFlattenedErrors()) {
+
+            /**
+             * @var $string $key
+             * @var array $errors
+             */
+            foreach ($errors->getFlattenedErrors() as $key => $errors) {
+                if ($key == 'result.question' . $question->getUid()) {
+                    return $errors;
                 }
             }
         }
 
-        return '';
+        return [];
     }
 }

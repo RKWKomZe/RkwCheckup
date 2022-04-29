@@ -12,6 +12,14 @@ plugin.tx_rkwcheckup {
         # cat=plugin.tx_rkwcheckup_check//a; type=string; label=Default storage PID
         storagePid = 3930
     }
+    settings {
+
+        # cat=plugin.tx_rkwcheckup//a; type=integer; label=Default terms PID
+        termsPid =
+        
+        # cat=plugin.tx_rkwcheckup//a; type=boolean; label=Include CSS?
+        includeCss = 0
+    }
 }
 
 module.tx_rkwcheckup_statistics {

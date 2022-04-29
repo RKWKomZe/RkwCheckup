@@ -35,6 +35,7 @@
                             </config>
                         </TCEforms>
                     </settings.notificationBackendUser>
+                    <!--
                     <settings.termsPid>
                         <TCEforms>
                             <label>
@@ -51,7 +52,7 @@
                             </config>
                         </TCEforms>
                     </settings.termsPid>
-
+                    -->
                 </el>
             </ROOT>
         </sDEF>

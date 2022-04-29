@@ -2,30 +2,29 @@
     xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-    <f:form.validationResults>
-        <p class="webcheck__hint {rkw:addErrorClass(question: '{question}', error: '{validationResults.flattenedErrors}')}">
-            <f:if condition="{question.minCheck} || {question.maxCheck}">
-                <f:then>
-                    <f:if condition="{question.minCheck} && {question.maxCheck}">
-                        <f:then>
-                            Bitte wählen sie mindestens {question.minCheck} und maximal {question.maxCheck} Optionen aus.
-                        </f:then>
-                        <f:else>
-                            <f:if condition="{question.minCheck}">
-                                Bitte wählen Sie mindestens {question.minCheck} Optionen aus.
-                            </f:if>
-                            <f:if condition="{question.maxCheck}">
-                                Bitte auswählen Sie bis zu {question.maxCheck} Optionen aus.
-                            </f:if>
-                        </f:else>
-                    </f:if>
-                </f:then>
-                <f:else>
-                    (Optional) Bitte auswählen. Mehrfachauswahl möglich.
-                </f:else>
-            </f:if>
-        </p>
-    </f:form.validationResults>
+       
+    <p class="webcheck__hint">
+        <f:if condition="{question.minCheck} || {question.maxCheck}">
+            <f:then>
+                <f:if condition="{question.minCheck} && {question.maxCheck}">
+                    <f:then>
+                        Bitte wählen sie mindestens {question.minCheck} und maximal {question.maxCheck} Option(en) aus.
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{question.minCheck}">
+                            Bitte wählen Sie mindestens {question.minCheck} Option(en) aus.
+                        </f:if>
+                        <f:if condition="{question.maxCheck}">
+                            Bitte auswählen Sie maximal {question.maxCheck} Option(en) aus.
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </f:then>
+            <f:else>
+                Bitte auswählen. Mehrfachauswahl möglich.
+            </f:else>
+        </f:if>
+    </p>
     
     <f:for each="{question.answer}" as="answer" iteration="answerIter">
     
