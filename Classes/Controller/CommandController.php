@@ -15,8 +15,21 @@ namespace RKW\RkwCheckup\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwCheckup\Domain\Model\Answer;
+use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Model\Question;
+use RKW\RkwCheckup\Domain\Model\Result;
+use RKW\RkwCheckup\Domain\Model\ResultAnswer;
+use RKW\RkwCheckup\Domain\Model\Section;
+use RKW\RkwCheckup\Domain\Model\Step;
+use RKW\RkwCheckup\Domain\Model\StepFeedback;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Log\Logger;
+use TYPO3\CMS\Core\Log\LogLevel;
+use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * CommandController
@@ -54,7 +67,55 @@ class CommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandControl
     protected $checkupRepository = null;
 
     /**
-     * @var \TYPO3\CMS\Core\Log\Logger
+     * sectionRepository
+     *
+     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository
+     * @inject
+     */
+    protected $sectionRepository = null;
+
+    /**
+     * stepRepository
+     *
+     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository
+     * @inject
+     */
+    protected $stepRepository = null;
+
+    /**
+     * questionRepository
+     *
+     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository
+     * @inject
+     */
+    protected $questionRepository = null;
+
+    /**
+     * answerRepository
+     *
+     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository
+     * @inject
+     */
+    protected $answerRepository = null;
+
+    /**
+     * resultRepository
+     *
+     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
+     * @inject
+     */
+    protected $resultRepository = null;
+
+    /**
+     * resultAnswerRepository
+     *
+     * @var \RKW\RkwCheckup\Domain\Repository\ResultAnswerRepository
+     * @inject
+     */
+    protected $resultAnswerRepository = null;
+
+    /**
+     * @var Logger
      */
     protected $logger;
 
@@ -68,66 +129,154 @@ class CommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandControl
 
 
     /**
-     * Cleanup abandoned wepstra projects of anonymous users
+     * Cleanup checkup results of deleted checkups (Removes deleted checks and their results)
      * !! DANGER !! Cleanup executes a real MySQL-Delete- Query!!!
      *
      * @param integer $daysFromNow Defines which datasets (in days from now) will be deleted (crdate is reference)
      * @return void
      */
-    public function cleanupAbandonedCommand($daysFromNow = 730)
+    public function cleanupDeletedCommand($daysFromNow = 30)
     {
-
         try {
 
             if ($cleanupTimestamp = time() - intval($daysFromNow) * 24 * 60 * 60) {
 
                 if (
-                    ($wepstraList = $this->wepstraRepository->findAbandoned($cleanupTimestamp))
-                    && is_countable($wepstraList)
-                    && (count($wepstraList))
+                    ($checkupList = $this->checkupRepository->findDeleted($cleanupTimestamp))
+                    && is_countable($checkupList)
+                    && (count($checkupList))
                 ) {
 
-                    /** @var \RKW\RkwWepstra\Domain\Model\Wepstra $wepstraToDelete */
-                    foreach ($wepstraList as $wepstra) {
-                        $this->deleteCheckup($wepstra);
-                        $this->getLogger()->log(\TYPO3\CMS\Core\Log\LogLevel::INFO, sprintf('Successfully deleted WePstra-project %s and all its sub-objects.', $wepstra->getUid()));
+                    /** @var Checkup $checkup */
+                    foreach ($checkupList as $checkup) {
+
+                        $resultList = $this->resultRepository->findByCheckupAlsoDeleted($checkup);
+
+                        // ######################################################
+                        // 1. remove result with its resultAnswers
+                        // ######################################################
+
+                        /** @var Result $result */
+                        foreach ($resultList as $result) {
+
+                            /** @var ResultAnswer $resultAnswer */
+                            foreach ($result->getResultAnswer() as $resultAnswer) {
+
+                                // 1.1 remove resultAnswer
+                                GeneralUtility::makeInstance(ConnectionPool::class)
+                                    ->getConnectionForTable('tx_rkwcheckup_domain_model_resultanswer')
+                                    ->delete(
+                                        'tx_rkwcheckup_domain_model_resultanswer', // from
+                                        [ 'uid' => (int)$resultAnswer->getUid() ] // where
+                                    );
+                            }
+
+                            // 1.2 remove result
+                            GeneralUtility::makeInstance(ConnectionPool::class)
+                                ->getConnectionForTable('tx_rkwcheckup_domain_model_result')
+                                ->delete(
+                                    'tx_rkwcheckup_domain_model_result', // from
+                                    [ 'uid' => (int)$result->getUid() ] // where
+                                );
+                        }
+
+                        // ######################################################
+                        // 2. remove check with it's components
+                        // ######################################################
+
+                        $sectionList = $this->sectionRepository->findByCheckupAlsoDeleted($checkup);
+                        /** @var Section $section */
+                        foreach ($sectionList as $section) {
+
+                            $stepList = $this->stepRepository->findBySectionAlsoDeleted($section);
+                            /** @var Step $step */
+                            foreach ($stepList as $step) {
+
+                                $questionList = $this->questionRepository->findByStepAlsoDeleted($step);
+                                /** @var Question $question */
+                                foreach ($questionList as $question) {
+
+                                    $answerList = $this->answerRepository->findByQuestionAlsoDeleted($question);
+                                    /** @var Answer $answer */
+                                    foreach ($answerList as $answer) {
+                                        // 2.1 remove answer
+                                        GeneralUtility::makeInstance(ConnectionPool::class)
+                                            ->getConnectionForTable('tx_rkwcheckup_domain_model_answer')
+                                            ->delete(
+                                                'tx_rkwcheckup_domain_model_answer', // from
+                                                [ 'uid' => (int)$answer->getUid() ] // where
+                                            );
+                                    }
+
+                                    // 2.2 remove question
+                                    GeneralUtility::makeInstance(ConnectionPool::class)
+                                        ->getConnectionForTable('tx_rkwcheckup_domain_model_question')
+                                        ->delete(
+                                            'tx_rkwcheckup_domain_model_question', // from
+                                            [ 'uid' => (int)$question->getUid() ] // where
+                                        );
+
+                                }
+
+                                // 2.3 remove stepFeedback
+                                if ($step->getStepFeedback() instanceof StepFeedback) {
+                                    GeneralUtility::makeInstance(ConnectionPool::class)
+                                        ->getConnectionForTable('tx_rkwcheckup_domain_model_stepfeedback')
+                                        ->delete(
+                                            'tx_rkwcheckup_domain_model_stepfeedback', // from
+                                            [ 'uid' => (int)$step->getStepFeedback()->getUid() ] // where
+                                        );
+                                }
+
+                                // 2.4 remove step
+                                GeneralUtility::makeInstance(ConnectionPool::class)
+                                    ->getConnectionForTable('tx_rkwcheckup_domain_model_step')
+                                    ->delete(
+                                        'tx_rkwcheckup_domain_model_step', // from
+                                        [ 'uid' => (int)$step->getUid() ] // where
+                                    );
+                            }
+
+                            // 2.5 remove section
+                            GeneralUtility::makeInstance(ConnectionPool::class)
+                                ->getConnectionForTable('tx_rkwcheckup_domain_model_section')
+                                ->delete(
+                                    'tx_rkwcheckup_domain_model_section', // from
+                                    [ 'uid' => (int)$section->getUid() ] // where
+                                );
+
+                        }
+
+                        // FINALLY
+                        // 2.6 remove checkup
+                        GeneralUtility::makeInstance(ConnectionPool::class)
+                            ->getConnectionForTable('tx_rkwcheckup_domain_model_checkup')
+                            ->delete(
+                                'tx_rkwcheckup_domain_model_checkup', // from
+                                [ 'uid' => (int)$checkup->getUid() ] // where
+                            );
                     }
 
                 } else {
-                    $this->getLogger()->log(\TYPO3\CMS\Core\Log\LogLevel::INFO, 'Nothing to clean up in database (AbandonedCleanup).');
+                    $this->getLogger()->log(LogLevel::INFO, 'Nothing to clean up in database (cleanupDeletedCommand).');
                 }
             }
 
         } catch (\Exception $e) {
-            $this->getLogger()->log(\TYPO3\CMS\Core\Log\LogLevel::ERROR, sprintf('An error occured: %s', $e->getMessage()));
+            $this->getLogger()->log(LogLevel::ERROR, sprintf('An error occured: %s', $e->getMessage()));
         }
-    }
-
-
-    /**
-     * Deletes a Checkup-project with all of its sub-objects
-     *
-     * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkupToDelete
-     * @return void
-     */
-    protected function deleteCheckup(\RKW\RkwCheckup\Domain\Model\Checkup $checkupToDelete)
-    {
-
-
-        // 1.13 checkup itself
-        $this->checkupRepository->removeHard($checkupToDelete);
     }
 
 
     /**
      * Returns logger instance
      *
-     * @return \TYPO3\CMS\Core\Log\Logger
+     * @return Logger
      */
     protected function getLogger()
     {
-        if (!$this->logger instanceof \TYPO3\CMS\Core\Log\Logger) {
-            $this->logger = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Log\\LogManager')->getLogger(__CLASS__);
+        if (!$this->logger instanceof Logger) {
+            $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
         }
 
         return $this->logger;

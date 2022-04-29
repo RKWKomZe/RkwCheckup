@@ -17,14 +17,14 @@ namespace RKW\RkwCheckup\Domain\Repository;
 use RKW\RkwCheckup\Domain\Model\Section;
 
 /**
- * Class StepRepository
+ * Class StepFeedbackRepository
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class StepRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class StepFeedbackRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
      * @var array
@@ -33,27 +33,4 @@ class StepRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
     ];
 
-    /**
-     * findBySectionAlsoDeleted
-     *
-     * Find all steps of a section, also deleted
-     *
-     * @param Section $section
-     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
-     */
-    public function findBySectionAlsoDeleted(Section $section)
-    {
-
-        $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(false);
-        $query->getQuerySettings()->setIncludeDeleted(true);
-        $query->getQuerySettings()->setIgnoreEnableFields(true);
-
-        $query->matching(
-            $query->equals('section', $section)
-        );
-
-        return $query->execute();
-    }
 }

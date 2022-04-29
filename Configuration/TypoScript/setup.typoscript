@@ -42,6 +42,7 @@ module.tx_rkwcheckup_web_rkwcheckupstatistics {
     }
 }
 module.tx_rkwcheckup_web_rkwcheckupstatistics.persistence < plugin.tx_rkwcheckup.persistence
+module.tx_rkwcheckup < plugin.tx_rkwcheckup
 
 
 

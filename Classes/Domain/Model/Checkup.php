@@ -22,6 +22,21 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
+     * crdate
+     *
+     * @var integer
+     */
+    protected $crdate;
+
+    /**
+     * tstamp
+     *
+     * @var integer
+     */
+    protected $tstamp;
+
+
+    /**
      * section
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section>
@@ -75,6 +90,52 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected function initStorageObjects()
     {
         $this->section = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+
+    /**
+     * Returns the crdate
+     *
+     * @return integer $crdate
+     */
+    public function getCrdate()
+    {
+        return $this->crdate;
+    }
+
+
+    /**
+     * Sets the crdate
+     *
+     * @param integer $crdate
+     * @return void
+     */
+    public function setCrdate($crdate)
+    {
+        $this->crdate = $crdate;
+    }
+
+
+    /**
+     * Returns the tstamp
+     *
+     * @return integer $tstamp
+     */
+    public function getTstamp()
+    {
+        return $this->tstamp;
+    }
+
+
+    /**
+     * Sets the tstamp
+     *
+     * @param integer $tstamp
+     * @return void
+     */
+    public function setTstamp($tstamp)
+    {
+        $this->tstamp = $tstamp;
     }
 
     

@@ -46,7 +46,7 @@
         <title>Warum beantworten Sie diese Frage?</title>
         <description>Seien Sie bitte ehrlich.</description>
         <mandatory>0</mandatory>
-        <type>1</type>
+        <record_type>1</record_type>
     </tx_rkwcheckup_domain_model_question>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -83,7 +83,7 @@
         <title>Ist es wahr?</title>
         <description>Sie dürfen auch lügen.</description>
         <mandatory>1</mandatory>
-        <type>1</type>
+        <record_type>1</record_type>
     </tx_rkwcheckup_domain_model_question>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -123,7 +123,7 @@
         <mandatory>1</mandatory>
         <min_check>2</min_check>
         <max_check>3</max_check>
-        <type>3</type>
+        <record_type>3</record_type>
     </tx_rkwcheckup_domain_model_question>
 
     <tx_rkwcheckup_domain_model_answer>

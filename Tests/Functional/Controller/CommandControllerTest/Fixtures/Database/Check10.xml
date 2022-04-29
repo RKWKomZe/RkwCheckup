@@ -2,14 +2,13 @@
 <dataset>
 
     <tx_rkwcheckup_domain_model_checkup>
+        <crdate>0</crdate>
         <uid>1</uid>
         <pid>1</pid>
         <title>MegaThemenCheck</title>
         <description>SomeDescription</description>
-        <section>3</section>
+        <section>1</section>
     </tx_rkwcheckup_domain_model_checkup>
-
-    <!-- Section 1 -->
 
     <tx_rkwcheckup_domain_model_section>
         <uid>1</uid>
@@ -17,7 +16,7 @@
         <checkup>1</checkup>
         <title>Allgemeine Fragen</title>
         <description>Vorab einige Fragen</description>
-        <step>3</step>
+        <step>2</step>
     </tx_rkwcheckup_domain_model_section>
 
     <tx_rkwcheckup_domain_model_step>
@@ -35,68 +34,10 @@
         <title>Schritt 2</title>
         <description>Geben Sie uns mehr Antworten!</description>
         <section>1</section>
-        <question>1</question>
-        <step_feedback>1</step_feedback>
+        <question>0</question>
     </tx_rkwcheckup_domain_model_step>
 
-    <tx_rkwcheckup_domain_model_stepfeedback>
-        <uid>1</uid>
-        <pid>1</pid>
-        <title>Ein Zwischenschritt</title>
-        <description>Hier blenden wir etwas ein</description>
-    </tx_rkwcheckup_domain_model_stepfeedback>
-
-    <tx_rkwcheckup_domain_model_step>
-        <uid>3</uid>
-        <pid>1</pid>
-        <title>Schritt 3</title>
-        <description>Wir wollen meeeehr!</description>
-        <section>1</section>
-        <question>1</question>
-    </tx_rkwcheckup_domain_model_step>
-
-    <!-- Section 2 -->
-
-    <tx_rkwcheckup_domain_model_section>
-        <uid>2</uid>
-        <pid>1</pid>
-        <checkup>1</checkup>
-        <title>Tiefer gehende Fragen</title>
-        <description>Wir wollen es genau wissen</description>
-        <step>1</step>
-    </tx_rkwcheckup_domain_model_section>
-
-    <tx_rkwcheckup_domain_model_step>
-        <uid>4</uid>
-        <pid>1</pid>
-        <title>Schritt 1 in Sektion 2</title>
-        <description>Das wird ein Gaudi!</description>
-        <section>2</section>
-        <question>1</question>
-    </tx_rkwcheckup_domain_model_step>
-
-    <!-- Section 3 -->
-
-    <tx_rkwcheckup_domain_model_section>
-        <uid>3</uid>
-        <pid>1</pid>
-        <checkup>1</checkup>
-        <title>Abschließende Fragen</title>
-        <description>Jetzt runden wir die Sache ab</description>
-        <step>1</step>
-    </tx_rkwcheckup_domain_model_section>
-
-    <tx_rkwcheckup_domain_model_step>
-        <uid>5</uid>
-        <pid>1</pid>
-        <title>Schritt 1 in Sektion 3</title>
-        <description>Noch einmal alles raushauen!</description>
-        <section>3</section>
-        <question>1</question>
-        <hide_cond>1</hide_cond>
-    </tx_rkwcheckup_domain_model_step>
-
-    <!-- QUESTION 1 (Section1, Step1) -->
+    <!-- QUESTION 1 -->
 
     <tx_rkwcheckup_domain_model_question>
         <uid>1</uid>
@@ -133,12 +74,12 @@
         <response>Dann können Sie sich wohl glücklich schätzen</response>
     </tx_rkwcheckup_domain_model_answer>
 
-    <!-- QUESTION 2 (Section1, Step1) -->
+    <!-- QUESTION 2 -->
 
     <tx_rkwcheckup_domain_model_question>
         <uid>2</uid>
         <pid>1</pid>
-        <step>2</step>
+        <step>1</step>
         <answer>3</answer>
         <title>Ist es wahr?</title>
         <description>Sie dürfen auch lügen.</description>
@@ -171,7 +112,7 @@
     </tx_rkwcheckup_domain_model_answer>
 
 
-    <!-- QUESTION 3 (Section1, Step1) -->
+    <!-- QUESTION 3 -->
 
     <tx_rkwcheckup_domain_model_question>
         <uid>3</uid>
@@ -209,7 +150,6 @@
         <title>Bravo</title>
         <response>Sesam öffne Dich...</response>
     </tx_rkwcheckup_domain_model_answer>
-
     <tx_rkwcheckup_domain_model_answer>
         <uid>10</uid>
         <pid>1</pid>
@@ -218,62 +158,5 @@
         <response>Lets zock!</response>
     </tx_rkwcheckup_domain_model_answer>
 
-    <!-- QUESTION 4 (Section2, Step1) -->
-
-    <tx_rkwcheckup_domain_model_question>
-        <uid>4</uid>
-        <pid>1</pid>
-        <step>4</step>
-        <answer>1</answer>
-        <title>Fischt Fischers Fritz frische Fische?</title>
-        <description>Überlegen Sie doch mal.</description>
-        <mandatory>0</mandatory>
-        <record_type>1</record_type>
-    </tx_rkwcheckup_domain_model_question>
-
-    <tx_rkwcheckup_domain_model_answer>
-        <uid>11</uid>
-        <pid>1</pid>
-        <question>4</question>
-        <title>Ja</title>
-        <response>War doch klar!</response>
-    </tx_rkwcheckup_domain_model_answer>
-
-    <tx_rkwcheckup_domain_model_answer>
-        <uid>12</uid>
-        <pid>1</pid>
-        <question>4</question>
-        <title>Nein</title>
-        <response>Echt nicht?</response>
-    </tx_rkwcheckup_domain_model_answer>
-
-    <!-- QUESTION 5 (Section3, Step1) -->
-
-    <tx_rkwcheckup_domain_model_question>
-        <uid>5</uid>
-        <pid>1</pid>
-        <step>5</step>
-        <answer>1</answer>
-        <title>Hat Ihnen die Umfrage Spaß gemacht?</title>
-        <description>Sie haben die Auswahl zwischen ja und ja.</description>
-        <mandatory>0</mandatory>
-        <record_type>2</record_type>
-    </tx_rkwcheckup_domain_model_question>
-
-    <tx_rkwcheckup_domain_model_answer>
-        <uid>13</uid>
-        <pid>1</pid>
-        <question>5</question>
-        <title>Ja</title>
-        <response>War doch klar!</response>
-    </tx_rkwcheckup_domain_model_answer>
-
-    <tx_rkwcheckup_domain_model_answer>
-        <uid>14</uid>
-        <pid>1</pid>
-        <question>5</question>
-        <title>Total</title>
-        <response>Das macht uns glücklich :)</response>
-    </tx_rkwcheckup_domain_model_answer>
 
 </dataset>

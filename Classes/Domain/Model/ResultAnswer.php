@@ -24,6 +24,7 @@ namespace RKW\RkwCheckup\Domain\Model;
  */
 class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
     /**
      * freeNumericInput
      *
@@ -71,7 +72,6 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $section;
 
-    
     /**
      * @return int
      */

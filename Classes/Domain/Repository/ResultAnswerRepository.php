@@ -15,6 +15,7 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 
 use RKW\RkwCheckup\Domain\Model\Question;
+use RKW\RkwCheckup\Domain\Model\Result;
 
 /**
  * Class ResultAnswerRepository
@@ -44,4 +45,6 @@ class ResultAnswerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         return $query->execute();
     }
+
+
 }

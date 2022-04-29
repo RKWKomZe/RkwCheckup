@@ -72,6 +72,7 @@ class Step extends AbstractCheckupContents
      * stepFeedback
      *
      * @var \RKW\RkwCheckup\Domain\Model\StepFeedback
+     * @cascade remove
      */
     protected $stepFeedback;
 

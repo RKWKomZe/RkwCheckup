@@ -15,6 +15,8 @@ namespace RKW\RkwCheckup\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwCheckup\Domain\Model\Question;
+
 /**
  * Class AnswerRepository
  *
@@ -25,6 +27,28 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 class AnswerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+    /**
+     * findByQuestionAlsoDeleted
+     *
+     * Find all questions of a step, also deleted
+     *
+     * @param Question $question
+     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function findByQuestionAlsoDeleted(Question $question)
+    {
 
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setIncludeDeleted(true);
+        $query->getQuerySettings()->setIgnoreEnableFields(true);
+
+        $query->matching(
+            $query->equals('question', $question)
+        );
+
+        return $query->execute();
+    }
 
 }

@@ -14,6 +14,7 @@ namespace RKW\RkwCheckup\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwCheckup\Domain\Model\Step;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
@@ -49,6 +50,30 @@ class QuestionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $querySettings->setRespectStoragePage(false);
 
         $this->setDefaultQuerySettings($querySettings);
+    }
+
+    /**
+     * findByStepAlsoDeleted
+     *
+     * Find all questions of a step, also deleted
+     *
+     * @param Step $step
+     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function findByStepAlsoDeleted(Step $step)
+    {
+
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setIncludeDeleted(true);
+        $query->getQuerySettings()->setIgnoreEnableFields(true);
+
+        $query->matching(
+            $query->equals('step', $step)
+        );
+
+        return $query->execute();
     }
 
 

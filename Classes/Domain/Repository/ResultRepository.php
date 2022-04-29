@@ -45,4 +45,29 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         return $query->execute();
     }
+
+
+    /**
+     * findByCheckupAlsoDeleted
+     *
+     * Find all results of check, also deleted
+     *
+     * @param Checkup $checkup
+     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function findByCheckupAlsoDeleted(Checkup $checkup)
+    {
+
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setIncludeDeleted(true);
+        $query->getQuerySettings()->setIgnoreEnableFields(true);
+
+        $query->matching(
+            $query->equals('checkup', $checkup)
+        );
+
+        return $query->execute();
+    }
 }
