@@ -1,0 +1,10 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <figure class="image mt-2">
+        <f:cObject typoscriptObjectPath="lib.txRkwBasics.responsiveImage" data="{image.uid}" />
+        <f:if condition="{image.description}">
+            <figcaption class="image-caption">{image.description}</figcaption>
+        </f:if>
+    </figure>
+
+</html>

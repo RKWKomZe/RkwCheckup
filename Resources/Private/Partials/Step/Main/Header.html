@@ -2,7 +2,18 @@
     data-namespace-typo3-fluid="true">
 
     <div class="contentbox__webcheck-header flex webcheck-info">
-        <h2 class="h2 h2--small flex-basis-9 h2--infoflag-space" id="tx-rkwcheckup-main">{result.currentStep.title}</h2>
+        
+           <h2 class="h2 h2--small flex-basis-9 h2--infoflag-space" id="tx-rkwcheckup-main">
+               <f:if condition="!{result.currentStep.hideText}">
+                   <f:then>
+                       {result.currentStep.title}
+                   </f:then>
+                   <f:else>
+                       &nbsp;
+                   </f:else>
+               </f:if>
+           </h2>
+       
         <div class="info-flag info-flag--right flex-basis-3">
             <span class="info-flag__progress">{result.currentSection.title}</span>
         </div>
