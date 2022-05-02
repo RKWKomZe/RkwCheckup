@@ -1,13 +1,13 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
     <h2>{question.title}</h2>
     <p>{question.description}</p>
-    <f:render partial="Answer/FormFields" arguments="{resultReadOnly: 1, question: question, answerList: '{rkw:getAnswersOfQuestion(question: \'{question}\', result: \'{result}\')}' }" />
+    <f:render partial="Answer/FormFields" arguments="{resultReadOnly: 1, question: question, answerList: '{rkwCheckup:getAnswersOfQuestion(question: \'{question}\', result: \'{result}\')}' }" />
 
     <f:comment><!-- the feedback we want to give --></f:comment>
-    <f:for each="{rkw:getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="resultAnswer">
+    <f:for each="{rkwCheckup:getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="resultAnswer">
 
         <br />
         <f:if condition="{resultAnswer.freeTextInput}">

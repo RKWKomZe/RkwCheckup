@@ -1,5 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
        
@@ -46,6 +46,13 @@
             </label>
         </div>
     </f:for>
+
+
+    <f:if condition="{question.allowTextInput">
+        <div class="form__field form__field--webcheck">
+            <f:render partial="Progress/Answer/Main/FreeTextOther" arguments="{_all}" />
+        </div>
+    </f:if>
 
 
 </html>

@@ -11,28 +11,23 @@
             <p>Dein CHECKLINK zum später fortsetzen <f:link.action noCacheHash="true" action="progress" arguments="{result: result}" absolute="true"> Dieser Link </f:link.action> </p>
         </f:comment>
 
-        <f:comment>
-            <!-- does we need FlashMessages here? -->
-            <f:render partial="Global/FlashMessages" arguments="{_all}" />
-        </f:comment>
-        
-            <f:form
-                action="validate"
-                method="post"
-                enctype="multipart/form-data"
-                name="result"
-                object="{result}"
-                section="tx-rkwcheckup-main"
-            >
-                <f:if condition="{result.showSectionIntro}">
-                    <f:then>
-                        <f:render partial="Section/Main" arguments="{_all}" />
-                    </f:then>
-                    <f:else>
-                        <f:render partial="Step/Main" arguments="{_all}" />
-                    </f:else>
-                </f:if>
-            </f:form>
+        <f:form
+            action="validate"
+            method="post"
+            enctype="multipart/form-data"
+            name="result"
+            object="{result}"
+            section="tx-rkwcheckup-main"
+        >
+            <f:if condition="{result.showSectionIntro}">
+                <f:then>
+                    <f:render partial="Progress/Section/Main" arguments="{_all}" />
+                </f:then>
+                <f:else>
+                    <f:render partial="Progress/Step/Main" arguments="{_all}" />
+                </f:else>
+            </f:if>
+        </f:form>
 
     </f:section>
 </html>

@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+    <f:for each="{result.currentStep.question}" as="question" iteration="questionIter">
+        <f:if condition="{rkwCheckup:checkQuestionVisibility(result: '{result}', question: '{question}')}" >
+
+            <f:render partial="Progress/Question/Main/Header" arguments="{_all}" />
+            <f:render partial="Progress/Question/Main/Intro" arguments="{_all}" />
+            <f:render partial="Progress/Answer/Main" arguments="{_all}" />
+               
+        </f:if>
+    </f:for>
+
+</html>

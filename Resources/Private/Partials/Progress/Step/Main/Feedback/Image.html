@@ -2,9 +2,8 @@
 
     <figure class="image mt-2">
         <f:cObject typoscriptObjectPath="lib.txRkwBasics.responsiveImage" data="{image.uid}" />
-        <f:if condition="{image.description}">
-            <figcaption class="image-caption">{image.description}</figcaption>
+        <f:if condition="{image.originalResource.description}">
+            <figcaption class="image-caption">{image.originalResource.description}</figcaption>
         </f:if>
     </figure>
-
 </html>

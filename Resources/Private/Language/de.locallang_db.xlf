@@ -29,7 +29,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.tab.extend">
                 <source>Extended</source>
-                <target>Anzeige</target>
+                <target><![CDATA[Anzeige & Bedingungen]]></target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.title">
 				<source>Title</source>
@@ -64,7 +64,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.tab.extend">
                 <source>Extended</source>
-                <target>Anzeige / Bedingungen</target>
+                <target><![CDATA[Anzeige, Bedingungen & Schritt-Feedback]]></target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.title">
 				<source>Title</source>
@@ -86,9 +86,9 @@
 				<source>Hide Cond</source>
 				<target>Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.interim_result">
+			<trans-unit id="tx_rkwcheckup_domain_model_step.step_feedback">
 				<source>Interim Result</source>
-				<target>Zwischenergebnis</target>
+				<target>Schritt-Feedback</target>
 			</trans-unit>
 			            
             

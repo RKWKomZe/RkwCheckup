@@ -1,5 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
 <f:form.validationResults>
@@ -43,7 +43,7 @@
                 <f:form.checkbox
                     class="checkbox"
                     value="1"
-                    checked="{rkw:checkSpecificAnswerOfQuestion(resultSet: '{answerList}', answer: '{answer}')}"
+                    checked="{rkwCheckup:checkSpecificAnswerOfQuestion(resultSet: '{answerList}', answer: '{answer}')}"
                 />
             </f:then>
             <f:else>

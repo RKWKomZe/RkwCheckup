@@ -1,5 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
 
@@ -43,11 +43,11 @@
                             class="radio"
                             value="1"
                             disabled="false"
-                            checked="{rkw:checkSpecificAnswerOfQuestion(resultSet: '{answerList}', answer: '{answer}')}"
+                            checked="{rkwCheckup:checkSpecificAnswerOfQuestion(resultSet: '{answerList}', answer: '{answer}')}"
                         />
                         <label for="answer{answer.uid}" class="radio-label">
                             <span>
-                                <f:format.raw>{rkw:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
+                                <f:format.raw>{rkwCheckup:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
                             </span>
                         </label>
                     </f:then>
@@ -60,7 +60,7 @@
                         />
                         <label for="answer{answer.uid}" class="radio-label">
                             <span>
-                                <f:format.raw>{rkw:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
+                                <f:format.raw>{rkwCheckup:php.strReplace(search: ' ', replace: '&nbsp;', subject: '{answer.title}')}</f:format.raw>
                             </span>
                         </label>
                     </f:else>

@@ -1,36 +1,43 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:rkw="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
     <f:layout name="Default" />
 
     <f:section name="main">
-        <h1>{result.checkup.title}</h1>
-
-        <f:comment>
-            <p>Dein CHECKLINK zum ergebnis nochmal anschauen <f:link.action action="show" arguments="{result: result}" absolute="true"> Dieser Link </f:link.action> </p>
-        </f:comment>
-
-        <div class="webcheck-description flex space-between">
-            <div class="info-flag info-flag--results info-flag--left flex-basis-4">
-                <h3 class="info-flag__headline">Durchgeführt am</h3>
-                <span class="info-flag__text info-flag__text--good">
-                    <f:format.date format="d.m.y">{result.crdate}</f:format.date>
-                </span>
-            </div>
-            <div class="description-text flex-basis-8">
-                <p>{result.checkup.description}</p>
-            </div>
-        </div>
+        
+        <f:render partial="Result/Main/Header" arguments="{_all}" />
 
         <div class="section">
 
+
+            <div class="tabs js-tabs">
+                <ul class="tabs__nav">
+                    <?php for ($i = 1; $i < 3; $i++) : ?>
+                    <li class="tabs__nav-item"><a class="tabs__nav-link" data-target="#tab-<?php echo $i ?>" href="#tab-<?php echo $i ?>">Nunc tincigunt</a></li>
+                    <li class="tabs__nav-item"><a class="tabs__nav-link" data-target="#tab-<?php echo $i ?>a" href="#tab-<?php echo $i ?>a">Nunc tincigunt rutrum commodo</a></li>
+                    <?php endfor ?>
+                </ul>
+                <?php for ($i = 1; $i < 3; $i++) : ?>
+                <div class="tabs__content" id="tab-<?php echo $i ?>">
+                    <h2>Content heading <?php echo $i ?></h2>
+                    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+                </div>
+                <div class="tabs__content" id="tab-<?php echo $i ?>a">
+                    <h2>Content heading <?php echo $i ?>a</h2>
+                    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+                    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+                </div>
+                <?php endfor ?>
+            </div>
+            
+            
             <f:if condition="<f:count>{result.checkup.section}</f:count> > 1">
                 <f:then>
                     <p class="anchor-nav__header">Direktlinks</p>
                     <ul class="anchor-nav__list">
                         <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
-                            <li><a href="#{rkw:stringToUrl(string: '{section.title}')}" data-target="#{rkw:stringToUrl(string: '{section.title}')}">
+                            <li><a href="#section-{result.checkup.section.uid}" data-target="#section-{result.checkup.section.uid}">
                                 {section.title}
                             </a></li>
                         </f:for>
@@ -41,7 +48,7 @@
 
             <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
                 <f:comment><!-- if section has answers (could be skipped) --> </f:comment>
-                <f:if condition="{rkw:checkSectionForAnswers(section: '{section}', result: '{result}')}" >
+                <f:if condition="{rkwCheckup:checkSectionForAnswers(section: '{section}', result: '{result}')}" >
                     <f:render partial="Result/Section" arguments="{_all}" />
                 </f:if>
             </f:for>
