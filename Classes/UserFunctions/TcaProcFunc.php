@@ -68,7 +68,7 @@ class TcaProcFunc
      * @param array $params
      * @return \RKW\RkwCheckup\Domain\Model\Checkup|null $checkup
      */
-    private function getCheckup(array $params)
+    public function getCheckup(array $params)
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
@@ -96,7 +96,11 @@ class TcaProcFunc
             /** @var Section $section */
             $sectionUid = $stepUid ?: intval($params['row']['section']);
             $section = $sectionRepository->findByIdentifier($sectionUid);
-            if ($section instanceof Section) {
+            // if "$section->getCheckup() instanceof Checkup" is needed for create translated records in TCA (because its not persistent yet)
+            if (
+                $section instanceof Section
+                && $section->getCheckup() instanceof Checkup
+            ) {
                 $checkupUid = $section->getCheckup()->getUid();
             }
         }
@@ -125,7 +129,7 @@ class TcaProcFunc
      * @param array $params
      * @return \TYPO3\CMS\Extbase\DomainObject\AbstractEntity|null $entity
      */
-    private function getEntityToStop(array $params)
+    public function getEntityToStop(array $params)
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
@@ -173,7 +177,6 @@ class TcaProcFunc
      */
     public function displayCondByParentType(array $params): bool
     {
-        //DebuggerUtility::var_dump($params); exit;
         return true;
     }
 

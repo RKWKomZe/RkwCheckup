@@ -302,7 +302,7 @@
 				<target>Gesamtdaten</target>
 			</trans-unit>
 
-
+            <!-- Templates/Backend/Show.html -->
 			<trans-unit id="templates_backend_show.record_type.I.1">
                 <source>Single choice</source>
                 <target>Einzelauswahl</target>
@@ -314,6 +314,54 @@
             <trans-unit id="templates_backend_show.record_type.I.3">
                 <source>Multiple choice</source>
                 <target>Mehrfachauswahl</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.no_check_selected">
+                <source>No check selected</source>
+                <target>Kein Check ausgewählt</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.finished_checks_total">
+                <source>Finished checks total</source>
+                <target>Abgeschlossene Checks Total</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.question">
+                <source>Question</source>
+                <target>Frage</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.type">
+                <source>Type</source>
+                <target>Typ</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.mandatory">
+                <source>Mandatory</source>
+                <target>Pflichtfeld</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.mandatory.yes">
+                <source>Yes</source>
+                <target>Ja</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.mandatory.no">
+                <source>No</source>
+                <target>Nein</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.answer">
+                <source>Answer</source>
+                <target>Antwort</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.answer.amount">
+                <source>Answer amount</source>
+                <target>Antworthäufigkeit</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.answer.freetext">
+                <source>Answer freetext</source>
+                <target>Freitext-Antworten</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.section">
+                <source>Section</source>
+                <target>Abschnitt</target>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.step">
+                <source>Step</source>
+                <target>Schritt</target>
             </trans-unit>
 
 		</body>
