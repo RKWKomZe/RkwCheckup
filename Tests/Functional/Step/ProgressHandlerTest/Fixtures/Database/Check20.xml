@@ -34,6 +34,7 @@
         <description>Geben Sie uns mehr Antworten!</description>
         <section>1</section>
         <question>1</question>
+        <hide_cond>1</hide_cond>
     </tx_rkwcheckup_domain_model_step>
 
     <!-- QUESTION 1 -->

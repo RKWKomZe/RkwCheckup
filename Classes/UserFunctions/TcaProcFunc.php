@@ -23,6 +23,7 @@ use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
 use RKW\RkwCheckup\Domain\Repository\SectionRepository;
 use RKW\RkwCheckup\Domain\Repository\StepRepository;
 use RKW\RkwCheckup\Utility\AnswerUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -74,14 +75,29 @@ class TcaProcFunc
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
         // if it's a question get it's step
-        $stepUid = 0;
+        $sectionUid = 0;
         if ($params['table'] == 'tx_rkwcheckup_domain_model_question') {
+
             /** @var StepRepository $stepRepository */
             $stepRepository = $objectManager->get(StepRepository::class);
             /** @var Step $step */
             $step = $stepRepository->findByIdentifier(intval($params['row']['step']));
+
             if ($step instanceof Step) {
-                $stepUid = $step->getUid();
+
+                // get section of step (it's only passthrough)
+                $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_rkwcheckup_domain_model_step');
+                $result = $queryBuilder
+                    ->select('uid', 'section')
+                    ->from('tx_rkwcheckup_domain_model_step')
+                    ->where(
+                        $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($step->getUid(), \PDO::PARAM_INT))
+                    )
+                    ->execute();
+                while ($row = $result->fetch()) {
+                    // Do something with that single row
+                    $sectionUid = $row['section'];
+                }
             }
         }
 
@@ -89,12 +105,12 @@ class TcaProcFunc
         $checkupUid = 0;
         if (
             $params['table'] == 'tx_rkwcheckup_domain_model_step'
-            || $stepUid
+            || $sectionUid
         ) {
             /** @var SectionRepository $sectionRepository */
             $sectionRepository = $objectManager->get(SectionRepository::class);
             /** @var Section $section */
-            $sectionUid = $stepUid ?: intval($params['row']['section']);
+            $sectionUid = $sectionUid ?: intval($params['row']['section']);
             $section = $sectionRepository->findByIdentifier($sectionUid);
             // if "$section->getCheckup() instanceof Checkup" is needed for create translated records in TCA (because its not persistent yet)
             if (
@@ -138,6 +154,7 @@ class TcaProcFunc
         // -> because of this a question entity cannot used as a "stopEntity"
         $stepToStopUid = 0;
         if ($params['table'] == 'tx_rkwcheckup_domain_model_question') {
+
             /** @var QuestionRepository $questionRepository */
             $questionRepository = $objectManager->get(QuestionRepository::class);
             /** @var Question $entityToStop */

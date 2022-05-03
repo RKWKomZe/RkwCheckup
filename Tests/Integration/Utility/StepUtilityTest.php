@@ -304,6 +304,7 @@ class StepUtilityTest extends FunctionalTestCase
 
         static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
         static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
+        static::assertFalse($checkResult->isLastStep());
 
         $this->subject->next($checkResult);
 
@@ -379,6 +380,35 @@ class StepUtilityTest extends FunctionalTestCase
 
     }
 
+
+    /**
+     * @test
+     */
+    public function nextWithWithinTheOverallSecondLastStepWithStepFeedbackDontTheLastStepWithFlag ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a Checkup inside the overall second last step of the check
+         * When the function is called
+         * Then the next step is set; the next section is set; the lastStep flag is set
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check30.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check180.xml');
+
+        /** @var Result $checkResult */
+        $checkResult = $this->resultRepository->findByIdentifier(1);
+
+        static::assertFalse($checkResult->isLastStep());
+        static::assertFalse($checkResult->isShowStepFeedback());
+
+        $this->subject->next($checkResult);
+
+        static::assertFalse($checkResult->isLastStep());
+        static::assertTrue($checkResult->isShowStepFeedback());
+
+    }
 
 
     //===================================================================

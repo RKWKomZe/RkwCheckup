@@ -5,6 +5,7 @@ use RKW\RkwBasics\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Step\ProgressHandler;
+use RKW\RkwCheckup\Utility\StepUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
@@ -94,6 +95,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
         /** @var Checkup $checkup */
         $checkup = $this->checkupRepository->findByUid(intval($this->settings['checkup']));
         $this->progressHandler->newResult($checkup);
+
         $this->progressHandler->persist();
 
         $this->redirect(
@@ -201,12 +203,39 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      */
     public function validateAction(Result $result): void
     {
+        if ($result->isFinished()) {
+            $this->forward(
+                'result',
+                null,
+                null,
+                ['result' => $result]
+            );
+        }
 
         $this->progressHandler->setResult($result);
         if ($this->progressHandler->progressValidation()){
             $this->progressHandler->moveNewResultAnswers();
             $this->progressHandler->setNextStep();
             $this->progressHandler->persist();
+        }
+
+        // Special solution, if the previous step does not know, that the following should not be shown
+        // End it immediately: If lastStep is true and the current Step + Section are should not be shown
+        if (
+            $result->isLastStep()
+            && !$result->isFinished()
+            && !StepUtility::showNextStep($result->getCurrentStep(), $result->getCurrentSection())
+        ) {
+
+            $result->setFinished(true);
+            $this->progressHandler->persist();
+
+            $this->redirect(
+                'result',
+                null,
+                null,
+                ['result' => $result]
+            );
         }
 
         $this->forward(

@@ -15,11 +15,14 @@ namespace RKW\RkwCheckup\Utility;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwCheckup\Domain\Model\AbstractCheckupContents;
 use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Model\Step;
+use RKW\RkwCheckup\Exception;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class AnswerUtility
@@ -38,7 +41,7 @@ class AnswerUtility
      * - used in UserFunc for condition handling
      *
      * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
-     * @param AbstractEntity|null $stopEntity The section, step or question to stop adding more to list
+     * @param AbstractCheckupContents|null $stopEntity The section, step or question to stop adding more to list
      * @param bool $asArrayForTca Return answers as small data array if true. Otherwise as objects
      * @return array
      */
@@ -47,7 +50,7 @@ class AnswerUtility
         AbstractEntity $stopEntity = null, 
         bool $asArrayForTca = false
     ): array {
-        
+
         $answerListOfCheckup = [];
         $stopSearching = false;
         /** @var Section $section */
@@ -59,7 +62,6 @@ class AnswerUtility
                 && $section === $stopEntity
                 && !$stopSearching
             ) {
-                $stopSearching = true;
                 break;
             }
 
