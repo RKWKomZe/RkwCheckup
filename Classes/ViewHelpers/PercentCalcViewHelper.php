@@ -65,6 +65,13 @@ class PercentCalcViewHelper extends AbstractViewHelper {
         \Closure $renderChildrenClosure, 
         RenderingContextInterface $renderingContext
     ){
-        return round($arguments['sum'] / $arguments['maxSum'] * 100);
+        if (
+            $arguments['sum']
+            && $arguments['maxSum']
+        ) {
+            return round($arguments['sum'] / $arguments['maxSum'] * 100);
+        }
+
+        return 0;
     }
 }
