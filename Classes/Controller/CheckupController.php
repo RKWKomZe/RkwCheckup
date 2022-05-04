@@ -159,34 +159,24 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
                         }
 
                         // remove not answered radio-button answers
-                        // but do not remove freeTextInput answers
                         if (
                             !key_exists('answer', $newResultAnswer)
                             && !key_exists('freeTextInput', $newResultAnswer)
                         ) {
                             unset($result['newResultAnswer'][$key]);
                         }
-                    }
 
-                    /*
-                    if (
-                        is_array($answer)
-                        && (
-                            key_exists('answer', $answer)
-                            && (
-                                is_array($answer['answer'])
-                                && !$answer['answer']['__identity']
-                            )
-                        )
-                    ) {
-                        // but not if it's special answer type
-                        if (!key_exists('freeNumericInput', $answer)) {
+                        // remove not answered freeTextInput answers
+                        if (
+                            key_exists('freeTextInput', $newResultAnswer)
+                            && empty(trim($newResultAnswer['freeTextInput']))
+                        ){
                             unset($result['newResultAnswer'][$key]);
                         }
-                    }
-                    */
-                }
 
+                    }
+
+                }
                 // override
                 $this->request->setArgument('result', $result);
             }
