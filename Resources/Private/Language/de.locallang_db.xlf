@@ -23,7 +23,7 @@
 			</trans-unit>
 			
 			
-			<!-- tx_rkwcheckup_domain_model_section --<
+			<!-- tx_rkwcheckup_domain_model_section -->
 			<trans-unit id="tx_rkwcheckup_domain_model_section">
 				<source>Section</source>
 				<target>Abschnitt</target>
