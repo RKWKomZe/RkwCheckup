@@ -1,5 +1,5 @@
 <?php
-namespace RKW\RkwCheckup\ViewHelpers;
+namespace RKW\RkwCheckup\ViewHelpers\Result;
 /*
  * This file is part of the TYPO3 CMS project.
  *

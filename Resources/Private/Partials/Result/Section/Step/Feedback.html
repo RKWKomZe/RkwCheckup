@@ -7,7 +7,7 @@
         <f:for each="{step.question}" as="question" iteration="iter">
 
             <f:comment><!-- if question has answers (could be skipped) --> </f:comment>
-            <f:if condition="{rkwCheckup:checkQuestionForAnswers(question: '{question}', result: '{result}')}" >
+            <f:if condition="{rkwCheckup:result.checkQuestionForAnswers(question: '{question}', result: '{result}')}" >
 
                 <div class="accordion__item">
                     <button 
@@ -35,7 +35,7 @@
                             </f:if>
 
                             <table class="responsive-table responsive-table--background">
-                                <f:for each="{rkwCheckup:getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="resultAnswer" iteration="resultAnswerIter">
+                                <f:for each="{rkwCheckup:result.getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="resultAnswer" iteration="resultAnswerIter">
                                     <tr>
                                         <td>
                                             <f:if condition="{question.invertFeedback}">

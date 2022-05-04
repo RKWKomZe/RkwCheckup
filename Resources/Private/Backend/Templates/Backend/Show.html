@@ -53,12 +53,12 @@
                             <f:for each="{question.answer}" as="answer">
                                 <p><f:translate key="templates_backend_show.answer" />: {answer.title}</p>
                                 <p>{answer.description}</p>
-                                <p><strong> <f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:countResultAnswer answer="{answer}" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:countResultAnswer question='{question}' />" />%)</p>
+                                <p><strong> <f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:countResultAnswer answer="{answer}" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%)</p>
                             </f:for>
                             <!-- Freetext answers -->
                             <f:if condition="{question.allowTextInput}">
                                 <p><strong><f:translate key="templates_backend_show.answer.freetext" />:</strong></p>
-                                <p><strong><f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:getFreeTextAnswerList question="{question}" count="true" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:getFreeTextAnswerList question='{question}' count='true' />" maxSum="<rkwCheckup:countResultAnswer question='{question}' />" />%)</p>
+                                <p><strong><f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:getFreeTextAnswerList question="{question}" count="true" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:getFreeTextAnswerList question='{question}' count='true' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%)</p>
                                 <f:for each="<rkwCheckup:getFreeTextAnswerList question='{question}' />" as="answerResultWithText">
                                     <p>{answerResultWithText.freeTextInput}</p>
                                 </f:for>

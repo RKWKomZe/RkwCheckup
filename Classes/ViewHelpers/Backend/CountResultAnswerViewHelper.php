@@ -1,5 +1,5 @@
 <?php
-namespace RKW\RkwCheckup\ViewHelpers;
+namespace RKW\RkwCheckup\ViewHelpers\Backend;
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -13,24 +13,30 @@ namespace RKW\RkwCheckup\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwBasics\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Answer;
+use RKW\RkwCheckup\Domain\Model\Question;
+use RKW\RkwCheckup\Domain\Repository\ResultAnswerRepository;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 
 /**
- * Class GetAnswersOfQuestionViewHelper
+ * Class CountResultAnswerViewHelper
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class CheckSpecificAnswerOfQuestionViewHelper extends AbstractViewHelper {
+class CountResultAnswerViewHelper extends AbstractViewHelper {
+
 
     use CompileWithRenderStatic;
 
+    
     /**
      * Initialize arguments.
      *
@@ -39,8 +45,8 @@ class CheckSpecificAnswerOfQuestionViewHelper extends AbstractViewHelper {
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('resultSet', 'array', 'result set from GetAnswersOfQuestionViewHelper', true);
-        $this->registerArgument('answer', Answer::class, 'The answer to check', true);
+        $this->registerArgument('answer', Answer::class, 'The answer to count');
+        $this->registerArgument('question', Question::class, 'The question to count');
     }
 
     /**
@@ -49,32 +55,28 @@ class CheckSpecificAnswerOfQuestionViewHelper extends AbstractViewHelper {
      * @param array $arguments
      * @param \Closure $renderChildrenClosure
      * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
-     * @return bool
+     * @return int
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
-    {
-        $resultSet = $arguments['resultSet'];
-        /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
+    public static function renderStatic(
+        array $arguments, 
+        \Closure $renderChildrenClosure, 
+        RenderingContextInterface $renderingContext
+    ){
         $answer = $arguments['answer'];
+        $question = $arguments['question'];
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        /** @var ResultAnswerRepository $resultAnswerRepository */
+        $resultAnswerRepository = $objectManager->get(ResultAnswerRepository::class);
 
-
-        /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
-        foreach ($resultSet as $resultAnswer) {
-
-            if ($resultAnswer->getAnswer() instanceof Answer) {
-                $isInvertedFeedback = $resultAnswer->getQuestion()->isInvertFeedback();
-
-                if ($resultAnswer->getAnswer()->getUid() === $answer->getUid()) {
-                    // if inverted: Don't check answer
-                    $returnValue = $isInvertedFeedback ? false : true;
-                } else {
-                    // if inverted: Check opposing answer
-                    $returnValue = $isInvertedFeedback ? true : false;
-                }
-                return $returnValue;
-            }
+        $result = 0;
+        if ($answer instanceof Answer) {
+            // count given answers by answer
+            $result = $resultAnswerRepository->findByAnswer($answer)->count();
+        } elseif ($question instanceof Question) {
+            // count given answers by question
+            $result = $resultAnswerRepository->findByQuestion($question)->count();
         }
 
-        return false;
+        return $result;
     }
 }

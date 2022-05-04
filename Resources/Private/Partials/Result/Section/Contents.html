@@ -7,7 +7,7 @@
 
             <f:for each="{section.step}" as="step">
                 <f:comment><!-- if step has answers (could be skipped) --> </f:comment>
-                <f:if condition="{rkwCheckup:checkStepForAnswers(step: '{step}', result: '{result}')}" >
+                <f:if condition="{rkwCheckup:result.checkStepForAnswers(step: '{step}', result: '{result}')}" >
                     <f:render partial="Result/Section/Step/Header" arguments="{_all}" />
                     <f:render partial="Result/Section/Step/Feedback" arguments="{_all}" />
                 </f:if>

@@ -16,7 +16,7 @@
      
                 <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
                     <f:comment><!-- if section has answers (could be skipped) --> </f:comment>
-                    <f:if condition="{rkwCheckup:checkSectionForAnswers(section: '{section}', result: '{result}')}" >
+                    <f:if condition="{rkwCheckup:result.checkSectionForAnswers(section: '{section}', result: '{result}')}" >
                         <f:render partial="Result/Section" arguments="{_all}" />
                     </f:if>
                 </f:for>

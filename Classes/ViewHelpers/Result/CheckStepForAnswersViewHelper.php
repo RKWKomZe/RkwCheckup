@@ -1,5 +1,5 @@
 <?php
-namespace RKW\RkwCheckup\ViewHelpers;
+namespace RKW\RkwCheckup\ViewHelpers\Result;
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -17,16 +17,15 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
-
 /**
- * Class StringToUrlViewHelper
+ * Class CheckStepForAnswersViewHelper
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class StringToUrlViewHelper extends AbstractViewHelper {
+class CheckStepForAnswersViewHelper extends AbstractViewHelper {
 
     use CompileWithRenderStatic;
 
@@ -38,41 +37,30 @@ class StringToUrlViewHelper extends AbstractViewHelper {
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('string', 'string', 'The value');
+        $this->registerArgument('result', '\RKW\RkwCheckup\Domain\Model\Result', 'The result which contains answers');
+        $this->registerArgument('step', '\RKW\RkwCheckup\Domain\Model\Step', 'The step to check', false);
     }
 
     /**
-     * Returns array with answers of given question
-     *
      * @param array $arguments
      * @param \Closure $renderChildrenClosure
      * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
-     * @return string
+     * @return bool
      */
-    public static function renderStatic(
-        array $arguments, 
-        \Closure $renderChildrenClosure, 
-        RenderingContextInterface $renderingContext
-    ){
-        $url = $arguments['string'];
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
+    {
+        /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
+        $result = $arguments['result'];
+        /** @var \RKW\RkwCheckup\Domain\Model\Step $step */
+        $step = $arguments['step'];
 
-        $url = strtolower($url);
-        $url = strip_tags($url);
-        $url = stripslashes($url);
-        $url = html_entity_decode($url);
+        /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
+        foreach ($result->getResultAnswer() as $resultAnswer) {
+            if ($resultAnswer->getStep() === $step) {
+                return true;
+            }
+        }
 
-        # Remove quotes (can't, etc.)
-        $url = str_replace('\'', '', $url);
-
-        # Replace non-alpha numeric with hyphens
-        $match = '/[^a-z0-9]+/';
-        $replace = '-';
-        $url = preg_replace($match, $replace, $url);
-
-        // @toDo:äöüß?
-
-        $url = trim($url, '-');
-
-        return $url;
+        return false;
     }
 }
