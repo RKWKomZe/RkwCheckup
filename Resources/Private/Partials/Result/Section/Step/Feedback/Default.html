@@ -3,11 +3,6 @@
     <h4><f:translate key="partials_checkup_result_section_step_feedback_default.yourAnswer" /></h4>
     <p>
         {resultAnswer.answer.title}
-        <f:if condition="{resultAnswerIter.isLast}">
-            <f:if condition="{resultAnswer.freeTextInput}">
-                <br><br>{resultAnswer.freeTextInput}
-            </f:if>
-        </f:if>
     </p>
     
     <h4><f:translate key="partials_checkup_result_section_step_feedback_default.ourTip" /></h4>
