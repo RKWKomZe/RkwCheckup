@@ -60,7 +60,15 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $description = '';
 
-    
+
+    /**
+     * resultIntro
+     *
+     * @var string
+     */
+    protected $resultIntro = '';
+
+
     /**
      * contextQuestion
      *
@@ -182,6 +190,24 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getResultIntro(): string
+    {
+        return $this->resultIntro;
+    }
+
+
+    /**
+     * @param string $resultIntro
+     */
+    public function setResultIntro(string $resultIntro): void
+    {
+        $this->resultIntro = $resultIntro;
     }
     
 

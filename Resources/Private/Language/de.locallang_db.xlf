@@ -17,6 +17,10 @@
 				<source>Description</source>
 				<target>Beschreibung</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_checkup.result_intro">
+                <source>Result intro</source>
+                <target>Einleitungstext auf Ergebnisseite</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup.section">
 				<source>Section</source>
 				<target>Abschnitt</target>
