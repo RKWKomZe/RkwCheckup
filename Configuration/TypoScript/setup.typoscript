@@ -1,4 +1,22 @@
 
+config.tx_extbase.persistence {
+
+    classes {
+
+        RKW\RkwCheckup\Domain\Model\Result {
+            mapping {
+                columns {
+                    crdate.mapOnProperty = crdate
+                    tstamp.mapOnProperty = tstamp
+                    hidden.mapOnProperty = hidden
+                    deleted.mapOnProperty = deleted
+                }
+            }
+        }
+    }
+
+}
+
 plugin.tx_rkwcheckup {
     view {
         templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Templates/
