@@ -161,6 +161,8 @@ class ProgressHandlerTest extends FunctionalTestCase
 
         static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Result', $this->subject->getResult());
 
+        static::assertFalse($this->subject->getResult()->isLastStep());
+
         // some additional "result" checks
         static::assertNotNull($this->subject->getResult()->getHash());
         static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $this->subject->getResult()->getCheckup());
@@ -833,6 +835,48 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->persist();
 
         static::assertCount(1, $result->getResultAnswer());
+
+    }
+
+
+
+    //===================================================================
+
+    /**
+     * @test
+     * @throws \Exception
+     */
+    public function setNextStepWithLastStepWhichIsNotShownByStepHideCond ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a result
+         * Given is a resultAnswer with UID 1
+         * Given is a step with a hideCondition with resultAnswer with UID 1
+         * When the function is called
+         * Then the following step is skipped
+         * Then the "finished" flag is set
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check20.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check110.xml');
+
+        /** @var Result $result */
+        $result = $this->resultRepository->findByIdentifier(1);
+        $this->subject->setResult($result);
+
+        // start: Section 1 and Step 1
+        static::assertFalse($result->isLastStep());
+        static::assertEquals(1, $result->getCurrentSection()->getUid());
+        static::assertEquals(1, $result->getCurrentStep()->getUid());
+
+        // do action
+        $this->subject->setNextStep();
+
+        //$result = $this->subject->getResult();
+
+        static::assertTrue($result->isLastStep());
 
     }
 

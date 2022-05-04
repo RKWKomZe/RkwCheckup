@@ -7,6 +7,8 @@ use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\ResultAnswer;
+use RKW\RkwCheckup\Domain\Model\Section;
+use RKW\RkwCheckup\Domain\Model\Step;
 use RKW\RkwCheckup\Domain\Repository\ResultRepository;
 use RKW\RkwCheckup\Exception;
 use RKW\RkwCheckup\Utility\StepUtility;
@@ -189,7 +191,11 @@ class ProgressHandler
             throw new Exception('No result set.', 1638189967);
         }
 
-        StepUtility::next($this->result);
+        do {
+            StepUtility::next($this->result);
+        } while (!StepUtility::showNextStep($this->result->getCurrentStep(), $this->result->getCurrentSection()));
+
+
     }
 
 

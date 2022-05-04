@@ -20,6 +20,7 @@ use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Model\Step;
 use RKW\RkwCheckup\Domain\Model\StepFeedback;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class StepUtility
@@ -74,23 +75,13 @@ class StepUtility
         $showStepFeedback = self::showStepFeedback();
 
         if (!$showStepFeedback) {
+
             // set next step
             self::setNextStepToResult();
-
-            // check if next step will show at least one question (check section, step and questions "hide"-condition)
-            /*
-            if (!self::showNextStep()) {
-                // go ahead, if the recent set section or step should not be shown to the user
-
-                // @toDo: PROBLEM IF THERE ARE IS NO MORE STEP!!
-
-                //self::next(self::$result);
-            }
-            */
-
-            // check and set flag on last step
-            self::toggleLastStepFlag();
         }
+
+        // check and set flag on last step
+        self::toggleLastStepFlag();
     }
 
 
@@ -186,7 +177,7 @@ class StepUtility
         if ($nextStep = self::$currentSection->getStep()->current()) {
             // either: Set next step in current section
             self::$result->setCurrentStep($nextStep);
-            
+
         } else {
             // or: Set next section with it's first step
             // fast forward to next section
@@ -203,7 +194,9 @@ class StepUtility
 
                 self::$result->setShowSectionIntro(true);
             }
+
         }
+
     }
 
     /**
@@ -215,17 +208,17 @@ class StepUtility
      * @return bool
      * @throws \Exception
      */
-    protected static function showNextStep (Step $step, Section $section): bool
+    public static function showNextStep (Step $step, Section $section): bool
     {
 
         // check if whole section should be skipped
-        if (self::checkHideCond($section)) {
+        if (self::findHideCond($section)) {
             // hide condition match: don't show section!
             return false;
         }
 
         // check if step should be skipped
-        if (self::checkHideCond($step)) {
+        if (self::findHideCond($step)) {
             // hide condition match: don't show step!
             return false;
         }
@@ -235,7 +228,8 @@ class StepUtility
         /** @var Question $question */
         foreach ($step->getQuestion() as $question) {
 
-            if (self::checkHideCond($question)) {
+            // findHideCond returns true if entity should NOT be shown
+            if (!self::findHideCond($question)) {
                 $atLeastOneQuestionWillShown = true;
                 break;
             }
@@ -277,7 +271,8 @@ class StepUtility
             $nextSection = self::$result->getCheckup()->getSection()->current();
 
             // no next step? Forward to next section with first step
-            if (!self::$currentSection->getStep()->next()) {
+            self::$currentSection->getStep()->next();
+            if (!self::$currentSection->getStep()->current()) {
                 // forward one section
                 self::$result->getCheckup()->getSection()->next();
                 if (self::$result->getCheckup()->getSection()->current()) {
@@ -285,18 +280,33 @@ class StepUtility
                     /** @var \RKW\RkwCheckup\Domain\Model\Step $nextStep */
                     $nextSection->getStep()->rewind();
                     $nextStep = $nextSection->getStep()->current();
+                    if (self::showNextStep($nextStep, $nextSection)) {
+                        return;
+                    }
                 }
             } else {
-                $nextStep = self::$currentSection->getStep()->next();
-            }
 
-            if (
-                $nextSection instanceof Section
-                && $nextStep instanceof Step
-                && self::showNextStep($nextStep, $nextSection)
-            ) {
-                // there is at least one step. Do nothing else
-                return;
+                // we want to check the following step, so forward with next()
+                // WORKAROUND START: Because following line does not work here by any reason!!
+                // $nextStep = self::$currentSection->getStep()->next();
+                $currentStepIsPassed = false;
+                foreach (self::$currentSection->getStep() as $step) {
+
+                    if ($currentStepIsPassed) {
+                        $nextStep = $step;
+                        break;
+                    }
+
+                    if ($step->getUid() == $nextStep->getUid()) {
+                        // current step found
+                        $currentStepIsPassed = true;
+                    }
+                }
+                // WORKAROUND END
+
+                if (self::showNextStep($nextStep, $nextSection)) {
+                    return;
+                }
             }
 
         } while(
@@ -304,19 +314,20 @@ class StepUtility
             && $nextStep instanceof Step
         );
 
+
         // if nothing else happens until here: There is no more step!
         self::$result->setLastStep(true);
     }
 
 
     /**
-     * checkHideCond
+     * findHideCond
      * returns true on hideCond match
      *
      * @param \RKW\RkwCheckup\Domain\Model\AbstractCheckupContents $entity
      * @return bool
      */
-    protected static function checkHideCond (AbstractCheckupContents $entity) : bool
+    protected static function findHideCond (AbstractCheckupContents $entity) : bool
     {
         foreach ($entity->getHideCond() as $hideCondition) {
             foreach (self::$result->getResultAnswer() as $resultAnswer) {

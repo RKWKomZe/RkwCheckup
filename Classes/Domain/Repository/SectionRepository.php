@@ -15,6 +15,7 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 
 use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Model\Step;
 
 /**
  * Class SectionRepository
@@ -56,4 +57,5 @@ class SectionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         return $query->execute();
     }
+
 }
