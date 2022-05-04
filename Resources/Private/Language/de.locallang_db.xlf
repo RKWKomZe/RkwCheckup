@@ -3,6 +3,8 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2021-11-12T16:01:44Z" product-name="rkw_checkup">
 		<header/>
 		<body>
+		
+		    <!-- tx_rkwcheckup_domain_model_checkup -->
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup">
 				<source>RKW Checkup: Check</source>
 				<target>RKW Checkup: Check</target>
@@ -19,16 +21,15 @@
 				<source>Section</source>
 				<target>Abschnitt</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_checkup.context_question">
-				<source>Context Question</source>
-				<target>Kontext-Frage (XXX wirklich umsetzen?? XXX)</target>
-			</trans-unit>
+			
+			
+			<!-- tx_rkwcheckup_domain_model_section --<
 			<trans-unit id="tx_rkwcheckup_domain_model_section">
 				<source>Section</source>
 				<target>Abschnitt</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.tab.extend">
-                <source>Extended</source>
+                <source><![CDATA[Display & Conditions]]></source>
                 <target><![CDATA[Anzeige & Bedingungen]]></target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.title">
@@ -44,26 +45,26 @@
 				<target>Schritt</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_text">
-                <source>Hide Text</source>
+                <source>Hide section title and description</source>
                 <target>Titel und Beschreibung des Abschnitts verbergen</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_cond">
-				<source>Hide Cond</source>
+				<source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
 				<target>Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.interim_result">
-				<source>Interim Result</source>
+				<source>Intermediate result</source>
 				<target>Zwischenergebnis</target>
 			</trans-unit>
 			
 			
-			
+			<!-- tx_rkwcheckup_domain_model_step -->
 			<trans-unit id="tx_rkwcheckup_domain_model_step">
 				<source>Step</source>
 				<target>Schritt</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.tab.extend">
-                <source>Extended</source>
+                <source><![CDATA[Display, Conditions & Step Feedback]]></source>
                 <target><![CDATA[Anzeige, Bedingungen & Schritt-Feedback]]></target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.title">
@@ -75,7 +76,7 @@
 				<target>Beschreibung</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.hide_text">
-                <source>Hide Text</source>
+                <source>Hide title and description of the step</source>
                 <target>Titel und Beschreibung des Schritts verbergen</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.question">
@@ -83,21 +84,21 @@
 				<target>Frage</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
-				<source>Hide Cond</source>
+				<source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
 				<target>Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.step_feedback">
-				<source>Interim Result</source>
+				<source>Step-Feedback</source>
 				<target>Schritt-Feedback</target>
 			</trans-unit>
 			            
-            
+            <!-- tx_rkwcheckup_domain_model_question -->
 			<trans-unit id="tx_rkwcheckup_domain_model_question">
 				<source>Question</source>
 				<target>Frage</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.tab.extend">
-                <source>Extended</source>
+                <source>Conditions</source>
                 <target>Bedingungen</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.tab.extend2">
@@ -105,7 +106,7 @@
                 <target>Feedback</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.record_type">
-				<source>Type</source>
+				<source>Type of Question</source>
 				<target>Art der Frage</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.record_type.I.0">
@@ -113,7 +114,7 @@
                 <target>Bitte wählen</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.record_type.I.1">
-                <source>Single choice</source>
+                <source>Single Choice</source>
                 <target>Einzelauswahl</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.record_type.I.2">
@@ -121,11 +122,11 @@
                 <target>Bewertung</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.record_type.I.3">
-                <source>Multiple choice</source>
+                <source>Multiple Choice</source>
                 <target>Mehrfachauswahl</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.record_type.I.4">
-                <source>Free integer input</source>
+                <source>Free Numeric Input</source>
                 <target>Freie Zahleneingabe</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.title">
@@ -137,62 +138,62 @@
 				<target>Beschreibung</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.mandatory">
-				<source>Mandatory</source>
+				<source>Is mandatory question</source>
 				<target>Ist Pflichtfrage</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.invert_feedback">
-                <source>Invert feedback</source>
+                <source>Invert feedback (show feedback in the final result for answers that were NOT selected)</source>
                 <target>Feedback invertieren (zeige im Endergebnis das Feedback zu Antworten an, die NICHT ausgewählt wurden)</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.allow_text_input">
-                <source>Allow free text input</source>
+                <source>Add free text field as answer option</source>
                 <target>Freitext-Feld als Antwortmöglichkeit hinzufügen</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.title_text_input">
-                <source>Title text input</source>
+                <source>Title of the free text field (e.g. "Other answer")</source>
                 <target>Titel des Freitextfeldes (z.B. "Sonstige Antwort")</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.min_check">
-				<source>Min Check</source>
+				<source>Minimum answers to be selected</source>
 				<target>Mindestens auszuwählende Antworten</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.max_check">
-				<source>Max Check</source>
+				<source>Maximum selectable answers</source>
 				<target>Maximal auswählbare Antworten</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.scale_left">
-                <source>Scale left</source>
-                <target>Skala-Beschriftung links</target>
+                <source>Scale labeling left</source>
+                <target>Skalen-Beschriftung links</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.scale_right">
-                <source>Scale right</source>
-                <target>Skala-Beschriftung rechts</target>
+                <source>Scale labeling right</source>
+                <target>Skalen-Beschriftung rechts</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.scale_max">
-                <source>Amount of Grades</source>
+                <source>Number of rating options (grading system)</source>
                 <target>Anzahl der Bewertungsoptionen (Notensystem)</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.answer">
-				<source>Answer</source>
+				<source>Answer (Minimum: 2)</source>
 				<target>Antwort (Minimum: 2)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.hide_cond">
-				<source>Hide Cond</source>
+				<source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
 				<target>Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.standard_feedback">
-                <source>Standard feedback</source>
+                <source>Standard feedback (ALWAYS included as a response on the results page)</source>
                 <target>Standard-Feedback (wird auf der Ergebnisseite IMMER als Antwort mit ausgegeben)</target>
             </trans-unit>
 			
 			
-			
+			<!-- tx_rkwcheckup_domain_model_answer -->
 			<trans-unit id="tx_rkwcheckup_domain_model_answer">
 				<source>Answer</source>
 				<target>Antwort</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.tab.extend">
-                <source>Extended</source>
+                <source>Feedback</source>
                 <target>Feedback</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.title">
@@ -204,7 +205,7 @@
 				<target>Beschreibung</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.response">
-                <source>Response text</source>
+                <source>Text</source>
                 <target>Text</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.image">
@@ -220,8 +221,33 @@
 				<target>Link</target>
 			</trans-unit>
 			
+			<!-- tx_rkwcheckup_domain_model_stepfeedback -->
+			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
+                <source>Intermediate result</source>
+                <target>Zwischenergebnis</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.record_type">
+                <source>Type</source>
+                <target>Typ</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.image">
+                <source>Image</source>
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.file">
+                <source>File</source>
+                <target>Datei</target>
+            </trans-unit>
 			
-			
+			<!-- tx_rkwcheckup_domain_model_result -->
 			<trans-unit id="tx_rkwcheckup_domain_model_result">
 				<source>Result</source>
 				<target>Ergebnis</target>
@@ -240,14 +266,14 @@
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_result.show_step_feedback">
                 <source>Show step feedback</source>
-                <target>Zeige Feedback Zwischenschritt</target>
+                <target>Zeige Schritt-Feedback</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_result.show_section_intro">
-                <source>Show section intro</source>
-                <target>Zeige Abschnitt intro</target>
+                <source>Show section introduction</source>
+                <target>Zeige Einleitung des Abschnitts</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
-				<source>Checkup</source>
+				<source>CheckUp</source>
 				<target>CheckUp</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.current_section">
@@ -256,44 +282,18 @@
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.step">
                 <source>Step</source>
-                <target>Aktuelle Schritt</target>
+                <target>Schritt</target>
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.result_answer">
 				<source>Answer</source>
-				<target>Antworten</target>
+				<target>Antwort</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.new_result_answer">
-                <source>New Answer</source>
+                <source>Answers (required in the FE form for logic reasons)</source>
                 <target>Antworten (wird im FE Formular aus Logikgründen benötigt)</target>
             </trans-unit>
             
-            
-            
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
-				<source>Interim Result</source>
-				<target>Zwischenergebnis</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.record_type">
-				<source>Type</source>
-				<target>Typ</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.title">
-				<source>Title</source>
-				<target>Titel</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.description">
-				<source>Description</source>
-				<target>Beschreibung</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.image">
-				<source>Image</source>
-				<target>Bild</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.file">
-				<source>File</source>
-				<target>Datei</target>
-			</trans-unit>
-
+            <!-- tx_rkwcheckup_domain_model_resultanswer -->
             <trans-unit id="tx_rkwcheckup_domain_model_resultanswer">
 				<source>Result Answer</source>
 				<target>Ergebnis-Antwort</target>
@@ -315,26 +315,27 @@
 				<target>Abschnitt</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.free_numeric_input">
-                <source>Free numeric answer</source>
+                <source>Free numeric input</source>
                 <target>Freie Zahleneingabe</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_resultanswer.free_text_input">
-                <source>Free text answer</source>
+                <source>Free text input</source>
                 <target>Freie Texteingabe</target>
             </trans-unit>
+
 
             <!-- flexforms -->
             <trans-unit id="tx_rkwcheckup_flexform.checkup">
                 <source>CheckUp</source>
-                <target>Check</target>
+                <target>CheckUp</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_flexform.backendUser">
-                <source>BackendUser</source>
-                <target>Admins (für Mailbenachrichtungen)</target>
+                <source>BackendUser (for mail notifications)</source>
+                <target>BackendUser (für Mailbenachrichtungen)</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_flexform.terms">
                  <source>Page with Terms and Conditions</source>
-                 <target>Seite mit den AGB</target>
+                 <target>Seite mit den Nutzungsbedigungen</target>
             </trans-unit>
 
 		</body>
