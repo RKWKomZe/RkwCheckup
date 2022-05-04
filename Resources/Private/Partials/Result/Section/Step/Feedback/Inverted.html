@@ -1,0 +1,21 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <h4>Nicht gewählte Antwort:</h4>
+    <p>
+        {resultAnswer.answer.title}
+        <f:if condition="{resultAnswerIter.isLast}">
+            <f:if condition="{resultAnswer.freeTextInput}">
+                <br><br>{resultAnswer.freeTextInput}
+            </f:if>
+        </f:if>
+    </p>
+    
+    <h4>Unsere Empfehlung:</h4>
+    <p>
+        <f:format.nl2br>{resultAnswer.answer.response}</f:format.nl2br>
+    </p>
+
+
+    <f:render partial="Result/Section/Step/Feedback/Attachments/All" arguments="{_all}" />
+
+</html>

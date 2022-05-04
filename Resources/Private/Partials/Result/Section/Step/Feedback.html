@@ -31,25 +31,22 @@
                         <div class="accordion__item-inner">
 
                             <f:if condition="{question.standardFeedback}">
-                                <p>{question.standardFeedback}</p>
+                                <p><f:format.nl2br>{question.standardFeedback}</f:format.nl2br></p>
                             </f:if>
 
-                            <table class="responsive-table">
+                            <table class="responsive-table responsive-table--background">
                                 <f:for each="{rkwCheckup:getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="resultAnswer" iteration="resultAnswerIter">
                                     <tr>
-                                        <th>Ihre Antwort</th>
                                         <td>
-                                            {resultAnswer.answer.title}
-                                            <f:if condition="{resultAnswerIter.isLast}">
-                                                <f:if condition="{resultAnswer.freeTextInput}">
-                                                    <br><br>{resultAnswer.freeTextInput}
-                                                </f:if>
-                                            </f:if>
+                                            <f:if condition="{question.invertFeedback}">
+                                                <f:then>
+                                                    <f:render partial="Result/Section/Step/Feedback/Inverted" arguments="{_all}" />
+                                                </f:then>
+                                                <f:else>
+                                                    <f:render partial="Result/Section/Step/Feedback/Default" arguments="{_all}" />
+                                                </f:else>
+                                            </f:if>                                            
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Unsere Empfehlung</th>
-                                        <td><f:format.nl2br>{resultAnswer.answer.response}</f:format.nl2br> LINK!!!!</td>
                                     </tr>
                                 </f:for>
                             </table>
