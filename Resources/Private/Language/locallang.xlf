@@ -3,162 +3,7 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2021-11-24T11:02:27Z" product-name="rkw_checkup">
 		<header/>
 		<body>
-			<trans-unit id="tx_rkwcheckup_domain_model_checkup">
-				<source>Checkup</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_checkup.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_checkup.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_checkup.section">
-				<source>Section</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_checkup.context_question">
-				<source>Context Question</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_section">
-				<source>Section</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_section.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_section.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_text">
-				<source>Hide Text</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_section.section">
-				<source>Section</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_cond">
-				<source>Hide Cond</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step">
-				<source>Step</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.question">
-				<source>Question</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
-				<source>Hide Cond</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.step_feedback">
-				<source>Step Feedback</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question">
-				<source>Question</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.type">
-				<source>Type</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.mandatory">
-				<source>Mandatory</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.min_check">
-				<source>Min Check</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.max_check">
-				<source>Max Check</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.answer">
-				<source>Answer</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.hide_cond">
-				<source>Hide Cond</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer">
-				<source>Answer</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer.image">
-				<source>Image</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer.file">
-				<source>File</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer.link">
-				<source>Link</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_result">
-				<source>Result</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_result.hash">
-				<source>Hash</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
-				<source>Checkup</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_result.current_section">
-				<source>Current Section</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_result.current_step">
-				<source>Current Step</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_result.current_question">
-				<source>Current Question</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_result.result_answer">
-				<source>Result Answer</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
-				<source>Step Feedback</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.type">
-				<source>Type</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.image">
-				<source>Image</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.file">
-				<source>File</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer">
-				<source>Result Answer</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.answer">
-				<source>Answer</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.question">
-				<source>Question</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.step">
-				<source>Step</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.section">
-				<source>Section</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.free_numeric_input">
-                <source>Free numeric answer</source>
-            </trans-unit>
-
-
-			<!--
+			 <!--
             =========================== CONTROLLER ============================================
             -->
 
@@ -168,65 +13,51 @@
             </trans-unit>
 
 
+
             <!--
             =========================== SERVICE ============================================
             -->
             <trans-unit id="progressHandler.error.mandatory">
-                <source>Mandatory</source>
+                <source>Please fill in all required fields.</source>
             </trans-unit>
             <trans-unit id="progressHandler.error.min">
-                <source>You have to fill out minimum %s options</source>
+                <source>You must select at least %s option(s).</source>
             </trans-unit>
             <trans-unit id="progressHandler.error.max">
-                <source>You have to fill out maximum %s options</source>
-            </trans-unit>
-            <trans-unit id="progressHandler.error.sumTo100">
-                <source>All values have to sum to 100</source>
+                <source>You may select maximum %s option(s).</source>
             </trans-unit>
             <trans-unit id="progressHandler.error.range">
                 <source>All values have to be inside the range of %s and %s</source>
             </trans-unit>
-            <trans-unit id="progressHandler.error.rangeMin">
-                <source>All values have to be about %s.</source>
+
+
+            <!--
+            =========================== TEMPLATES ============================================
+            -->
+
+            <!-- Templates/Checkup/Index.html -->
+            <trans-unit id="templates_checkup_index.iAcceptThe">
+                <source>I accept the</source>
             </trans-unit>
-            <trans-unit id="progressHandler.error.rangeMax">
-                <source>All values must not about %s</source>
+            <trans-unit id="templates_checkup_index.terms">
+                <source>terms and conditions.</source>
+            </trans-unit>
+            <trans-unit id="templates_checkup_index.startCheck">
+                <source>Start Check Now</source>
             </trans-unit>
 
 
-			 <!--
-             =========================== TEMPLATES ============================================
-             -->
-
-             <!-- Templates/Checkup/Index.html -->
-             <trans-unit id="templates_checkup_index.iAcceptThe">
-                 <source>I accept the</source>
-             </trans-unit>
-             <trans-unit id="templates_checkup_index.terms">
-                 <source>terms and conditions.</source>
-             </trans-unit>
-             <trans-unit id="templates_checkup_index.startCheck">
-                 <source>Start Check Now</source>
-             </trans-unit>
-
-
-             <!-- Templates/Checkup/Progress.html -->
-             <trans-unit id="templates_checkup_progress.progress">
-                 <source>Progress</source>
-             </trans-unit>
-
-
-             <!-- Templates/Backend/List.html -->
-             <trans-unit id="templates_backend_list.headline">
-                 <source>Show results</source>
-             </trans-unit>
-             <trans-unit id="templates_backend_list.intro1">
-                 <source>Show results</source>
-             </trans-unit>
-             <trans-unit id="templates_backend_list.intro2">
-                 <source>Existing checks:</source>
-             </trans-unit>
-             <trans-unit id="templates_backend_list.check_results">
+            <!-- Templates/Backend/List.html -->
+            <trans-unit id="templates_backend_list.headline">
+                <source>Show results</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_list.intro1">
+                <source>Show results</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_list.intro2">
+                <source>Existing checks:</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_list.check_results">
                 <source>Check results:</source>
             </trans-unit>
             <trans-unit id="templates_backend_list.no_checks">
@@ -238,15 +69,166 @@
             <trans-unit id="templates_backend_list.total_data">
                 <source>Total data</source>
             </trans-unit>
-             <trans-unit id="templates_backend_show.record_type.I.1">
-                 <source>Single choice</source>
-             </trans-unit>
-             <trans-unit id="templates_backend_show.record_type.I.2">
-                 <source>Rating</source>
-             </trans-unit>
-             <trans-unit id="templates_backend_show.record_type.I.3">
-                 <source>Multiple choice</source>
-             </trans-unit>
+            
+
+            <!-- Templates/Backend/Show.html -->
+            <trans-unit id="templates_backend_show.record_type.I.1">
+                <source>Single choice</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.record_type.I.2">
+                <source>Rating</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.record_type.I.3">
+                <source>Multiple choice</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.no_check_selected">
+                <source>No check selected</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.finished_checks_total">
+                <source>Finished checks total</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.question">
+                <source>Question</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.type">
+                <source>Type</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.mandatory">
+                <source>Mandatory</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.mandatory.yes">
+                <source>Yes</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.mandatory.no">
+                <source>No</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.answer">
+                <source>Answer</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.answer.amount">
+                <source>Answer amount</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.answer.freetext">
+                <source>Answer freetext</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.section">
+                <source>Section</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.step">
+                <source>Step</source>
+            </trans-unit>
+            
+            <!--
+            =========================== PARTIALS ============================================
+            -->
+            
+            <!-- Partials/Checkup/Global/Footer.html -->
+            <trans-unit id="partials_checkup_global_footer.progress">
+                <source>Progress</source>
+            </trans-unit>
+            <trans-unit id="partials_checkup_global_footer.next">
+                <source>Next</source>
+            </trans-unit>
+            <trans-unit id="partials_checkup_global_footer.finish">
+                <source>Finalize</source>
+            </trans-unit>
+
+
+            <!-- Partials/Checkup/Progress/Step/Header/Headline.html -->
+            <trans-unit id="partials_checkup_progress_step_header_headline.didYouKnow">
+                <source>Did you know...?</source>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Progress/Step/Feedback/Attachments/Type/File.html -->
+            <trans-unit id="partials_checkup_progress_step_feedback_attachments_type_file.download">
+                <source>Download</source>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_feedback_attachments_type_file.downloadTitle">
+                <source>Download file</source>
+            </trans-unit>            
+
+
+            <!-- Partials/Checkup/Progress/Step/Answer/FieldTypes/FreeTextOther.html -->
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_freeTextOther.other">
+                <source>Other:</source>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Progress/Step/Answer/FieldTypes/MultipleChoice.html -->
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.minMaxHint">
+                <source>Please select at least %s and at most %s option(s).</source>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.minHint">
+                <source>Please select at least %s option(s).</source>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.maxHint">
+                <source>Please select a maximum of %s option(s).</source>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.hint">
+                <source>Please select. Multiple selection possible.</source>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Progress/Step/Answer/FieldTypes/Rating.html -->
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_rating.minHint">
+                <source>Please select at least one option.</source>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_rating.maxHint">
+                <source>Please select a maximum of one options.</source>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Progress/Step/Answer/FieldTypes/SingleChoice.html -->
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_singleChoice.minHint">
+                <source>Please select at least one option.</source>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_singleChoice.maxHint">
+                <source>Please select a maximum of one options.</source>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Result/Header.html -->
+            <trans-unit id="partials_checkup_result_header.created">
+                <source>Conducted on:</source>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Result/Section/Step/Feedback/Default.html -->
+            <trans-unit id="partials_checkup_result_section_step_feedback_default.yourAnswer">
+                <source>Your Answer:</source>
+            </trans-unit>   
+            <trans-unit id="partials_checkup_result_section_step_feedback_default.ourTip">
+                <source>Our Tip:</source>
+            </trans-unit>   
+            
+            
+            <!-- Partials/Checkup/Result/Section/Step/Feedback/Default.html -->
+            <trans-unit id="partials_checkup_result_section_step_feedback_inverted.nonAnswer">
+                <source>Not chosen answer:</source>
+            </trans-unit>   
+            <trans-unit id="partials_checkup_result_section_step_feedback_inverted.ourTip">
+                <source>Our Tip:</source>
+            </trans-unit>  
+            
+            
+            
+            <!-- Partials/Checkup/Result/Section/Step/Feedback/Attachments/Type/File.html -->
+            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_file.download">
+                <source>Download</source>
+            </trans-unit>
+            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_file.downloadTitle">
+                <source>Download file</source>
+            </trans-unit>            
+
+
+            <!-- Partials/Checkup/Result/Section/Step/Feedback/Attachments/Type/Link.html -->
+            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_link.link">
+                <source>Link</source>
+            </trans-unit>
+            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_link.linkTitle">
+                <source>Open link</source>
+            </trans-unit>       
 		</body>
 	</file>
 </xliff>
