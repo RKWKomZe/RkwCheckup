@@ -240,6 +240,13 @@
             </trans-unit>
             
             
+            <!-- Partials/Checkup/Result/Section/Contents.html -->
+            <trans-unit id="partials_checkup_result_section_contents.backToTop">
+                <source>Back to top</source>
+                <target>Zurück nach oben</target>
+            </trans-unit>
+            
+            
             <!-- Partials/Checkup/Result/Section/Step/Feedback/Default.html -->
             <trans-unit id="partials_checkup_result_section_step_feedback_default.yourAnswer">
                 <source>Your Answer:</source>
@@ -282,7 +289,11 @@
             <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_link.linkTitle">
                 <source>Open link</source>
                 <target>Link öffnen</target>
-            </trans-unit>            
+            </trans-unit>          
+            
+            
+            
+              
 		</body>
 	</file>
 </xliff>

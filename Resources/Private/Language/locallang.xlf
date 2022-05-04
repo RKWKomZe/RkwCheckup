@@ -194,6 +194,12 @@
             </trans-unit>
             
             
+            <!-- Partials/Checkup/Result/Section/Contents.html -->
+            <trans-unit id="partials_checkup_result_section_contents.backToTop">
+                <source>Back to top</source>
+            </trans-unit>
+            
+                        
             <!-- Partials/Checkup/Result/Section/Step/Feedback/Default.html -->
             <trans-unit id="partials_checkup_result_section_step_feedback_default.yourAnswer">
                 <source>Your Answer:</source>
