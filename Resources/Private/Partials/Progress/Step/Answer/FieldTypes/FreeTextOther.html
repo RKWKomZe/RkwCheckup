@@ -1,5 +1,4 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
 
@@ -16,7 +15,7 @@
                     {question.titleTextInput}:
                 </f:then>
                 <f:else>
-                    Sonstiges:
+                    <f:translate key="partials_checkup_progress_step_answer_fieldTypes_freeTextOther.other" />
                 </f:else>
             </f:if>
         </label>

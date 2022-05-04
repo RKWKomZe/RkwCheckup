@@ -4,14 +4,22 @@
     <div class="contentbox__webcheck-header flex webcheck-info">
         
            <h2 class="h2 h2--small flex-basis-9 h2--infoflag-space" id="tx-rkwcheckup-main">
-               <f:if condition="!{result.currentStep.hideText}">
+
+               <f:if condition="{result.showStepFeedback}">
                    <f:then>
-                       {result.currentStep.title}
+                       <f:translate key="partials_checkup_progress_step_header_headline.didYouKnow" />
                    </f:then>
                    <f:else>
-                       &nbsp;
+                       <f:if condition="!{result.currentStep.hideText}">
+                           <f:then>
+                               {result.currentStep.title}
+                           </f:then>
+                           <f:else>
+                               &nbsp;
+                           </f:else>
+                       </f:if>
                    </f:else>
-               </f:if>
+               </f:if>              
            </h2>
        
         <div class="info-flag info-flag--right flex-basis-3">

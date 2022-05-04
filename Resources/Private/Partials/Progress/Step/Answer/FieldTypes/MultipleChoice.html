@@ -1,27 +1,25 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-       
     <p class="webcheck__hint">
         <f:if condition="{question.minCheck} || {question.maxCheck}">
             <f:then>
                 <f:if condition="{question.minCheck} && {question.maxCheck}">
                     <f:then>
-                        Bitte wählen sie mindestens {question.minCheck} und maximal {question.maxCheck} Option(en) aus.
+                        <f:translate key="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.minMaxHint" arguments="{0: '{question.minCheck}', 1: '{question.maxCheck}'}" />
                     </f:then>
                     <f:else>
                         <f:if condition="{question.minCheck}">
-                            Bitte wählen Sie mindestens {question.minCheck} Option(en) aus.
+                            <f:translate key="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.minHint" arguments="{0: '{question.minCheck}'}" />
                         </f:if>
                         <f:if condition="{question.maxCheck}">
-                            Bitte auswählen Sie maximal {question.maxCheck} Option(en) aus.
+                            <f:translate key="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.maxHint" arguments="{0: '{question.maxCheck}'}" />
                         </f:if>
                     </f:else>
                 </f:if>
             </f:then>
             <f:else>
-                Bitte auswählen. Mehrfachauswahl möglich.
+                <f:translate key="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.hint" />
             </f:else>
         </f:if>
     </p>

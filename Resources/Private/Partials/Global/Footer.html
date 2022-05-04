@@ -6,7 +6,7 @@
         <div></div>
         <div class="steps">
             <span>
-                <f:translate key="templates_checkup_progress.progress" />
+                <f:translate key="partials_checkup_global_footer.progress" />
                 <rkwCheckup:calculateProgress result="{result}" /> %
             </span>
         </div>
@@ -23,7 +23,7 @@
                                 which (c) we are want to show next -->
                             </f:comment>
                             <f:variable name="doNotFinishNow" value="1"/>
-                            <f:form.submit class="btn btn--primary" value="Weiter" />
+                            <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.next')}" />
                         </f:else>
                     </f:if>
                 </f:if>
@@ -33,12 +33,12 @@
                             <!-- Final step and no stepFeedback. Finish it! -->
                         </f:comment>
                         <f:form.hidden property="finished" value="1" />
-                        <f:form.submit class="btn btn--primary" value="Abschließen" />
+                        <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.finish')}" />
                     </f:else>
                 </f:if>
             </f:then>
             <f:else>
-                <f:form.submit class="btn btn--primary" value="Weiter" />
+                <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.next')}" />
             </f:else>
         </f:if>
     </div>

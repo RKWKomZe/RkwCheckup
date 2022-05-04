@@ -119,7 +119,7 @@ class ProgressHandler
         ) {
             // mandatory!
             return LocalizationUtility::translate(
-                'ProgressHandler.error.mandatory',
+                'progressHandler.error.mandatory',
                 'rkw_checkup'
             );
         }
@@ -132,7 +132,7 @@ class ProgressHandler
         ) {
             // not enough selected!
             return LocalizationUtility::translate(
-                'ProgressHandler.error.min',
+                'progressHandler.error.min',
                 'rkw_checkup',
                 [$question->getMinCheck()]
             );
@@ -146,7 +146,7 @@ class ProgressHandler
         ) {
             // too much selected!
             return LocalizationUtility::translate(
-                'ProgressHandler.error.max',
+                'progressHandler.error.max',
                 'rkw_checkup',
                 [$question->getMaxCheck()]
             );

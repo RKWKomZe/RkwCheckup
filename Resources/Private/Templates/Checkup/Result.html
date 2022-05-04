@@ -9,19 +9,7 @@
         <f:render partial="Result/Header" arguments="{_all}" />
 
         <div class="section">
-
             <f:render partial="Result/Section" arguments="{_all}" />
-
-            <f:comment>
-     
-                <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
-                    <f:comment><!-- if section has answers (could be skipped) --> </f:comment>
-                    <f:if condition="{rkwCheckup:result.checkSectionForAnswers(section: '{section}', result: '{result}')}" >
-                        <f:render partial="Result/Section" arguments="{_all}" />
-                    </f:if>
-                </f:for>
-            </f:comment>
-
         </div>
 	</f:section>
 </html>

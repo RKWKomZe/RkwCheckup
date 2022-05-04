@@ -3,205 +3,7 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2021-11-12T16:01:44Z" product-name="rkw_checkup">
 		<header/>
 		<body>
-			<trans-unit id="tx_rkwcheckup_domain_model_checkup">
-                <source>Checkup</source>
-                <target>Check</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_checkup.title">
-                <source>Title</source>
-                <target>Titel</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_checkup.description">
-                <source>Description</source>
-                <target>Beschreibung</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_checkup.section">
-                <source>Section</source>
-                <target>Abschnitt</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_checkup.context_question">
-                <source>Context Question</source>
-                <target>Kontext-Frage (XXX wirklich umsetzen?? XXX)</target>
-            </trans-unit>
-            
-            
-            
-            <trans-unit id="tx_rkwcheckup_domain_model_section">
-                <source>Section</source>
-                <target>Abschnitt</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_section.title">
-                <source>Title</source>
-                <target>Titel</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_section.description">
-                <source>Description</source>
-                <target>Beschreibung</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_section.step">
-                <source>Step</source>
-                <target>Schritt</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_section.hide_cond">
-                <source>Hide Cond</source>
-                <target>Bedingung (nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde)</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_section.interim_result">
-                <source>Interim Result</source>
-                <target>Zwischenergebnis</target>
-            </trans-unit>
-            
-            
-            <trans-unit id="tx_rkwcheckup_domain_model_step">
-                <source>Step</source>
-                <target>Schritt</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_step.title">
-                <source>Title</source>
-                <target>Titel</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_step.description">
-                <source>Description</source>
-                <target>Beschreibung</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_step.question">
-                <source>Question</source>
-                <target>Frage</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
-                <source>Hide Cond</source>
-                <target>Bedingung (nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde)</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_step.interim_result">
-                <source>Interim Result</source>
-                <target>Zwischenergebnis</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.1">
-                <source>Single choice</source>
-                <target>Einzelauswahl (vertikal; große Darstellung)</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.2">
-                <source>Single choice</source>
-                <target>Einzelauswahl (horizontal; minimalistische Darstellung)</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.3">
-                <source>Multiple choice</source>
-                <target>Mehrfachauswahl</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_questioncontainer.type.I.4">
-                <source>Free integer input</source>
-                <target>Freie Zahleneingabe</target>
-            </trans-unit>
-            
-            
-            
-            <trans-unit id="tx_rkwcheckup_domain_model_question">
-                <source>Question</source>
-                <target>Frage</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.type">
-                <source>Type</source>
-                <target>Typ</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.title">
-                <source>Title</source>
-                <target>Titel</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.description">
-                <source>Description</source>
-                <target>Beschreibung</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.mandatory">
-                <source>Mandatory</source>
-                <target>Ist pflichtfrage</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.min_check">
-                <source>Min Check</source>
-                <target>Müssen mindestens ausgewählt werden</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.max_check">
-                <source>Max Check</source>
-                <target>Dürfen maximal ausgewählt werden</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.answer">
-                <source>Answer</source>
-                <target>Antwort</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.hide_cond">
-                <source>Hide Cond</source>
-                <target>Bedingung (nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde)</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_answer">
-                <source>Answer</source>
-                <target>Antwort</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_answer.title">
-                <source>Title</source>
-                <target>Titel</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_answer.description">
-                <source>Description</source>
-                <target>Beschreibung</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_answer.image">
-                <source>Image</source>
-                <target>Bild</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_answer.file">
-                <source>File</source>
-                <target>Datei</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_answer.link">
-                <source>Link</source>
-                <target>Link</target>
-            </trans-unit>
-            
-            
-            
-            <trans-unit id="tx_rkwcheckup_domain_model_result">
-                <source>Result</source>
-                <target>Ergebnis</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_result.hash">
-                <source>Hash</source>
-                <target>Hash</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_result.checkup">
-                <source>Checkup</source>
-                <target>CheckUp</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_result.answer">
-                <source>Answer</source>
-                <target>Antwort</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
-                <source>Interim Result</source>
-                <target>Zwischenergebnis</target>
-            </trans-unit>
-            
-            
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.type">
-                <source>Type</source>
-                <target>Typ</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.title">
-                <source>Title</source>
-                <target>Titel</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.description">
-                <source>Description</source>
-                <target>Beschreibung</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.image">
-                <source>Image</source>
-                <target>Bild</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.file">
-                <source>File</source>
-                <target>Datei</target>
-            </trans-unit>
-
-
+			
 	        <!--
 			=========================== CONTROLLER ============================================
 			-->
@@ -217,33 +19,21 @@
             <!--
             =========================== SERVICE ============================================
             -->
-            <trans-unit id="ProgressHandler.error.mandatory">
-                <source>Mandatory</source>
-                <target>Bitte füllen Sie alle Pflichtfelder aus</target>
+            <trans-unit id="progressHandler.error.mandatory">
+                <source>Please fill in all required fields.</source>
+                <target>Bitte füllen Sie alle Pflichtfelder aus.</target>
             </trans-unit>
-            <trans-unit id="ProgressHandler.error.min">
-                <source>You have to fill out minimum %s options</source>
-                <target>Sie müssen mindestens %s Optionen auswählen</target>
+            <trans-unit id="progressHandler.error.min">
+                <source>You must select at least %s option(s).</source>
+                <target>Sie müssen mindestens %s Option(en) auswählen.</target>
             </trans-unit>
-            <trans-unit id="ProgressHandler.error.max">
-                <source>You have to fill out maximum %s options</source>
-                <target>Sie dürfen maximal %s Optionen auswählen</target>
+            <trans-unit id="progressHandler.error.max">
+                <source>You may select maximum %s option(s).</source>
+                <target>Sie dürfen maximal %s Option(en) auswählen.</target>
             </trans-unit>
-            <trans-unit id="ProgressHandler.error.sumTo100">
-                <source>All values have to sum to 100</source>
-                <target>Alle Werte zusammengerechnet müssen den Wert 100 ergeben</target>
-            </trans-unit>
-            <trans-unit id="ProgressHandler.error.range">
+            <trans-unit id="progressHandler.error.range">
                 <source>All values have to be inside the range of %s and %s</source>
-                <target>Die Werte müssen zwischen %s und %s liegen</target>
-            </trans-unit>
-            <trans-unit id="ProgressHandler.error.rangeMin">
-                <source>All values have to be about %s.</source>
-                <target>Die Werte müssen mindestens %s betragen</target>
-            </trans-unit>
-            <trans-unit id="ProgressHandler.error.rangeMax">
-                <source>All values must not about %s</source>
-                <target>Die Werte dürfen maximal %s betragen</target>
+                <target>Die Werte müssen zwischen %s und %s liegen.</target>
             </trans-unit>
 
 
@@ -263,12 +53,6 @@
             <trans-unit id="templates_checkup_index.startCheck">
                 <source>Start Check Now</source>
                 <target>Check jetzt starten</target>
-            </trans-unit>
-
-            <!-- Templates/Checkup/Progress.html -->
-            <trans-unit id="templates_checkup_progress.progress">
-                <source>Progress</source>
-                <target>Fortschritt</target>
             </trans-unit>
 
 
@@ -363,7 +147,142 @@
                 <source>Step</source>
                 <target>Schritt</target>
             </trans-unit>
+            
+            <!--
+            =========================== PARTIALS ============================================
+            -->
+            
+            <!-- Partials/Checkup/Global/Footer.html -->
+            <trans-unit id="partials_checkup_global_footer.progress">
+                <source>Progress</source>
+                <target>Fortschritt</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_global_footer.next">
+                <source>Next</source>
+                <target>Weiter</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_global_footer.finish">
+                <source>Finalize</source>
+                <target>Abschließen</target>
+            </trans-unit>
 
+
+            <!-- Partials/Checkup/Progress/Step/Header/Headline.html -->
+            <trans-unit id="partials_checkup_progress_step_header_headline.didYouKnow">
+                <source>Did you know...?</source>
+                <target>Wussten Sie schon...?</target>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Progress/Step/Feedback/Attachments/Type/File.html -->
+            <trans-unit id="partials_checkup_progress_step_feedback_attachments_type_file.download">
+                <source>Download</source>
+                <target>Download</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_feedback_attachments_type_file.downloadTitle">
+                <source>Download file</source>
+                <target>Datei herunterladen</target>
+            </trans-unit>            
+
+
+            <!-- Partials/Checkup/Progress/Step/Answer/FieldTypes/FreeTextOther.html -->
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_freeTextOther.other">
+                <source>Other:</source>
+                <target>Sonstige:</target>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Progress/Step/Answer/FieldTypes/MultipleChoice.html -->
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.minMaxHint">
+                <source>Please select at least %s and at most %s option(s).</source>
+                <target>Bitte wählen sie mindestens %s und maximal %s Option(en) aus.</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.minHint">
+                <source>Please select at least %s option(s).</source>
+                <target>Bitte wählen Sie mindestens %s Option(en) aus.</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.maxHint">
+                <source>Please select a maximum of %s option(s).</source>
+                <target>Bitte auswählen Sie maximal %s Option(en) aus.</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_multipleChoice.hint">
+                <source>Please select. Multiple selection possible.</source>
+                <target>Bitte auswählen. Mehrfachauswahl möglich.</target>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Progress/Step/Answer/FieldTypes/Rating.html -->
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_rating.minHint">
+                <source>Please select at least one option.</source>
+                <target>Bitte wählen Sie mindestens eine Option aus.</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_rating.maxHint">
+                <source>Please select a maximum of one options.</source>
+                <target>Bitte wählen Sie maximal eine Option aus.</target>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Progress/Step/Answer/FieldTypes/SingleChoice.html -->
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_singleChoice.minHint">
+                <source>Please select at least one option.</source>
+                <target>Bitte wählen Sie mindestens eine Option aus.</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_singleChoice.maxHint">
+                <source>Please select a maximum of one options.</source>
+                <target>Bitte wählen Sie maximal eine Option aus.</target>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Result/Header.html -->
+            <trans-unit id="partials_checkup_result_header.created">
+                <source>Conducted on:</source>
+                <target>Durchgeführt am:</target>
+            </trans-unit>
+            
+            
+            <!-- Partials/Checkup/Result/Section/Step/Feedback/Default.html -->
+            <trans-unit id="partials_checkup_result_section_step_feedback_default.yourAnswer">
+                <source>Your Answer:</source>
+                <target>Ihre Antwort:</target>
+            </trans-unit>   
+            <trans-unit id="partials_checkup_result_section_step_feedback_default.ourTip">
+                <source>Our Tip:</source>
+                <target>Unser Tipp:</target>
+            </trans-unit>   
+            
+            
+            <!-- Partials/Checkup/Result/Section/Step/Feedback/Default.html -->
+            <trans-unit id="partials_checkup_result_section_step_feedback_inverted.nonAnswer">
+                <source>Not chosen answer:</source>
+                <target>Nicht gewählte Antwort:</target>
+            </trans-unit>   
+            <trans-unit id="partials_checkup_result_section_step_feedback_inverted.ourTip">
+                <source>Our Tip:</source>
+                <target>Unser Tipp:</target>
+            </trans-unit>  
+            
+            
+            
+            <!-- Partials/Checkup/Result/Section/Step/Feedback/Attachments/Type/File.html -->
+            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_file.download">
+                <source>Download</source>
+                <target>Download</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_file.downloadTitle">
+                <source>Download file</source>
+                <target>Datei herunterladen</target>
+            </trans-unit>            
+
+
+            <!-- Partials/Checkup/Result/Section/Step/Feedback/Attachments/Type/Link.html -->
+            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_link.link">
+                <source>Link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_link.linkTitle">
+                <source>Open link</source>
+                <target>Link öffnen</target>
+            </trans-unit>            
 		</body>
 	</file>
 </xliff>

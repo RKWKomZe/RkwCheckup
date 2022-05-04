@@ -171,25 +171,25 @@
             <!--
             =========================== SERVICE ============================================
             -->
-            <trans-unit id="ProgressHandler.error.mandatory">
+            <trans-unit id="progressHandler.error.mandatory">
                 <source>Mandatory</source>
             </trans-unit>
-            <trans-unit id="ProgressHandler.error.min">
+            <trans-unit id="progressHandler.error.min">
                 <source>You have to fill out minimum %s options</source>
             </trans-unit>
-            <trans-unit id="ProgressHandler.error.max">
+            <trans-unit id="progressHandler.error.max">
                 <source>You have to fill out maximum %s options</source>
             </trans-unit>
-            <trans-unit id="ProgressHandler.error.sumTo100">
+            <trans-unit id="progressHandler.error.sumTo100">
                 <source>All values have to sum to 100</source>
             </trans-unit>
-            <trans-unit id="ProgressHandler.error.range">
+            <trans-unit id="progressHandler.error.range">
                 <source>All values have to be inside the range of %s and %s</source>
             </trans-unit>
-            <trans-unit id="ProgressHandler.error.rangeMin">
+            <trans-unit id="progressHandler.error.rangeMin">
                 <source>All values have to be about %s.</source>
             </trans-unit>
-            <trans-unit id="ProgressHandler.error.rangeMax">
+            <trans-unit id="progressHandler.error.rangeMax">
                 <source>All values must not about %s</source>
             </trans-unit>
 
