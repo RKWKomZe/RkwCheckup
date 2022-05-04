@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+    <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
+        <div class="tabs__content" id="tab-section-{section.uid}">
+
+            <f:for each="{section.step}" as="step">
+                <f:comment><!-- if step has answers (could be skipped) --> </f:comment>
+                <f:if condition="{rkwCheckup:checkStepForAnswers(step: '{step}', result: '{result}')}" >
+                    <f:render partial="Result/Section/Step/Header" arguments="{_all}" />
+                    <f:render partial="Result/Section/Step/Contents" arguments="{_all}" />
+                </f:if>
+            </f:for>
+            
+        </div>
+    </f:for>
+
+</html>

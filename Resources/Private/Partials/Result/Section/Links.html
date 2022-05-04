@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkwCheckup="http://typo3.org/ns/RKW/RkwCheckup/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+    <ul class="tabs__nav">
+        <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
+            <li class="tabs__nav-item">
+                <a class="tabs__nav-link" 
+                    data-target="#tab-section-{section.uid}" 
+                    href="#tab-section-{section.uid}">
+                    {section.title}
+                </a>
+            </li>
+        </f:for>
+    </ul>
+
+</html>

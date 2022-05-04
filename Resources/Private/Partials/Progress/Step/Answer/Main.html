@@ -9,17 +9,17 @@
 
             <f:comment><!-- single choice --></f:comment>
             <f:if condition="{question.recordType} == 1">
-                <f:render partial="Progress/Answer/Main/SingleChoice" arguments="{_all}" />
+                <f:render partial="Progress/Step/Answer/FieldTypes/SingleChoice" arguments="{_all}" />
             </f:if>
         
             <f:comment><!-- rating --></f:comment>
             <f:if condition="{question.recordType} == 2">
-                <f:render partial="Progress/Answer/Main/Rating" arguments="{_all}" />
+                <f:render partial="Progress/Step/Answer/FieldTypes/Rating" arguments="{_all}" />
             </f:if>
                 
             <f:comment><!-- multiple choice --></f:comment>
             <f:if condition="{question.recordType} == 3">
-                <f:render partial="Progress/Answer/Main/MultipleChoice" arguments="{_all}" />
+                <f:render partial="Progress/Step/Answer/FieldTypes/MultipleChoice" arguments="{_all}" />
             </f:if>
         </div>
     </f:if>

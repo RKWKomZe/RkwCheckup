@@ -8,9 +8,9 @@
     <f:form.hidden property="newResultAnswer.{questionIter.index}999.step" value="{result.currentStep.uid}" />
     <f:form.hidden property="newResultAnswer.{questionIter.index}999.section" value="{result.currentSection.uid}" />
 
-
+    
     <div class="form__field form__field--webcheck">
-        <label>
+        <label id="answer{questionIter.index}-999" class="text-label text-label--webcheck answer">
             <f:if condition="{question.titleTextInput}">
                 <f:then>
                     {question.titleTextInput}
@@ -21,9 +21,9 @@
             </f:if>
         </label>
         <f:form.textfield
+            id="answer{questionIter.index}-999"
             property="newResultAnswer.{questionIter.index}999.freeTextInput"
         />
     </div>
-
 
 </html>

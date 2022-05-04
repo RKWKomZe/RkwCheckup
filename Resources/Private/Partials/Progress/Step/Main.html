@@ -9,11 +9,11 @@
         <div class="contentbox contentbox--gray contentbox--webcheck webcheck">
             <f:if condition="{result.showStepFeedback}">
                 <f:then>
-                    <f:render partial="Progress/Step/Main/Feedback" arguments="{_all}" />
+                    <f:render partial="Progress/Step/Feedback" arguments="{_all}" />
                 </f:then>
                 <f:else>
                     <f:if condition="{result.currentStep.question}">
-                        <f:render partial="Progress/Question/Main" arguments="{_all}" />
+                        <f:render partial="Progress/Step/Question/Main" arguments="{_all}" />
                     </f:if>
                 </f:else>
             </f:if>

@@ -5,9 +5,9 @@
     <f:for each="{result.currentStep.question}" as="question" iteration="questionIter">
         <f:if condition="{rkwCheckup:checkQuestionVisibility(result: '{result}', question: '{question}')}" >
 
-            <f:render partial="Progress/Question/Main/Header" arguments="{_all}" />
-            <f:render partial="Progress/Question/Main/Intro" arguments="{_all}" />
-            <f:render partial="Progress/Answer/Main" arguments="{_all}" />
+            <f:render partial="Progress/Step/Question/Header/Headline" arguments="{_all}" />
+            <f:render partial="Progress/Step/Question/Header/Intro" arguments="{_all}" />
+            <f:render partial="Progress/Step/Answer/Main" arguments="{_all}" />
                
         </f:if>
     </f:for>

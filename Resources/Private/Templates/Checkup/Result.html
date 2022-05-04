@@ -6,52 +6,21 @@
 
     <f:section name="main">
         
-        <f:render partial="Result/Main/Header" arguments="{_all}" />
+        <f:render partial="Result/Header" arguments="{_all}" />
 
         <div class="section">
 
+            <f:render partial="Result/Section" arguments="{_all}" />
 
-            <div class="tabs js-tabs">
-                <ul class="tabs__nav">
-                    <?php for ($i = 1; $i < 3; $i++) : ?>
-                    <li class="tabs__nav-item"><a class="tabs__nav-link" data-target="#tab-<?php echo $i ?>" href="#tab-<?php echo $i ?>">Nunc tincigunt</a></li>
-                    <li class="tabs__nav-item"><a class="tabs__nav-link" data-target="#tab-<?php echo $i ?>a" href="#tab-<?php echo $i ?>a">Nunc tincigunt rutrum commodo</a></li>
-                    <?php endfor ?>
-                </ul>
-                <?php for ($i = 1; $i < 3; $i++) : ?>
-                <div class="tabs__content" id="tab-<?php echo $i ?>">
-                    <h2>Content heading <?php echo $i ?></h2>
-                    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
-                </div>
-                <div class="tabs__content" id="tab-<?php echo $i ?>a">
-                    <h2>Content heading <?php echo $i ?>a</h2>
-                    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
-                    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
-                </div>
-                <?php endfor ?>
-            </div>
-            
-            
-            <f:if condition="<f:count>{result.checkup.section}</f:count> > 1">
-                <f:then>
-                    <p class="anchor-nav__header">Direktlinks</p>
-                    <ul class="anchor-nav__list">
-                        <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
-                            <li><a href="#section-{result.checkup.section.uid}" data-target="#section-{result.checkup.section.uid}">
-                                {section.title}
-                            </a></li>
-                        </f:for>
-                    </ul>
-                </f:then>
-            </f:if>
-
-
-            <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
-                <f:comment><!-- if section has answers (could be skipped) --> </f:comment>
-                <f:if condition="{rkwCheckup:checkSectionForAnswers(section: '{section}', result: '{result}')}" >
-                    <f:render partial="Result/Section" arguments="{_all}" />
-                </f:if>
-            </f:for>
+            <f:comment>
+     
+                <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
+                    <f:comment><!-- if section has answers (could be skipped) --> </f:comment>
+                    <f:if condition="{rkwCheckup:checkSectionForAnswers(section: '{section}', result: '{result}')}" >
+                        <f:render partial="Result/Section" arguments="{_all}" />
+                    </f:if>
+                </f:for>
+            </f:comment>
 
         </div>
 	</f:section>
