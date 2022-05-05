@@ -16,12 +16,5 @@ call_user_func(
                 'Checkup' => 'index, new, progress, validate, result'
             ]
         );
-
-        //=================================================================
-        // Register CommandController
-        //=================================================================
-        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'RKW\\RkwCheckup\\Controller\\CommandController';
-
-
     }
 );
