@@ -8,6 +8,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_checkup (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text,
+    result_intro text,
 	section int(11) unsigned DEFAULT '0' NOT NULL,
 	context_question int(11) unsigned DEFAULT '0',
 

@@ -51,7 +51,7 @@ class BackendController extends ActionController
             $this->view->assign('checkResultList', $this->resultRepository->getFinishedByCheck($checkup));
             $this->view->assign('checkup', $checkup);
         } else {
-            $this->view->assign('checkList', $this->checkupRepository->findAll());
+            $this->view->assign('checkList', $this->checkupRepository->findAllIgnorePid());
         }
     }
 

@@ -83,4 +83,18 @@ class CheckupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         return $query->execute()->getFirst();
     }
+
+
+    /**
+     * findAllIgnorePid
+     *
+     * Find deleted checks
+     *
+     */
+    public function findAllIgnorePid()
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        return $query->execute();
+    }
 }

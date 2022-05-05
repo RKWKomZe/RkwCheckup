@@ -53,7 +53,7 @@
                             <f:for each="{question.answer}" as="answer">
                                 <p><f:translate key="templates_backend_show.answer" />: {answer.title}</p>
                                 <p>{answer.description}</p>
-                                <p><strong> <f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:countResultAnswer answer="{answer}" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%)</p>
+                                <p><strong> <f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:backend.countResultAnswer answer="{answer}" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%)</p>
                             </f:for>
                             <!-- Freetext answers -->
                             <f:if condition="{question.allowTextInput}">
