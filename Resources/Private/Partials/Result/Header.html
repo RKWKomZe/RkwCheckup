@@ -10,11 +10,11 @@
                 <f:format.date format="d.m.y">{result.crdate}</f:format.date>
             </span>
         </div>
-        <f:comment>
+        <f:if condition="{result.checkup.resultIntro}">
             <div class="description-text flex-basis-8">
-                <p>{result.checkup.description}</p>
+                <p><f:format.nl2br>{result.checkup.resultIntro}</f:format.nl2br></p>
             </div>
-        </f:comment>
+        </f:if>
     </div>
 
 </html>
