@@ -87,10 +87,11 @@
 				<source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
 				<target>Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_step.step_feedback">
+			<trans-unit id="tx_rkwcheckup_domain_model_step.feedback">
 				<source>Step-Feedback</source>
 				<target>Schritt-Feedback</target>
 			</trans-unit>
+			
 			            
             <!-- tx_rkwcheckup_domain_model_question -->
 			<trans-unit id="tx_rkwcheckup_domain_model_question">
@@ -181,7 +182,7 @@
 				<source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
 				<target>Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_question.standard_feedback">
+			<trans-unit id="tx_rkwcheckup_domain_model_question.feedback">
                 <source>Standard feedback (ALWAYS included as a response on the results page)</source>
                 <target>Standard-Feedback (wird auf der Ergebnisseite IMMER als Antwort mit ausgegeben)</target>
             </trans-unit>
@@ -204,48 +205,42 @@
 				<source>Description</source>
 				<target>Beschreibung</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer.response">
-                <source>Text</source>
-                <target>Text</target>
+			<trans-unit id="tx_rkwcheckup_domain_model_answer.feedback">
+                <source>Feedback</source>
+                <target>Feedback</target>
             </trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer.image">
-				<source>Image</source>
-				<target>Bild</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer.file">
-				<source>File</source>
-				<target>Datei</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwcheckup_domain_model_answer.link">
-				<source>Link</source>
-				<target>Link</target>
-			</trans-unit>
+
 			
-			<!-- tx_rkwcheckup_domain_model_stepfeedback -->
-			<trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
+			<!-- tx_rkwcheckup_domain_model_feedback -->
+			<trans-unit id="tx_rkwcheckup_domain_model_feedback">
                 <source>Intermediate result</source>
                 <target>Zwischenergebnis</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.record_type">
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.record_type">
                 <source>Type</source>
                 <target>Typ</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.title">
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.title">
                 <source>Title</source>
                 <target>Titel</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.description">
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.description">
                 <source>Description</source>
                 <target>Beschreibung</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.image">
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.image">
                 <source>Image</source>
                 <target>Bild</target>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.file">
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.file">
                 <source>File</source>
                 <target>Datei</target>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.link">
+                <source>Link</source>
+                <target>Link</target>
+            </trans-unit>            
+            
 			
 			<!-- tx_rkwcheckup_domain_model_result -->
 			<trans-unit id="tx_rkwcheckup_domain_model_result">

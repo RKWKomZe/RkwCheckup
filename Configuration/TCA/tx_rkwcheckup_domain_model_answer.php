@@ -20,13 +20,13 @@ return [
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_answer.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, response, image, file, link',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, feedback',
     ],
     'types' => [
         '1' => [
             'showitem' =>
                 'title, 
-                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.tab.extend, response, image, file, link,
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.tab.extend, feedback,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden'
         ],
     ],
@@ -106,54 +106,24 @@ return [
                 'eval' => 'trim'
             ]
         ],
-        'response' => [
+        'feedback' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.response',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.feedback',
             'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 5,
-                'eval' => 'trim'
+                'type' => 'inline',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_feedback',
+                'minitems' => 0,
+                'maxitems' => 1,
+                'appearance' => [
+                    'collapseAll' => 1,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1
+                ],
             ],
             'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
         ],
-        'image' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.image',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'image',
-                [
-                    'maxitems' => 1
-                ],
-                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-            ),
-            'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
-        ],
-        'file' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.file',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'file',
-                [
-                    'maxitems' => 1
-                ],
-                'pdf'
-            ),
-            'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
-        ],
-        'link' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_answer.link',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputLink',
-                'size' => 30,
-                'eval' => 'trim',
-                'softref' => 'typolink'
-            ],
-            'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
-        ],
-
         'question' => [
             'config' => [
                 'type' => 'passthrough',

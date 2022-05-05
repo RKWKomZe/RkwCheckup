@@ -19,7 +19,7 @@ use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Model\Step;
-use RKW\RkwCheckup\Domain\Model\StepFeedback;
+use RKW\RkwCheckup\Domain\Model\Feedback;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
@@ -149,7 +149,7 @@ class StepUtility
         // check for stepFeedback of current step
         /** @var Step $currentStep */
         $currentStep = self::$currentSection->getStep()->current();
-        if ($currentStep->getStepFeedback() instanceof StepFeedback) {
+        if ($currentStep->getFeedback() instanceof Feedback) {
             self::$result->setShowStepFeedback(true);
             return true;
         }

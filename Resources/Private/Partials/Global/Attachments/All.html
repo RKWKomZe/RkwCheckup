@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <f:if condition="{feedback.link} || {feedback.file}">
+        <div class="btn-list ">
+            <f:if condition="{feedback.link}">
+                <f:render partial="Global/Attachments/Type/Link" arguments="{link: feedback.link}" />
+            </f:if>
+    
+            <f:if condition="{feedback.file}">
+                <f:render partial="Global/Attachments/Type/File" arguments="{file: feedback.file}" />
+            </f:if>
+        </div>
+    </f:if>
+
+    <f:if condition="{feedback.image}">
+        <f:render partial="Global/Attachments/Type/Image" arguments="{image: feedback.image}" />
+    </f:if>
+
+</html>

@@ -16,17 +16,17 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'title,description,hide_text,question,hide_cond,step_feedback',
+        'searchFields' => 'title,description,hide_text,question,hide_cond,feedback',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_step.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_text, hide_cond, step_feedback, question',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_text, hide_cond, feedback, question',
     ],
     'types' => [
         '1' => [
             'showitem' => '
                 title, description, question, 
-                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.tab.extend, hide_text, hide_cond, step_feedback,
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.tab.extend, hide_text, hide_cond, feedback,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
     ],
@@ -168,12 +168,12 @@ return [
                 'size'          => 5,
             ],
         ],
-        'step_feedback' => [
+        'feedback' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.step_feedback',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_step.feedback',
             'config' => [
                 'type' => 'inline',
-                'foreign_table' => 'tx_rkwcheckup_domain_model_stepfeedback',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_feedback',
                 'minitems' => 0,
                 'maxitems' => 1,
                 'appearance' => [

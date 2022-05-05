@@ -104,7 +104,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_step (
     hide_text smallint(5) unsigned DEFAULT '1' NOT NULL,
     question int(11) unsigned DEFAULT '0' NOT NULL,
 	hide_cond varchar(255) DEFAULT '' NOT NULL,
-	step_feedback int(11) unsigned DEFAULT '0',
+	feedback int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -161,7 +161,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_question (
 	scale_max int(11) unsigned DEFAULT '0',
 	scale_left varchar(255) DEFAULT '' NOT NULL,
     scale_right varchar(255) DEFAULT '' NOT NULL,
-    standard_feedback text,
+    feedback int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -206,10 +206,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_answer (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text,
-    response text,
-	image int(11) unsigned NOT NULL default '0',
-	file int(11) unsigned NOT NULL default '0',
-	link varchar(255) DEFAULT '' NOT NULL,
+    feedback int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -293,9 +290,9 @@ CREATE TABLE tx_rkwcheckup_domain_model_result (
 );
 
 #
-# Table structure for table 'tx_rkwcheckup_domain_model_stepfeedback'
+# Table structure for table 'tx_rkwcheckup_domain_model_feedback'
 #
-CREATE TABLE tx_rkwcheckup_domain_model_stepfeedback (
+CREATE TABLE tx_rkwcheckup_domain_model_feedback (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
@@ -305,6 +302,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_stepfeedback (
 	description varchar(255) DEFAULT '' NOT NULL,
 	image int(11) unsigned NOT NULL default '0',
 	file int(11) unsigned NOT NULL default '0',
+	link varchar(255) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

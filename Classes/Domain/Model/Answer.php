@@ -39,39 +39,14 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $description = '';
 
-    
-    /**
-     * response
-     *
-     * @var string
-     */
-    protected $response = '';
 
-    
     /**
-     * image
+     * feedback
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \RKW\RkwCheckup\Domain\Model\Feedback
      * @cascade remove
      */
-    protected $image;
-
-    
-    /**
-     * file
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @cascade remove
-     */
-    protected $file;
-
-    
-    /**
-     * link
-     *
-     * @var string
-     */
-    protected $link = '';
+    protected $feedback;
 
     
     /**
@@ -118,88 +93,29 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->description = $description;
     }
-    
+
 
     /**
-     * @return string
-     */
-    public function getResponse(): string
-    {
-        return $this->response;
-    }
-
-    
-    /**
-     * @param string $response
-     */
-    public function setResponse(string $response): void
-    {
-        $this->response = $response;
-    }
-
-    /**
-     * Returns the image
+     * Returns the feedback
      *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @return \RKW\RkwCheckup\Domain\Model\Feedback|null $feedback
      */
-    public function getImage()
+    public function getFeedback()
     {
-        return $this->image;
+        return $this->feedback;
     }
 
-    
+
     /**
-     * Sets the image
+     * Sets the feedback
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @param \RKW\RkwCheckup\Domain\Model\Feedback $feedback
      * @return void
      */
-    public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image): void
+    public function setFeedback(\RKW\RkwCheckup\Domain\Model\Feedback $feedback): void
     {
-        $this->image = $image;
-    }
-
-    /**
-     * Returns the file
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference|null $file
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * Sets the file
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
-     * @return void
-     */
-    public function setFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file)
-    {
-        $this->file = $file;
-    }
-    
-
-    /**
-     * Returns the link
-     *
-     * @return string $link
-     */
-    public function getLink(): string
-    {
-        return $this->link;
+        $this->feedback = $feedback;
     }
 
     
-    /**
-     * Sets the link
-     *
-     * @param string $link
-     * @return void
-     */
-    public function setLink(string $link): void
-    {
-        $this->link = $link;
-    }
 }

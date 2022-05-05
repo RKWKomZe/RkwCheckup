@@ -68,10 +68,11 @@
             <trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
                 <source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_step.step_feedback">
+            <trans-unit id="tx_rkwcheckup_domain_model_step.feedback">
                 <source>Step-Feedback</source>
             </trans-unit>
                         
+
             <!-- tx_rkwcheckup_domain_model_question -->
             <trans-unit id="tx_rkwcheckup_domain_model_question">
                 <source>Question</source>
@@ -139,7 +140,7 @@
             <trans-unit id="tx_rkwcheckup_domain_model_question.hide_cond">
                 <source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_question.standard_feedback">
+            <trans-unit id="tx_rkwcheckup_domain_model_question.feedback">
                 <source>Standard feedback (ALWAYS included as a response on the results page)</source>
             </trans-unit>
             
@@ -157,39 +158,33 @@
             <trans-unit id="tx_rkwcheckup_domain_model_answer.description">
                 <source>Description</source>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_answer.response">
-                <source>Text</source>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_answer.image">
-                <source>Image</source>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_answer.file">
-                <source>File</source>
-            </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_answer.link">
-                <source>Link</source>
+            <trans-unit id="tx_rkwcheckup_domain_model_answer.feedback">
+                <source>Feedback</source>
             </trans-unit>
             
             
-            <!-- tx_rkwcheckup_domain_model_stepfeedback -->
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback">
+            <!-- tx_rkwcheckup_domain_model_feedback -->
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback">
                 <source>Intermediate result</source>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.record_type">
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.record_type">
                 <source>Type</source>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.title">
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.title">
                 <source>Title</source>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.description">
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.description">
                 <source>Description</source>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.image">
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.image">
                 <source>Image</source>
             </trans-unit>
-            <trans-unit id="tx_rkwcheckup_domain_model_stepfeedback.file">
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.file">
                 <source>File</source>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_feedback.link">
+                <source>Link</source>
+            </trans-unit>                
             
             
             <!-- tx_rkwcheckup_domain_model_result -->

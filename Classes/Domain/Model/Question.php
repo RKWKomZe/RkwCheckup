@@ -121,13 +121,14 @@ class Question extends AbstractCheckupContents
      */
     protected $scaleMax = 3;
 
-    
+
     /**
-     * standardFeedback
+     * feedback
      *
-     * @var string
+     * @var \RKW\RkwCheckup\Domain\Model\Feedback
+     * @cascade remove
      */
-    protected $standardFeedback = '';
+    protected $feedback;
 
 
     /**
@@ -430,25 +431,29 @@ class Question extends AbstractCheckupContents
     {
         $this->scaleMax = $scaleMax;
     }
-    
-    
+
+
     /**
-     * @return string
+     * Returns the feedback
+     *
+     * @return \RKW\RkwCheckup\Domain\Model\Feedback|null $feedback
      */
-    public function getStandardFeedback(): string
+    public function getFeedback()
     {
-        return $this->standardFeedback;
+        return $this->feedback;
     }
 
-    
-    /**
-     * @param string $standardFeedback
-     */
-    public function setStandardFeedback(string $standardFeedback): void
-    {
-        $this->standardFeedback = $standardFeedback;
-    }
 
+    /**
+     * Sets the feedback
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Feedback $feedback
+     * @return void
+     */
+    public function setFeedback(\RKW\RkwCheckup\Domain\Model\Feedback $feedback): void
+    {
+        $this->feedback = $feedback;
+    }
     
     /**
      * Adds a Answer

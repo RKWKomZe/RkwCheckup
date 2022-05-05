@@ -14,17 +14,15 @@ namespace RKW\RkwCheckup\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwCheckup\Domain\Model\Section;
-
 /**
- * Class StepFeedbackRepository
+ * Class FeedbackRepository
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class StepFeedbackRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class FeedbackRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
      * @var array

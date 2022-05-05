@@ -17,31 +17,31 @@ return [
             'disabled' => 'hidden',
         ],
         'searchFields' => 'record_type, title, description, mandatory, invert_feedback, allow_text_input, title_text_input, sum_to_100, min_check, 
-                            max_check, scale_left, scale_right, answer, hide_cond, standard_feedback', 
+                            max_check, scale_left, scale_right, answer, hide_cond, feedback', 
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_question.gif',
         'type' => 'record_type',
 
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, record_, title, description, mandatory, invert_feedback, allow_text_input, 
-        title_text_input, sum_to_100, min_check, max_check, max_scale, scale_left, scale_right, hide_cond, answer, standard_feedback',
+        title_text_input, sum_to_100, min_check, max_check, max_scale, scale_left, scale_right, hide_cond, answer, feedback',
     ],
     'types' => [
         '1' => [
             'showitem' => 'record_type, title, description, mandatory, --palette--;;freeTextPalette, answer, 
-                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, invert_feedback, standard_feedback,
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, invert_feedback, feedback,
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
         '2' => [
             'showitem' => 'record_type, title, description, mandatory, scale_left, answer, 
-                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, invert_feedback, standard_feedback,
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, invert_feedback, feedback,
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
         '3' => [
             'showitem' => 'record_type, title, description, --palette--;;freeTextPalette, min_check, max_check, answer, 
-                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, invert_feedback, standard_feedback,
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend2, invert_feedback, feedback,
                 --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.tab.extend, hide_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
@@ -302,16 +302,24 @@ return [
                 'size'          => 5,
             ],
         ],
-        'standard_feedback' => [
+        'feedback' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.standard_feedback',
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_question.feedback',
             'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 5,
-                'eval' => 'trim'
-            ]
-        ],    
+                'type' => 'inline',
+                'foreign_table' => 'tx_rkwcheckup_domain_model_feedback',
+                'minitems' => 0,
+                'maxitems' => 1,
+                'appearance' => [
+                    'collapseAll' => 1,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1
+                ],
+            ],
+            'displayCond' => 'USER:RKW\\RkwCheckup\\DisplayCond\\TcaCond->answerDisplayCondByParentType',
+        ],
         'step' => [
             'config' => [
                 'type' => 'passthrough',

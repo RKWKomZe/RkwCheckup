@@ -69,12 +69,12 @@ class Step extends AbstractCheckupContents
 
     
     /**
-     * stepFeedback
+     * feedback
      *
-     * @var \RKW\RkwCheckup\Domain\Model\StepFeedback
+     * @var \RKW\RkwCheckup\Domain\Model\Feedback
      * @cascade remove
      */
-    protected $stepFeedback;
+    protected $feedback;
 
     
     /**
@@ -234,25 +234,25 @@ class Step extends AbstractCheckupContents
 
     
     /**
-     * Returns the stepFeedback
+     * Returns the feedback
      *
-     * @return \RKW\RkwCheckup\Domain\Model\StepFeedback|null $stepFeedback
+     * @return \RKW\RkwCheckup\Domain\Model\Feedback|null $feedback
      */
-    public function getStepFeedback()
+    public function getFeedback()
     {
-        return $this->stepFeedback;
+        return $this->feedback;
     }
     
 
     /**
-     * Sets the stepFeedback
+     * Sets the feedback
      *
-     * @param \RKW\RkwCheckup\Domain\Model\StepFeedback $stepFeedback
+     * @param \RKW\RkwCheckup\Domain\Model\Feedback $feedback
      * @return void
      */
-    public function setStepFeedback(\RKW\RkwCheckup\Domain\Model\StepFeedback $stepFeedback): void
+    public function setFeedback(\RKW\RkwCheckup\Domain\Model\Feedback $feedback): void
     {
-        $this->stepFeedback = $stepFeedback;
+        $this->feedback = $feedback;
     }
     
 

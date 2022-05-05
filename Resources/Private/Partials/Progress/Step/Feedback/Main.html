@@ -1,10 +1,7 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 
-    <div class="flex">
-        <h2 class="h4 align-center">{result.currentStep.stepFeedback.title}</h2>
-    </div>
-    <p>{result.currentStep.stepFeedback.description}</p>
+    <p>{result.currentStep.feedback.description}</p>
 
-    <f:render partial="Progress/Step/Feedback/Attachments/All" arguments="{_all}" />
+    <f:render partial="Global/Attachments/All" arguments="{feedback: result.currentStep.feedback}" />
 
 </html>

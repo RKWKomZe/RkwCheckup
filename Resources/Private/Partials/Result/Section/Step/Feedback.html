@@ -8,7 +8,6 @@
 
             <f:comment><!-- if question has answers (could be skipped) --> </f:comment>
             <f:if condition="{rkwCheckup:result.checkQuestionForAnswers(question: '{question}', result: '{result}')}" >
-
                 <div class="accordion__item">
                     <button 
                         class="accordion__button accordion-control" 
@@ -29,24 +28,26 @@
                         
                         <div class="accordion__item-inner">
 
-                            <f:if condition="{question.standardFeedback}">
-                                <p><f:format.nl2br>{question.standardFeedback}</f:format.nl2br></p>
+                            <f:if condition="{question.feedback}">
+                                <f:render partial="Result/Section/Step/Feedback/Default" arguments="{_all}" />
                             </f:if>
 
                             <table class="responsive-table responsive-table--background">
                                 <f:for each="{rkwCheckup:result.getAnswersOfQuestion(question: '{question}', result: '{result}')}" as="resultAnswer" iteration="resultAnswerIter">
-                                    <tr>
-                                        <td>
-                                            <f:if condition="{question.invertFeedback}">
-                                                <f:then>
-                                                    <f:render partial="Result/Section/Step/Feedback/Inverted" arguments="{_all}" />
-                                                </f:then>
-                                                <f:else>
-                                                    <f:render partial="Result/Section/Step/Feedback/Default" arguments="{_all}" />
-                                                </f:else>
-                                            </f:if>                                            
-                                        </td>
-                                    </tr>
+                                    <f:if condition="{resultAnswer.feedback}">
+                                        <tr>
+                                            <td>
+                                                <f:if condition="{question.invertFeedback}">
+                                                    <f:then>
+                                                        <f:render partial="Result/Section/Step/Feedback/Inverted" arguments="{_all}" />
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:render partial="Result/Section/Step/Feedback/Normal" arguments="{_all}" />
+                                                    </f:else>
+                                                </f:if>                                            
+                                            </td>
+                                        </tr>
+                                    </f:if>
                                 </f:for>
                             </table>
                         </div>

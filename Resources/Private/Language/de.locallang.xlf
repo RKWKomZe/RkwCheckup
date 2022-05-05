@@ -166,6 +166,28 @@
                 <target>Abschließen</target>
             </trans-unit>
 
+            
+            <!-- Partials/Checkup/Global/Attachments/Type/File.html -->
+            <trans-unit id="partials_checkup_global_attachments_type_file.download">
+                <source>Download</source>
+                <target>Download</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_global_attachments_type_file.downloadTitle">
+                <source>Download file</source>
+                <target>Datei herunterladen</target>
+            </trans-unit>            
+
+
+            <!-- Partials/Checkup/Global/Attachments/Type/Link.html -->
+            <trans-unit id="partials_checkup_global_attachments_type_link.link">
+                <source>Link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="partials_checkup_global_attachments_type_link.linkTitle">
+                <source>Open link</source>
+                <target>Link öffnen</target>
+            </trans-unit>         
+            
 
             <!-- Partials/Checkup/Progress/Step/Header/Headline.html -->
             <trans-unit id="partials_checkup_progress_step_header_headline.didYouKnow">
@@ -173,18 +195,7 @@
                 <target>Wussten Sie schon...?</target>
             </trans-unit>
             
-            
-            <!-- Partials/Checkup/Progress/Step/Feedback/Attachments/Type/File.html -->
-            <trans-unit id="partials_checkup_progress_step_feedback_attachments_type_file.download">
-                <source>Download</source>
-                <target>Download</target>
-            </trans-unit>
-            <trans-unit id="partials_checkup_progress_step_feedback_attachments_type_file.downloadTitle">
-                <source>Download file</source>
-                <target>Datei herunterladen</target>
-            </trans-unit>            
-
-
+       
             <!-- Partials/Checkup/Progress/Step/Answer/FieldTypes/FreeTextOther.html -->
             <trans-unit id="partials_checkup_progress_step_answer_fieldTypes_freeTextOther.other">
                 <source>Other:</source>
@@ -268,32 +279,7 @@
                 <target>Unser Tipp:</target>
             </trans-unit>  
             
-            
-            
-            <!-- Partials/Checkup/Result/Section/Step/Feedback/Attachments/Type/File.html -->
-            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_file.download">
-                <source>Download</source>
-                <target>Download</target>
-            </trans-unit>
-            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_file.downloadTitle">
-                <source>Download file</source>
-                <target>Datei herunterladen</target>
-            </trans-unit>            
 
-
-            <!-- Partials/Checkup/Result/Section/Step/Feedback/Attachments/Type/Link.html -->
-            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_link.link">
-                <source>Link</source>
-                <target>Link</target>
-            </trans-unit>
-            <trans-unit id="partials_checkup_result_section_step_feedback_attachments_type_link.linkTitle">
-                <source>Open link</source>
-                <target>Link öffnen</target>
-            </trans-unit>          
-            
-            
-            
-              
 		</body>
 	</file>
 </xliff>

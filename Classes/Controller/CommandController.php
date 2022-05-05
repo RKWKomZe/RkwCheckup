@@ -17,12 +17,13 @@ namespace RKW\RkwCheckup\Controller;
 
 use RKW\RkwCheckup\Domain\Model\Answer;
 use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Model\Feedback;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\ResultAnswer;
 use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Model\Step;
-use RKW\RkwCheckup\Domain\Model\StepFeedback;
+use RKW\RkwCheckup\Domain\Model\Feedback as StepFeedback;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Log\Logger;
 use TYPO3\CMS\Core\Log\LogLevel;
@@ -219,12 +220,12 @@ class CommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandControl
                                 }
 
                                 // 2.3 remove stepFeedback
-                                if ($step->getStepFeedback() instanceof StepFeedback) {
+                                if ($step->getFeedback() instanceof Feedback) {
                                     GeneralUtility::makeInstance(ConnectionPool::class)
-                                        ->getConnectionForTable('tx_rkwcheckup_domain_model_stepfeedback')
+                                        ->getConnectionForTable('tx_rkwcheckup_domain_model_feedback')
                                         ->delete(
-                                            'tx_rkwcheckup_domain_model_stepfeedback', // from
-                                            [ 'uid' => (int)$step->getStepFeedback()->getUid() ] // where
+                                            'tx_rkwcheckup_domain_model_feedback', // from
+                                            [ 'uid' => (int)$step->getFeedback()->getUid() ] // where
                                         );
                                 }
 

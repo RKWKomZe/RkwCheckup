@@ -15,14 +15,14 @@ namespace RKW\RkwCheckup\Domain\Model;
  */
 
 /**
- * Class StepFeedback
+ * Class Feedback
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
      * Maybe for a special presentation
@@ -64,6 +64,14 @@ class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @cascade remove
      */
     protected $file;
+
+
+    /**
+     * link
+     *
+     * @var string
+     */
+    protected $link = '';
 
     
     /**
@@ -156,7 +164,29 @@ class StepFeedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->file = $file;
     }
-    
+
+
+    /**
+     * Returns the link
+     *
+     * @return string $link
+     */
+    public function getLink(): string
+    {
+        return $this->link;
+    }
+
+
+    /**
+     * Sets the link
+     *
+     * @param string $link
+     * @return void
+     */
+    public function setLink(string $link): void
+    {
+        $this->link = $link;
+    }
 
     /**
      * Returns the recordType
