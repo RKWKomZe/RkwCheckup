@@ -13,6 +13,7 @@ namespace RKW\RkwCheckup\ViewHelpers\Result;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\Step;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -20,15 +21,16 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 /**
- * Class CheckStepForAnswersViewHelper
+ * Class CheckStepForFeedbacksViewHelper
  *
- * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @author Steffen Kroggel <developer@steffenkroggel.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class CheckStepForAnswersViewHelper extends AbstractViewHelper {
+class CheckStepForFeedbacksViewHelper extends AbstractViewHelper {
 
+    
     use CompileWithRenderStatic;
 
     /**
@@ -49,20 +51,50 @@ class CheckStepForAnswersViewHelper extends AbstractViewHelper {
      * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
      * @return bool
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
-    {
+    public static function renderStatic(
+        array $arguments, 
+        \Closure $renderChildrenClosure, 
+        RenderingContextInterface $renderingContext
+    ){
+        
         /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
         $result = $arguments['result'];
         /** @var \RKW\RkwCheckup\Domain\Model\Step $step */
         $step = $arguments['step'];
 
-        /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
-        foreach ($result->getResultAnswer() as $resultAnswer) {
-            if ($resultAnswer->getStep() === $step) {
+        
+        // Check if one of the questions of the step has a feedback
+        /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
+        foreach ($step->getQuestion() as $question) {
+            if ($question->getFeedback()) {
                 return true;
             }
+        
+    
+            // check if one of the NOT selected answers of the step has a feedback
+            if ($question->isInvertFeedback()) {
+                /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
+                foreach ($question->getAnswer() as $answer) {
+                    if (! $result->getResultAnswer()->contains($answer)) {
+                        if ($answer->getFeedback()) {
+                            return true;
+                        }
+                    }
+                }
+    
+            // check if one of the selected answers has a feedback
+            } else {
+                /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
+                foreach ($result->getResultAnswer() as $resultAnswer) {
+                    if ($resultAnswer->getQuestion() === $question) {
+                        if ($resultAnswer->getAnswer()->getFeedback()){
+                            return true;
+                        }
+                    }
+                }
+            }
         }
-
+        
         return false;
     }
 }
