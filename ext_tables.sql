@@ -300,7 +300,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_feedback (
 
 	record_type int(11) DEFAULT '0' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
-	text NOT NULL,
+    description text,
 	image int(11) unsigned NOT NULL default '0',
 	file int(11) unsigned NOT NULL default '0',
 	link varchar(255) DEFAULT '' NOT NULL,

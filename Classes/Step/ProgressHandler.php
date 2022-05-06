@@ -193,7 +193,12 @@ class ProgressHandler
 
         do {
             StepUtility::next($this->result);
-        } while (!StepUtility::showNextStep($this->result->getCurrentStep(), $this->result->getCurrentSection()));
+        } while (
+            !StepUtility::showNextStep(
+                $this->result->getCurrentStep(),
+                $this->result->getCurrentSection()
+            )
+        );
 
 
     }
