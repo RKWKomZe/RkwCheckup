@@ -13,21 +13,22 @@ namespace RKW\RkwCheckup\ViewHelpers\Result;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
+use RKW\RkwCheckup\Domain\Model\Section;
+use RKW\RkwCheckup\Domain\Model\Step;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 /**
- * Class CheckQuestionForFeedbacksViewHelper
+ * Class CheckSectionForFeedbacksViewHelper
  *
  * @author Steffen Kroggel <developer@steffenkroggel.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class CheckQuestionForFeedbacksViewHelper extends AbstractViewHelper {
+class CheckSectionForFeedbacksViewHelper extends AbstractViewHelper {
 
     
     use CompileWithRenderStatic;
@@ -41,7 +42,7 @@ class CheckQuestionForFeedbacksViewHelper extends AbstractViewHelper {
     {
         parent::initializeArguments();
         $this->registerArgument('result', Result::class, 'The result which contains answers', true);
-        $this->registerArgument('question', Question::class, 'The question to check', true);
+        $this->registerArgument('section', Section::class, 'The step to check', true);
     }
 
     /**
@@ -55,34 +56,43 @@ class CheckQuestionForFeedbacksViewHelper extends AbstractViewHelper {
         \Closure $renderChildrenClosure, 
         RenderingContextInterface $renderingContext
     ){
+        
         /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
         $result = $arguments['result'];
-        /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
-        $question = $arguments['question'];
-        
-        // check for default feedback
-        if ($question->getFeedback()) {
-            return true;
-        }
-        
-        // check if one of the NOT selected answers has a feedback
-        if ($question->isInvertFeedback()) {
-            /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
-            foreach ($question->getAnswer() as $answer) {
-                if (! $result->getResultAnswer()->contains($answer)) {
-                    if ($answer->getFeedback()) {
-                        return true;
-                    }
-                }
-            }
+        /** @var \RKW\RkwCheckup\Domain\Model\Section $section */
+        $section = $arguments['section'];
 
-        // check if one of the selected answers has a feedback
-        } else {
-            /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
-            foreach ($result->getResultAnswer() as $resultAnswer) {
-                if ($resultAnswer->getQuestion() === $question) {
-                    if ($resultAnswer->getAnswer()->getFeedback()){
-                        return true;
+        
+        // Check if one of the questions of the step has a feedback
+        /** @var \RKW\RkwCheckup\Domain\Model\Step $step */
+        foreach ($section->getStep() as $step) {
+
+            /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
+            foreach ($step->getQuestion() as $question) {
+                if ($question->getFeedback()) {
+                    return true;
+                }
+
+                // check if one of the NOT selected answers of the step has a feedback
+                if ($question->isInvertFeedback()) {
+                    /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
+                    foreach ($question->getAnswer() as $answer) {
+                        if (!$result->getResultAnswer()->contains($answer)) {
+                            if ($answer->getFeedback()) {
+                                return true;
+                            }
+                        }
+                    }
+
+                // check if one of the selected answers has a feedback
+                } else {
+                    /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
+                    foreach ($result->getResultAnswer() as $resultAnswer) {
+                        if ($resultAnswer->getQuestion() === $question) {
+                            if ($resultAnswer->getAnswer()->getFeedback()) {
+                                return true;
+                            }
+                        }
                     }
                 }
             }

@@ -40,7 +40,7 @@ class CheckStepForAnswersViewHelper extends AbstractViewHelper {
     {
         parent::initializeArguments();
         $this->registerArgument('result', Result::class, 'The result which contains answers', true);
-        $this->registerArgument('step', Step::class, 'The step to check', false);
+        $this->registerArgument('step', Step::class, 'The step to check', true);
     }
 
     /**
