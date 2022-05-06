@@ -41,7 +41,7 @@ class CheckQuestionForAnswersViewHelper extends AbstractViewHelper {
     {
         parent::initializeArguments();
         $this->registerArgument('result', Result::class, 'The result which contains answers', true);
-        $this->registerArgument('question', Question::class, 'The question to check');
+        $this->registerArgument('question', Question::class, 'The question to check', true);
     }
 
     /**

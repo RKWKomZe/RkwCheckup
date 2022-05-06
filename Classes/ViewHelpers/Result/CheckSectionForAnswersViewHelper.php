@@ -41,7 +41,7 @@ class CheckSectionForAnswersViewHelper extends AbstractViewHelper {
     {
         parent::initializeArguments();
         $this->registerArgument('result', Result::class, 'The result which contains answers', true);
-        $this->registerArgument('section', Section::class, 'The section to check');
+        $this->registerArgument('section', Section::class, 'The section to check', true);
     }
 
     /**
