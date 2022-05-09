@@ -44,6 +44,9 @@
             <trans-unit id="tx_rkwcheckup_domain_model_section.hide_cond">
                 <source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
             </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_section.visible_cond">
+                <source>Condition (Show if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
+            </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_section.interim_result">
                 <source>Intermediate result</source>
             </trans-unit>
@@ -70,6 +73,9 @@
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
                 <source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_step.visible_cond">
+                <source>Condition (Show if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_step.feedback">
                 <source>Step-Feedback</source>
@@ -142,6 +148,9 @@
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.hide_cond">
                 <source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwcheckup_domain_model_question.visible_cond">
+                <source>Condition (Show if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.feedback">
                 <source>Standard feedback (ALWAYS included as a response on the results page)</source>

@@ -193,6 +193,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      */
     public function validateAction(Result $result): void
     {
+
         if ($result->isFinished()) {
             $this->forward(
                 'result',
@@ -209,12 +210,13 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
             $this->progressHandler->persist();
         }
 
-        // Special solution, if the previous step does not know, that the following should not be shown
-        // End it immediately: If lastStep is true and the current Step + Section are should not be shown
+
+        // check if there is (a) one more step after given resultAnswers or (b) really no more step to go
+        // the flag "isLastStep" can be revoked after a necessary answer to a condition is given
         if (
             $result->isLastStep()
             && !$result->isFinished()
-            && !StepUtility::showNextStep($result->getCurrentStep(), $result->getCurrentSection())
+            && !$result->getCurrentStep()
         ) {
 
             $result->setFinished(true);

@@ -54,7 +54,6 @@
         <pid>1</pid>
         <question>1</question>
         <title>Weil ich es kann</title>
-        <response>Dann sind Sie offenbar eine frei lebende Person</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -62,7 +61,6 @@
         <pid>1</pid>
         <question>1</question>
         <title>Weil ich es will</title>
-        <response>Dann sind Sie offenbar eine starke Person</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -70,7 +68,6 @@
         <pid>1</pid>
         <question>1</question>
         <title>Weil man es mir erlaubt hat</title>
-        <response>Dann können Sie sich wohl glücklich schätzen</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <!-- QUESTION 2 -->
@@ -91,7 +88,6 @@
         <pid>1</pid>
         <question>2</question>
         <title>Ja</title>
-        <response>OMG</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -99,7 +95,6 @@
         <pid>1</pid>
         <question>2</question>
         <title>Nein</title>
-        <response>Na dann...</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -107,7 +102,6 @@
         <pid>1</pid>
         <question>2</question>
         <title>Vielleicht</title>
-        <response>Oh oh...</response>
     </tx_rkwcheckup_domain_model_answer>
 
 
@@ -131,7 +125,6 @@
         <pid>1</pid>
         <question>3</question>
         <title>Bild</title>
-        <response>...Dir Deine Meinung</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -139,7 +132,6 @@
         <pid>1</pid>
         <question>3</question>
         <title>Spiegel</title>
-        <response>Spieglein, Spieglein an der Wand...</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -147,14 +139,12 @@
         <pid>1</pid>
         <question>3</question>
         <title>Bravo</title>
-        <response>Sesam öffne Dich...</response>
     </tx_rkwcheckup_domain_model_answer>
     <tx_rkwcheckup_domain_model_answer>
         <uid>10</uid>
         <pid>1</pid>
         <question>3</question>
         <title>PcGames</title>
-        <response>Lets zock!</response>
     </tx_rkwcheckup_domain_model_answer>
 
 
@@ -178,7 +168,6 @@
         <pid>1</pid>
         <question>4</question>
         <title>Bild 123</title>
-        <response>...Dir Deine Meinung 123</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -186,7 +175,6 @@
         <pid>1</pid>
         <question>4</question>
         <title>Spiegel 123 </title>
-        <response>Spieglein, Spieglein an der Wand... 123</response>
     </tx_rkwcheckup_domain_model_answer>
 
 </dataset>

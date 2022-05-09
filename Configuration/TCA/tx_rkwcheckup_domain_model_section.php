@@ -16,17 +16,17 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'title,description,hide_text,step,hide_cond',
+        'searchFields' => 'title,description,hide_text,step,hide_cond,visible_cond',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_section.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_text, hide_cond, step',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, hide_text, hide_cond, visible_cond, step',
     ],
     'types' => [
         '1' => [
             'showitem' => '
                 title, description, step, 
-                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.tab.extend, hide_text, hide_cond,
+                --div--;LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.tab.extend, hide_text, hide_cond, visible_cond,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden
             '],
     ],
@@ -147,6 +147,18 @@ return [
         'hide_cond' => [
             'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.hide_cond',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'itemsProcFunc' => 'RKW\\RkwCheckup\\UserFunctions\\TcaProcFunc->getAnswerList',
+                'maxitems'      => 99,
+                'minitems'      => 0,
+                'size'          => 5,
+            ],
+        ],
+        'visible_cond' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_section.visible_cond',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',

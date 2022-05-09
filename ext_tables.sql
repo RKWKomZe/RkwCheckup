@@ -58,6 +58,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_section (
 	hide_text smallint(5) unsigned DEFAULT '1' NOT NULL,
 	step int(11) unsigned DEFAULT '0' NOT NULL,
 	hide_cond varchar(255) DEFAULT '' NOT NULL,
+    visible_cond varchar(255) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -105,6 +106,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_step (
     hide_text smallint(5) unsigned DEFAULT '1' NOT NULL,
     question int(11) unsigned DEFAULT '0' NOT NULL,
 	hide_cond varchar(255) DEFAULT '' NOT NULL,
+    visible_cond varchar(255) DEFAULT '' NOT NULL,
 	feedback int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -159,6 +161,7 @@ CREATE TABLE tx_rkwcheckup_domain_model_question (
 	max_check int(11) DEFAULT '0' NOT NULL,
 	answer int(11) unsigned DEFAULT '0',
 	hide_cond varchar(255) DEFAULT '' NOT NULL,
+    visible_cond varchar(255) DEFAULT '' NOT NULL,
 	scale_max int(11) unsigned DEFAULT '0',
 	scale_left varchar(255) DEFAULT '' NOT NULL,
     scale_right varchar(255) DEFAULT '' NOT NULL,

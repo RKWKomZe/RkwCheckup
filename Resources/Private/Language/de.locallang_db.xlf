@@ -54,8 +54,12 @@
             </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.hide_cond">
 				<source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
-				<target>Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
+				<target>Ausschließende Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_section.visible_cond">
+                <source>Condition (Show if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
+                <target>Einschließende Bedingung (Nur anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.interim_result">
 				<source>Intermediate result</source>
 				<target>Zwischenergebnis</target>
@@ -89,8 +93,12 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.hide_cond">
 				<source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
-				<target>Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
+				<target>Ausschließende Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_step.visible_cond">
+                <source>Condition (Show if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
+                <target>Einschließende Bedingung (Nur anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.feedback">
 				<source>Step-Feedback</source>
 				<target>Schritt-Feedback</target>
@@ -184,8 +192,12 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.hide_cond">
 				<source>Condition (Do not display if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
-				<target>Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
+				<target>Ausschließende Bedingung (Nicht anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwcheckup_domain_model_question.visible_cond">
+                <source>Condition (Show if the following answer was previously selected | Note: Save the entire check 1x if the desired selection is not available!)</source>
+                <target>Einschließende Bedingung (Nur anzeigen, wenn folgende Antwort zuvor ausgewählt wurde | Hinweis: Den gesamten Check 1x speichern, sollte die gewünschte Auswahl nicht zur Verfügung stehen!)</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.feedback">
                 <source>Standard feedback (ALWAYS included as a response on the results page)</source>
                 <target>Standard-Feedback (wird auf der Ergebnisseite IMMER als Antwort mit ausgegeben)</target>

@@ -10,48 +10,54 @@
                 <rkwCheckup:calculateProgress result="{result}" /> %
             </span>
         </div>
-        <f:if condition="{result.lastStep}">
-            <f:then>
-                <f:comment>
-                    <!-- Final Step WITH step feedback -->
-                </f:comment>
-                <f:if condition="{result.currentStep.feedback}">
-                    <f:if condition="{result.showStepFeedback}">
-                        <f:else>
+
+        <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.next')}" />
+
+        <f:comment>
+            <!-- commented out because of new logic of visibleCond -->
+            <f:if condition="{result.lastStep}">
+                <f:then>
+                    <f:comment>
+                        <!-- Final Step WITH step feedback -->
+                    </f:comment>
+                    <f:if condition="{result.currentStep.feedback}">
+                        <f:if condition="{result.showStepFeedback}">
+                            <f:else>
+                                <f:comment>
+                                    <!-- If this is (a) the last step, but has (b) a step feedback
+                                    which (c) we are want to show next -->
+                                </f:comment>
+                                <f:variable name="doNotFinishNow" value="1"/>
+                                <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.next')}" />
+                            </f:else>
+                        </f:if>
+                    </f:if>
+                    <f:comment>
+                        <!-- Final Step WITH section intro -->
+                    </f:comment>
+                    <f:if condition="{result.showSectionIntro}">
+                        <f:then>
                             <f:comment>
-                                <!-- If this is (a) the last step, but has (b) a step feedback 
-                                which (c) we are want to show next -->
+                                <!-- If this is (a) the last step, but is (b) showing the section intro -->
                             </f:comment>
                             <f:variable name="doNotFinishNow" value="1"/>
                             <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.next')}" />
+                        </f:then>
+                    </f:if>
+                    <f:if condition="{doNotFinishNow}">
+                        <f:else>
+                            <f:comment>
+                                <!-- Final step and no stepFeedback. Finish it! -->
+                            </f:comment>
+                            <f:form.hidden property="finished" value="1" />
+                            <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.finish')}" />
                         </f:else>
                     </f:if>
-                </f:if>
-                <f:comment>
-                    <!-- Final Step WITH section intro -->
-                </f:comment>
-                <f:if condition="{result.showSectionIntro}">
-                    <f:then>
-                        <f:comment>
-                            <!-- If this is (a) the last step, but is (b) showing the section intro -->
-                        </f:comment>
-                        <f:variable name="doNotFinishNow" value="1"/>
-                        <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.next')}" />
-                    </f:then>
-                </f:if>
-                <f:if condition="{doNotFinishNow}">
-                    <f:else>
-                        <f:comment>
-                            <!-- Final step and no stepFeedback. Finish it! -->
-                        </f:comment>
-                        <f:form.hidden property="finished" value="1" />
-                        <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.finish')}" />
-                    </f:else>
-                </f:if>
-            </f:then>
-            <f:else>
-                <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.next')}" />
-            </f:else>
-        </f:if>
+                </f:then>
+                <f:else>
+                    <f:form.submit class="btn btn--primary" value="{f:translate(key:'partials_checkup_global_footer.next')}" />
+                </f:else>
+            </f:if>
+        </f:comment>
     </div>
 </html>

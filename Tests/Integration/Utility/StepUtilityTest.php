@@ -341,8 +341,8 @@ class StepUtilityTest extends FunctionalTestCase
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(5, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(3, $checkResult->getCurrentSection()->getUid());
+        static::assertNull($checkResult->getCurrentStep());
+        static::assertNull($checkResult->getCurrentSection());
         static::assertTrue($checkResult->isLastStep());
 
     }
@@ -407,6 +407,69 @@ class StepUtilityTest extends FunctionalTestCase
 
         static::assertFalse($checkResult->isLastStep());
         static::assertTrue($checkResult->isShowStepFeedback());
+
+    }
+
+
+    /**
+     * @test
+     */
+    public function nextWithWithinTheOverallSecondLastStepWithVisibleConditionShowsThatStep ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a Checkup inside the overall second last step of the check
+         * Given is an Answer which is the visible condition for the next step
+         * When the function is called
+         * Then the next step is set and the next section is set
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check40.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check190.xml');
+
+        /** @var Result $checkResult */
+        $checkResult = $this->resultRepository->findByIdentifier(1);
+
+        static::assertEquals(1, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+        $this->subject->next($checkResult);
+
+        static::assertEquals(2, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+    }
+
+
+
+    /**
+     * @test
+     */
+    public function nextWithWithinTheOverallSecondLastStepWithVisibleConditionSkipThatStep ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a Checkup inside the overall second last step of the check
+         * Given is NO Answer which is the visible condition for the next step
+         * When the function is called
+         * Then the next (and last!) step is skipped
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check40.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check180.xml');
+
+        /** @var Result $checkResult */
+        $checkResult = $this->resultRepository->findByIdentifier(1);
+
+        static::assertEquals(1, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+        $this->subject->next($checkResult);
+
+        static::assertNull($checkResult->getCurrentStep());
+        static::assertNull($checkResult->getCurrentSection());
 
     }
 

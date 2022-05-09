@@ -36,15 +36,15 @@
         <description>Geben Sie uns mehr Antworten!</description>
         <section>1</section>
         <question>1</question>
-        <step_feedback>1</step_feedback>
+        <feedback>1</feedback>
     </tx_rkwcheckup_domain_model_step>
 
-    <tx_rkwcheckup_domain_model_stepfeedback>
+    <tx_rkwcheckup_domain_model_feedback>
         <uid>1</uid>
         <pid>1</pid>
         <title>Ein Zwischenschritt</title>
         <description>Hier blenden wir etwas ein</description>
-    </tx_rkwcheckup_domain_model_stepfeedback>
+    </tx_rkwcheckup_domain_model_feedback>
 
     <tx_rkwcheckup_domain_model_step>
         <uid>3</uid>
@@ -113,7 +113,6 @@
         <pid>1</pid>
         <question>1</question>
         <title>Weil ich es kann</title>
-        <response>Dann sind Sie offenbar eine frei lebende Person</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -121,7 +120,6 @@
         <pid>1</pid>
         <question>1</question>
         <title>Weil ich es will</title>
-        <response>Dann sind Sie offenbar eine starke Person</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -129,7 +127,6 @@
         <pid>1</pid>
         <question>1</question>
         <title>Weil man es mir erlaubt hat</title>
-        <response>Dann können Sie sich wohl glücklich schätzen</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <!-- QUESTION 2 (Section1, Step1) -->
@@ -150,7 +147,6 @@
         <pid>1</pid>
         <question>2</question>
         <title>Ja</title>
-        <response>OMG</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -158,7 +154,6 @@
         <pid>1</pid>
         <question>2</question>
         <title>Nein</title>
-        <response>Na dann...</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -166,7 +161,6 @@
         <pid>1</pid>
         <question>2</question>
         <title>Vielleicht</title>
-        <response>Oh oh...</response>
     </tx_rkwcheckup_domain_model_answer>
 
 
@@ -190,7 +184,6 @@
         <pid>1</pid>
         <question>3</question>
         <title>Bild</title>
-        <response>...Dir Deine Meinung</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -198,7 +191,6 @@
         <pid>1</pid>
         <question>3</question>
         <title>Spiegel</title>
-        <response>Spieglein, Spieglein an der Wand...</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -206,7 +198,6 @@
         <pid>1</pid>
         <question>3</question>
         <title>Bravo</title>
-        <response>Sesam öffne Dich...</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -214,7 +205,6 @@
         <pid>1</pid>
         <question>3</question>
         <title>PcGames</title>
-        <response>Lets zock!</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <!-- QUESTION 4 (Section2, Step1) -->
@@ -235,7 +225,6 @@
         <pid>1</pid>
         <question>4</question>
         <title>Ja</title>
-        <response>War doch klar!</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -243,7 +232,6 @@
         <pid>1</pid>
         <question>4</question>
         <title>Nein</title>
-        <response>Echt nicht?</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <!-- QUESTION 5 (Section3, Step1) -->
@@ -264,7 +252,6 @@
         <pid>1</pid>
         <question>5</question>
         <title>Ja</title>
-        <response>War doch klar!</response>
     </tx_rkwcheckup_domain_model_answer>
 
     <tx_rkwcheckup_domain_model_answer>
@@ -272,7 +259,6 @@
         <pid>1</pid>
         <question>5</question>
         <title>Total</title>
-        <response>Das macht uns glücklich :)</response>
     </tx_rkwcheckup_domain_model_answer>
 
 </dataset>
