@@ -56,25 +56,48 @@ class CheckQuestionVisibilityViewHelper extends AbstractViewHelper {
         \Closure $renderChildrenClosure, 
         RenderingContextInterface $renderingContext
     ){
+        // initial: Question is visible!
+        $showQuestion = true;
         
         /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
         $result = $arguments['result'];
         /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
         $question = $arguments['question'];
 
-        if ($question instanceof \RKW\RkwCheckup\Domain\Model\Question) {
+        if ($question instanceof Question) {
+
+            // @toDo: Function is equal to StepUtility::findHideCond(). But would need to rewritten for result
+
+            // a) HIDE question ???
             /** @var ResultAnswer $hideCondition */
             foreach ($question->getHideCond() as $hideCondition) {
                 /** @var ResultAnswer $resultAnswer */
                 foreach ($result->getResultAnswer() as $resultAnswer) {
                     if ($resultAnswer->getAnswer() === $hideCondition) {
                         // hide condition match: hide question!
-                        return false;
+                        $showQuestion = false;
+                    }
+                }
+            }
+
+            // @toDo: Function is equal to StepUtility::findVisibleCond(). But would need to rewritten for result
+
+            // b) SHOW question ???
+            if ($question->getVisibleCond()->count()) {
+                // if there is a visible condition: Hide!
+                $showQuestion = false;
+                foreach ($question->getVisibleCond() as $visibleCondition) {
+                    /** @var ResultAnswer $resultAnswer */
+                    foreach ($result->getResultAnswer() as $resultAnswer) {
+                        if ($resultAnswer->getAnswer() === $visibleCondition) {
+                            // if there is a correct answer: Show!
+                            $showQuestion = true;
+                        }
                     }
                 }
             }
         }
 
-        return true;
+        return $showQuestion;
     }
 }

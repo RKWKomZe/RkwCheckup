@@ -17,6 +17,7 @@ namespace RKW\RkwCheckup\Utility;
 use RKW\RkwCheckup\Domain\Model\AbstractCheckupContents;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
+use RKW\RkwCheckup\Domain\Model\ResultAnswer;
 use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Model\Step;
 use RKW\RkwCheckup\Domain\Model\Feedback;
@@ -77,7 +78,12 @@ class StepUtility
         if (!$showStepFeedback) {
 
             // set next step
-            self::setNextStepToResult();
+            do {
+                self::setNextStepToResult();
+            } while (
+                !self::showStepOfResult(self::$result)
+                && (self::$result->getCurrentStep() instanceof Step)
+            ) ;
         }
 
         // check and set flag on last step
@@ -189,36 +195,74 @@ class StepUtility
                 $nextSection->getStep()->rewind();
                 $nextStep = $nextSection->getStep()->current();
 
+                self::$currentSection = $nextSection;
                 self::$result->setCurrentSection($nextSection);
                 self::$result->setCurrentStep($nextStep);
 
                 self::$result->setShowSectionIntro(true);
-            }
 
+            } else {
+                // THE END!
+                // there is no more step AND no more section
+                self::$result->setCurrentSection(null);
+                self::$result->setCurrentStep(null);
+            }
         }
 
     }
 
+
     /**
-     * showNextStep
+     * showStepOfResult
+     * return false if the current section or step should be skipped
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Result $result
+     * @return bool
+     * @throws \Exception
+     */
+    public static function showStepOfResult (Result $result): bool
+    {
+        // if there is no current step set, we are already at the end!
+        if (!$result->getCurrentStep()) {
+            return false;
+        }
+
+        return self::showStep($result->getCurrentStep(), $result->getCurrentSection(), $result);
+    }
+
+
+
+    /**
+     * showStep
      * return false if the current section or step should be skipped
      *
      * @param \RKW\RkwCheckup\Domain\Model\Step $step
      * @param \RKW\RkwCheckup\Domain\Model\Section $section
+     * @param \RKW\RkwCheckup\Domain\Model\Result|null $result
      * @return bool
      * @throws \Exception
      */
-    public static function showNextStep (Step $step, Section $section): bool
+    public static function showStep (Step $step, Section $section, Result $result = null): bool
     {
 
+        if ($result) {
+            self::$result = $result;
+        }
+
         // check if whole section should be skipped
-        if (self::findHideCond($section)) {
+        if (
+            self::findHideCond($section)
+            || !self::findVisibleCond($section)
+        ) {
             // hide condition match: don't show section!
             return false;
         }
 
         // check if step should be skipped
-        if (self::findHideCond($step)) {
+        if (
+            self::findHideCond($step)
+            || !self::findVisibleCond($step)
+        ) {
             // hide condition match: don't show step!
             return false;
         }
@@ -229,7 +273,10 @@ class StepUtility
         foreach ($step->getQuestion() as $question) {
 
             // findHideCond returns true if entity should NOT be shown
-            if (!self::findHideCond($question)) {
+            if (
+                !self::findHideCond($question)
+                || self::findVisibleCond($question)
+            ) {
                 $atLeastOneQuestionWillShown = true;
                 break;
             }
@@ -242,7 +289,6 @@ class StepUtility
 
         return true;
     }
-
 
     
     /**
@@ -260,6 +306,16 @@ class StepUtility
             if (!self::$currentSection) {
                 self::fastForwardToCurrentSection();
             }
+        }
+
+        // if we are already finished with everything, to out!
+        if (
+            self::$result->isLastStep()
+            && ! self::$result->getCurrentStep()
+            && ! self::$result->getCurrentSection()
+        ) {
+            // do nothing
+            return;
         }
 
         // check if there is at least one more step
@@ -280,7 +336,7 @@ class StepUtility
                     /** @var \RKW\RkwCheckup\Domain\Model\Step $nextStep */
                     $nextSection->getStep()->rewind();
                     $nextStep = $nextSection->getStep()->current();
-                    if (self::showNextStep($nextStep, $nextSection)) {
+                    if (self::showStep($nextStep, $nextSection)) {
                         return;
                     }
                 }
@@ -304,7 +360,7 @@ class StepUtility
                 }
                 // WORKAROUND END
 
-                if (self::showNextStep($nextStep, $nextSection)) {
+                if (self::showStep($nextStep, $nextSection)) {
                     return;
                 }
             }
@@ -337,6 +393,34 @@ class StepUtility
             }
         }
         return false;
+    }
+
+
+    /**
+     * findVisibleCond
+     * returns true on visibleCond match
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\AbstractCheckupContents $entity
+     * @return bool
+     */
+    protected static function findVisibleCond (AbstractCheckupContents $entity) : bool
+    {
+        $showQuestion = true;
+        if ($entity->getVisibleCond()->count()) {
+            // if there is a visible condition: Hide!
+            $showQuestion = false;
+            foreach ($entity->getVisibleCond() as $visibleCondition) {
+                /** @var ResultAnswer $resultAnswer */
+                foreach (self::$result->getResultAnswer() as $resultAnswer) {
+                    if ($resultAnswer->getAnswer() === $visibleCondition) {
+                        // if there is a correct answer: Show!
+                        $showQuestion = true;
+                    }
+                }
+            }
+        }
+
+        return $showQuestion;
     }
 
 }

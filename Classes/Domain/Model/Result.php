@@ -393,10 +393,10 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the currentSection
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Section $currentSection
+     * @param \RKW\RkwCheckup\Domain\Model\Section|null $currentSection
      * @return void
      */
-    public function setCurrentSection(\RKW\RkwCheckup\Domain\Model\Section $currentSection): void
+    public function setCurrentSection($currentSection): void
     {
         $this->currentSection = $currentSection;
     }
@@ -416,10 +416,10 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the currentStep
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Step $currentStep
+     * @param \RKW\RkwCheckup\Domain\Model\Step|null $currentStep
      * @return void
      */
-    public function setCurrentStep(\RKW\RkwCheckup\Domain\Model\Step $currentStep): void
+    public function setCurrentStep($currentStep): void
     {
         $this->currentStep = $currentStep;
     }

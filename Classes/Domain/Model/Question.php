@@ -146,6 +146,14 @@ class Question extends AbstractCheckupContents
      */
     protected $hideCond;
 
+
+    /**
+     * visibleCond
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
+     */
+    protected $visibleCond;
+
     
     /**
      * step
@@ -167,6 +175,7 @@ class Question extends AbstractCheckupContents
     {
         $this->answer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->hideCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->visibleCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
 
@@ -551,6 +560,56 @@ class Question extends AbstractCheckupContents
     public function setHideCond(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $hideCond): void
     {
         $this->hideCond = $hideCond;
+    }
+
+
+    /**
+     * Adds a visibleCond
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Answer $visibleCond
+     * @return void
+     */
+    public function addVisibleCond(\RKW\RkwCheckup\Domain\Model\Answer $visibleCond)
+    {
+        $this->visibleCond->attach($visibleCond);
+    }
+
+
+    /**
+     * Removes a visibleCond
+     *
+     * @param \RKW\RkwCheckup\Domain\Model\Answer $visibleCondToRemove The visibleCond to be removed
+     * @return void
+     * @api
+     */
+    public function removeVisibleCond(\RKW\RkwCheckup\Domain\Model\Answer $visibleCond): void
+    {
+        $this->visibleCond->detach($visibleCond);
+    }
+
+
+    /**
+     * Returns the visibleCond
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $visibleCond
+     * @api
+     */
+    public function getVisibleCond(): ObjectStorage
+    {
+        return $this->visibleCond;
+    }
+
+
+    /**
+     * Sets the visibleCond
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $visibleCond
+     * @return void
+     * @api
+     */
+    public function setVisibleCond(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $visibleCond): void
+    {
+        $this->visibleCond = $visibleCond;
     }
 
     
