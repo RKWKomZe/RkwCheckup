@@ -233,7 +233,7 @@ class StepUtilityTest extends FunctionalTestCase
          *
          * Given is a Checkup in common case
          * When the function is called
-         * Then the next step is set (the section does NOT change)
+         * Then step 4 and section 2 is set, because step 2 and 3 of section 1 are containing no question
          */
 
         $this->importDataSet(self::FIXTURE_PATH . '/Database/Check10.xml');
@@ -247,8 +247,8 @@ class StepUtilityTest extends FunctionalTestCase
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(2, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
 
     }
 
@@ -470,6 +470,285 @@ class StepUtilityTest extends FunctionalTestCase
 
         static::assertNull($checkResult->getCurrentStep());
         static::assertNull($checkResult->getCurrentSection());
+
+    }
+
+
+
+    /**
+     * @test
+     */
+    public function nextConditionCheckStep1WithoutResultAnswer ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a Checkup
+         * Given is a Result in step 1
+         * Given is no resultAnswer
+         * Given is a visible_cond in step 2 (answer 1)
+         * Given is a visible_cond in step 3 (answer 1)
+         * Given is a hide_cond in step 3 (answer 2)
+         * Given is a hide_cond in section 2 (answer 4)
+         * Given is a visible_cond in section 2 (answer 2)
+         * Given is a hide_cond in step 4 (answer 1, 3)
+         * Given is a visible_cond in step 5 (answer 1, 4, 7)
+         * When the function is called
+         * Then "lastStep" is set and step and section both "null"
+         * (because step 2 + 3 needs answer 1 as visible_condition; also the whole section 2)
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check50.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check180.xml');
+
+        /** @var Result $checkResult */
+        $checkResult = $this->resultRepository->findByIdentifier(1);
+
+        static::assertEquals(1, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+        $this->subject->next($checkResult);
+
+        static::assertTrue($checkResult->isLastStep());
+        static::assertNull($checkResult->getCurrentStep());
+        static::assertNull($checkResult->getCurrentSection());
+
+    }
+
+
+    /**
+     * @test
+     */
+    public function nextConditionCheckStep1WithResultAnswer ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a Checkup
+         * Given is a Result in step 1
+         * Given is resultAnswer 1
+         * Given is a visible_cond in step 2 (answer 1)
+         * Given is a visible_cond in step 3 (answer 1)
+         * Given is a hide_cond in step 3 (answer 2)
+         * Given is a hide_cond in section 2 (answer 4)
+         * Given is a visible_cond in section 2 (answer 2)
+         * Given is a hide_cond in step 4 (answer 1, 3)
+         * Given is a visible_cond in step 5 (answer 1, 4, 7)
+         * When the function is called
+         * Then step 2 is set
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check50.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check190.xml');
+
+        /** @var Result $checkResult */
+        $checkResult = $this->resultRepository->findByIdentifier(1);
+
+        static::assertEquals(1, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+        $this->subject->next($checkResult);
+
+        static::assertEquals(2, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+    }
+
+
+    /**
+     * @test
+     */
+    public function nextConditionCheckStep2WithResultAnswerWithVisibleCondForStep3 ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a Checkup
+         * Given is a Result in step 2
+         * Given is resultAnswer 1
+         * Given is a visible_cond in step 2 (answer 1)
+         * Given is a visible_cond in step 3 (answer 1)
+         * Given is a hide_cond in step 3 (answer 2)
+         * Given is a hide_cond in section 2 (answer 4)
+         * Given is a visible_cond in section 2 (answer 2)
+         * Given is a hide_cond in step 4 (answer 1, 3)
+         * Given is a visible_cond in step 5 (answer 1, 4, 7)
+         * When the function is called
+         * Then step 3 is set
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check50.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check200.xml');
+
+        /** @var Result $checkResult */
+        $checkResult = $this->resultRepository->findByIdentifier(1);
+
+        static::assertEquals(2, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+        $this->subject->next($checkResult);
+
+        static::assertEquals(3, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+    }
+
+
+    /**
+     * @test
+     */
+    public function nextConditionCheckStep2WithResultAnswerWithHideCondForStep3 ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a Checkup
+         * Given is a Result in step 2
+         * Given is resultAnswer 2 as hide_cond for step 3
+         * Given is a visible_cond in step 2 (answer 1)
+         * Given is a visible_cond in step 3 (answer 1)
+         * Given is a hide_cond in step 3 (answer 2)
+         * Given is a hide_cond in section 2 (answer 4)
+         * Given is a visible_cond in section 2 (answer 2)
+         * Given is a hide_cond in step 4 (answer 1, 3)
+         * Given is a visible_cond in step 5 (answer 1, 4, 7)
+         * When the function is called
+         * Then step 4, section 2 is set
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check50.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check210.xml');
+
+        /** @var Result $checkResult */
+        $checkResult = $this->resultRepository->findByIdentifier(1);
+
+        static::assertEquals(2, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+        $this->subject->next($checkResult);
+
+        static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
+
+    }
+
+
+    /**
+     * @test
+     */
+    public function nextConditionCheckStep3WithResultAnswerWithVisibleCondForSection2 ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a Checkup
+         * Given is a Result in step 3
+         * Given is resultAnswer 2 as visible_cond for section 2
+         * Given is a visible_cond in step 2 (answer 1)
+         * Given is a visible_cond in step 3 (answer 1)
+         * Given is a hide_cond in step 3 (answer 2)
+         * Given is a hide_cond in section 2 (answer 4)
+         * Given is a visible_cond in section 2 (answer 2)
+         * Given is a hide_cond in step 4 (answer 1, 3)
+         * Given is a visible_cond in step 5 (answer 1, 4, 7)
+         * When the function is called
+         * Then step 4, section 2 is set
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check50.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check220.xml');
+
+        /** @var Result $checkResult */
+        $checkResult = $this->resultRepository->findByIdentifier(1);
+
+        static::assertEquals(3, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+        $this->subject->next($checkResult);
+
+        static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
+
+    }
+
+
+    /**
+     * @test
+     */
+    public function nextConditionCheckStep3WithResultAnswerWithoutVisibleCondForSection2 ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a Checkup
+         * Given is a Result in step 3
+         * Given is resultAnswer 1; means the visible_cond for section 2 is NOT given
+         * Given is a visible_cond in step 2 (answer 1)
+         * Given is a visible_cond in step 3 (answer 1)
+         * Given is a hide_cond in step 3 (answer 2)
+         * Given is a hide_cond in section 2 (answer 4)
+         * Given is a visible_cond in section 2 (answer 2)
+         * Given is a hide_cond in step 4 (answer 1, 3)
+         * Given is a visible_cond in step 5 (answer 1, 4, 7)
+         * When the function is called
+         * Then section 2 is skipped and the check comes to an end!
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check50.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check230.xml');
+
+        /** @var Result $checkResult */
+        $checkResult = $this->resultRepository->findByIdentifier(1);
+
+        static::assertEquals(3, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+        $this->subject->next($checkResult);
+
+        static::assertTrue($checkResult->isLastStep());
+        static::assertNull($checkResult->getCurrentStep());
+        static::assertNull($checkResult->getCurrentSection());
+
+    }
+
+
+    /**
+     * @test
+     */
+    public function nextConditionCheckStep3WithResultAnswerWithVisibleCondForSection2ButHideCondForStep4 ()
+    {
+        /**
+         * Scenario:
+         *
+         * Given is a Checkup
+         * Given is a Result in step 3
+         * Given is resultAnswer 2 as visible_cond for section 2
+         * AND resultAnswer 3 an hide_cond for step 4
+         * AND resultAnswer 1 as visible_cond for step 5
+         * Given is a visible_cond in step 2 (answer 1)
+         * Given is a visible_cond in step 3 (answer 1)
+         * Given is a hide_cond in step 3 (answer 2)
+         * Given is a hide_cond in section 2 (answer 4)
+         * Given is a visible_cond in section 2 (answer 2)
+         * Given is a hide_cond in step 4 (answer 1, 3)
+         * Given is a visible_cond in step 5 (answer 1, 4, 7)
+         * When the function is called
+         * Then step 4, section 2 is set
+         */
+
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check50.xml');
+        $this->importDataSet(self::FIXTURE_PATH . '/Database/Check240.xml');
+
+        /** @var Result $checkResult */
+        $checkResult = $this->resultRepository->findByIdentifier(1);
+
+        static::assertEquals(3, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+
+        $this->subject->next($checkResult);
+
+        static::assertEquals(5, $checkResult->getCurrentStep()->getUid());
+        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
 
     }
 

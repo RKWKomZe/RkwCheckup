@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+
+    <tx_rkwcheckup_domain_model_checkup>
+        <uid>1</uid>
+        <pid>1</pid>
+        <title>MegaThemenCheck</title>
+        <description>SomeDescription</description>
+        <section>3</section>
+    </tx_rkwcheckup_domain_model_checkup>
+
+    <!-- Section 1 -->
+
+    <tx_rkwcheckup_domain_model_section>
+        <uid>1</uid>
+        <pid>1</pid>
+        <checkup>1</checkup>
+        <title>Allgemeine Fragen</title>
+        <description>Vorab einige Fragen</description>
+        <step>3</step>
+    </tx_rkwcheckup_domain_model_section>
+
+    <!-- Section 2 -->
+
+    <tx_rkwcheckup_domain_model_section>
+        <uid>2</uid>
+        <pid>1</pid>
+        <checkup>1</checkup>
+        <title>Tiefergehende Fragen</title>
+        <description>Mehr Fragen</description>
+        <step>2</step>
+        <visible_cond>2</visible_cond>
+        <hide_cond>4</hide_cond>
+    </tx_rkwcheckup_domain_model_section>
+
+    <!-- Step 1 -->
+    <tx_rkwcheckup_domain_model_step>
+        <uid>1</uid>
+        <pid>1</pid>
+        <title>Schritt 1</title>
+        <description>Geben Sie uns Antworten!</description>
+        <section>1</section>
+        <question>3</question>
+    </tx_rkwcheckup_domain_model_step>
+
+    <!-- Step 2 -->
+    <tx_rkwcheckup_domain_model_step>
+        <uid>2</uid>
+        <pid>1</pid>
+        <title>Schritt 2</title>
+        <description>Geben Sie uns mehr Antworten!</description>
+        <section>1</section>
+        <question>1</question>
+        <visible_cond>1</visible_cond>
+    </tx_rkwcheckup_domain_model_step>
+
+    <!-- Step 3 -->
+    <tx_rkwcheckup_domain_model_step>
+        <uid>3</uid>
+        <pid>1</pid>
+        <title>Schritt 3</title>
+        <description>Geben Sie uns mehr Antworten 123!</description>
+        <section>1</section>
+        <question>1</question>
+        <visible_cond>1</visible_cond>
+        <hide_cond>2</hide_cond>
+    </tx_rkwcheckup_domain_model_step>
+
+    <!-- Step 4 -->
+    <tx_rkwcheckup_domain_model_step>
+        <uid>4</uid>
+        <pid>1</pid>
+        <title>Schritt 4</title>
+        <description>Bla bla bla!</description>
+        <section>2</section>
+        <question>1</question>
+        <hide_cond>1,3</hide_cond>
+    </tx_rkwcheckup_domain_model_step>
+
+    <!-- Step 5 -->
+    <tx_rkwcheckup_domain_model_step>
+        <uid>5</uid>
+        <pid>1</pid>
+        <title>Schritt 5</title>
+        <description>Bla bla bla 5!</description>
+        <section>2</section>
+        <question>1</question>
+        <visible_cond>1,4,7</visible_cond>
+    </tx_rkwcheckup_domain_model_step>
+
+    <!-- QUESTION 1 (Section1, Step1) -->
+
+    <tx_rkwcheckup_domain_model_question>
+        <uid>1</uid>
+        <pid>1</pid>
+        <step>1</step>
+        <answer>3</answer>
+        <title>Warum beantworten Sie diese Frage?</title>
+        <description>Seien Sie bitte ehrlich.</description>
+        <mandatory>0</mandatory>
+        <record_type>1</record_type>
+    </tx_rkwcheckup_domain_model_question>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>1</uid>
+        <pid>1</pid>
+        <question>1</question>
+        <title>Weil ich es kann</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>2</uid>
+        <pid>1</pid>
+        <question>1</question>
+        <title>Weil ich es will</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>3</uid>
+        <pid>1</pid>
+        <question>1</question>
+        <title>Weil man es mir erlaubt hat</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+    <!-- QUESTION 2 (Section1, Step2) -->
+
+    <tx_rkwcheckup_domain_model_question>
+        <uid>2</uid>
+        <pid>1</pid>
+        <step>2</step>
+        <answer>3</answer>
+        <title>Ist es wahr?</title>
+        <description>Sie dürfen auch lügen.</description>
+        <mandatory>1</mandatory>
+        <record_type>1</record_type>
+    </tx_rkwcheckup_domain_model_question>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>4</uid>
+        <pid>1</pid>
+        <question>2</question>
+        <title>Ja</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>5</uid>
+        <pid>1</pid>
+        <question>2</question>
+        <title>Nein</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>6</uid>
+        <pid>1</pid>
+        <question>2</question>
+        <title>Vielleicht</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+    <!-- QUESTION 3 (Section1, Step3) -->
+
+    <tx_rkwcheckup_domain_model_question>
+        <uid>3</uid>
+        <pid>1</pid>
+        <step>3</step>
+        <answer>2</answer>
+        <title>Ist es so?</title>
+        <description>Sie dürfen auch lügen.</description>
+        <mandatory>1</mandatory>
+        <record_type>1</record_type>
+    </tx_rkwcheckup_domain_model_question>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>7</uid>
+        <pid>1</pid>
+        <question>2</question>
+        <title>Ja</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>8</uid>
+        <pid>1</pid>
+        <question>2</question>
+        <title>Nein</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+    <!-- QUESTION 4 (Section2, Step4) -->
+
+    <tx_rkwcheckup_domain_model_question>
+        <uid>4</uid>
+        <pid>1</pid>
+        <step>4</step>
+        <answer>2</answer>
+        <title>Ist es so?</title>
+        <description>Sie dürfen auch lügen.</description>
+        <mandatory>1</mandatory>
+        <record_type>1</record_type>
+    </tx_rkwcheckup_domain_model_question>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>9</uid>
+        <pid>1</pid>
+        <question>2</question>
+        <title>Ja</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>10</uid>
+        <pid>1</pid>
+        <question>2</question>
+        <title>Nein</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+
+    <!-- QUESTION 5 (Section2, Step5) -->
+
+    <tx_rkwcheckup_domain_model_question>
+        <uid>5</uid>
+        <pid>1</pid>
+        <step>5</step>
+        <answer>2</answer>
+        <title>Ist es so?</title>
+        <description>Sie dürfen auch lügen.</description>
+        <record_type>1</record_type>
+    </tx_rkwcheckup_domain_model_question>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>11</uid>
+        <pid>1</pid>
+        <question>2</question>
+        <title>Ja</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+    <tx_rkwcheckup_domain_model_answer>
+        <uid>12</uid>
+        <pid>1</pid>
+        <question>2</question>
+        <title>Nein</title>
+    </tx_rkwcheckup_domain_model_answer>
+
+</dataset>

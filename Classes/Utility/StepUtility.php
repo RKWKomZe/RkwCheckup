@@ -78,13 +78,8 @@ class StepUtility
         if (!$showStepFeedback) {
 
             // set next step
-            $i = 0;
             do {
                 self::setNextStepToResult();
-                $i++;
-                if ($i == 2) {
-                    var_dump(self::$result->getCurrentStep());
-                }
             } while (
                 !self::showStepOfResult(self::$result)
                 && (self::$result->getCurrentStep() instanceof Step)
@@ -200,6 +195,7 @@ class StepUtility
                 $nextSection->getStep()->rewind();
                 $nextStep = $nextSection->getStep()->current();
 
+                self::$currentSection = $nextSection;
                 self::$result->setCurrentSection($nextSection);
                 self::$result->setCurrentStep($nextStep);
 
