@@ -117,7 +117,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
     public function progressAction(Result $result): void
     {
 
-        if ($result->isFinished()) {
+        if ($result->getFinished()) {
             $this->redirect(
                 'result', 
                 null, 
@@ -194,7 +194,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
     public function validateAction(Result $result): void
     {
 
-        if ($result->isFinished()) {
+        if ($result->getFinished()) {
             $this->forward(
                 'result',
                 null,
@@ -212,10 +212,10 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
 
 
         // check if there is (a) one more step after given resultAnswers or (b) really no more step to go
-        // the flag "isLastStep" can be revoked after a necessary answer to a condition is given
+        // the flag "getLastStep" can be revoked after a necessary answer to a condition is given
         if (
-            $result->isLastStep()
-            && !$result->isFinished()
+            $result->getLastStep()
+            && !$result->getFinished()
             && !$result->getCurrentStep()
         ) {
 
@@ -247,7 +247,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      */
     public function resultAction(Result $result): void
     {
-        if (!$result->isFinished()) {
+        if (!$result->getFinished()) {
             $this->forward(
                 'progress', 
                 null, 

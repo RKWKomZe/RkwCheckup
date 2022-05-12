@@ -10,7 +10,7 @@ call_user_func(
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
             'rkw_checkup',
             'Configuration/TypoScript',
-            'RKW Checkup'
+            'RKW CheckUp'
         );
     }
 );

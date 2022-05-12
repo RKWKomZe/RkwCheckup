@@ -74,6 +74,7 @@ class Question extends AbstractCheckupContents
      */
     protected $allowTextInput = false;
 
+    
     /**
      * titleTextInput
      *
@@ -272,20 +273,9 @@ class Question extends AbstractCheckupContents
 
     
     /**
-     * Returns the boolean state of mandatory
-     *
      * @return bool
      */
-    public function isMandatory(): bool
-    {
-        return $this->mandatory;
-    }
-
-    
-    /**
-     * @return bool
-     */
-    public function isInvertFeedback(): bool
+    public function getInvertFeedback(): bool
     {
         return $this->invertFeedback;
     }
@@ -299,11 +289,11 @@ class Question extends AbstractCheckupContents
         $this->invertFeedback = $invertFeedback;
     }
 
-
+    
     /**
      * @return bool
      */
-    public function isAllowTextInput(): bool
+    public function getAllowTextInput(): bool
     {
         return $this->allowTextInput;
     }

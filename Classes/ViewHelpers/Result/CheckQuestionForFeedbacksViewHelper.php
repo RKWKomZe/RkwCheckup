@@ -66,7 +66,7 @@ class CheckQuestionForFeedbacksViewHelper extends AbstractViewHelper {
         }
         
         // check if one of the NOT selected answers has a feedback
-        if ($question->isInvertFeedback()) {
+        if ($question->getInvertFeedback()) {
             /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
             foreach ($question->getAnswer() as $answer) {
                 if (! $result->getResultAnswer()->contains($answer)) {

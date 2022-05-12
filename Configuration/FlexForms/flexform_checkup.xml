@@ -21,6 +21,7 @@
                             </config>
                         </TCEforms>
                     </settings.checkup>
+                    <!--
                     <settings.notificationBackendUser>
                         <TCEforms>
                             <label>LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_flexform.backendUser</label>
@@ -35,7 +36,6 @@
                             </config>
                         </TCEforms>
                     </settings.notificationBackendUser>
-                    <!--
                     <settings.termsPid>
                         <TCEforms>
                             <label>

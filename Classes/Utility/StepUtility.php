@@ -61,7 +61,7 @@ class StepUtility
         self::$result = $result;
 
         // if the current step are showing the section intro, just set it to false and show the current step
-        if (self::$result->isShowSectionIntro()) {
+        if (self::$result->getShowSectionIntro()) {
             self::$result->setShowSectionIntro(false);
             return;
         }
@@ -147,7 +147,7 @@ class StepUtility
     protected static function showStepFeedback (): bool
     {
         // is already true? Then reset the value and return false (we'll never show a feedback twice)
-        if (self::$result->isShowStepFeedback()) {
+        if (self::$result->getShowStepFeedback()) {
             self::$result->setShowStepFeedback(false);
             return false;
         }
@@ -310,7 +310,7 @@ class StepUtility
 
         // if we are already finished with everything, to out!
         if (
-            self::$result->isLastStep()
+            self::$result->getLastStep()
             && ! self::$result->getCurrentStep()
             && ! self::$result->getCurrentSection()
         ) {
