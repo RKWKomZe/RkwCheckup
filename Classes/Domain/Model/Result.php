@@ -185,7 +185,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return bool
      */
-    public function isFinished(): bool
+    public function getFinished(): bool
     {
         return $this->finished;
     }
@@ -204,7 +204,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return bool
      */
-    public function isLastStep(): bool
+    public function getLastStep(): bool
     {
         return $this->lastStep;
     }
@@ -222,7 +222,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return bool
      */
-    public function isShowStepFeedback(): bool
+    public function getShowStepFeedback(): bool
     {
         return $this->showStepFeedback;
     }
@@ -240,7 +240,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return bool
      */
-    public function isShowSectionIntro(): bool
+    public function getShowSectionIntro(): bool
     {
         return $this->showSectionIntro;
     }

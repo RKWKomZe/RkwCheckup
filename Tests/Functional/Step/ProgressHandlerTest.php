@@ -161,14 +161,14 @@ class ProgressHandlerTest extends FunctionalTestCase
 
         static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Result', $this->subject->getResult());
 
-        static::assertFalse($this->subject->getResult()->isLastStep());
+        static::assertFalse($this->subject->getResult()->getLastStep());
 
         // some additional "result" checks
         static::assertNotNull($this->subject->getResult()->getHash());
         static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $this->subject->getResult()->getCheckup());
         static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Section', $this->subject->getResult()->getCurrentSection());
         static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Step', $this->subject->getResult()->getCurrentStep());
-        static::assertTrue($this->subject->getResult()->isShowSectionIntro());
+        static::assertTrue($this->subject->getResult()->getShowSectionIntro());
     }
 
 
@@ -867,7 +867,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
 
         // start: Section 1 and Step 1
-        static::assertFalse($result->isLastStep());
+        static::assertFalse($result->getLastStep());
         static::assertEquals(1, $result->getCurrentSection()->getUid());
         static::assertEquals(1, $result->getCurrentStep()->getUid());
 
@@ -876,7 +876,7 @@ class ProgressHandlerTest extends FunctionalTestCase
 
         //$result = $this->subject->getResult();
 
-        static::assertTrue($result->isLastStep());
+        static::assertTrue($result->getLastStep());
 
     }
 

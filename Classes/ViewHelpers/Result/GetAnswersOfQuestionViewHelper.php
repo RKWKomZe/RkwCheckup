@@ -80,7 +80,7 @@ class GetAnswersOfQuestionViewHelper extends AbstractViewHelper {
 
         // if inverted feedback is selected: Invert answers of $answerArray
         $invertAnswerArray = [];
-        if ($question->isInvertFeedback()) {
+        if ($question->getInvertFeedback()) {
             /** @var Answer $answer */
             foreach ($question->getAnswer() as $answer) {
                 if (!array_key_exists($answer->getUid(), $answerArray)) {
@@ -95,6 +95,6 @@ class GetAnswersOfQuestionViewHelper extends AbstractViewHelper {
             }
         }
 
-        return $question->isInvertFeedback() ? $invertAnswerArray : $answerArray;
+        return $question->getInvertFeedback() ? $invertAnswerArray : $answerArray;
     }
 }

@@ -159,11 +159,11 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertTrue($checkResult->isShowSectionIntro());
+        static::assertTrue($checkResult->getShowSectionIntro());
 
         $this->subject->next($checkResult);
 
-        static::assertFalse($checkResult->isShowSectionIntro());
+        static::assertFalse($checkResult->getShowSectionIntro());
 
     }
 
@@ -187,11 +187,11 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertTrue($checkResult->isShowStepFeedback());
+        static::assertTrue($checkResult->getShowStepFeedback());
 
         $this->subject->next($checkResult);
 
-        static::assertFalse($checkResult->isShowStepFeedback());
+        static::assertFalse($checkResult->getShowStepFeedback());
     }
 
 
@@ -214,11 +214,11 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertFalse($checkResult->isShowStepFeedback());
+        static::assertFalse($checkResult->getShowStepFeedback());
 
         $this->subject->next($checkResult);
 
-        static::assertTrue($checkResult->isShowStepFeedback());
+        static::assertTrue($checkResult->getShowStepFeedback());
 
     }
 
@@ -304,13 +304,13 @@ class StepUtilityTest extends FunctionalTestCase
 
         static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
         static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
-        static::assertFalse($checkResult->isLastStep());
+        static::assertFalse($checkResult->getLastStep());
 
         $this->subject->next($checkResult);
 
         static::assertEquals(5, $checkResult->getCurrentStep()->getUid());
         static::assertEquals(3, $checkResult->getCurrentSection()->getUid());
-        static::assertTrue($checkResult->isLastStep());
+        static::assertTrue($checkResult->getLastStep());
 
     }
 
@@ -337,13 +337,13 @@ class StepUtilityTest extends FunctionalTestCase
 
         static::assertEquals(5, $checkResult->getCurrentStep()->getUid());
         static::assertEquals(3, $checkResult->getCurrentSection()->getUid());
-        static::assertTrue($checkResult->isLastStep());
+        static::assertTrue($checkResult->getLastStep());
 
         $this->subject->next($checkResult);
 
         static::assertNull($checkResult->getCurrentStep());
         static::assertNull($checkResult->getCurrentSection());
-        static::assertTrue($checkResult->isLastStep());
+        static::assertTrue($checkResult->getLastStep());
 
     }
 
@@ -376,7 +376,7 @@ class StepUtilityTest extends FunctionalTestCase
 
         static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
         static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
-        static::assertTrue($checkResult->isLastStep());
+        static::assertTrue($checkResult->getLastStep());
 
     }
 
@@ -400,13 +400,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertFalse($checkResult->isLastStep());
-        static::assertFalse($checkResult->isShowStepFeedback());
+        static::assertFalse($checkResult->getLastStep());
+        static::assertFalse($checkResult->getShowStepFeedback());
 
         $this->subject->next($checkResult);
 
-        static::assertFalse($checkResult->isLastStep());
-        static::assertTrue($checkResult->isShowStepFeedback());
+        static::assertFalse($checkResult->getLastStep());
+        static::assertTrue($checkResult->getShowStepFeedback());
 
     }
 
@@ -509,7 +509,7 @@ class StepUtilityTest extends FunctionalTestCase
 
         $this->subject->next($checkResult);
 
-        static::assertTrue($checkResult->isLastStep());
+        static::assertTrue($checkResult->getLastStep());
         static::assertNull($checkResult->getCurrentStep());
         static::assertNull($checkResult->getCurrentSection());
 
@@ -705,7 +705,7 @@ class StepUtilityTest extends FunctionalTestCase
 
         $this->subject->next($checkResult);
 
-        static::assertTrue($checkResult->isLastStep());
+        static::assertTrue($checkResult->getLastStep());
         static::assertNull($checkResult->getCurrentStep());
         static::assertNull($checkResult->getCurrentSection());
 

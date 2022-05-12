@@ -176,18 +176,7 @@ class Section extends AbstractCheckupContents
     {
         $this->hideText = $hideText;
     }
-
     
-    /**
-     * Returns the boolean state of hideText
-     *
-     * @return bool
-     */
-    public function isHideText(): bool
-    {
-        return $this->hideText;
-    }
-
     
     /**
      * Adds a Step

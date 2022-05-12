@@ -71,6 +71,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \RKW\RkwCheckup\Domain\Model\Section
      */
     protected $section;
+    
 
     /**
      * @return int
