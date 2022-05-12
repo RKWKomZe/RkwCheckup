@@ -114,7 +114,7 @@ class ProgressHandler
         // 2.1 Mandatory
         if (
             ($question->getRecordType() == 1 || $question->getRecordType() == 2)
-            && $question->isMandatory()
+            && $question->getMandatory()
             && empty($assignedAnswerList)
         ) {
             // mandatory!
@@ -194,7 +194,7 @@ class ProgressHandler
         do {
             StepUtility::next($this->result);
         } while (
-            !$this->result->isLastStep()
+            !$this->result->getLastStep()
             && !StepUtility::showStepOfResult($this->result)
         );
 

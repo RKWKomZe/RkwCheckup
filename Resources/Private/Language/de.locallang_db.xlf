@@ -6,8 +6,8 @@
 		
 		    <!-- tx_rkwcheckup_domain_model_checkup -->
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup">
-				<source>RKW Checkup: Check</source>
-				<target>RKW Checkup: Check</target>
+				<source>RKW CheckUp: Check</source>
+				<target>RKW CheckUp: Check</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_checkup.title">
 				<source>Title</source>
@@ -29,8 +29,8 @@
 			
 			<!-- tx_rkwcheckup_domain_model_section -->
 			<trans-unit id="tx_rkwcheckup_domain_model_section">
-				<source>Section</source>
-				<target>Abschnitt</target>
+				<source>RKW CheckUp: Section</source>
+				<target>RKW CheckUp: Abschnitt</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_section.tab.extend">
                 <source><![CDATA[Display & Conditions]]></source>
@@ -68,8 +68,8 @@
 			
 			<!-- tx_rkwcheckup_domain_model_step -->
 			<trans-unit id="tx_rkwcheckup_domain_model_step">
-				<source>Step</source>
-				<target>Schritt</target>
+				<source>RKW CheckUp: Step</source>
+				<target>RKW CheckUp: Schritt</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_step.tab.extend">
                 <source><![CDATA[Display, Conditions & Step Feedback]]></source>
@@ -107,8 +107,8 @@
 			            
             <!-- tx_rkwcheckup_domain_model_question -->
 			<trans-unit id="tx_rkwcheckup_domain_model_question">
-				<source>Question</source>
-				<target>Frage</target>
+				<source>RKW CheckUp: Question</source>
+				<target>RKW CheckUp: Frage</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_question.tab.extend">
                 <source>Conditions</source>
@@ -206,8 +206,8 @@
 			
 			<!-- tx_rkwcheckup_domain_model_answer -->
 			<trans-unit id="tx_rkwcheckup_domain_model_answer">
-				<source>Answer</source>
-				<target>Antwort</target>
+				<source>RKW CheckUp: Answer</source>
+				<target>RKW CheckUp: Antwort</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_answer.tab.extend">
                 <source>Feedback</source>
@@ -260,8 +260,8 @@
 			
 			<!-- tx_rkwcheckup_domain_model_result -->
 			<trans-unit id="tx_rkwcheckup_domain_model_result">
-				<source>Result</source>
-				<target>Ergebnis</target>
+				<source>RKW CheckUp: Result</source>
+				<target>RKW CheckUp: Ergebnis</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_result.hash">
 				<source>Hash</source>
@@ -306,8 +306,8 @@
             
             <!-- tx_rkwcheckup_domain_model_resultanswer -->
             <trans-unit id="tx_rkwcheckup_domain_model_resultanswer">
-				<source>Result Answer</source>
-				<target>Ergebnis-Antwort</target>
+				<source>RKW CheckUp: Result Answer</source>
+				<target>RKW CheckUp: Ergebnis-Antwort</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwcheckup_domain_model_resultanswer.answer">
 				<source>Answer</source>

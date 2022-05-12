@@ -6,7 +6,7 @@
 			
 			<!-- tx_rkwcheckup_domain_model_checkup -->
             <trans-unit id="tx_rkwcheckup_domain_model_checkup">
-                <source>RKW Checkup: Check</source>
+                <source>RKW CheckUp: Check</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_checkup.title">
                 <source>Title</source>
@@ -24,7 +24,7 @@
             
             <!-- tx_rkwcheckup_domain_model_section -->
             <trans-unit id="tx_rkwcheckup_domain_model_section">
-                <source>Section</source>
+                <source>RKW CheckUp: Section</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_section.tab.extend">
                 <source><![CDATA[Display & Conditions]]></source>
@@ -54,7 +54,7 @@
             
             <!-- tx_rkwcheckup_domain_model_step -->
             <trans-unit id="tx_rkwcheckup_domain_model_step">
-                <source>Step</source>
+                <source>RKW CheckUp: Step</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_step.tab.extend">
                 <source><![CDATA[Display, Conditions & Step Feedback]]></source>
@@ -84,7 +84,7 @@
 
             <!-- tx_rkwcheckup_domain_model_question -->
             <trans-unit id="tx_rkwcheckup_domain_model_question">
-                <source>Question</source>
+                <source>RKW CheckUp: Question</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_question.tab.extend">
                 <source>Conditions</source>
@@ -159,7 +159,7 @@
             
             <!-- tx_rkwcheckup_domain_model_answer -->
             <trans-unit id="tx_rkwcheckup_domain_model_answer">
-                <source>Answer</source>
+                <source>RKW CheckUp: Answer</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_answer.tab.extend">
                 <source>Feedback</source>
@@ -177,7 +177,7 @@
             
             <!-- tx_rkwcheckup_domain_model_feedback -->
             <trans-unit id="tx_rkwcheckup_domain_model_feedback">
-                <source>Intermediate result</source>
+                <source>RKW CheckUp: Intermediate result</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_feedback.record_type">
                 <source>Type</source>
@@ -237,7 +237,7 @@
             
             <!-- tx_rkwcheckup_domain_model_resultanswer -->
             <trans-unit id="tx_rkwcheckup_domain_model_resultanswer">
-                <source>Result Answer</source>
+                <source>RKW CheckUp: Result Answer</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_resultanswer.answer">
                 <source>Answer</source>

@@ -282,17 +282,6 @@ class Step extends AbstractCheckupContents
 
     
     /**
-     * Returns the boolean state of hideText
-     *
-     * @return bool
-     */
-    public function isHideText(): bool
-    {
-        return $this->hideText;
-    }
-
-    
-    /**
      * Returns the feedback
      *
      * @return \RKW\RkwCheckup\Domain\Model\Feedback|null $feedback
