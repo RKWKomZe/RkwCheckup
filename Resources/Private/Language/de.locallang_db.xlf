@@ -229,8 +229,8 @@
 			
 			<!-- tx_rkwcheckup_domain_model_feedback -->
 			<trans-unit id="tx_rkwcheckup_domain_model_feedback">
-                <source>Intermediate result</source>
-                <target>Zwischenergebnis</target>
+                <source>RKW CheckUp: Feedback</source>
+                <target>RKW CheckUp: Feedback</target>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_feedback.record_type">
                 <source>Type</source>

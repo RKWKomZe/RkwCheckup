@@ -3,7 +3,7 @@
     data-namespace-typo3-fluid="true">
 
     <f:if condition="<f:count>{result.checkup.section}</f:count> > 0">
-        <div class="tabs js-tabs">
+        <div class="tabs js-tabs mt-2">
             <f:render partial="Result/Section/Links" arguments="{_all}" />
             <f:render partial="Result/Section/Contents" arguments="{_all}" />
         </div>

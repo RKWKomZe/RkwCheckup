@@ -116,7 +116,7 @@ return [
                         '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
                     ]
                 ],
-                'default' => 1,
+                'default' => 0,
             ]
         ],
         'step' => [

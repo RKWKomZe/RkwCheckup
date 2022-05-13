@@ -177,7 +177,7 @@
             
             <!-- tx_rkwcheckup_domain_model_feedback -->
             <trans-unit id="tx_rkwcheckup_domain_model_feedback">
-                <source>RKW CheckUp: Intermediate result</source>
+                <source>RKW CheckUp: Feedback</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_feedback.record_type">
                 <source>Type</source>
@@ -201,7 +201,7 @@
             
             <!-- tx_rkwcheckup_domain_model_result -->
             <trans-unit id="tx_rkwcheckup_domain_model_result">
-                <source>Result</source>
+                <source>RKW CheckUp: Result</source>
             </trans-unit>
             <trans-unit id="tx_rkwcheckup_domain_model_result.hash">
                 <source>Hash</source>

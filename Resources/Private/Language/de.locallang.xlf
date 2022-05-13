@@ -249,6 +249,22 @@
                 <source>Conducted on:</source>
                 <target>Durchgeführt am:</target>
             </trans-unit>
+            <trans-unit id="partials_checkup_result_header.bookmarkLink">
+                <source>To access your check result again at a later time, add this page to your favorites in your browser or copy the link in the text-field below:</source>
+                <target>Um Ihr Check-Ergebnis zu einem späteren Zeitpunkt erneut aufrufen zu können, fügen Sie diese Seite in Ihrem Browser zu den Favoriten hinzu oder kopieren Sie sich den nachfolgenden Link aus dem Textfeld:</target>
+            </trans-unit>     
+            <trans-unit id="partials_checkup_result_header.bookmarkLinkCopy">
+                <source>Copy link to clipboard</source>
+                <target>Link in die Zwischenablage kopieren</target>
+            </trans-unit>  
+            <trans-unit id="partials_checkup_result_header.bookmarkLinkCopied">
+                <source>Successfully copied link to clipboard.</source>
+                <target>Link erfolgreich in die Zwischenablage kopiert.</target>
+            </trans-unit>   
+            <trans-unit id="partials_checkup_result_header.bookmarkLinkNotCopied">
+                <source>Oops, unfortunately that did not work. Try it by selecting the link, right-clicking on the selection and clicking COPY. Be sure to copy the link completely.</source>
+                <target>Upps, das hat leider nicht geklappt. Versuchen Sie es, indem Sie den Link markieren, mit der rechten Maustaste auf die Markierung klicken und KOPIEREN auswählen. Achten Sie darauf, den Link vollständig zu kopieren.</target>
+            </trans-unit>                                             
             
             
             <!-- Partials/Checkup/Result/Section/Contents.html -->
