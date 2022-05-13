@@ -79,7 +79,9 @@ class ProgressHandler
         $this->result->setCurrentStep($checkup->getSection()->current()->getStep()->current());
 
         // set showSectionIntro to true
-        $this->result->setShowSectionIntro(true);
+        if (!$this->result->getCurrentSection()->getHideText()) {
+            $this->result->setShowSectionIntro(true);
+        }
 
         // IF A CHECK HAS ONLY ONE STEP
         StepUtility::toggleLastStepFlag($this->result);

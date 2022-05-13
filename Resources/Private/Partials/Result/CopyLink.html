@@ -1,0 +1,39 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+    <div class="contentbox contentbox--gray contentbox--webcheck webcheck">
+        <p id="txRkwCheckupClipboardLabel">
+            <f:translate key="partials_checkup_result_header.bookmarkLink" />
+        </p>
+        <p>
+            <input type="text" id="txRkwCheckupClipboard" aria-labelledby="txRkwCheckupClipboardLabel" value="{f:uri.action(noCacheHash:'true', action:'result', arguments:'{result: result}', absolute:'true')}">
+        </p>
+        <p>
+            <button id="txRkwCheckupClipboardButton" class="btn btn--secondary" onclick="txRkwCheckupCopyToClipboard();">
+                <f:translate key="partials_checkup_result_header.bookmarkLinkCopy" />
+            </button>
+        </p>
+    </div>
+
+    <script>
+      function txRkwCheckupCopyToClipboard() {
+        
+        try {
+
+          /* Get the text field */
+          var textToCopy = document.getElementById('txRkwCheckupClipboard');
+
+          /* Select the text field */
+          textToCopy.select();
+          textToCopy.setSelectionRange(0, 99999); /* For mobile devices */
+          
+          navigator.clipboard.writeText(textToCopy);
+          alert('<f:translate key="partials_checkup_result_header.bookmarkLinkCopied" />');
+
+        } catch (e) {
+          alert('<f:translate key="partials_checkup_result_header.bookmarkLinkNotCopied" />');
+        }         
+      }
+    </script>
+
+</html>

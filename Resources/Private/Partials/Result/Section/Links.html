@@ -4,7 +4,7 @@
 
     <ul class="tabs__nav">
         <f:for each="{result.checkup.section}" as="section" iteration="sectionIter">
-            <f:if condition="{rkwCheckup:result.checkSectionForFeedbacks(section '{section}', result: '{result}')}" >
+            <f:if condition="{rkwCheckup:result.checkSectionForFeedbacks(section: '{section}', result: '{result}')}" >
                 <li class="tabs__nav-item">
                     <a class="tabs__nav-link" 
                         data-target="#tx-rkwcheckup-section-{section.uid}" 

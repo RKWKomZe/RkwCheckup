@@ -199,7 +199,9 @@ class StepUtility
                 self::$result->setCurrentSection($nextSection);
                 self::$result->setCurrentStep($nextStep);
 
-                self::$result->setShowSectionIntro(true);
+                if (!self::$result->getCurrentSection()->getHideText()) {
+                    self::$result->setShowSectionIntro(true);
+                }
 
             } else {
                 // THE END!
