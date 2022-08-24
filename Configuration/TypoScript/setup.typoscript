@@ -19,7 +19,7 @@ config.tx_extbase.persistence {
 
 plugin.tx_rkwcheckup {
     view {
-        templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Templates/
+        templateRootPaths.0 = EXT:rkw_checkup/Resources/Private/Templates/
         templateRootPaths.1 = {$plugin.tx_rkwcheckup.view.templateRootPath}
         partialRootPaths.0 = EXT:rkw_checkup/Resources/Private/Partials/
         partialRootPaths.1 = {$plugin.tx_rkwcheckup.view.partialRootPath}
@@ -57,7 +57,7 @@ module.tx_rkwcheckup_web_rkwcheckupstatistics {
         storagePid = {$module.tx_rkwcheckup_statistics.persistence.storagePid}
     }
     view {
-        templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Backend/Templates/
+        templateRootPaths.0 = EXT:rkw_checkup/Resources/Private/Backend/Templates/
         templateRootPaths.1 = {$module.tx_rkwcheckup_statistics.view.templateRootPath}
         partialRootPaths.0 = EXT:rkw_checkup/Resources/Private/Backend/Partials/
         partialRootPaths.1 = {$module.tx_rkwcheckup_statistics.view.partialRootPath}
