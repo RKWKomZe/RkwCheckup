@@ -15,7 +15,7 @@ namespace RKW\RkwCheckup\ViewHelpers\Result;
 
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\Step;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
@@ -49,8 +49,12 @@ class CheckStepForAnswersViewHelper extends AbstractViewHelper {
      * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
      * @return bool
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
-    {
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    ) {
+
         /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
         $result = $arguments['result'];
         /** @var \RKW\RkwCheckup\Domain\Model\Step $step */

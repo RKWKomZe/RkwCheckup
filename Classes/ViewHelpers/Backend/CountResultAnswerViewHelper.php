@@ -18,7 +18,7 @@ use RKW\RkwCheckup\Domain\Model\Answer;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Repository\ResultAnswerRepository;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
@@ -36,7 +36,7 @@ class CountResultAnswerViewHelper extends AbstractViewHelper {
 
     use CompileWithRenderStatic;
 
-    
+
     /**
      * Initialize arguments.
      *
@@ -58,8 +58,8 @@ class CountResultAnswerViewHelper extends AbstractViewHelper {
      * @return int
      */
     public static function renderStatic(
-        array $arguments, 
-        \Closure $renderChildrenClosure, 
+        array $arguments,
+        \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ){
         $answer = $arguments['answer'];

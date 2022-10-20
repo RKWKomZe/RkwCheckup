@@ -34,7 +34,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $crdate;
 
-    
+
     /**
      * finished
      *
@@ -42,7 +42,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $finished = false;
 
-    
+
     /**
      * lastStep
      *
@@ -50,7 +50,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $lastStep = false;
 
-    
+
     /**
      * showStepFeedback
      *
@@ -58,7 +58,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $showStepFeedback = false;
 
-    
+
     /**
      * showSectionIntro
      *
@@ -66,7 +66,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $showSectionIntro = false;
 
-    
+
     /**
      * For unique link building
      *
@@ -74,7 +74,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $hash = '';
 
-    
+
     /**
      * checkup
      *
@@ -82,7 +82,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $checkup;
 
-    
+
     /**
      * currentSection
      *
@@ -90,7 +90,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $currentSection;
 
-    
+
     /**
      * currentStep
      *
@@ -98,26 +98,26 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $currentStep;
 
-    
+
     /**
      * resultAnswer
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $resultAnswer;
 
-    
+
     /**
      * newResultAnswer
      * Hint: Should never be persisted. Just needed for FE form to validate and creating new answers
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $newResultAnswer;
 
-    
+
     /**
      * __construct
      */
@@ -149,7 +149,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->crdate;
     }
 
-    
+
     /**
      * @param int $crdate
      */
@@ -158,7 +158,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->crdate = $crdate;
     }
 
-    
+
     /**
      * Returns the hash
      *
@@ -169,7 +169,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->hash;
     }
 
-    
+
     /**
      * Sets the hash
      *
@@ -181,7 +181,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->hash = $hash;
     }
 
-    
+
     /**
      * @return bool
      */
@@ -190,7 +190,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->finished;
     }
 
-    
+
     /**
      * @param bool $finished
      */
@@ -198,8 +198,8 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->finished = $finished;
     }
-    
-    
+
+
 
     /**
      * @return bool
@@ -209,7 +209,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->lastStep;
     }
 
-    
+
     /**
      * @param bool $lastStep
      */
@@ -218,7 +218,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->lastStep = $lastStep;
     }
 
-    
+
     /**
      * @return bool
      */
@@ -227,7 +227,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->showStepFeedback;
     }
 
-    
+
     /**
      * @param bool $showStepFeedback
      */
@@ -236,7 +236,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->showStepFeedback = $showStepFeedback;
     }
 
-    
+
     /**
      * @return bool
      */
@@ -244,7 +244,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->showSectionIntro;
     }
-    
+
 
     /**
      * @param bool $showSectionIntro
@@ -253,7 +253,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->showSectionIntro = $showSectionIntro;
     }
-    
+
 
     /**
      * Returns the checkup
@@ -265,7 +265,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->checkup;
     }
 
-    
+
     /**
      * Sets the checkup
      *
@@ -277,7 +277,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->checkup = $checkup;
     }
 
-    
+
     /**
      * Adds a resultAnswer
      *
@@ -290,7 +290,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->resultAnswer->attach($resultAnswer);
     }
 
-    
+
     /**
      * Removes a resultAnswer
      *
@@ -302,7 +302,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->resultAnswer->detach($resultAnswerToRemove);
     }
-    
+
 
     /**
      * Returns the resultAnswer
@@ -314,7 +314,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->resultAnswer;
     }
-    
+
 
     /**
      * Sets the resultAnswer
@@ -328,7 +328,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->resultAnswer = $resultAnswer;
     }
 
-    
+
     /**
      * Adds a newResultAnswer
      *
@@ -341,7 +341,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->newResultAnswer->attach($newResultAnswer);
     }
 
-    
+
     /**
      * Removes a newResultAnswer
      *
@@ -354,7 +354,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->newResultAnswer->detach($newResultAnswerToRemove);
     }
 
-    
+
     /**
      * Returns the newResultAnswer
      *
@@ -365,7 +365,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->newResultAnswer;
     }
-    
+
 
     /**
      * Sets the newResultAnswer
@@ -378,7 +378,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->newResultAnswer = $newResultAnswer;
     }
 
-    
+
     /**
      * Returns the currentSection
      *
@@ -388,7 +388,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->currentSection;
     }
-    
+
 
     /**
      * Sets the currentSection
@@ -400,7 +400,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->currentSection = $currentSection;
     }
-    
+
 
     /**
      * Returns the currentStep
@@ -412,7 +412,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->currentStep;
     }
 
-    
+
     /**
      * Sets the currentStep
      *

@@ -42,11 +42,11 @@ class QuestionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * initializeObject
      */
     public function initializeObject() {
-        
+
         /** @var Typo3QuerySettings $querySettings */
         $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
 
-        // @toDo: Just a workaround? Needed for queries in TCA UserFuncs
+        // @todo Just a workaround? Needed for queries in TCA UserFuncs
         $querySettings->setRespectStoragePage(false);
 
         $this->setDefaultQuerySettings($querySettings);

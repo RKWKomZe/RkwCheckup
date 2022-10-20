@@ -33,7 +33,7 @@ class Section extends AbstractCheckupContents
      */
     protected $title = '';
 
-    
+
     /**
      * description
      *
@@ -41,7 +41,7 @@ class Section extends AbstractCheckupContents
      */
     protected $description = '';
 
-    
+
     /**
      * hideText
      *
@@ -49,15 +49,15 @@ class Section extends AbstractCheckupContents
      */
     protected $hideText = false;
 
-    
+
     /**
      * section
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Step>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $step;
-    
+
 
     /**
      * hideCond
@@ -74,7 +74,7 @@ class Section extends AbstractCheckupContents
      */
     protected $visibleCond;
 
-    
+
     /**
      * checkup
      *
@@ -82,7 +82,7 @@ class Section extends AbstractCheckupContents
      */
     protected $checkup;
 
-    
+
     /**
      * __construct
      */
@@ -92,7 +92,7 @@ class Section extends AbstractCheckupContents
         $this->initStorageObjects();
     }
 
-    
+
     /**
      * Initializes all ObjectStorage properties
      * Do not modify this method!
@@ -108,7 +108,7 @@ class Section extends AbstractCheckupContents
         $this->visibleCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
-    
+
     /**
      * Returns the title
      *
@@ -119,7 +119,7 @@ class Section extends AbstractCheckupContents
         return $this->title;
     }
 
-    
+
     /**
      * Sets the title
      *
@@ -131,7 +131,7 @@ class Section extends AbstractCheckupContents
         $this->title = $title;
     }
 
-    
+
     /**
      * Returns the description
      *
@@ -142,7 +142,7 @@ class Section extends AbstractCheckupContents
         return $this->description;
     }
 
-    
+
     /**
      * Sets the description
      *
@@ -153,7 +153,7 @@ class Section extends AbstractCheckupContents
     {
         $this->description = $description;
     }
-    
+
 
     /**
      * Returns the hideText
@@ -165,7 +165,7 @@ class Section extends AbstractCheckupContents
         return $this->hideText;
     }
 
-    
+
     /**
      * Sets the hideText
      *
@@ -176,8 +176,8 @@ class Section extends AbstractCheckupContents
     {
         $this->hideText = $hideText;
     }
-    
-    
+
+
     /**
      * Adds a Step
      *
@@ -189,7 +189,7 @@ class Section extends AbstractCheckupContents
     {
         $this->step->attach($step);
     }
-    
+
 
     /**
      * Removes a Step
@@ -203,7 +203,7 @@ class Section extends AbstractCheckupContents
         $this->step->detach($stepToRemove);
     }
 
-    
+
     /**
      * Returns the step
      *
@@ -215,7 +215,7 @@ class Section extends AbstractCheckupContents
         return $this->step;
     }
 
-    
+
     /**
      * Sets the step
      *
@@ -228,7 +228,7 @@ class Section extends AbstractCheckupContents
         $this->step = $step;
     }
 
-    
+
     /**
      * Adds a hideCond
      *
@@ -251,7 +251,7 @@ class Section extends AbstractCheckupContents
     {
         $this->hideCond->detach($hideCond);
     }
-    
+
 
     /**
      * Returns the hideCond
@@ -263,7 +263,7 @@ class Section extends AbstractCheckupContents
     {
         return $this->hideCond;
     }
-    
+
 
     /**
      * Sets the hideCond
@@ -327,7 +327,7 @@ class Section extends AbstractCheckupContents
         $this->visibleCond = $visibleCond;
     }
 
-    
+
     /**
      * Returns the checkup
      *
@@ -337,7 +337,7 @@ class Section extends AbstractCheckupContents
     {
         return $this->checkup;
     }
-    
+
 
     /**
      * Sets the checkup

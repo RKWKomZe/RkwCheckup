@@ -40,11 +40,11 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * section
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $section = null;
 
-    
+
     /**
      * title
      *
@@ -52,7 +52,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $title = '';
 
-    
+
     /**
      * description
      *
@@ -76,7 +76,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $contextQuestion;
 
-    
+
     /**
      * __construct
      */
@@ -85,7 +85,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
-    
+
 
     /**
      * Initializes all ObjectStorage properties
@@ -146,7 +146,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->tstamp = $tstamp;
     }
 
-    
+
     /**
      * Returns the title
      *
@@ -157,7 +157,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->title;
     }
 
-    
+
     /**
      * Sets the title
      *
@@ -169,7 +169,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->title = $title;
     }
 
-    
+
     /**
      * Returns the description
      *
@@ -180,7 +180,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->description;
     }
 
-    
+
     /**
      * Sets the description
      *
@@ -209,7 +209,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->resultIntro = $resultIntro;
     }
-    
+
 
     /**
      * Adds a Section
@@ -223,7 +223,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->section->attach($section);
     }
 
-    
+
     /**
      * Removes a Section
      *
@@ -236,7 +236,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->section->detach($sectionToRemove);
     }
 
-    
+
     /**
      * Returns the section
      *
@@ -248,7 +248,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->section;
     }
 
-    
+
     /**
      * Sets the section
      *
@@ -261,7 +261,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->section = $section;
     }
 
-    
+
     /**
      * Returns the contextQuestion
      *
@@ -271,7 +271,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->contextQuestion;
     }
-    
+
 
     /**
      * Sets the contextQuestion

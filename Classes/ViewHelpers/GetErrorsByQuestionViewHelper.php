@@ -15,8 +15,7 @@ namespace RKW\RkwCheckup\ViewHelpers;
 
 use RKW\RkwCheckup\Domain\Model\Question;
 use TYPO3\CMS\Extbase\Error\Result;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
@@ -31,7 +30,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
  */
 class GetErrorsByQuestionViewHelper extends AbstractViewHelper {
 
-    
+
     use CompileWithRenderStatic;
 
     /**
@@ -55,11 +54,11 @@ class GetErrorsByQuestionViewHelper extends AbstractViewHelper {
      * @return array
      */
     public static function renderStatic(
-        array $arguments, 
-        \Closure $renderChildrenClosure, 
+        array $arguments,
+        \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-    )
-    {
+    ): array {
+
         /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
         $question = $arguments['question'];
 

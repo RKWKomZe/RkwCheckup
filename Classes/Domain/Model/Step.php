@@ -26,7 +26,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Step extends AbstractCheckupContents
 {
-    
+
     /**
      * hideText
      *
@@ -34,7 +34,7 @@ class Step extends AbstractCheckupContents
      */
     protected $hideText = false;
 
-    
+
     /**
      * title
      *
@@ -42,7 +42,7 @@ class Step extends AbstractCheckupContents
      */
     protected $title = '';
 
-    
+
     /**
      * description
      *
@@ -50,16 +50,16 @@ class Step extends AbstractCheckupContents
      */
     protected $description = '';
 
-    
+
     /**
      * question
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Question>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $question;
 
-    
+
     /**
      * hideCond
      *
@@ -75,16 +75,16 @@ class Step extends AbstractCheckupContents
      */
     protected $visibleCond;
 
-    
+
     /**
      * feedback
      *
      * @var \RKW\RkwCheckup\Domain\Model\Feedback
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $feedback;
 
-    
+
     /**
      * __construct
      */
@@ -94,7 +94,7 @@ class Step extends AbstractCheckupContents
         $this->initStorageObjects();
     }
 
-    
+
     /**
      * Initializes all ObjectStorage properties
      * Do not modify this method!
@@ -110,7 +110,7 @@ class Step extends AbstractCheckupContents
         $this->visibleCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
-    
+
     /**
      * Returns the title
      *
@@ -121,7 +121,7 @@ class Step extends AbstractCheckupContents
         return $this->title;
     }
 
-    
+
     /**
      * Sets the title
      *
@@ -133,7 +133,7 @@ class Step extends AbstractCheckupContents
         $this->title = $title;
     }
 
-    
+
     /**
      * Returns the description
      *
@@ -143,7 +143,7 @@ class Step extends AbstractCheckupContents
     {
         return $this->description;
     }
-    
+
 
     /**
      * Sets the description
@@ -156,7 +156,7 @@ class Step extends AbstractCheckupContents
         $this->description = $description;
     }
 
-    
+
     /**
      * Adds a hideCond
      *
@@ -168,7 +168,7 @@ class Step extends AbstractCheckupContents
     {
         $this->hideCond->attach($hideCond);
     }
-    
+
 
     /**
      * Removes a hideCond
@@ -182,7 +182,7 @@ class Step extends AbstractCheckupContents
         $this->hideCond->detach($hideCond);
     }
 
-    
+
     /**
      * Returns the hideCond
      *
@@ -194,7 +194,7 @@ class Step extends AbstractCheckupContents
         return $this->hideCond;
     }
 
-    
+
     /**
      * Sets the hideCond
      *
@@ -257,7 +257,7 @@ class Step extends AbstractCheckupContents
         $this->visibleCond = $visibleCond;
     }
 
-    
+
     /**
      * Returns the hideText
      *
@@ -267,7 +267,7 @@ class Step extends AbstractCheckupContents
     {
         return $this->hideText;
     }
-    
+
 
     /**
      * Sets the hideText
@@ -280,7 +280,7 @@ class Step extends AbstractCheckupContents
         $this->hideText = $hideText;
     }
 
-    
+
     /**
      * Returns the feedback
      *
@@ -290,7 +290,7 @@ class Step extends AbstractCheckupContents
     {
         return $this->feedback;
     }
-    
+
 
     /**
      * Sets the feedback
@@ -302,7 +302,7 @@ class Step extends AbstractCheckupContents
     {
         $this->feedback = $feedback;
     }
-    
+
 
     /**
      * Adds a Question
@@ -316,7 +316,7 @@ class Step extends AbstractCheckupContents
         $this->question->attach($question);
     }
 
-    
+
     /**
      * Removes a Question
      *
@@ -328,7 +328,7 @@ class Step extends AbstractCheckupContents
     {
         $this->question->detach($questionToRemove);
     }
-    
+
 
     /**
      * Returns the Question
@@ -340,7 +340,7 @@ class Step extends AbstractCheckupContents
     {
         return $this->question;
     }
-    
+
 
     /**
      * Sets the Question

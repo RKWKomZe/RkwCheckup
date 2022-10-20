@@ -34,7 +34,7 @@ class TcaCond
      * configurationManager
      *
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $configurationManager;
 
@@ -52,11 +52,11 @@ class TcaCond
 
         /** @var QuestionRepository $questionRepository */
         //$questionRepository = $objectManager->get(QuestionRepository::class);
-        
+
         /** @var Question $entityToStop */
         /*$question = $questionRepository->findByIdentifier(intval($params['record']['question']));
         if ($question instanceof Question) {
-            // @toDo: Solution with TypoScript??
+            // @todo Solution with TypoScript??
             if ($question->getRecordType() == 4) {
                 return false;
             }
@@ -64,5 +64,5 @@ class TcaCond
 
         return true;
     }
-    
+
 }

@@ -16,7 +16,7 @@ namespace RKW\RkwCheckup\ViewHelpers\Result;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Model\Step;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
@@ -30,7 +30,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
  */
 class CheckSectionForFeedbacksViewHelper extends AbstractViewHelper {
 
-    
+
     use CompileWithRenderStatic;
 
     /**
@@ -52,17 +52,17 @@ class CheckSectionForFeedbacksViewHelper extends AbstractViewHelper {
      * @return bool
      */
     public static function renderStatic(
-        array $arguments, 
-        \Closure $renderChildrenClosure, 
+        array $arguments,
+        \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ){
-        
+
         /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
         $result = $arguments['result'];
         /** @var \RKW\RkwCheckup\Domain\Model\Section $section */
         $section = $arguments['section'];
 
-        
+
         // Check if one of the questions of the step has a feedback
         /** @var \RKW\RkwCheckup\Domain\Model\Step $step */
         foreach ($section->getStep() as $step) {
@@ -97,7 +97,7 @@ class CheckSectionForFeedbacksViewHelper extends AbstractViewHelper {
                 }
             }
         }
-        
+
         return false;
     }
 }

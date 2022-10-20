@@ -14,16 +14,11 @@ namespace RKW\RkwCheckup\ViewHelpers;
  */
 
 use RKW\RkwBasics\Utility\GeneralUtility;
-use RKW\RkwCheckup\Domain\Model\Answer;
 use RKW\RkwCheckup\Domain\Model\Question;
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Domain\Model\ResultAnswer;
-use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Repository\ResultAnswerRepository;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
@@ -41,7 +36,7 @@ class GetFreeTextAnswerListViewHelper extends AbstractViewHelper {
 
     use CompileWithRenderStatic;
 
-    
+
     /**
      * Initialize arguments.
      *
@@ -63,8 +58,8 @@ class GetFreeTextAnswerListViewHelper extends AbstractViewHelper {
      * @return int|array|QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
     public static function renderStatic(
-        array $arguments, 
-        \Closure $renderChildrenClosure, 
+        array $arguments,
+        \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ){
         /** @var Question $question */

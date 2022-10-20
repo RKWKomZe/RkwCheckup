@@ -26,7 +26,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Question extends AbstractCheckupContents
 {
-    
+
     /**
      * type
      *
@@ -34,7 +34,7 @@ class Question extends AbstractCheckupContents
      */
     protected $recordType = 1;
 
-    
+
     /**
      * title
      *
@@ -42,7 +42,7 @@ class Question extends AbstractCheckupContents
      */
     protected $title = '';
 
-    
+
     /**
      * description
      *
@@ -50,7 +50,7 @@ class Question extends AbstractCheckupContents
      */
     protected $description = '';
 
-    
+
     /**
      * mandatory
      *
@@ -58,7 +58,7 @@ class Question extends AbstractCheckupContents
      */
     protected $mandatory = false;
 
-    
+
     /**
      * invertFeedback
      *
@@ -74,7 +74,7 @@ class Question extends AbstractCheckupContents
      */
     protected $allowTextInput = false;
 
-    
+
     /**
      * titleTextInput
      *
@@ -82,7 +82,7 @@ class Question extends AbstractCheckupContents
      */
     protected $titleTextInput = '';
 
-    
+
     /**
      * minCheck
      *
@@ -90,7 +90,7 @@ class Question extends AbstractCheckupContents
      */
     protected $minCheck = 0;
 
-    
+
     /**
      * maxCheck
      *
@@ -98,7 +98,7 @@ class Question extends AbstractCheckupContents
      */
     protected $maxCheck = 0;
 
-    
+
     /**
      * scaleLeft
      *
@@ -106,7 +106,7 @@ class Question extends AbstractCheckupContents
      */
     protected $scaleLeft = '';
 
-    
+
     /**
      * scaleRight
      *
@@ -114,7 +114,7 @@ class Question extends AbstractCheckupContents
      */
     protected $scaleRight = '';
 
-    
+
     /**
      * scaleMax
      *
@@ -127,7 +127,7 @@ class Question extends AbstractCheckupContents
      * feedback
      *
      * @var \RKW\RkwCheckup\Domain\Model\Feedback
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $feedback;
 
@@ -139,7 +139,7 @@ class Question extends AbstractCheckupContents
      */
     protected $answer;
 
-    
+
     /**
      * hideCond
      *
@@ -155,7 +155,7 @@ class Question extends AbstractCheckupContents
      */
     protected $visibleCond;
 
-    
+
     /**
      * step
      *
@@ -163,7 +163,7 @@ class Question extends AbstractCheckupContents
      */
     protected $step;
 
-    
+
     /**
      * Initializes all ObjectStorage properties
      * Do not modify this method!
@@ -202,7 +202,7 @@ class Question extends AbstractCheckupContents
         $this->recordType = $recordType;
     }
 
-    
+
     /**
      * Returns the title
      *
@@ -213,7 +213,7 @@ class Question extends AbstractCheckupContents
         return $this->title;
     }
 
-    
+
     /**
      * Sets the title
      *
@@ -225,7 +225,7 @@ class Question extends AbstractCheckupContents
         $this->title = $title;
     }
 
-    
+
     /**
      * Returns the description
      *
@@ -235,7 +235,7 @@ class Question extends AbstractCheckupContents
     {
         return $this->description;
     }
-    
+
 
     /**
      * Sets the description
@@ -248,7 +248,7 @@ class Question extends AbstractCheckupContents
         $this->description = $description;
     }
 
-    
+
     /**
      * Returns the mandatory
      *
@@ -259,7 +259,7 @@ class Question extends AbstractCheckupContents
         return $this->mandatory;
     }
 
-    
+
     /**
      * Sets the mandatory
      *
@@ -271,7 +271,7 @@ class Question extends AbstractCheckupContents
         $this->mandatory = $mandatory;
     }
 
-    
+
     /**
      * @return bool
      */
@@ -280,7 +280,7 @@ class Question extends AbstractCheckupContents
         return $this->invertFeedback;
     }
 
-    
+
     /**
      * @param bool $invertFeedback
      */
@@ -289,7 +289,7 @@ class Question extends AbstractCheckupContents
         $this->invertFeedback = $invertFeedback;
     }
 
-    
+
     /**
      * @return bool
      */
@@ -326,7 +326,7 @@ class Question extends AbstractCheckupContents
     }
 
 
-    
+
     /**
      * Returns the minCheck
      *
@@ -337,7 +337,7 @@ class Question extends AbstractCheckupContents
         return $this->minCheck;
     }
 
-    
+
     /**
      * Sets the minCheck
      *
@@ -349,7 +349,7 @@ class Question extends AbstractCheckupContents
         $this->minCheck = $minCheck;
     }
 
-    
+
     /**
      * Returns the maxCheck
      *
@@ -360,7 +360,7 @@ class Question extends AbstractCheckupContents
         return $this->maxCheck;
     }
 
-    
+
     /**
      * Sets the maxCheck
      *
@@ -371,7 +371,7 @@ class Question extends AbstractCheckupContents
     {
         $this->maxCheck = $maxCheck;
     }
-    
+
 
     /**
      * @return string
@@ -381,7 +381,7 @@ class Question extends AbstractCheckupContents
         return $this->scaleLeft;
     }
 
-    
+
     /**
      * @param string $scaleLeft
      */
@@ -390,7 +390,7 @@ class Question extends AbstractCheckupContents
         $this->scaleLeft = $scaleLeft;
     }
 
-    
+
     /**
      * @return string
      */
@@ -399,7 +399,7 @@ class Question extends AbstractCheckupContents
         return $this->scaleRight;
     }
 
-    
+
     /**
      * @param string $scaleRight
      */
@@ -408,7 +408,7 @@ class Question extends AbstractCheckupContents
         $this->scaleRight = $scaleRight;
     }
 
-    
+
     /**
      * Returns the scaleMax
      *
@@ -453,7 +453,7 @@ class Question extends AbstractCheckupContents
     {
         $this->feedback = $feedback;
     }
-    
+
     /**
      * Adds a Answer
      *
@@ -466,7 +466,7 @@ class Question extends AbstractCheckupContents
         $this->answer->attach($answer);
     }
 
-    
+
     /**
      * Removes a Answer
      *
@@ -479,7 +479,7 @@ class Question extends AbstractCheckupContents
         $this->answer->detach($answerToRemove);
     }
 
-    
+
     /**
      * Returns the answer
      *
@@ -491,7 +491,7 @@ class Question extends AbstractCheckupContents
         return $this->answer;
     }
 
-    
+
     /**
      * Sets the answer
      *
@@ -503,8 +503,8 @@ class Question extends AbstractCheckupContents
         $this->answer = $answer;
     }
 
-    
-    
+
+
     /**
      * Adds a hideCond
      *
@@ -529,7 +529,7 @@ class Question extends AbstractCheckupContents
         $this->hideCond->detach($hideCond);
     }
 
-    
+
     /**
      * Returns the hideCond
      *
@@ -540,7 +540,7 @@ class Question extends AbstractCheckupContents
         return $this->hideCond;
     }
 
-    
+
     /**
      * Sets the hideCond
      *
@@ -602,7 +602,7 @@ class Question extends AbstractCheckupContents
         $this->visibleCond = $visibleCond;
     }
 
-    
+
     /**
      * Returns the step
      *
@@ -612,7 +612,7 @@ class Question extends AbstractCheckupContents
     {
         return $this->step;
     }
-    
+
 
     /**
      * Sets the step

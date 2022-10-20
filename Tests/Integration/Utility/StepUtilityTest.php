@@ -16,7 +16,7 @@ use RKW\RkwCheckup\Step\ProgressHandler;
 use RKW\RkwCheckup\Utility\StepUtility;
 use RKW\RkwRegistration\Domain\Repository\FrontendUserRepository;
 use RKW\RkwRegistration\Service\AuthFrontendUserService;
-use RKW\RkwRegistration\Register\GroupRegister;
+use RKW\RkwRegistration\Register\GroupFrontendUser;
 use RKW\RkwRegistration\DataProtection\PrivacyHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -107,7 +107,7 @@ class StepUtilityTest extends FunctionalTestCase
      * Setup
      * @throws \Exception
      */
-    protected function setUp()
+    protected function setUp(): void
     {
 
         parent::setUp();
@@ -759,7 +759,7 @@ class StepUtilityTest extends FunctionalTestCase
     /**
      * TearDown
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }

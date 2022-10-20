@@ -26,7 +26,7 @@ class BackendController extends ActionController
      * checkupRepository
      *
      * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $checkupRepository;
 
@@ -34,11 +34,11 @@ class BackendController extends ActionController
      * resultRepository
      *
      * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $resultRepository;
 
-    
+
     /**
      * action list
      *
@@ -55,7 +55,7 @@ class BackendController extends ActionController
         }
     }
 
-    
+
     /**
      * action show
      *

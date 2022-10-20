@@ -31,7 +31,7 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $title = '';
 
-    
+
     /**
      * description
      *
@@ -44,11 +44,11 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * feedback
      *
      * @var \RKW\RkwCheckup\Domain\Model\Feedback
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $feedback;
 
-    
+
     /**
      * Returns the title
      *
@@ -59,7 +59,7 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->title;
     }
 
-    
+
     /**
      * Sets the title
      *
@@ -71,7 +71,7 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->title = $title;
     }
 
-    
+
     /**
      * Returns the description
      *
@@ -82,7 +82,7 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->description;
     }
 
-    
+
     /**
      * Sets the description
      *
@@ -117,5 +117,5 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->feedback = $feedback;
     }
 
-    
+
 }

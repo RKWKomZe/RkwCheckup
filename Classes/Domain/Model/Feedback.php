@@ -31,7 +31,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $recordType = 0;
 
-    
+
     /**
      * title
      *
@@ -39,7 +39,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $title = '';
 
-    
+
     /**
      * description
      *
@@ -47,21 +47,21 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $description = '';
 
-    
+
     /**
      * image
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $image;
 
-    
+
     /**
      * file
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $file;
 
@@ -73,7 +73,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $link = '';
 
-    
+
     /**
      * Returns the title
      *
@@ -84,7 +84,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->title;
     }
 
-    
+
     /**
      * Sets the title
      *
@@ -96,7 +96,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->title = $title;
     }
 
-    
+
     /**
      * Returns the description
      *
@@ -107,7 +107,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->description;
     }
 
-    
+
     /**
      * Sets the description
      *
@@ -119,7 +119,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->description = $description;
     }
 
-    
+
     /**
      * Returns the image
      *
@@ -129,7 +129,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->image;
     }
-    
+
 
     /**
      * Sets the image
@@ -142,7 +142,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->image = $image;
     }
 
-    
+
     /**
      * Returns the file
      *
@@ -152,7 +152,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->file;
     }
-    
+
 
     /**
      * Sets the file
@@ -197,7 +197,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->recordType;
     }
-    
+
 
     /**
      * Sets the recordType

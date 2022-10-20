@@ -27,16 +27,16 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
 {
-    
+
     /**
      * checkupRepository
      *
      * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $checkupRepository;
 
-    
+
 
     /**
      * progressHandler
@@ -45,7 +45,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      */
     protected $progressHandler;
 
-    
+
     /**
      * initializeAction
      * @return void
@@ -64,7 +64,7 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
     public function indexAction(): void
     {
         $this->view->assign(
-            'checkup', 
+            'checkup',
             $this->checkupRepository->findByUid(intval($this->settings['checkup']))
         );
     }
@@ -99,9 +99,9 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
         $this->progressHandler->persist();
 
         $this->redirect(
-            'progress', 
-            null, 
-            null, 
+            'progress',
+            null,
+            null,
             ['result' => $this->progressHandler->getResult()]
         );
     }
@@ -119,9 +119,9 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
 
         if ($result->getFinished()) {
             $this->redirect(
-                'result', 
-                null, 
-                null, 
+                'result',
+                null,
+                null,
                 ['result' => $result]
             );
         }
@@ -185,10 +185,10 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
 
     /**
      * action validate
-     * @validate $result \RKW\RkwCheckup\Validation\Validator\ResultValidator
      *
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwCheckup\Validation\Validator\ResultValidator", param="result")
      * @throws \Exception
      */
     public function validateAction(Result $result): void
@@ -231,9 +231,9 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
         }
 
         $this->forward(
-            'progress', 
-            null, 
-            null, 
+            'progress',
+            null,
+            null,
             ['result' => $result]
         );
     }
@@ -249,8 +249,8 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
     {
         if (!$result->getFinished()) {
             $this->forward(
-                'progress', 
-                null, 
+                'progress',
+                null,
                 null,
                 ['result' => $result]
             );

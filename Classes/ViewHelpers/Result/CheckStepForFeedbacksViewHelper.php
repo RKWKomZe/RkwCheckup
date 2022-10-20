@@ -16,7 +16,7 @@ namespace RKW\RkwCheckup\ViewHelpers\Result;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\Step;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
@@ -30,7 +30,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
  */
 class CheckStepForFeedbacksViewHelper extends AbstractViewHelper {
 
-    
+
     use CompileWithRenderStatic;
 
     /**
@@ -52,25 +52,25 @@ class CheckStepForFeedbacksViewHelper extends AbstractViewHelper {
      * @return bool
      */
     public static function renderStatic(
-        array $arguments, 
-        \Closure $renderChildrenClosure, 
+        array $arguments,
+        \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ){
-        
+
         /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
         $result = $arguments['result'];
         /** @var \RKW\RkwCheckup\Domain\Model\Step $step */
         $step = $arguments['step'];
 
-        
+
         // Check if one of the questions of the step has a feedback
         /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
         foreach ($step->getQuestion() as $question) {
             if ($question->getFeedback()) {
                 return true;
             }
-        
-    
+
+
             // check if one of the NOT selected answers of the step has a feedback
             if ($question->getInvertFeedback()) {
                 /** @var \RKW\RkwCheckup\Domain\Model\Answer $answer */
@@ -81,7 +81,7 @@ class CheckStepForFeedbacksViewHelper extends AbstractViewHelper {
                         }
                     }
                 }
-    
+
             // check if one of the selected answers has a feedback
             } else {
                 /** @var \RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer */
@@ -94,7 +94,7 @@ class CheckStepForFeedbacksViewHelper extends AbstractViewHelper {
                 }
             }
         }
-        
+
         return false;
     }
 }
