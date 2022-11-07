@@ -166,7 +166,7 @@ class TcaProcFuncTest extends FunctionalTestCase
 
         $result = $this->subject->getCheckup($tcaArray);
 
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $result);
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $result);
     }
 
 
@@ -197,7 +197,7 @@ class TcaProcFuncTest extends FunctionalTestCase
 
         $result = $this->subject->getCheckup($tcaArray);
 
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $result);
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $result);
     }
 
 
@@ -228,7 +228,7 @@ class TcaProcFuncTest extends FunctionalTestCase
 
         $result = $this->subject->getCheckup($tcaArray);
 
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $result);
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $result);
     }
 
 
@@ -261,7 +261,7 @@ class TcaProcFuncTest extends FunctionalTestCase
 
         $result = $this->subject->getCheckup($tcaArray);
 
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $result);
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $result);
     }
 
 
@@ -294,7 +294,7 @@ class TcaProcFuncTest extends FunctionalTestCase
 
         $result = $this->subject->getEntityToStop($tcaArray);
 
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Section', $result);
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Section', $result);
     }
 
 
@@ -324,7 +324,7 @@ class TcaProcFuncTest extends FunctionalTestCase
 
         $result = $this->subject->getEntityToStop($tcaArray);
 
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Step', $result);
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Step', $result);
     }
 
     /**
@@ -353,7 +353,7 @@ class TcaProcFuncTest extends FunctionalTestCase
 
         $result = $this->subject->getEntityToStop($tcaArray);
 
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Step', $result);
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Step', $result);
     }
 
 

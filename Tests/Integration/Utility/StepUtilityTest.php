@@ -159,11 +159,11 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertTrue($checkResult->getShowSectionIntro());
+        self::assertTrue($checkResult->getShowSectionIntro());
 
         $this->subject->next($checkResult);
 
-        static::assertFalse($checkResult->getShowSectionIntro());
+        self::assertFalse($checkResult->getShowSectionIntro());
 
     }
 
@@ -187,11 +187,11 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertTrue($checkResult->getShowStepFeedback());
+        self::assertTrue($checkResult->getShowStepFeedback());
 
         $this->subject->next($checkResult);
 
-        static::assertFalse($checkResult->getShowStepFeedback());
+        self::assertFalse($checkResult->getShowStepFeedback());
     }
 
 
@@ -214,11 +214,11 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertFalse($checkResult->getShowStepFeedback());
+        self::assertFalse($checkResult->getShowStepFeedback());
 
         $this->subject->next($checkResult);
 
-        static::assertTrue($checkResult->getShowStepFeedback());
+        self::assertTrue($checkResult->getShowStepFeedback());
 
     }
 
@@ -242,13 +242,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(1, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(4, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentSection()->getUid());
 
     }
 
@@ -272,13 +272,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(3, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(3, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(4, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentSection()->getUid());
 
     }
 
@@ -302,15 +302,15 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
-        static::assertFalse($checkResult->getLastStep());
+        self::assertEquals(4, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentSection()->getUid());
+        self::assertFalse($checkResult->getLastStep());
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(5, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(3, $checkResult->getCurrentSection()->getUid());
-        static::assertTrue($checkResult->getLastStep());
+        self::assertEquals(5, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(3, $checkResult->getCurrentSection()->getUid());
+        self::assertTrue($checkResult->getLastStep());
 
     }
 
@@ -335,15 +335,15 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(5, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(3, $checkResult->getCurrentSection()->getUid());
-        static::assertTrue($checkResult->getLastStep());
+        self::assertEquals(5, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(3, $checkResult->getCurrentSection()->getUid());
+        self::assertTrue($checkResult->getLastStep());
 
         $this->subject->next($checkResult);
 
-        static::assertNull($checkResult->getCurrentStep());
-        static::assertNull($checkResult->getCurrentSection());
-        static::assertTrue($checkResult->getLastStep());
+        self::assertNull($checkResult->getCurrentStep());
+        self::assertNull($checkResult->getCurrentSection());
+        self::assertTrue($checkResult->getLastStep());
 
     }
 
@@ -369,14 +369,14 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(3, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(3, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
-        static::assertTrue($checkResult->getLastStep());
+        self::assertEquals(4, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentSection()->getUid());
+        self::assertTrue($checkResult->getLastStep());
 
     }
 
@@ -400,13 +400,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertFalse($checkResult->getLastStep());
-        static::assertFalse($checkResult->getShowStepFeedback());
+        self::assertFalse($checkResult->getLastStep());
+        self::assertFalse($checkResult->getShowStepFeedback());
 
         $this->subject->next($checkResult);
 
-        static::assertFalse($checkResult->getLastStep());
-        static::assertTrue($checkResult->getShowStepFeedback());
+        self::assertFalse($checkResult->getLastStep());
+        self::assertTrue($checkResult->getShowStepFeedback());
 
     }
 
@@ -431,13 +431,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(1, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(2, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
     }
 
@@ -463,13 +463,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(1, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertNull($checkResult->getCurrentStep());
-        static::assertNull($checkResult->getCurrentSection());
+        self::assertNull($checkResult->getCurrentStep());
+        self::assertNull($checkResult->getCurrentSection());
 
     }
 
@@ -504,14 +504,14 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(1, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertTrue($checkResult->getLastStep());
-        static::assertNull($checkResult->getCurrentStep());
-        static::assertNull($checkResult->getCurrentSection());
+        self::assertTrue($checkResult->getLastStep());
+        self::assertNull($checkResult->getCurrentStep());
+        self::assertNull($checkResult->getCurrentSection());
 
     }
 
@@ -544,13 +544,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(1, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(2, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
     }
 
@@ -583,13 +583,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(2, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(3, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(3, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
     }
 
@@ -622,13 +622,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(2, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(4, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentSection()->getUid());
 
     }
 
@@ -661,13 +661,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(3, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(3, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(4, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(4, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentSection()->getUid());
 
     }
 
@@ -700,14 +700,14 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(3, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(3, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertTrue($checkResult->getLastStep());
-        static::assertNull($checkResult->getCurrentStep());
-        static::assertNull($checkResult->getCurrentSection());
+        self::assertTrue($checkResult->getLastStep());
+        self::assertNull($checkResult->getCurrentStep());
+        self::assertNull($checkResult->getCurrentSection());
 
     }
 
@@ -742,13 +742,13 @@ class StepUtilityTest extends FunctionalTestCase
         /** @var Result $checkResult */
         $checkResult = $this->resultRepository->findByIdentifier(1);
 
-        static::assertEquals(3, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(1, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(3, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(1, $checkResult->getCurrentSection()->getUid());
 
         $this->subject->next($checkResult);
 
-        static::assertEquals(5, $checkResult->getCurrentStep()->getUid());
-        static::assertEquals(2, $checkResult->getCurrentSection()->getUid());
+        self::assertEquals(5, $checkResult->getCurrentStep()->getUid());
+        self::assertEquals(2, $checkResult->getCurrentSection()->getUid());
 
     }
 

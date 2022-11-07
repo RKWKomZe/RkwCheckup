@@ -165,8 +165,8 @@ class AnswerUtilityTest extends FunctionalTestCase
 
         $result = $this->subject->fetchAllOfCheckup($check);
 
-        static::assertCount(14, $result);
-        static::assertInstanceOf('RKW\RkwCheckup\Domain\Model\Answer', $result[0]);
+        self::assertCount(14, $result);
+        self::assertInstanceOf('RKW\RkwCheckup\Domain\Model\Answer', $result[0]);
 
     }
 
@@ -194,7 +194,7 @@ class AnswerUtilityTest extends FunctionalTestCase
 
         $result = $this->subject->fetchAllOfCheckup($check, $stopEntity);
 
-        static::assertCount(0, $result);
+        self::assertCount(0, $result);
 
     }
 
@@ -222,7 +222,7 @@ class AnswerUtilityTest extends FunctionalTestCase
 
         $result = $this->subject->fetchAllOfCheckup($check, $stopEntity);
 
-        static::assertCount(10, $result);
+        self::assertCount(10, $result);
 
     }
 
@@ -250,7 +250,7 @@ class AnswerUtilityTest extends FunctionalTestCase
 
         $result = $this->subject->fetchAllOfCheckup($check, $stopEntity);
 
-        static::assertCount(0, $result);
+        self::assertCount(0, $result);
     }
 
 
@@ -277,7 +277,7 @@ class AnswerUtilityTest extends FunctionalTestCase
 
         $result = $this->subject->fetchAllOfCheckup($check, $stopEntity);
 
-        static::assertCount(10, $result);
+        self::assertCount(10, $result);
     }
 
 
