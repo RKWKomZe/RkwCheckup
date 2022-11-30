@@ -37,13 +37,13 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  * Class ProgressHandler
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class ProgressHandler
 {
-    
+
     /**
      * Setting
      *
@@ -51,13 +51,13 @@ class ProgressHandler
      */
     protected $settings;
 
-    
+
     /**
      * @var \RKW\RkwCheckup\Domain\Model\Result
      */
     protected $result;
 
-    
+
     /**
      * create new result
      *
@@ -87,7 +87,7 @@ class ProgressHandler
         StepUtility::toggleLastStepFlag($this->result);
     }
 
-    
+
     /**
      * validateQuestion
      * Hint: Works with "getNewResultAnswer" (NOT with the persistent "getResultAnswer")
@@ -154,11 +154,11 @@ class ProgressHandler
             );
         }
 
-        
+
         return '';
     }
 
-    
+
     /**
      * moveNewResultAnswers
      * Moves answers from "newAnswers" to "answers"
@@ -179,7 +179,7 @@ class ProgressHandler
             $this->result->removeNewResultAnswer($resultAnswer);
         }
     }
-    
+
 
     /**
      * setNextStep
@@ -256,7 +256,7 @@ class ProgressHandler
         $persistenceManager = $objectManager->get(PersistenceManager::class);
         $persistenceManager->persistAll();
     }
-    
+
 
     /**
      * Set result
@@ -268,7 +268,7 @@ class ProgressHandler
     {
         $this->result = $result;
     }
-    
+
 
     /**
      * Returns result
@@ -280,7 +280,7 @@ class ProgressHandler
         return $this->result;
     }
 
-    
+
     /**
      * Returns logger instance
      *
@@ -291,7 +291,7 @@ class ProgressHandler
         return GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
     }
 
-    
+
     /**
      * Returns TYPO3 settings
      *
@@ -304,7 +304,7 @@ class ProgressHandler
         if (!$this->settings) {
             $this->settings = GeneralUtility::getTyposcriptConfiguration('Rkwcheckup');
         }
-        
+
         if (!$this->settings) {
             return array();
         }

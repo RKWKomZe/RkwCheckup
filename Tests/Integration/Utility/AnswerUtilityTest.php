@@ -1,31 +1,5 @@
 <?php
 namespace RKW\RkwCheckup\Tests\Integration\Utility;
-
-
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
-use RKW\RkwCheckup\Domain\Model\Checkup;
-use RKW\RkwCheckup\Domain\Model\Question;
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Domain\Model\ResultAnswer;
-use RKW\RkwCheckup\Domain\Model\Section;
-use RKW\RkwCheckup\Domain\Model\Step;
-use RKW\RkwCheckup\Domain\Repository\AnswerRepository;
-use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
-use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
-use RKW\RkwCheckup\Domain\Repository\ResultRepository;
-use RKW\RkwCheckup\Domain\Repository\SectionRepository;
-use RKW\RkwCheckup\Domain\Repository\StepRepository;
-use RKW\RkwCheckup\Step\ProgressHandler;
-use RKW\RkwCheckup\Utility\AnswerUtility;
-use RKW\RkwCheckup\Utility\StepUtility;
-use RKW\RkwRegistration\Domain\Repository\FrontendUserRepository;
-use RKW\RkwRegistration\Service\AuthFrontendUserService;
-use RKW\RkwRegistration\Register\GroupFrontendUser;
-use RKW\RkwRegistration\DataProtection\PrivacyHandler;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -38,11 +12,26 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
+use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Model\Section;
+use RKW\RkwCheckup\Domain\Model\Step;
+use RKW\RkwCheckup\Domain\Repository\AnswerRepository;
+use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
+use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
+use RKW\RkwCheckup\Domain\Repository\ResultRepository;
+use RKW\RkwCheckup\Domain\Repository\SectionRepository;
+use RKW\RkwCheckup\Domain\Repository\StepRepository;
+use RKW\RkwCheckup\Utility\AnswerUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+
 /**
  * AnswerUtilityTest
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */

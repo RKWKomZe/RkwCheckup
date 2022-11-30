@@ -27,7 +27,7 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  * Class StepUtility
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -40,7 +40,7 @@ class StepUtility
      */
     private static $result;
 
-    
+
     /**
      * currentSection
      *
@@ -48,7 +48,7 @@ class StepUtility
      */
     private static $currentSection;
 
-    
+
     /**
      * which step comes next? Replace step and / or section of the given result
      *
@@ -292,7 +292,7 @@ class StepUtility
         return true;
     }
 
-    
+
     /**
      * toggleLastStepFlag
      *

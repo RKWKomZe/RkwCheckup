@@ -18,7 +18,7 @@ namespace RKW\RkwCheckup\Domain\Model;
  * Class ResultAnswer
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -48,7 +48,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $answer;
 
-    
+
     /**
      * question
      *
@@ -56,7 +56,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $question;
 
-    
+
     /**
      * step
      *
@@ -64,14 +64,14 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $step;
 
-    
+
     /**
      * section
      *
      * @var \RKW\RkwCheckup\Domain\Model\Section
      */
     protected $section;
-    
+
 
     /**
      * @return int
@@ -81,7 +81,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->freeNumericInput;
     }
 
-    
+
     /**
      * @param int $freeNumericInput
      */
@@ -107,7 +107,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->freeTextInput = $freeTextInput;
     }
 
-    
+
     /**
      * Returns the answer
      *
@@ -118,7 +118,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->answer;
     }
 
-    
+
     /**
      * Sets the answer
      *
@@ -129,7 +129,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->answer = $answer;
     }
-    
+
 
     /**
      * Returns the question
@@ -141,7 +141,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->question;
     }
 
-    
+
     /**
      * Sets the question
      *
@@ -153,7 +153,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->question = $question;
     }
 
-    
+
     /**
      * Returns the step
      *
@@ -163,7 +163,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->step;
     }
-    
+
 
     /**
      * Sets the step
@@ -176,7 +176,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->step = $step;
     }
 
-    
+
     /**
      * Returns the section
      *
@@ -187,7 +187,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->section;
     }
 
-    
+
     /**
      * Sets the section
      *
