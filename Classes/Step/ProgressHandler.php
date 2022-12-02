@@ -2,7 +2,7 @@
 
 namespace RKW\RkwCheckup\Step;
 
-use RKW\RkwBasics\Utility\GeneralUtility;
+use Madj2k\CoreExtended\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
@@ -302,7 +302,7 @@ class ProgressHandler
     {
 
         if (!$this->settings) {
-            $this->settings = GeneralUtility::getTyposcriptConfiguration('Rkwcheckup');
+            $this->settings = GeneralUtility::getTypoScriptConfiguration('Rkwcheckup');
         }
 
         if (!$this->settings) {

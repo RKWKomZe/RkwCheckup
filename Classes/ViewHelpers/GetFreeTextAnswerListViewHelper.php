@@ -13,7 +13,7 @@ namespace RKW\RkwCheckup\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwBasics\Utility\GeneralUtility;
+use Madj2k\CoreExtended\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Repository\ResultAnswerRepository;
 use TYPO3\CMS\Extbase\Object\ObjectManager;

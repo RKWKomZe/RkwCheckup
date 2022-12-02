@@ -1,7 +1,7 @@
 <?php
 namespace RKW\RkwCheckup\Controller;
 
-use RKW\RkwBasics\Utility\GeneralUtility;
+use Madj2k\CoreExtended\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Step\ProgressHandler;
@@ -25,7 +25,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 /**
  * CheckupController
  */
-class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
+class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractController
 {
 
     /**
