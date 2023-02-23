@@ -18,7 +18,7 @@ namespace RKW\RkwCheckup\Domain\Model;
  * Class ResultAnswer
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -26,52 +26,44 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
-     * freeNumericInput
-     *
      * @var int
      */
-    protected $freeNumericInput = 0;
+    protected int $freeNumericInput = 0;
 
 
     /**
-     * freeTextInput
-     *
      * @var string
      */
-    protected $freeTextInput = '';
+    protected string $freeTextInput = '';
 
 
     /**
      * answer
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Answer
+     * @var \RKW\RkwCheckup\Domain\Model\Answer|null
      */
-    protected $answer;
+    protected ?Answer $answer = null;
 
-    
+
     /**
      * question
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Question
+     * @var \RKW\RkwCheckup\Domain\Model\Question|null
      */
-    protected $question;
+    protected ?Question $question = null;
 
-    
-    /**
-     * step
-     *
-     * @var \RKW\RkwCheckup\Domain\Model\Step
-     */
-    protected $step;
 
-    
     /**
-     * section
-     *
-     * @var \RKW\RkwCheckup\Domain\Model\Section
+     * @var \RKW\RkwCheckup\Domain\Model\Step|null
      */
-    protected $section;
-    
+    protected ?Step $step = null;
+
+
+    /**
+     * @var \RKW\RkwCheckup\Domain\Model\Section|null
+     */
+    protected ?Section $section = null;
+
 
     /**
      * @return int
@@ -81,7 +73,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->freeNumericInput;
     }
 
-    
+
     /**
      * @param int $freeNumericInput
      */
@@ -94,7 +86,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getFreeTextInput()
+    public function getFreeTextInput(): string
     {
         return $this->freeTextInput;
     }
@@ -102,23 +94,23 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $freeTextInput
      */
-    public function setFreeTextInput($freeTextInput): void
+    public function setFreeTextInput(string $freeTextInput): void
     {
         $this->freeTextInput = $freeTextInput;
     }
 
-    
+
     /**
      * Returns the answer
      *
      * @return \RKW\RkwCheckup\Domain\Model\Answer|null $answer
      */
-    public function getAnswer()
+    public function getAnswer():? Answer
     {
         return $this->answer;
     }
 
-    
+
     /**
      * Sets the answer
      *
@@ -129,19 +121,19 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->answer = $answer;
     }
-    
+
 
     /**
      * Returns the question
      *
      * @return \RKW\RkwCheckup\Domain\Model\Question|null $question
      */
-    public function getQuestion()
+    public function getQuestion():? Question
     {
         return $this->question;
     }
 
-    
+
     /**
      * Sets the question
      *
@@ -153,17 +145,17 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->question = $question;
     }
 
-    
+
     /**
      * Returns the step
      *
      * @return \RKW\RkwCheckup\Domain\Model\Step|null step
      */
-    public function getStep()
+    public function getStep():? Step
     {
         return $this->step;
     }
-    
+
 
     /**
      * Sets the step
@@ -176,18 +168,18 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->step = $step;
     }
 
-    
+
     /**
      * Returns the section
      *
      * @return \RKW\RkwCheckup\Domain\Model\Section|null section
      */
-    public function getSection()
+    public function getSection():? Section
     {
         return $this->section;
     }
 
-    
+
     /**
      * Sets the section
      *

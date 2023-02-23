@@ -16,15 +16,14 @@ namespace RKW\RkwCheckup\DisplayCond;
 
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class TcaCond
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -34,9 +33,9 @@ class TcaCond
      * configurationManager
      *
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $configurationManager;
+    protected ConfigurationManagerInterface $configurationManager;
 
 
     /**
@@ -52,11 +51,11 @@ class TcaCond
 
         /** @var QuestionRepository $questionRepository */
         //$questionRepository = $objectManager->get(QuestionRepository::class);
-        
+
         /** @var Question $entityToStop */
         /*$question = $questionRepository->findByIdentifier(intval($params['record']['question']));
         if ($question instanceof Question) {
-            // @toDo: Solution with TypoScript??
+            // @todo Solution with TypoScript??
             if ($question->getRecordType() == 4) {
                 return false;
             }
@@ -64,5 +63,5 @@ class TcaCond
 
         return true;
     }
-    
+
 }

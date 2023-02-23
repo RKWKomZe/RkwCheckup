@@ -1,51 +1,55 @@
 <?php
 namespace RKW\RkwCheckup\Controller;
 
-use RKW\RkwBasics\Utility\GeneralUtility;
-use RKW\RkwCheckup\Domain\Model\Checkup;
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Step\ProgressHandler;
-use RKW\RkwCheckup\Utility\StepUtility;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-
-/***
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * This file is part of the "RKW Checkup" Extension for TYPO3 CMS.
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2021 Maximilian Fäßler <maximilian@faesslerweb.de>, Fäßler Web UG
- *
- ***/
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Model\Result;
+use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
+use RKW\RkwCheckup\Step\ProgressHandler;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * CheckupController
+ * Class CheckupController
+ *
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwCheckup
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
+class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractController
 {
-    
+
     /**
      * checkupRepository
      *
      * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $checkupRepository;
+    protected CheckupRepository $checkupRepository;
 
-    
+
 
     /**
      * progressHandler
      *
-     * @var \RKW\RkwCheckup\Step\ProgressHandler
+     * @var \RKW\RkwCheckup\Step\ProgressHandler|null
      */
-    protected $progressHandler;
+    protected ?ProgressHandler $progressHandler = null;
 
-    
+
     /**
      * initializeAction
      * @return void
@@ -64,10 +68,11 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
     public function indexAction(): void
     {
         $this->view->assign(
-            'checkup', 
+            'checkup',
             $this->checkupRepository->findByUid(intval($this->settings['checkup']))
         );
     }
+
 
     /**
      * action new
@@ -76,6 +81,8 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
     public function newAction(bool $terms = false): void
     {
@@ -99,12 +106,13 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
         $this->progressHandler->persist();
 
         $this->redirect(
-            'progress', 
-            null, 
-            null, 
+            'progress',
+            null,
+            null,
             ['result' => $this->progressHandler->getResult()]
         );
     }
+
 
     /**
      * action progress
@@ -119,15 +127,16 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
 
         if ($result->getFinished()) {
             $this->redirect(
-                'result', 
-                null, 
-                null, 
+                'result',
+                null,
+                null,
                 ['result' => $result]
             );
         }
 
         $this->view->assign('result', $result);
     }
+
 
     /**
      * initializeValidateAction
@@ -183,12 +192,13 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
         }
     }
 
+
     /**
      * action validate
-     * @validate $result \RKW\RkwCheckup\Validation\Validator\ResultValidator
      *
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwCheckup\Validation\Validator\ResultValidator", param="result")
      * @throws \Exception
      */
     public function validateAction(Result $result): void
@@ -231,12 +241,13 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
         }
 
         $this->forward(
-            'progress', 
-            null, 
-            null, 
+            'progress',
+            null,
+            null,
             ['result' => $result]
         );
     }
+
 
     /**
      * action result
@@ -249,8 +260,8 @@ class CheckupController extends \RKW\RkwAjax\Controller\AjaxAbstractController
     {
         if (!$result->getFinished()) {
             $this->forward(
-                'progress', 
-                null, 
+                'progress',
+                null,
                 null,
                 ['result' => $result]
             );

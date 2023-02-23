@@ -21,34 +21,31 @@ use RKW\RkwCheckup\Domain\Model\ResultAnswer;
 use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Model\Step;
 use RKW\RkwCheckup\Domain\Model\Feedback;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class StepUtility
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class StepUtility
 {
     /**
-     * result
-     *
-     * @param \RKW\RkwCheckup\Domain\Model\Result $result
+     * @var \RKW\RkwCheckup\Domain\Model\Result|null $result
      */
-    private static $result;
+    private static ?Result $result = null;
 
-    
+
     /**
      * currentSection
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Section $sectionToCheck
+     * @param \RKW\RkwCheckup\Domain\Model\Section|null $sectionToCheck
      */
-    private static $currentSection;
+    private static ?Section $currentSection = null;
 
-    
+
     /**
      * which step comes next? Replace step and / or section of the given result
      *
@@ -292,7 +289,7 @@ class StepUtility
         return true;
     }
 
-    
+
     /**
      * toggleLastStepFlag
      *
@@ -335,6 +332,7 @@ class StepUtility
                 self::$result->getCheckup()->getSection()->next();
                 if (self::$result->getCheckup()->getSection()->current()) {
                     $nextSection = self::$result->getCheckup()->getSection()->current();
+
                     /** @var \RKW\RkwCheckup\Domain\Model\Step $nextStep */
                     $nextSection->getStep()->rewind();
                     $nextStep = $nextSection->getStep()->current();

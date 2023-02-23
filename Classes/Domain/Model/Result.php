@@ -20,7 +20,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  * Class Result
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -28,96 +28,82 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
-     * crdate
-     *
      * @var int
      */
-    protected $crdate;
+    protected int $crdate = 0;
 
-    
+
     /**
-     * finished
-     *
      * @var bool
      */
-    protected $finished = false;
+    protected bool $finished = false;
 
-    
+
     /**
-     * lastStep
-     *
      * @var bool
      */
-    protected $lastStep = false;
+    protected bool $lastStep = false;
 
-    
+
     /**
-     * showStepFeedback
-     *
      * @var bool
      */
-    protected $showStepFeedback = false;
+    protected bool $showStepFeedback = false;
 
-    
+
     /**
-     * showSectionIntro
-     *
      * @var bool
      */
-    protected $showSectionIntro = false;
+    protected bool $showSectionIntro = false;
 
-    
+
     /**
-     * For unique link building
-     *
      * @var string
      */
-    protected $hash = '';
+    protected string $hash = '';
 
-    
+
     /**
-     * checkup
-     *
-     * @var \RKW\RkwCheckup\Domain\Model\Checkup
+     * @var \RKW\RkwCheckup\Domain\Model\Checkup|null
      */
-    protected $checkup;
+    protected ?Checkup $checkup = null;
 
-    
+
     /**
      * currentSection
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Section
+     * @var \RKW\RkwCheckup\Domain\Model\Section|null
      */
-    protected $currentSection;
+    protected ?Section $currentSection = null;
 
-    
+
     /**
      * currentStep
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Step
+     * @var \RKW\RkwCheckup\Domain\Model\Step|null
      */
-    protected $currentStep;
+    protected ?Step $currentStep = null;
 
-    
+
     /**
      * resultAnswer
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer>
-     * @cascade remove
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer>|null
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $resultAnswer;
+    protected ?ObjectStorage $resultAnswer = null;
 
-    
+
     /**
      * newResultAnswer
      * Hint: Should never be persisted. Just needed for FE form to validate and creating new answers
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer>
-     * @cascade remove
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer>|null
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $newResultAnswer;
+    protected ?ObjectStorage $newResultAnswer = null;
 
-    
+
     /**
      * __construct
      */
@@ -127,6 +113,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->initStorageObjects();
     }
 
+
     /**
      * Initializes all ObjectStorage properties
      * Do not modify this method!
@@ -135,11 +122,12 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return void
      */
-    protected function initStorageObjects()
+    protected function initStorageObjects(): void
     {
         $this->resultAnswer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->newResultAnswer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
+
 
     /**
      * @return int
@@ -149,7 +137,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->crdate;
     }
 
-    
+
     /**
      * @param int $crdate
      */
@@ -158,7 +146,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->crdate = $crdate;
     }
 
-    
+
     /**
      * Returns the hash
      *
@@ -169,7 +157,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->hash;
     }
 
-    
+
     /**
      * Sets the hash
      *
@@ -181,7 +169,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->hash = $hash;
     }
 
-    
+
     /**
      * @return bool
      */
@@ -190,7 +178,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->finished;
     }
 
-    
+
     /**
      * @param bool $finished
      */
@@ -198,8 +186,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->finished = $finished;
     }
-    
-    
+
 
     /**
      * @return bool
@@ -209,7 +196,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->lastStep;
     }
 
-    
+
     /**
      * @param bool $lastStep
      */
@@ -218,7 +205,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->lastStep = $lastStep;
     }
 
-    
+
     /**
      * @return bool
      */
@@ -227,7 +214,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->showStepFeedback;
     }
 
-    
+
     /**
      * @param bool $showStepFeedback
      */
@@ -236,7 +223,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->showStepFeedback = $showStepFeedback;
     }
 
-    
+
     /**
      * @return bool
      */
@@ -244,7 +231,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->showSectionIntro;
     }
-    
+
 
     /**
      * @param bool $showSectionIntro
@@ -253,31 +240,31 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->showSectionIntro = $showSectionIntro;
     }
-    
+
 
     /**
      * Returns the checkup
      *
      * @return \RKW\RkwCheckup\Domain\Model\Checkup|null $checkup
      */
-    public function getCheckup()
+    public function getCheckup():? Checkup
     {
         return $this->checkup;
     }
 
-    
+
     /**
      * Sets the checkup
      *
      * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
      * @return void
      */
-    public function setCheckup(\RKW\RkwCheckup\Domain\Model\Checkup $checkup): void
+    public function setCheckup(Checkup $checkup): void
     {
         $this->checkup = $checkup;
     }
 
-    
+
     /**
      * Adds a resultAnswer
      *
@@ -285,12 +272,12 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return void
      * @api
      */
-    public function addResultAnswer(\RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswer): void
+    public function addResultAnswer(ResultAnswer $resultAnswer): void
     {
         $this->resultAnswer->attach($resultAnswer);
     }
 
-    
+
     /**
      * Removes a resultAnswer
      *
@@ -298,11 +285,11 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return void
      * @api
      */
-    public function removeResultAnswer(\RKW\RkwCheckup\Domain\Model\ResultAnswer $resultAnswerToRemove): void
+    public function removeResultAnswer(ResultAnswer $resultAnswerToRemove): void
     {
         $this->resultAnswer->detach($resultAnswerToRemove);
     }
-    
+
 
     /**
      * Returns the resultAnswer
@@ -314,7 +301,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->resultAnswer;
     }
-    
+
 
     /**
      * Sets the resultAnswer
@@ -323,12 +310,12 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return void
      * @api
      */
-    public function setResultAnswer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $resultAnswer): void
+    public function setResultAnswer(ObjectStorage $resultAnswer): void
     {
         $this->resultAnswer = $resultAnswer;
     }
 
-    
+
     /**
      * Adds a newResultAnswer
      *
@@ -336,12 +323,12 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return void
      * @api
      */
-    public function addNewResultAnswer(\RKW\RkwCheckup\Domain\Model\ResultAnswer $newResultAnswer): void
+    public function addNewResultAnswer(ResultAnswer $newResultAnswer): void
     {
         $this->newResultAnswer->attach($newResultAnswer);
     }
 
-    
+
     /**
      * Removes a newResultAnswer
      *
@@ -349,12 +336,12 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return void
      * @api
      */
-    public function removeNewResultAnswer(\RKW\RkwCheckup\Domain\Model\ResultAnswer $newResultAnswerToRemove): void
+    public function removeNewResultAnswer(ResultAnswer $newResultAnswerToRemove): void
     {
         $this->newResultAnswer->detach($newResultAnswerToRemove);
     }
 
-    
+
     /**
      * Returns the newResultAnswer
      *
@@ -365,7 +352,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->newResultAnswer;
     }
-    
+
 
     /**
      * Sets the newResultAnswer
@@ -373,22 +360,22 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\ResultAnswer> $newResultAnswer
      * @return void
      */
-    public function setNewResultAnswer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $newResultAnswer): void
+    public function setNewResultAnswer(ObjectStorage $newResultAnswer): void
     {
         $this->newResultAnswer = $newResultAnswer;
     }
 
-    
+
     /**
      * Returns the currentSection
      *
      * @return \RKW\RkwCheckup\Domain\Model\Section|null $currentSection
      */
-    public function getCurrentSection()
+    public function getCurrentSection():? Section
     {
         return $this->currentSection;
     }
-    
+
 
     /**
      * Sets the currentSection
@@ -396,30 +383,30 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \RKW\RkwCheckup\Domain\Model\Section|null $currentSection
      * @return void
      */
-    public function setCurrentSection($currentSection): void
+    public function setCurrentSection(?Section $currentSection): void
     {
         $this->currentSection = $currentSection;
     }
-    
+
 
     /**
      * Returns the currentStep
      *
      * @return \RKW\RkwCheckup\Domain\Model\Step|null $currentStep
      */
-    public function getCurrentStep()
+    public function getCurrentStep():? Step
     {
         return $this->currentStep;
     }
 
-    
+
     /**
      * Sets the currentStep
      *
      * @param \RKW\RkwCheckup\Domain\Model\Step|null $currentStep
      * @return void
      */
-    public function setCurrentStep($currentStep): void
+    public function setCurrentStep(?Step $currentStep): void
     {
         $this->currentStep = $currentStep;
     }

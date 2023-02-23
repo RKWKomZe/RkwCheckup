@@ -15,31 +15,30 @@ namespace RKW\RkwCheckup\ViewHelpers;
 
 use RKW\RkwCheckup\Domain\Model\Question;
 use TYPO3\CMS\Extbase\Error\Result;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
-
 
 /**
  * Class GetErrorsByQuestionViewHelper
  *
  * @author Steffen Kroggel <developer@steffenkroggel.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class GetErrorsByQuestionViewHelper extends AbstractViewHelper {
 
-    
+
     use CompileWithRenderStatic;
 
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('question', Question::class, 'The question-object', true);
@@ -55,11 +54,11 @@ class GetErrorsByQuestionViewHelper extends AbstractViewHelper {
      * @return array
      */
     public static function renderStatic(
-        array $arguments, 
-        \Closure $renderChildrenClosure, 
+        array $arguments,
+        \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-    )
-    {
+    ): array {
+
         /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
         $question = $arguments['question'];
 

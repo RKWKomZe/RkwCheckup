@@ -1,0 +1,19 @@
+routeEnhancers:
+  RkwCheckup:
+    type: Extbase
+    namespace: 'tx_rkwcheckup_check'
+    routes:
+      - routePath: '/rkw-checkup/new'
+        _controller: 'Checkup::new'
+      - routePath: '/rkw-checkup/progress/{result}'
+        _controller: 'Checkup::progress'
+      - routePath: '/rkw-checkup/validate'
+        _controller: 'Checkup::validate'
+      - routePath: '/rkw-checkup/result/{result}'
+        _controller: 'Checkup::result'
+    defaultController: 'Checkup::index'
+    aspects:
+      result:
+        type: PersistedAliasMapper
+        tableName: 'tx_rkwcheckup_domain_model_result'
+        routeFieldName: hash

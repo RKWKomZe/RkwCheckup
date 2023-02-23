@@ -1,25 +1,5 @@
 <?php
 namespace RKW\RkwCheckup\Tests\Functional\Step;
-
-
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Domain\Model\ResultAnswer;
-use RKW\RkwCheckup\Domain\Repository\AnswerRepository;
-use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
-use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
-use RKW\RkwCheckup\Domain\Repository\ResultRepository;
-use RKW\RkwCheckup\Domain\Repository\SectionRepository;
-use RKW\RkwCheckup\Domain\Repository\StepRepository;
-use RKW\RkwCheckup\Step\ProgressHandler;
-use RKW\RkwRegistration\Domain\Repository\FrontendUserRepository;
-use RKW\RkwRegistration\Service\AuthFrontendUserService;
-use RKW\RkwRegistration\Register\GroupRegister;
-use RKW\RkwRegistration\DataProtection\PrivacyHandler;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -32,11 +12,26 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
+use RKW\RkwCheckup\Domain\Model\Result;
+use RKW\RkwCheckup\Domain\Model\ResultAnswer;
+use RKW\RkwCheckup\Domain\Repository\AnswerRepository;
+use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
+use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
+use RKW\RkwCheckup\Domain\Repository\ResultRepository;
+use RKW\RkwCheckup\Domain\Repository\SectionRepository;
+use RKW\RkwCheckup\Domain\Repository\StepRepository;
+use RKW\RkwCheckup\Step\ProgressHandler;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+
 /**
  * ProgressHandlerTest
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -47,13 +42,15 @@ class ProgressHandlerTest extends FunctionalTestCase
      */
     const FIXTURE_PATH = __DIR__ . '/ProgressHandlerTest/Fixtures';
 
+
     /**
      * @var string[]
      */
     protected $testExtensionsToLoad = [
-        'typo3conf/ext/rkw_basics',
+        'typo3conf/ext/core_extended',
         'typo3conf/ext/rkw_checkup',
     ];
+
 
     /**
      * @var string[]
@@ -61,51 +58,60 @@ class ProgressHandlerTest extends FunctionalTestCase
     protected $coreExtensionsToLoad = [
     ];
 
-    /**
-     * @var \RKW\RkwCheckup\Step\ProgressHandler
-     */
-    private $subject = null;
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
+     * @var \RKW\RkwCheckup\Step\ProgressHandler|null
      */
-    private $checkupRepository = null;
+    private ?ProgressHandler $subject = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository|null
      */
-    private $sectionRepository = null;
+    private ?CheckupRepository $checkupRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository|null
      */
-    private $stepRepository = null;
+    private ?SectionRepository $sectionRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository|null
      */
-    private $questionRepository = null;
+    private ?StepRepository $stepRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository|null
      */
-    private $answerRepository = null;
+    private ?QuestionRepository $questionRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository|null
      */
-    private $resultRepository = null;
+    private ?AnswerRepository $answerRepository = null;
+
 
     /**
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository|null
      */
-    private $objectManager = null;
+    private ?AnswerRepository $resultRepository = null;
+
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager|null
+     */
+    private ?ObjectManager $objectManager = null;
+
 
     /**
      * Setup
      * @throws \Exception
      */
-    protected function setUp()
+    protected function setUp(): void
     {
 
         parent::setUp();
@@ -114,8 +120,8 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->setUpFrontendRootPage(
             1,
             [
-                'EXT:rkw_basics/Configuration/TypoScript/setup.typoscript',
-                'EXT:rkw_basics/Configuration/TypoScript/constants.typoscript',
+                'EXT:core_extended/Configuration/TypoScript/setup.typoscript',
+                'EXT:core_extended/Configuration/TypoScript/constants.typoscript',
                 'EXT:rkw_checkup/Configuration/TypoScript/setup.typoscript',
                 'EXT:rkw_checkup/Configuration/TypoScript/constants.typoscript',
                 self::FIXTURE_PATH . '/Frontend/Configuration/Rootpage.typoscript',
@@ -155,22 +161,21 @@ class ProgressHandlerTest extends FunctionalTestCase
 
         $check = $this->checkupRepository->findByIdentifier(1);
 
-        static::assertNull($this->subject->getResult());
+        self::assertNull($this->subject->getResult());
 
         $this->subject->newResult($check);
 
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Result', $this->subject->getResult());
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Result', $this->subject->getResult());
 
-        static::assertFalse($this->subject->getResult()->getLastStep());
+        self::assertFalse($this->subject->getResult()->getLastStep());
 
         // some additional "result" checks
-        static::assertNotNull($this->subject->getResult()->getHash());
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $this->subject->getResult()->getCheckup());
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Section', $this->subject->getResult()->getCurrentSection());
-        static::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Step', $this->subject->getResult()->getCurrentStep());
-        static::assertTrue($this->subject->getResult()->getShowSectionIntro());
+        self::assertNotNull($this->subject->getResult()->getHash());
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Checkup', $this->subject->getResult()->getCheckup());
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Section', $this->subject->getResult()->getCurrentSection());
+        self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Step', $this->subject->getResult()->getCurrentStep());
+        self::assertTrue($this->subject->getResult()->getShowSectionIntro());
     }
-
 
     //===================================================================
 
@@ -199,7 +204,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->validateQuestion($currentQuestion);
 
-        static::assertEmpty($returnValue);
+        self::assertEmpty($returnValue);
     }
 
 
@@ -243,7 +248,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->validateQuestion($question);
 
-        static::assertEmpty($returnValue);
+        self::assertEmpty($returnValue);
     }
 
 
@@ -287,7 +292,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->validateQuestion($question);
 
-        static::assertEmpty($returnValue);
+        self::assertEmpty($returnValue);
     }
 
 
@@ -318,7 +323,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->validateQuestion($question);
 
-        static::assertNotEquals('', $returnValue);
+        self::assertNotEquals('', $returnValue);
     }
 
 
@@ -347,7 +352,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->validateQuestion($question);
 
-        static::assertNotEquals('', $returnValue);
+        self::assertNotEquals('', $returnValue);
     }
 
 
@@ -391,7 +396,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->validateQuestion($question);
 
-        static::assertNotEmpty($returnValue);
+        self::assertNotEmpty($returnValue);
     }
 
 
@@ -443,7 +448,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->validateQuestion($question);
 
-        static::assertEmpty($returnValue);
+        self::assertEmpty($returnValue);
     }
 
 
@@ -504,7 +509,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->validateQuestion($question);
 
-        static::assertEmpty($returnValue);
+        self::assertEmpty($returnValue);
     }
 
 
@@ -574,9 +579,8 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->validateQuestion($question);
 
-        static::assertNotEmpty($returnValue);
+        self::assertNotEmpty($returnValue);
     }
-
 
     //===================================================================
 
@@ -625,14 +629,14 @@ class ProgressHandlerTest extends FunctionalTestCase
         $newResultAnswer2->setAnswer($answer2);
         $result->addNewResultAnswer($newResultAnswer2);
 
-        static::assertCount(0, $result->getResultAnswer());
-        static::assertCount(2, $result->getNewResultAnswer());
+        self::assertCount(0, $result->getResultAnswer());
+        self::assertCount(2, $result->getNewResultAnswer());
 
         $this->subject->setResult($result);
         $this->subject->moveNewResultAnswers();
 
-        static::assertCount(2, $result->getResultAnswer());
-        static::assertCount(0, $result->getNewResultAnswer());
+        self::assertCount(2, $result->getResultAnswer());
+        self::assertCount(0, $result->getNewResultAnswer());
     }
 
 
@@ -657,14 +661,13 @@ class ProgressHandlerTest extends FunctionalTestCase
         /** @var Result $result */
         $result = $this->resultRepository->findByIdentifier(1);
 
-        static::assertCount(0, $result->getResultAnswer());
+        self::assertCount(0, $result->getResultAnswer());
 
         $this->subject->setResult($result);
         $this->subject->moveNewResultAnswers();
 
-        static::assertCount(0, $result->getResultAnswer());
+        self::assertCount(0, $result->getResultAnswer());
     }
-
 
     //===================================================================
 
@@ -709,7 +712,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->progressValidation();
 
-        static::assertTrue($returnValue);
+        self::assertTrue($returnValue);
 
     }
 
@@ -758,10 +761,9 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
         $returnValue = $this->subject->progressValidation();
 
-        static::assertFalse($returnValue);
+        self::assertFalse($returnValue);
 
     }
-
 
 
     //===================================================================
@@ -783,12 +785,12 @@ class ProgressHandlerTest extends FunctionalTestCase
         /** @var Result $result */
         $result = $this->objectManager->get(Result::class);
 
-        static::assertEmpty($result->getUid());
+        self::assertEmpty($result->getUid());
 
         $this->subject->setResult($result);
         $this->subject->persist();
 
-        static::assertNotEmpty($result->getUid());
+        self::assertNotEmpty($result->getUid());
 
     }
 
@@ -814,7 +816,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         /** @var Result $result */
         $result = $this->resultRepository->findByIdentifier(1);
 
-        static::assertCount(0, $result->getResultAnswer());
+        self::assertCount(0, $result->getResultAnswer());
 
         // simulate user given form results to validate
         $section = $this->sectionRepository->findByIdentifier(1);
@@ -834,11 +836,9 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->moveNewResultAnswers();
         $this->subject->persist();
 
-        static::assertCount(1, $result->getResultAnswer());
+        self::assertCount(1, $result->getResultAnswer());
 
     }
-
-
 
     //===================================================================
 
@@ -867,25 +867,25 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->subject->setResult($result);
 
         // start: Section 1 and Step 1
-        static::assertFalse($result->getLastStep());
-        static::assertEquals(1, $result->getCurrentSection()->getUid());
-        static::assertEquals(1, $result->getCurrentStep()->getUid());
+        self::assertFalse($result->getLastStep());
+        self::assertEquals(1, $result->getCurrentSection()->getUid());
+        self::assertEquals(1, $result->getCurrentStep()->getUid());
 
         // do action
         $this->subject->setNextStep();
 
         //$result = $this->subject->getResult();
 
-        static::assertTrue($result->getLastStep());
+        self::assertTrue($result->getLastStep());
 
     }
 
-
+    //===================================================================
 
     /**
      * TearDown
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }

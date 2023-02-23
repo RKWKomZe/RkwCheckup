@@ -28,7 +28,7 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  * Class AnswerUtility
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -46,8 +46,8 @@ class AnswerUtility
      * @return array
      */
     public static function fetchAllOfCheckup (
-        Checkup $checkup, 
-        AbstractEntity $stopEntity = null, 
+        Checkup $checkup,
+        AbstractEntity $stopEntity = null,
         bool $asArrayForTca = false
     ): array {
 

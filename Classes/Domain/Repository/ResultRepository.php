@@ -15,12 +15,13 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 
 use RKW\RkwCheckup\Domain\Model\Checkup;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * Class ResultRepository
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -31,9 +32,9 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * get CheckResults that are completed by checkId and userId
      *
      * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function getFinishedByCheck(Checkup $checkup)
+    public function getFinishedByCheck(Checkup $checkup): QueryResultInterface
     {
         $query = $this->createQuery();
         $query->matching(
@@ -53,10 +54,9 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * Find all results of check, also deleted
      *
      * @param Checkup $checkup
-     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByCheckupAlsoDeleted(Checkup $checkup)
+    public function findByCheckupAlsoDeleted(Checkup $checkup): QueryResultInterface
     {
 
         $query = $this->createQuery();

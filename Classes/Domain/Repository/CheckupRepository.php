@@ -15,12 +15,13 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 
 use RKW\RkwCheckup\Domain\Model\Checkup;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * Class CheckupRepository
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -38,11 +39,11 @@ class CheckupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * Find deleted checks
      *
-     * @param integer $cleanupTimestamp
-     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @param int $cleanupTimestamp
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function findDeleted($cleanupTimestamp)
+    public function findDeleted(int $cleanupTimestamp): QueryResultInterface
     {
 
         $query = $this->createQuery();
@@ -66,10 +67,9 @@ class CheckupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * findByUidAlsoDeleted
      *
      * @param int $uid
-     * @return object
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return \RKW\RkwCheckup\Domain\Model\Checkup|null
      */
-    public function findByUidAlsoDeleted($uid)
+    public function findByUidAlsoDeleted(int $uid):? Checkup
     {
 
         $query = $this->createQuery();
@@ -88,10 +88,9 @@ class CheckupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * findAllIgnorePid
      *
-     * Find deleted checks
-     *
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findAllIgnorePid()
+    public function findAllIgnorePid(): QueryResultInterface
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);

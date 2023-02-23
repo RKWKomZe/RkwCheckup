@@ -16,12 +16,13 @@ namespace RKW\RkwCheckup\Domain\Repository;
 
 use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Step;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * Class SectionRepository
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -34,16 +35,16 @@ class SectionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
     ];
 
+
     /**
      * findByCheckupAlsoDeleted
      *
      * Find all sections of a check, also deleted
      *
      * @param Checkup $checkup
-     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByCheckupAlsoDeleted(Checkup $checkup)
+    public function findByCheckupAlsoDeleted(Checkup $checkup): QueryResultInterface
     {
 
         $query = $this->createQuery();

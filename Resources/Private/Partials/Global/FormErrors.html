@@ -1,11 +1,11 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-    
+
     <f:form.validationResults>
         <f:variable name="errors" value="{rkwCheckup:getErrorsByQuestion(question:question, error: validationResults)}" />
         <f:if condition="{errors}">
             <div class="system-message system-message--scroll" role="alert">
                 <f:for each="{errors}" as="error">
-                    <div class="system-message__item system-message__item--alert-error">
+                    <div class="system-message__item system-message__item--severity2">
                         {error.message}
                     </div>
                 </f:for>

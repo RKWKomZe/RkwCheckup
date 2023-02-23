@@ -2,7 +2,7 @@
 
 namespace RKW\RkwCheckup\Step;
 
-use RKW\RkwBasics\Utility\GeneralUtility;
+use Madj2k\CoreExtended\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
@@ -37,27 +37,27 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  * Class ProgressHandler
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class ProgressHandler
 {
-    
+
     /**
      * Setting
      *
      * @var array
      */
-    protected $settings;
+    protected array $settings = [];
 
-    
+
     /**
-     * @var \RKW\RkwCheckup\Domain\Model\Result
+     * @var \RKW\RkwCheckup\Domain\Model\Result|null
      */
-    protected $result;
+    protected ?Result $result = null;
 
-    
+
     /**
      * create new result
      *
@@ -65,7 +65,7 @@ class ProgressHandler
      * @return void
      * @throws \Exception
      */
-    public function newResult (Checkup $checkup)
+    public function newResult (Checkup $checkup): void
     {
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $this->result = $objectManager->get(Result::class);
@@ -87,7 +87,7 @@ class ProgressHandler
         StepUtility::toggleLastStepFlag($this->result);
     }
 
-    
+
     /**
      * validateQuestion
      * Hint: Works with "getNewResultAnswer" (NOT with the persistent "getResultAnswer")
@@ -154,11 +154,10 @@ class ProgressHandler
             );
         }
 
-        
         return '';
     }
 
-    
+
     /**
      * moveNewResultAnswers
      * Moves answers from "newAnswers" to "answers"
@@ -179,7 +178,7 @@ class ProgressHandler
             $this->result->removeNewResultAnswer($resultAnswer);
         }
     }
-    
+
 
     /**
      * setNextStep
@@ -256,7 +255,7 @@ class ProgressHandler
         $persistenceManager = $objectManager->get(PersistenceManager::class);
         $persistenceManager->persistAll();
     }
-    
+
 
     /**
      * Set result
@@ -264,23 +263,23 @@ class ProgressHandler
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
      */
-    public function setResult (\RKW\RkwCheckup\Domain\Model\Result $result): void
+    public function setResult (Result $result): void
     {
         $this->result = $result;
     }
-    
+
 
     /**
      * Returns result
      *
      * @return \RKW\RkwCheckup\Domain\Model\Result|null $result
      */
-    public function getResult ()
+    public function getResult ():? Result
     {
         return $this->result;
     }
 
-    
+
     /**
      * Returns logger instance
      *
@@ -291,7 +290,7 @@ class ProgressHandler
         return GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
     }
 
-    
+
     /**
      * Returns TYPO3 settings
      *
@@ -302,9 +301,9 @@ class ProgressHandler
     {
 
         if (!$this->settings) {
-            $this->settings = GeneralUtility::getTyposcriptConfiguration('Rkwcheckup');
+            $this->settings = GeneralUtility::getTypoScriptConfiguration('Rkwcheckup');
         }
-        
+
         if (!$this->settings) {
             return array();
         }

@@ -17,14 +17,14 @@ namespace RKW\RkwCheckup\Domain\Repository;
 use RKW\RkwCheckup\Domain\Model\Step;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 
 /**
  * Class QuestionRepository
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -41,12 +41,12 @@ class QuestionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * initializeObject
      */
-    public function initializeObject() {
-        
+    public function initializeObject(): void {
+
         /** @var Typo3QuerySettings $querySettings */
         $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
 
-        // @toDo: Just a workaround? Needed for queries in TCA UserFuncs
+        // @todo Just a workaround? Needed for queries in TCA UserFuncs
         $querySettings->setRespectStoragePage(false);
 
         $this->setDefaultQuerySettings($querySettings);
@@ -58,10 +58,9 @@ class QuestionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * Find all questions of a step, also deleted
      *
      * @param Step $step
-     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByStepAlsoDeleted(Step $step)
+    public function findByStepAlsoDeleted(Step $step): QueryResultInterface
     {
 
         $query = $this->createQuery();

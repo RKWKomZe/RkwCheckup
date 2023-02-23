@@ -13,26 +13,20 @@ namespace RKW\RkwCheckup\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwBasics\Utility\GeneralUtility;
-use RKW\RkwCheckup\Domain\Model\Answer;
+use Madj2k\CoreExtended\Utility\GeneralUtility;
 use RKW\RkwCheckup\Domain\Model\Question;
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Domain\Model\ResultAnswer;
-use RKW\RkwCheckup\Domain\Model\Section;
 use RKW\RkwCheckup\Domain\Repository\ResultAnswerRepository;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
-
 
 /**
  * Class GetFreeTextAnswerListViewHelper
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -41,18 +35,20 @@ class GetFreeTextAnswerListViewHelper extends AbstractViewHelper {
 
     use CompileWithRenderStatic;
 
-    
+
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('question', Question::class, 'The question to get the freeTextAnswers', true);
         $this->registerArgument('count', 'bool', 'Return only count');
     }
+
 
     /**
      * Returns array with answers of given question
@@ -63,8 +59,8 @@ class GetFreeTextAnswerListViewHelper extends AbstractViewHelper {
      * @return int|array|QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
     public static function renderStatic(
-        array $arguments, 
-        \Closure $renderChildrenClosure, 
+        array $arguments,
+        \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ){
         /** @var Question $question */

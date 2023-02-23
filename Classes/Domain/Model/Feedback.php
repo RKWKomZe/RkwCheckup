@@ -14,66 +14,56 @@ namespace RKW\RkwCheckup\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+
 /**
  * Class Feedback
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * Maybe for a special presentation
-     *
      * @var int
      */
-    protected $recordType = 0;
+    protected int $recordType = 0;
 
-    
+
     /**
-     * title
-     *
      * @var string
      */
-    protected $title = '';
+    protected string $title = '';
 
-    
+
     /**
-     * description
-     *
      * @var string
      */
-    protected $description = '';
+    protected string $description = '';
 
-    
+
     /**
-     * image
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @cascade remove
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference|null
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $image;
+    protected ?FileReference $image = null;
 
-    
+
     /**
-     * file
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @cascade remove
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference|null
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $file;
+    protected ?FileReference $file = null;
 
 
     /**
-     * link
-     *
      * @var string
      */
-    protected $link = '';
+    protected string $link = '';
 
-    
+
     /**
      * Returns the title
      *
@@ -84,7 +74,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->title;
     }
 
-    
+
     /**
      * Sets the title
      *
@@ -96,7 +86,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->title = $title;
     }
 
-    
+
     /**
      * Returns the description
      *
@@ -107,7 +97,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->description;
     }
 
-    
+
     /**
      * Sets the description
      *
@@ -119,17 +109,17 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->description = $description;
     }
 
-    
+
     /**
      * Returns the image
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference|null $image
      */
-    public function getImage()
+    public function getImage():? FileReference
     {
         return $this->image;
     }
-    
+
 
     /**
      * Sets the image
@@ -137,22 +127,22 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
      * @return void
      */
-    public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image): void
+    public function setImage(FileReference $image): void
     {
         $this->image = $image;
     }
 
-    
+
     /**
      * Returns the file
      *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference|null $file
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference|null
      */
-    public function getFile()
+    public function getFile():? FileReference
     {
         return $this->file;
     }
-    
+
 
     /**
      * Sets the file
@@ -160,7 +150,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
      * @return void
      */
-    public function setFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file): void
+    public function setFile(FileReference $file): void
     {
         $this->file = $file;
     }
@@ -197,7 +187,7 @@ class Feedback extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->recordType;
     }
-    
+
 
     /**
      * Sets the recordType
