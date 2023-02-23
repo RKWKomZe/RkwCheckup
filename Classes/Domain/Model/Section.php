@@ -14,75 +14,70 @@ namespace RKW\RkwCheckup\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwQuickcheck\Domain\Model\Check;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Class Section
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class Section extends AbstractCheckupContents
 {
     /**
-     * title
-     *
      * @var string
      */
-    protected $title = '';
+    protected string $title = '';
 
-    
+
     /**
-     * description
-     *
      * @var string
      */
-    protected $description = '';
+    protected string $description = '';
 
-    
+
     /**
-     * hideText
-     *
      * @var bool
      */
-    protected $hideText = false;
+    protected bool $hideText = false;
 
-    
+
     /**
      * section
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Step>
-     * @cascade remove
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Step>|null
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $step;
-    
+    protected ?ObjectStorage $step = null;
+
 
     /**
      * hideCond
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>|null
      */
-    protected $hideCond;
+    protected ?ObjectStorage $hideCond = null;
 
 
     /**
      * visibleCond
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>|null
      */
-    protected $visibleCond;
+    protected ?ObjectStorage $visibleCond = null;
 
-    
+
     /**
      * checkup
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Checkup
+     * @var \RKW\RkwCheckup\Domain\Model\Checkup|null
      */
-    protected $checkup;
+    protected ?Checkup $checkup = null;
 
-    
+
     /**
      * __construct
      */
@@ -92,7 +87,7 @@ class Section extends AbstractCheckupContents
         $this->initStorageObjects();
     }
 
-    
+
     /**
      * Initializes all ObjectStorage properties
      * Do not modify this method!
@@ -101,14 +96,14 @@ class Section extends AbstractCheckupContents
      *
      * @return void
      */
-    protected function initStorageObjects()
+    protected function initStorageObjects(): void
     {
         $this->section = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->hideCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->visibleCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
-    
+
     /**
      * Returns the title
      *
@@ -119,7 +114,7 @@ class Section extends AbstractCheckupContents
         return $this->title;
     }
 
-    
+
     /**
      * Sets the title
      *
@@ -131,7 +126,7 @@ class Section extends AbstractCheckupContents
         $this->title = $title;
     }
 
-    
+
     /**
      * Returns the description
      *
@@ -142,7 +137,7 @@ class Section extends AbstractCheckupContents
         return $this->description;
     }
 
-    
+
     /**
      * Sets the description
      *
@@ -153,7 +148,7 @@ class Section extends AbstractCheckupContents
     {
         $this->description = $description;
     }
-    
+
 
     /**
      * Returns the hideText
@@ -165,7 +160,7 @@ class Section extends AbstractCheckupContents
         return $this->hideText;
     }
 
-    
+
     /**
      * Sets the hideText
      *
@@ -176,8 +171,8 @@ class Section extends AbstractCheckupContents
     {
         $this->hideText = $hideText;
     }
-    
-    
+
+
     /**
      * Adds a Step
      *
@@ -185,11 +180,11 @@ class Section extends AbstractCheckupContents
      * @return void
      * @api
      */
-    public function addStep(\RKW\RkwCheckup\Domain\Model\Step $step): void
+    public function addStep(Step $step): void
     {
         $this->step->attach($step);
     }
-    
+
 
     /**
      * Removes a Step
@@ -198,12 +193,12 @@ class Section extends AbstractCheckupContents
      * @return void
      * @api
      */
-    public function removeStep(\RKW\RkwCheckup\Domain\Model\Step $stepToRemove): void
+    public function removeStep(Step $stepToRemove): void
     {
         $this->step->detach($stepToRemove);
     }
 
-    
+
     /**
      * Returns the step
      *
@@ -215,7 +210,7 @@ class Section extends AbstractCheckupContents
         return $this->step;
     }
 
-    
+
     /**
      * Sets the step
      *
@@ -223,19 +218,19 @@ class Section extends AbstractCheckupContents
      * @return void
      * @api
      */
-    public function setStep(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $step): void
+    public function setStep(ObjectStorage $step): void
     {
         $this->step = $step;
     }
 
-    
+
     /**
      * Adds a hideCond
      *
      * @param \RKW\RkwCheckup\Domain\Model\Answer $hideCond
      * @return void
      */
-    public function addHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond)
+    public function addHideCond(Answer $hideCond)
     {
         $this->hideCond->attach($hideCond);
     }
@@ -243,27 +238,27 @@ class Section extends AbstractCheckupContents
     /**
      * Removes a hideCond
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Answer $hideCondToRemove The hideCond to be removed
+     * @param \RKW\RkwCheckup\Domain\Model\Answer $hideCond The hideCond to be removed
      * @return void
      * @api
      */
-    public function removeHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond): void
+    public function removeHideCond(Answer $hideCond): void
     {
         $this->hideCond->detach($hideCond);
     }
-    
+
 
     /**
      * Returns the hideCond
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $hideCond
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
      * @api
      */
     public function getHideCond(): ObjectStorage
     {
         return $this->hideCond;
     }
-    
+
 
     /**
      * Sets the hideCond
@@ -272,7 +267,7 @@ class Section extends AbstractCheckupContents
      * @return void
      * @api
      */
-    public function setHideCond(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $hideCond): void
+    public function setHideCond(ObjectStorage $hideCond): void
     {
         $this->hideCond = $hideCond;
     }
@@ -284,7 +279,7 @@ class Section extends AbstractCheckupContents
      * @param \RKW\RkwCheckup\Domain\Model\Answer $visibleCond
      * @return void
      */
-    public function addVisibleCond(\RKW\RkwCheckup\Domain\Model\Answer $visibleCond)
+    public function addVisibleCond(Answer $visibleCond)
     {
         $this->visibleCond->attach($visibleCond);
     }
@@ -293,11 +288,11 @@ class Section extends AbstractCheckupContents
     /**
      * Removes a visibleCond
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Answer $visibleCondToRemove The visibleCond to be removed
+     * @param \RKW\RkwCheckup\Domain\Model\Answer $visibleCond The visibleCond to be removed
      * @return void
      * @api
      */
-    public function removeVisibleCond(\RKW\RkwCheckup\Domain\Model\Answer $visibleCond): void
+    public function removeVisibleCond(Answer $visibleCond): void
     {
         $this->visibleCond->detach($visibleCond);
     }
@@ -306,7 +301,7 @@ class Section extends AbstractCheckupContents
     /**
      * Returns the visibleCond
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $visibleCond
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
      * @api
      */
     public function getVisibleCond(): ObjectStorage
@@ -322,22 +317,22 @@ class Section extends AbstractCheckupContents
      * @return void
      * @api
      */
-    public function setVisibleCond(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $visibleCond): void
+    public function setVisibleCond(ObjectStorage $visibleCond): void
     {
         $this->visibleCond = $visibleCond;
     }
 
-    
+
     /**
      * Returns the checkup
      *
-     * @return \RKW\RkwCheckup\Domain\Model\Checkup|null $checkup
+     * @return \RKW\RkwCheckup\Domain\Model\Checkup|null
      */
-    public function getCheckup()
+    public function getCheckup():? Checkup
     {
         return $this->checkup;
     }
-    
+
 
     /**
      * Sets the checkup
@@ -345,7 +340,7 @@ class Section extends AbstractCheckupContents
      * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
      * @return void
      */
-    public function setCheckup(\RKW\RkwCheckup\Domain\Model\Checkup $checkup): void
+    public function setCheckup(Checkup $checkup): void
     {
         $this->checkup = $checkup;
     }

@@ -18,11 +18,11 @@ namespace RKW\RkwCheckup\Domain\Model;
  * Class AbstractCheckupContents
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 abstract class AbstractCheckupContents extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-   
+
 }

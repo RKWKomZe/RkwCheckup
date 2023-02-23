@@ -15,12 +15,13 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 
 use RKW\RkwCheckup\Domain\Model\Section;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * Class StepRepository
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -39,10 +40,9 @@ class StepRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * Find all steps of a section, also deleted
      *
      * @param Section $section
-     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findBySectionAlsoDeleted(Section $section)
+    public function findBySectionAlsoDeleted(Section $section): QueryResultInterface
     {
 
         $query = $this->createQuery();

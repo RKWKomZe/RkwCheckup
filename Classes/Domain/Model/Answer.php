@@ -18,37 +18,33 @@ namespace RKW\RkwCheckup\Domain\Model;
  * Class Answer
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * title
-     *
      * @var string
      */
-    protected $title = '';
+    protected string $title = '';
 
-    
+
     /**
-     * description
-     *
      * @var string
      */
-    protected $description = '';
+    protected string $description = '';
 
 
     /**
      * feedback
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Feedback
-     * @cascade remove
+     * @var \RKW\RkwCheckup\Domain\Model\Feedback|null
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $feedback;
+    protected ?Feedback $feedback = null;
 
-    
+
     /**
      * Returns the title
      *
@@ -59,19 +55,19 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->title;
     }
 
-    
+
     /**
      * Sets the title
      *
      * @param string $title
      * @return void
      */
-    public function setTitle(string $title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
 
-    
+
     /**
      * Returns the description
      *
@@ -82,14 +78,14 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->description;
     }
 
-    
+
     /**
      * Sets the description
      *
      * @param string $description
      * @return void
      */
-    public function setDescription(string $description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
@@ -100,7 +96,7 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \RKW\RkwCheckup\Domain\Model\Feedback|null $feedback
      */
-    public function getFeedback()
+    public function getFeedback():? Feedback
     {
         return $this->feedback;
     }
@@ -112,10 +108,10 @@ class Answer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \RKW\RkwCheckup\Domain\Model\Feedback $feedback
      * @return void
      */
-    public function setFeedback(\RKW\RkwCheckup\Domain\Model\Feedback $feedback): void
+    public function setFeedback(Feedback $feedback): void
     {
         $this->feedback = $feedback;
     }
 
-    
+
 }

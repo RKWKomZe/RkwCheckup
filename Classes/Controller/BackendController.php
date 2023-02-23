@@ -1,24 +1,31 @@
 <?php
 namespace RKW\RkwCheckup\Controller;
 
-use RKW\RkwCheckup\Domain\Model\Checkup;
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Step\ProgressHandler;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-/***
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * This file is part of the "RKW Checkup" Extension for TYPO3 CMS.
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2021 Maximilian Fäßler <maximilian@faesslerweb.de>, Fäßler Web UG
- *
- ***/
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
+use RKW\RkwCheckup\Domain\Repository\ResultRepository;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
- * BackendController
+ * Class BackendController
+ *
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwCheckup
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class BackendController extends ActionController
 {
@@ -26,23 +33,23 @@ class BackendController extends ActionController
      * checkupRepository
      *
      * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $checkupRepository;
+    protected CheckupRepository $checkupRepository;
 
     /**
      * resultRepository
      *
      * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $resultRepository;
+    protected ResultRepository $resultRepository;
 
-    
+
     /**
      * action list
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
+     * @param \RKW\RkwCheckup\Domain\Model\Checkup|null $checkup
      * @return void
      */
     public function listAction(Checkup $checkup = null): void
@@ -55,7 +62,7 @@ class BackendController extends ActionController
         }
     }
 
-    
+
     /**
      * action show
      *

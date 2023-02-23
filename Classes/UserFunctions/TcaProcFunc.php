@@ -25,13 +25,14 @@ use RKW\RkwCheckup\Domain\Repository\StepRepository;
 use RKW\RkwCheckup\Utility\AnswerUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  * Class TcaProcFunc
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -41,11 +42,11 @@ class TcaProcFunc
      * configurationManager
      *
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $configurationManager;
+    protected ConfigurationManagerInterface $configurationManager;
 
-    
+
     /**
      * Returns answerList of a check
      *
@@ -69,7 +70,7 @@ class TcaProcFunc
      * @param array $params
      * @return \RKW\RkwCheckup\Domain\Model\Checkup|null $checkup
      */
-    public function getCheckup(array $params)
+    public function getCheckup(array $params):? Checkup
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
@@ -145,7 +146,7 @@ class TcaProcFunc
      * @param array $params
      * @return \TYPO3\CMS\Extbase\DomainObject\AbstractEntity|null $entity
      */
-    public function getEntityToStop(array $params)
+    public function getEntityToStop(array $params):? AbstractEntity
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);

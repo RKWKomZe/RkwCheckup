@@ -1,31 +1,5 @@
 <?php
 namespace RKW\RkwCheckup\Tests\Integration\Utility;
-
-
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
-use RKW\RkwCheckup\Domain\Model\Checkup;
-use RKW\RkwCheckup\Domain\Model\Question;
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Domain\Model\ResultAnswer;
-use RKW\RkwCheckup\Domain\Model\Section;
-use RKW\RkwCheckup\Domain\Model\Step;
-use RKW\RkwCheckup\Domain\Repository\AnswerRepository;
-use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
-use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
-use RKW\RkwCheckup\Domain\Repository\ResultRepository;
-use RKW\RkwCheckup\Domain\Repository\SectionRepository;
-use RKW\RkwCheckup\Domain\Repository\StepRepository;
-use RKW\RkwCheckup\Step\ProgressHandler;
-use RKW\RkwCheckup\Utility\AnswerUtility;
-use RKW\RkwCheckup\Utility\StepUtility;
-use RKW\RkwRegistration\Domain\Repository\FrontendUserRepository;
-use RKW\RkwRegistration\Service\AuthFrontendUserService;
-use RKW\RkwRegistration\Register\GroupRegister;
-use RKW\RkwRegistration\DataProtection\PrivacyHandler;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -38,11 +12,27 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
+use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Model\Section;
+use RKW\RkwCheckup\Domain\Model\Step;
+use RKW\RkwCheckup\Domain\Repository\AnswerRepository;
+use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
+use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
+use RKW\RkwCheckup\Domain\Repository\ResultRepository;
+use RKW\RkwCheckup\Domain\Repository\SectionRepository;
+use RKW\RkwCheckup\Domain\Repository\StepRepository;
+use RKW\RkwCheckup\Utility\AnswerUtility;
+use RKW\RkwCheckup\Utility\StepUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+
 /**
  * AnswerUtilityTest
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -53,13 +43,15 @@ class AnswerUtilityTest extends FunctionalTestCase
      */
     const FIXTURE_PATH = __DIR__ . '/AnswerUtilityTest/Fixtures';
 
+
     /**
      * @var string[]
      */
     protected $testExtensionsToLoad = [
-        'typo3conf/ext/rkw_basics',
+        'typo3conf/ext/core_extended',
         'typo3conf/ext/rkw_checkup',
     ];
+
 
     /**
      * @var string[]
@@ -67,51 +59,60 @@ class AnswerUtilityTest extends FunctionalTestCase
     protected $coreExtensionsToLoad = [
     ];
 
-    /**
-     * @var \RKW\RkwCheckup\Utility\StepUtility
-     */
-    private $subject = null;
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
+     * @var \RKW\RkwCheckup\Utility\StepUtility|null
      */
-    private $checkupRepository = null;
+    private ?StepUtility $subject = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository|null
      */
-    private $sectionRepository = null;
+    private ?CheckupRepository $checkupRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository|null
      */
-    private $stepRepository = null;
+    private ?SectionRepository $sectionRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository|null
      */
-    private $questionRepository = null;
+    private ?StepRepository $stepRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository|null
      */
-    private $answerRepository = null;
+    private ?QuestionRepository $questionRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository|null
      */
-    private $resultRepository = null;
+    private ?AnswerRepository $answerRepository = null;
+
 
     /**
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository|null
      */
-    private $objectManager = null;
+    private ?ResultRepository $resultRepository = null;
+
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager|null
+     */
+    private ?ObjectManager $objectManager = null;
+
 
     /**
      * Setup
      * @throws \Exception
      */
-    protected function setUp()
+    protected function setUp(): void
     {
 
         parent::setUp();
@@ -120,8 +121,8 @@ class AnswerUtilityTest extends FunctionalTestCase
         $this->setUpFrontendRootPage(
             1,
             [
-                'EXT:rkw_basics/Configuration/TypoScript/setup.typoscript',
-                'EXT:rkw_basics/Configuration/TypoScript/constants.typoscript',
+                'EXT:core_extended/Configuration/TypoScript/setup.typoscript',
+                'EXT:core_extended/Configuration/TypoScript/constants.typoscript',
                 'EXT:rkw_checkup/Configuration/TypoScript/setup.typoscript',
                 'EXT:rkw_checkup/Configuration/TypoScript/constants.typoscript',
                 self::FIXTURE_PATH . '/Frontend/Configuration/Rootpage.typoscript',
@@ -165,8 +166,8 @@ class AnswerUtilityTest extends FunctionalTestCase
 
         $result = $this->subject->fetchAllOfCheckup($check);
 
-        static::assertCount(14, $result);
-        static::assertInstanceOf('RKW\RkwCheckup\Domain\Model\Answer', $result[0]);
+        self::assertCount(14, $result);
+        self::assertInstanceOf('RKW\RkwCheckup\Domain\Model\Answer', $result[0]);
 
     }
 
@@ -194,7 +195,7 @@ class AnswerUtilityTest extends FunctionalTestCase
 
         $result = $this->subject->fetchAllOfCheckup($check, $stopEntity);
 
-        static::assertCount(0, $result);
+        self::assertCount(0, $result);
 
     }
 
@@ -222,7 +223,7 @@ class AnswerUtilityTest extends FunctionalTestCase
 
         $result = $this->subject->fetchAllOfCheckup($check, $stopEntity);
 
-        static::assertCount(10, $result);
+        self::assertCount(10, $result);
 
     }
 
@@ -250,7 +251,7 @@ class AnswerUtilityTest extends FunctionalTestCase
 
         $result = $this->subject->fetchAllOfCheckup($check, $stopEntity);
 
-        static::assertCount(0, $result);
+        self::assertCount(0, $result);
     }
 
 
@@ -277,17 +278,15 @@ class AnswerUtilityTest extends FunctionalTestCase
 
         $result = $this->subject->fetchAllOfCheckup($check, $stopEntity);
 
-        static::assertCount(10, $result);
+        self::assertCount(10, $result);
     }
 
-
     //===================================================================
-
 
     /**
      * TearDown
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }

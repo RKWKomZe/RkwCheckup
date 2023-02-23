@@ -16,12 +16,13 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 
 use RKW\RkwCheckup\Domain\Model\Question;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * Class AnswerRepository
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -33,10 +34,9 @@ class AnswerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * Find all questions of a step, also deleted
      *
      * @param Question $question
-     * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByQuestionAlsoDeleted(Question $question)
+    public function findByQuestionAlsoDeleted(Question $question): QueryResultInterface
     {
 
         $query = $this->createQuery();

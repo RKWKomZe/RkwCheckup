@@ -16,16 +16,15 @@ namespace RKW\RkwCheckup\ViewHelpers;
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Domain\Model\ResultAnswer;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
-
 
 /**
  * Class CheckQuestionVisibilityViewHelper
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwCheckup
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -33,17 +32,20 @@ class CheckQuestionVisibilityViewHelper extends AbstractViewHelper {
 
     use CompileWithRenderStatic;
 
+
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('result', Result::class, 'The result which contains answers', true);
         $this->registerArgument('question', Question::class, 'The question to check');
     }
+
 
     /**
      * @param array $arguments
@@ -52,13 +54,14 @@ class CheckQuestionVisibilityViewHelper extends AbstractViewHelper {
      * @return bool
      */
     public static function renderStatic(
-        array $arguments, 
-        \Closure $renderChildrenClosure, 
+        array $arguments,
+        \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-    ){
+    ): bool {
+
         // initial: Question is visible!
         $showQuestion = true;
-        
+
         /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
         $result = $arguments['result'];
         /** @var \RKW\RkwCheckup\Domain\Model\Question $question */
@@ -66,7 +69,7 @@ class CheckQuestionVisibilityViewHelper extends AbstractViewHelper {
 
         if ($question instanceof Question) {
 
-            // @toDo: Function is equal to StepUtility::findHideCond(). But would need to rewritten for result
+            // @todo Function is equal to StepUtility::findHideCond(). But would need to rewritten for result
 
             // a) HIDE question ???
             /** @var ResultAnswer $hideCondition */
@@ -80,7 +83,7 @@ class CheckQuestionVisibilityViewHelper extends AbstractViewHelper {
                 }
             }
 
-            // @toDo: Function is equal to StepUtility::findVisibleCond(). But would need to rewritten for result
+            // @todo Function is equal to StepUtility::findVisibleCond(). But would need to rewritten for result
 
             // b) SHOW question ???
             if ($question->getVisibleCond()->count()) {

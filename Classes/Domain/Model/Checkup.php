@@ -22,61 +22,50 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * crdate
-     *
-     * @var integer
+     * @var int
      */
-    protected $crdate;
+    protected int $crdate = 0;
+
 
     /**
-     * tstamp
-     *
-     * @var integer
+     * @var int
      */
-    protected $tstamp;
+    protected int $tstamp = 0;
 
 
     /**
      * section
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $section = null;
+    protected ?ObjectStorage $section = null;
 
-    
+
     /**
-     * title
-     *
      * @var string
      */
-    protected $title = '';
+    protected string $title = '';
 
-    
+
     /**
-     * description
-     *
      * @var string
      */
-    protected $description = '';
+    protected string $description = '';
 
 
     /**
-     * resultIntro
-     *
      * @var string
      */
-    protected $resultIntro = '';
+    protected string $resultIntro = '';
 
 
     /**
-     * contextQuestion
-     *
-     * @var \RKW\RkwCheckup\Domain\Model\Question
+     * @var \RKW\RkwCheckup\Domain\Model\Question|null
      */
-    protected $contextQuestion;
+    protected ?Question $contextQuestion = null;
 
-    
+
     /**
      * __construct
      */
@@ -85,7 +74,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
-    
+
 
     /**
      * Initializes all ObjectStorage properties
@@ -104,9 +93,9 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the crdate
      *
-     * @return integer $crdate
+     * @return int
      */
-    public function getCrdate()
+    public function getCrdate(): int
     {
         return $this->crdate;
     }
@@ -115,10 +104,10 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the crdate
      *
-     * @param integer $crdate
+     * @param int $crdate
      * @return void
      */
-    public function setCrdate($crdate)
+    public function setCrdate(int $crdate): void
     {
         $this->crdate = $crdate;
     }
@@ -127,9 +116,9 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the tstamp
      *
-     * @return integer $tstamp
+     * @return int $tstamp
      */
-    public function getTstamp()
+    public function getTstamp(): int
     {
         return $this->tstamp;
     }
@@ -138,15 +127,15 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the tstamp
      *
-     * @param integer $tstamp
+     * @param int $tstamp
      * @return void
      */
-    public function setTstamp($tstamp)
+    public function setTstamp(int $tstamp): void
     {
         $this->tstamp = $tstamp;
     }
 
-    
+
     /**
      * Returns the title
      *
@@ -157,7 +146,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->title;
     }
 
-    
+
     /**
      * Sets the title
      *
@@ -169,7 +158,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->title = $title;
     }
 
-    
+
     /**
      * Returns the description
      *
@@ -180,7 +169,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->description;
     }
 
-    
+
     /**
      * Sets the description
      *
@@ -209,7 +198,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->resultIntro = $resultIntro;
     }
-    
+
 
     /**
      * Adds a Section
@@ -218,12 +207,12 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return void
      * @api
      */
-    public function addSection(\RKW\RkwCheckup\Domain\Model\Section $section): void
+    public function addSection(Section $section): void
     {
         $this->section->attach($section);
     }
 
-    
+
     /**
      * Removes a Section
      *
@@ -231,16 +220,16 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return void
      * @api
      */
-    public function removeSection(\RKW\RkwCheckup\Domain\Model\Section $sectionToRemove): void
+    public function removeSection(Section $sectionToRemove): void
     {
         $this->section->detach($sectionToRemove);
     }
 
-    
+
     /**
      * Returns the section
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section> $section
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Section>
      * @api
      */
     public function getSection(): ObjectStorage
@@ -248,7 +237,7 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->section;
     }
 
-    
+
     /**
      * Sets the section
      *
@@ -261,17 +250,17 @@ class Checkup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->section = $section;
     }
 
-    
+
     /**
      * Returns the contextQuestion
      *
      * @return \RKW\RkwCheckup\Domain\Model\Question|null $contextQuestion
      */
-    public function getContextQuestion()
+    public function getContextQuestion():? Question
     {
         return $this->contextQuestion;
     }
-    
+
 
     /**
      * Sets the contextQuestion
