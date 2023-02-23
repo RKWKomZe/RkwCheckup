@@ -17,7 +17,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
-
 /**
  * Class PercentCalcViewHelper
  *
@@ -35,14 +34,16 @@ class PercentCalcViewHelper extends AbstractViewHelper {
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('sum', 'int', 'The base sum', true);
         $this->registerArgument('maxSum', 'int', 'The max sum', true);
     }
+
 
     /**
      * Returns array with answers of given question

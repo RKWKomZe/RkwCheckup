@@ -19,7 +19,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
-
 /**
  * Class GetErrorsByQuestionViewHelper
  *
@@ -36,9 +35,10 @@ class GetErrorsByQuestionViewHelper extends AbstractViewHelper {
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('question', Question::class, 'The question-object', true);

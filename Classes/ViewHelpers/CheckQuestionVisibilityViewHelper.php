@@ -20,7 +20,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
-
 /**
  * Class CheckQuestionVisibilityViewHelper
  *
@@ -33,17 +32,20 @@ class CheckQuestionVisibilityViewHelper extends AbstractViewHelper {
 
     use CompileWithRenderStatic;
 
+
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('result', Result::class, 'The result which contains answers', true);
         $this->registerArgument('question', Question::class, 'The question to check');
     }
+
 
     /**
      * @param array $arguments

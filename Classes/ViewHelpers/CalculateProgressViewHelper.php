@@ -37,13 +37,15 @@ class CalculateProgressViewHelper extends AbstractViewHelper {
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('result', Result::class, 'The result which contains answers', true);
     }
+
 
     /**
      * Returns array with answers of given question

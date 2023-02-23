@@ -19,7 +19,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
-
 /**
  * Class CheckSectionForAnswersViewHelper
  *
@@ -35,9 +34,10 @@ class CheckSectionForAnswersViewHelper extends AbstractViewHelper {
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('result', Result::class, 'The result which contains answers', true);
@@ -54,10 +54,11 @@ class CheckSectionForAnswersViewHelper extends AbstractViewHelper {
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-    ) {
+    ): bool {
 
         /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
         $result = $arguments['result'];
+
         /** @var \RKW\RkwCheckup\Domain\Model\Section $section */
         $section = $arguments['section'];
 

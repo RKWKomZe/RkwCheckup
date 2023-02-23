@@ -24,6 +24,7 @@ use RKW\RkwCheckup\Domain\Repository\ResultRepository;
 use RKW\RkwCheckup\Domain\Repository\SectionRepository;
 use RKW\RkwCheckup\Domain\Repository\StepRepository;
 use RKW\RkwCheckup\Utility\AnswerUtility;
+use RKW\RkwCheckup\Utility\StepUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -42,13 +43,15 @@ class AnswerUtilityTest extends FunctionalTestCase
      */
     const FIXTURE_PATH = __DIR__ . '/AnswerUtilityTest/Fixtures';
 
+
     /**
      * @var string[]
      */
     protected $testExtensionsToLoad = [
-        'typo3conf/ext/rkw_basics',
+        'typo3conf/ext/core_extended',
         'typo3conf/ext/rkw_checkup',
     ];
+
 
     /**
      * @var string[]
@@ -56,45 +59,54 @@ class AnswerUtilityTest extends FunctionalTestCase
     protected $coreExtensionsToLoad = [
     ];
 
-    /**
-     * @var \RKW\RkwCheckup\Utility\StepUtility
-     */
-    private $subject = null;
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
+     * @var \RKW\RkwCheckup\Utility\StepUtility|null
      */
-    private $checkupRepository = null;
+    private ?StepUtility $subject = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository|null
      */
-    private $sectionRepository = null;
+    private ?CheckupRepository $checkupRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository|null
      */
-    private $stepRepository = null;
+    private ?SectionRepository $sectionRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository|null
      */
-    private $questionRepository = null;
+    private ?StepRepository $stepRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository|null
      */
-    private $answerRepository = null;
+    private ?QuestionRepository $questionRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository|null
      */
-    private $resultRepository = null;
+    private ?AnswerRepository $answerRepository = null;
+
 
     /**
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository|null
      */
-    private $objectManager = null;
+    private ?ResultRepository $resultRepository = null;
+
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager|null
+     */
+    private ?ObjectManager $objectManager = null;
+
 
     /**
      * Setup
@@ -109,8 +121,8 @@ class AnswerUtilityTest extends FunctionalTestCase
         $this->setUpFrontendRootPage(
             1,
             [
-                'EXT:rkw_basics/Configuration/TypoScript/setup.typoscript',
-                'EXT:rkw_basics/Configuration/TypoScript/constants.typoscript',
+                'EXT:core_extended/Configuration/TypoScript/setup.typoscript',
+                'EXT:core_extended/Configuration/TypoScript/constants.typoscript',
                 'EXT:rkw_checkup/Configuration/TypoScript/setup.typoscript',
                 'EXT:rkw_checkup/Configuration/TypoScript/constants.typoscript',
                 self::FIXTURE_PATH . '/Frontend/Configuration/Rootpage.typoscript',
@@ -269,9 +281,7 @@ class AnswerUtilityTest extends FunctionalTestCase
         self::assertCount(10, $result);
     }
 
-
     //===================================================================
-
 
     /**
      * TearDown

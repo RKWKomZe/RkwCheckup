@@ -1,29 +1,33 @@
 <?php
 namespace RKW\RkwCheckup\Controller;
 
-use Madj2k\CoreExtended\Utility\GeneralUtility;
-use RKW\RkwCheckup\Domain\Model\Checkup;
-use RKW\RkwCheckup\Domain\Model\Result;
-use RKW\RkwCheckup\Step\ProgressHandler;
-use RKW\RkwCheckup\Utility\StepUtility;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-
-/***
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * This file is part of the "RKW Checkup" Extension for TYPO3 CMS.
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2021 Maximilian Fäßler <maximilian@faesslerweb.de>, Fäßler Web UG
- *
- ***/
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use RKW\RkwCheckup\Domain\Model\Checkup;
+use RKW\RkwCheckup\Domain\Model\Result;
+use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
+use RKW\RkwCheckup\Step\ProgressHandler;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * CheckupController
+ * Class CheckupController
+ *
+ * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwCheckup
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractController
 {
@@ -34,16 +38,16 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
      * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $checkupRepository;
+    protected CheckupRepository $checkupRepository;
 
 
 
     /**
      * progressHandler
      *
-     * @var \RKW\RkwCheckup\Step\ProgressHandler
+     * @var \RKW\RkwCheckup\Step\ProgressHandler|null
      */
-    protected $progressHandler;
+    protected ?ProgressHandler $progressHandler = null;
 
 
     /**
@@ -69,6 +73,7 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
         );
     }
 
+
     /**
      * action new
      *
@@ -76,6 +81,8 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
     public function newAction(bool $terms = false): void
     {
@@ -106,6 +113,7 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
         );
     }
 
+
     /**
      * action progress
      *
@@ -128,6 +136,7 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
 
         $this->view->assign('result', $result);
     }
+
 
     /**
      * initializeValidateAction
@@ -183,6 +192,7 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
         }
     }
 
+
     /**
      * action validate
      *
@@ -237,6 +247,7 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
             ['result' => $result]
         );
     }
+
 
     /**
      * action result

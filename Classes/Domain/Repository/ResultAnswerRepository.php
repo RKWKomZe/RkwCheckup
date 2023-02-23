@@ -15,7 +15,7 @@ namespace RKW\RkwCheckup\Domain\Repository;
  */
 
 use RKW\RkwCheckup\Domain\Model\Question;
-use RKW\RkwCheckup\Domain\Model\Result;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * Class ResultAnswerRepository
@@ -31,9 +31,9 @@ class ResultAnswerRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * get answers of specific question with FreeTextInput
      *
      * @param \RKW\RkwCheckup\Domain\Model\Question $question
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findFreeTextInputAnswersByQuestion(Question $question)
+    public function findFreeTextInputAnswersByQuestion(Question $question): QueryResultInterface
     {
         $query = $this->createQuery();
         $query->matching(

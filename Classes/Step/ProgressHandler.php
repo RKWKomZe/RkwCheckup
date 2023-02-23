@@ -49,13 +49,13 @@ class ProgressHandler
      *
      * @var array
      */
-    protected $settings;
+    protected array $settings = [];
 
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Model\Result
+     * @var \RKW\RkwCheckup\Domain\Model\Result|null
      */
-    protected $result;
+    protected ?Result $result = null;
 
 
     /**
@@ -65,7 +65,7 @@ class ProgressHandler
      * @return void
      * @throws \Exception
      */
-    public function newResult (Checkup $checkup)
+    public function newResult (Checkup $checkup): void
     {
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $this->result = $objectManager->get(Result::class);
@@ -153,7 +153,6 @@ class ProgressHandler
                 [$question->getMaxCheck()]
             );
         }
-
 
         return '';
     }
@@ -264,7 +263,7 @@ class ProgressHandler
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
      */
-    public function setResult (\RKW\RkwCheckup\Domain\Model\Result $result): void
+    public function setResult (Result $result): void
     {
         $this->result = $result;
     }
@@ -275,7 +274,7 @@ class ProgressHandler
      *
      * @return \RKW\RkwCheckup\Domain\Model\Result|null $result
      */
-    public function getResult ()
+    public function getResult ():? Result
     {
         return $this->result;
     }

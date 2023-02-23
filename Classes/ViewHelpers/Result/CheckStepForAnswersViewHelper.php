@@ -34,9 +34,10 @@ class CheckStepForAnswersViewHelper extends AbstractViewHelper {
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('result', Result::class, 'The result which contains answers', true);
@@ -53,10 +54,11 @@ class CheckStepForAnswersViewHelper extends AbstractViewHelper {
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-    ) {
+    ): bool {
 
         /** @var \RKW\RkwCheckup\Domain\Model\Result $result */
         $result = $arguments['result'];
+
         /** @var \RKW\RkwCheckup\Domain\Model\Step $step */
         $step = $arguments['step'];
 

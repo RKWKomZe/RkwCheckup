@@ -16,9 +16,8 @@ namespace RKW\RkwCheckup\DisplayCond;
 
 use RKW\RkwCheckup\Domain\Model\Question;
 use RKW\RkwCheckup\Domain\Repository\QuestionRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class TcaCond
@@ -36,7 +35,7 @@ class TcaCond
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $configurationManager;
+    protected ConfigurationManagerInterface $configurationManager;
 
 
     /**

@@ -26,51 +26,43 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
-     * freeNumericInput
-     *
      * @var int
      */
-    protected $freeNumericInput = 0;
+    protected int $freeNumericInput = 0;
 
 
     /**
-     * freeTextInput
-     *
      * @var string
      */
-    protected $freeTextInput = '';
+    protected string $freeTextInput = '';
 
 
     /**
      * answer
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Answer
+     * @var \RKW\RkwCheckup\Domain\Model\Answer|null
      */
-    protected $answer;
+    protected ?Answer $answer = null;
 
 
     /**
      * question
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Question
+     * @var \RKW\RkwCheckup\Domain\Model\Question|null
      */
-    protected $question;
+    protected ?Question $question = null;
 
 
     /**
-     * step
-     *
-     * @var \RKW\RkwCheckup\Domain\Model\Step
+     * @var \RKW\RkwCheckup\Domain\Model\Step|null
      */
-    protected $step;
+    protected ?Step $step = null;
 
 
     /**
-     * section
-     *
-     * @var \RKW\RkwCheckup\Domain\Model\Section
+     * @var \RKW\RkwCheckup\Domain\Model\Section|null
      */
-    protected $section;
+    protected ?Section $section = null;
 
 
     /**
@@ -94,7 +86,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @return string
      */
-    public function getFreeTextInput()
+    public function getFreeTextInput(): string
     {
         return $this->freeTextInput;
     }
@@ -102,7 +94,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $freeTextInput
      */
-    public function setFreeTextInput($freeTextInput): void
+    public function setFreeTextInput(string $freeTextInput): void
     {
         $this->freeTextInput = $freeTextInput;
     }
@@ -113,7 +105,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \RKW\RkwCheckup\Domain\Model\Answer|null $answer
      */
-    public function getAnswer()
+    public function getAnswer():? Answer
     {
         return $this->answer;
     }
@@ -136,7 +128,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \RKW\RkwCheckup\Domain\Model\Question|null $question
      */
-    public function getQuestion()
+    public function getQuestion():? Question
     {
         return $this->question;
     }
@@ -159,7 +151,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \RKW\RkwCheckup\Domain\Model\Step|null step
      */
-    public function getStep()
+    public function getStep():? Step
     {
         return $this->step;
     }
@@ -182,7 +174,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \RKW\RkwCheckup\Domain\Model\Section|null section
      */
-    public function getSection()
+    public function getSection():? Section
     {
         return $this->section;
     }

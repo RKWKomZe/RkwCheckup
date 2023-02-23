@@ -25,6 +25,7 @@ use RKW\RkwCheckup\Domain\Repository\StepRepository;
 use RKW\RkwCheckup\Utility\AnswerUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
@@ -43,7 +44,7 @@ class TcaProcFunc
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $configurationManager;
+    protected ConfigurationManagerInterface $configurationManager;
 
 
     /**
@@ -69,7 +70,7 @@ class TcaProcFunc
      * @param array $params
      * @return \RKW\RkwCheckup\Domain\Model\Checkup|null $checkup
      */
-    public function getCheckup(array $params)
+    public function getCheckup(array $params):? Checkup
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
@@ -145,7 +146,7 @@ class TcaProcFunc
      * @param array $params
      * @return \TYPO3\CMS\Extbase\DomainObject\AbstractEntity|null $entity
      */
-    public function getEntityToStop(array $params)
+    public function getEntityToStop(array $params):? AbstractEntity
     {
         /** @var ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);

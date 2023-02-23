@@ -28,140 +28,116 @@ class Question extends AbstractCheckupContents
 {
 
     /**
-     * type
-     *
      * @var int
      */
-    protected $recordType = 1;
+    protected int $recordType = 1;
 
 
     /**
-     * title
-     *
      * @var string
      */
-    protected $title = '';
+    protected string $title = '';
 
 
     /**
-     * description
-     *
      * @var string
      */
-    protected $description = '';
+    protected string $description = '';
 
 
     /**
-     * mandatory
-     *
      * @var bool
      */
-    protected $mandatory = false;
+    protected bool $mandatory = false;
 
 
     /**
-     * invertFeedback
-     *
      * @var bool
      */
-    protected $invertFeedback = false;
+    protected bool $invertFeedback = false;
 
 
     /**
-     * allowTextInput
-     *
      * @var bool
      */
-    protected $allowTextInput = false;
+    protected bool $allowTextInput = false;
 
 
     /**
-     * titleTextInput
-     *
      * @var string
      */
-    protected $titleTextInput = '';
+    protected string $titleTextInput = '';
 
 
     /**
-     * minCheck
-     *
      * @var int
      */
-    protected $minCheck = 0;
+    protected int $minCheck = 0;
 
 
     /**
-     * maxCheck
-     *
      * @var int
      */
-    protected $maxCheck = 0;
+    protected int $maxCheck = 0;
 
 
     /**
-     * scaleLeft
-     *
      * @var string
      */
-    protected $scaleLeft = '';
+    protected string $scaleLeft = '';
 
 
     /**
-     * scaleRight
-     *
      * @var string
      */
-    protected $scaleRight = '';
+    protected string $scaleRight = '';
 
 
     /**
-     * scaleMax
-     *
-     * @var string
+     * @var int
      */
-    protected $scaleMax = 3;
+    protected int $scaleMax = 3;
 
 
     /**
      * feedback
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Feedback
+     * @var \RKW\RkwCheckup\Domain\Model\Feedback|null
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $feedback;
+    protected ?Feedback $feedback = null;
 
 
     /**
      * answer
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>|null
      */
-    protected $answer;
+    protected ?ObjectStorage $answer = null;
 
 
     /**
      * hideCond
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>|null
      */
-    protected $hideCond;
+    protected ?ObjectStorage $hideCond = null;
 
 
     /**
      * visibleCond
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer>|null
      */
-    protected $visibleCond;
+    protected ?ObjectStorage $visibleCond = null;
 
 
     /**
      * step
      *
-     * @var \RKW\RkwCheckup\Domain\Model\Step
+     * @var \RKW\RkwCheckup\Domain\Model\Step|null
      */
-    protected $step;
+    protected ?Step $step= null;
 
 
     /**
@@ -172,7 +148,7 @@ class Question extends AbstractCheckupContents
      *
      * @return void
      */
-    protected function initStorageObjects()
+    protected function initStorageObjects(): void
     {
         $this->answer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->hideCond = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -183,7 +159,7 @@ class Question extends AbstractCheckupContents
     /**
      * Returns the recordType
      *
-     * @return string $recordType
+     * @return string
      */
     public function getRecordType(): string
     {
@@ -206,7 +182,7 @@ class Question extends AbstractCheckupContents
     /**
      * Returns the title
      *
-     * @return string $title
+     * @return string
      */
     public function getTitle(): string
     {
@@ -229,7 +205,7 @@ class Question extends AbstractCheckupContents
     /**
      * Returns the description
      *
-     * @return string $description
+     * @return string
      */
     public function getDescription(): string
     {
@@ -252,7 +228,7 @@ class Question extends AbstractCheckupContents
     /**
      * Returns the mandatory
      *
-     * @return bool $mandatory
+     * @return bool
      */
     public function getMandatory(): bool
     {
@@ -353,7 +329,7 @@ class Question extends AbstractCheckupContents
     /**
      * Returns the maxCheck
      *
-     * @return int $maxCheck
+     * @return int
      */
     public function getMaxCheck(): int
     {
@@ -412,7 +388,7 @@ class Question extends AbstractCheckupContents
     /**
      * Returns the scaleMax
      *
-     * @return int $scaleMax
+     * @return int
      */
     public function getScaleMax(): int
     {
@@ -437,7 +413,7 @@ class Question extends AbstractCheckupContents
      *
      * @return \RKW\RkwCheckup\Domain\Model\Feedback|null $feedback
      */
-    public function getFeedback()
+    public function getFeedback():? Feedback
     {
         return $this->feedback;
     }
@@ -449,32 +425,33 @@ class Question extends AbstractCheckupContents
      * @param \RKW\RkwCheckup\Domain\Model\Feedback $feedback
      * @return void
      */
-    public function setFeedback(\RKW\RkwCheckup\Domain\Model\Feedback $feedback): void
+    public function setFeedback(Feedback $feedback): void
     {
         $this->feedback = $feedback;
     }
 
+
     /**
-     * Adds a Answer
+     * Adds an Answer
      *
      * @param \RKW\RkwCheckup\Domain\Model\Answer $answer
      * @return void
      * @api
      */
-    public function addAnswer(\RKW\RkwCheckup\Domain\Model\Answer $answer): void
+    public function addAnswer(Answer $answer): void
     {
         $this->answer->attach($answer);
     }
 
 
     /**
-     * Removes a Answer
+     * Removes an Answer
      *
      * @param \RKW\RkwCheckup\Domain\Model\Answer $answerToRemove The Answer to be removed
      * @return void
      * @api
      */
-    public function removeAnswer(\RKW\RkwCheckup\Domain\Model\Answer $answerToRemove): void
+    public function removeAnswer(Answer $answerToRemove): void
     {
         $this->answer->detach($answerToRemove);
     }
@@ -498,11 +475,10 @@ class Question extends AbstractCheckupContents
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $answer
      * @return void
      */
-    public function setAnswer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $answer): void
+    public function setAnswer(ObjectStorage $answer): void
     {
         $this->answer = $answer;
     }
-
 
 
     /**
@@ -512,10 +488,11 @@ class Question extends AbstractCheckupContents
      * @return void
      * @api
      */
-    public function addHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond): void
+    public function addHideCond(Answer $hideCond): void
     {
         $this->hideCond->attach($hideCond);
     }
+
 
     /**
      * Removes a hideCond
@@ -524,7 +501,7 @@ class Question extends AbstractCheckupContents
      * @return void
      * @api
      */
-    public function removeHideCond(\RKW\RkwCheckup\Domain\Model\Answer $hideCond): void
+    public function removeHideCond(Answer $hideCond): void
     {
         $this->hideCond->detach($hideCond);
     }
@@ -547,7 +524,7 @@ class Question extends AbstractCheckupContents
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwCheckup\Domain\Model\Answer> $hideCond
      * @return void
      */
-    public function setHideCond(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $hideCond): void
+    public function setHideCond(ObjectStorage $hideCond): void
     {
         $this->hideCond = $hideCond;
     }
@@ -559,7 +536,7 @@ class Question extends AbstractCheckupContents
      * @param \RKW\RkwCheckup\Domain\Model\Answer $visibleCond
      * @return void
      */
-    public function addVisibleCond(\RKW\RkwCheckup\Domain\Model\Answer $visibleCond)
+    public function addVisibleCond(Answer $visibleCond)
     {
         $this->visibleCond->attach($visibleCond);
     }
@@ -572,7 +549,7 @@ class Question extends AbstractCheckupContents
      * @return void
      * @api
      */
-    public function removeVisibleCond(\RKW\RkwCheckup\Domain\Model\Answer $visibleCond): void
+    public function removeVisibleCond(Answer $visibleCond): void
     {
         $this->visibleCond->detach($visibleCond);
     }
@@ -597,7 +574,7 @@ class Question extends AbstractCheckupContents
      * @return void
      * @api
      */
-    public function setVisibleCond(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $visibleCond): void
+    public function setVisibleCond(ObjectStorage $visibleCond): void
     {
         $this->visibleCond = $visibleCond;
     }
@@ -608,7 +585,7 @@ class Question extends AbstractCheckupContents
      *
      * @return \RKW\RkwCheckup\Domain\Model\Step|null step
      */
-    public function getStep()
+    public function getStep():? Step
     {
         return $this->step;
     }
@@ -620,7 +597,7 @@ class Question extends AbstractCheckupContents
      * @param \RKW\RkwCheckup\Domain\Model\Step $step
      * @return void
      */
-    public function setStep(\RKW\RkwCheckup\Domain\Model\Step $step): void
+    public function setStep(Step $step): void
     {
         $this->step = $step;
     }

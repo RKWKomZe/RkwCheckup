@@ -22,7 +22,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
-
 /**
  * Class GetFreeTextAnswerListViewHelper
  *
@@ -40,14 +39,16 @@ class GetFreeTextAnswerListViewHelper extends AbstractViewHelper {
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('question', Question::class, 'The question to get the freeTextAnswers', true);
         $this->registerArgument('count', 'bool', 'Return only count');
     }
+
 
     /**
      * Returns array with answers of given question

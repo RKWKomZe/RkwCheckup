@@ -22,7 +22,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
-
 /**
  * Class CountResultAnswerViewHelper
  *
@@ -40,9 +39,10 @@ class CountResultAnswerViewHelper extends AbstractViewHelper {
     /**
      * Initialize arguments.
      *
+     * @return void
      * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('answer', Answer::class, 'The answer to count');
@@ -61,7 +61,8 @@ class CountResultAnswerViewHelper extends AbstractViewHelper {
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-    ){
+    ): int {
+
         $answer = $arguments['answer'];
         $question = $arguments['question'];
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);

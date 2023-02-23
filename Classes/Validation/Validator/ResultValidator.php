@@ -15,10 +15,10 @@ namespace RKW\RkwCheckup\Validation\Validator;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwCheckup\Domain\Model\Result;
 use RKW\RkwCheckup\Step\ProgressHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class ResultValidator
@@ -36,7 +36,7 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
      *
      * @var array
      */
-    protected $settings = null;
+    protected array $settings = [];
 
 
     /**
@@ -46,7 +46,7 @@ class ResultValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
      * @return boolean
      * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
-    public function isValid($newResult)
+    public function isValid($newResult): bool
     {
         $isValid = true;
 

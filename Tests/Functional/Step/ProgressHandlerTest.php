@@ -42,13 +42,15 @@ class ProgressHandlerTest extends FunctionalTestCase
      */
     const FIXTURE_PATH = __DIR__ . '/ProgressHandlerTest/Fixtures';
 
+
     /**
      * @var string[]
      */
     protected $testExtensionsToLoad = [
-        'typo3conf/ext/rkw_basics',
+        'typo3conf/ext/core_extended',
         'typo3conf/ext/rkw_checkup',
     ];
+
 
     /**
      * @var string[]
@@ -56,45 +58,54 @@ class ProgressHandlerTest extends FunctionalTestCase
     protected $coreExtensionsToLoad = [
     ];
 
-    /**
-     * @var \RKW\RkwCheckup\Step\ProgressHandler
-     */
-    private $subject = null;
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
+     * @var \RKW\RkwCheckup\Step\ProgressHandler|null
      */
-    private $checkupRepository = null;
+    private ?ProgressHandler $subject = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository|null
      */
-    private $sectionRepository = null;
+    private ?CheckupRepository $checkupRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository|null
      */
-    private $stepRepository = null;
+    private ?SectionRepository $sectionRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository|null
      */
-    private $questionRepository = null;
+    private ?StepRepository $stepRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository|null
      */
-    private $answerRepository = null;
+    private ?QuestionRepository $questionRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository|null
      */
-    private $resultRepository = null;
+    private ?AnswerRepository $answerRepository = null;
+
 
     /**
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository|null
      */
-    private $objectManager = null;
+    private ?AnswerRepository $resultRepository = null;
+
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager|null
+     */
+    private ?ObjectManager $objectManager = null;
+
 
     /**
      * Setup
@@ -109,8 +120,8 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->setUpFrontendRootPage(
             1,
             [
-                'EXT:rkw_basics/Configuration/TypoScript/setup.typoscript',
-                'EXT:rkw_basics/Configuration/TypoScript/constants.typoscript',
+                'EXT:core_extended/Configuration/TypoScript/setup.typoscript',
+                'EXT:core_extended/Configuration/TypoScript/constants.typoscript',
                 'EXT:rkw_checkup/Configuration/TypoScript/setup.typoscript',
                 'EXT:rkw_checkup/Configuration/TypoScript/constants.typoscript',
                 self::FIXTURE_PATH . '/Frontend/Configuration/Rootpage.typoscript',
@@ -165,7 +176,6 @@ class ProgressHandlerTest extends FunctionalTestCase
         self::assertInstanceOf('\RKW\RkwCheckup\Domain\Model\Step', $this->subject->getResult()->getCurrentStep());
         self::assertTrue($this->subject->getResult()->getShowSectionIntro());
     }
-
 
     //===================================================================
 
@@ -572,7 +582,6 @@ class ProgressHandlerTest extends FunctionalTestCase
         self::assertNotEmpty($returnValue);
     }
 
-
     //===================================================================
 
     /**
@@ -659,7 +668,6 @@ class ProgressHandlerTest extends FunctionalTestCase
 
         self::assertCount(0, $result->getResultAnswer());
     }
-
 
     //===================================================================
 
@@ -758,7 +766,6 @@ class ProgressHandlerTest extends FunctionalTestCase
     }
 
 
-
     //===================================================================
 
     /**
@@ -833,8 +840,6 @@ class ProgressHandlerTest extends FunctionalTestCase
 
     }
 
-
-
     //===================================================================
 
     /**
@@ -875,7 +880,7 @@ class ProgressHandlerTest extends FunctionalTestCase
 
     }
 
-
+    //===================================================================
 
     /**
      * TearDown

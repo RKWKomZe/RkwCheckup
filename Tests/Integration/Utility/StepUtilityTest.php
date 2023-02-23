@@ -26,7 +26,6 @@ use RKW\RkwCheckup\Utility\StepUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
-
 /**
  * StepUtilityTest
  *
@@ -42,13 +41,15 @@ class StepUtilityTest extends FunctionalTestCase
      */
     const FIXTURE_PATH = __DIR__ . '/StepUtilityTest/Fixtures';
 
+
     /**
      * @var string[]
      */
     protected $testExtensionsToLoad = [
-        'typo3conf/ext/rkw_basics',
+        'typo3conf/ext/core_extended',
         'typo3conf/ext/rkw_checkup',
     ];
+
 
     /**
      * @var string[]
@@ -56,45 +57,54 @@ class StepUtilityTest extends FunctionalTestCase
     protected $coreExtensionsToLoad = [
     ];
 
-    /**
-     * @var \RKW\RkwCheckup\Utility\StepUtility
-     */
-    private $subject = null;
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
+     * @var \RKW\RkwCheckup\Utility\StepUtility|null
      */
-    private $checkupRepository = null;
+    private ?StepUtility $subject = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository|null
      */
-    private $sectionRepository = null;
+    private ?CheckupRepository $checkupRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\SectionRepository|null
      */
-    private $stepRepository = null;
+    private ?SectionRepository $sectionRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\StepRepository|null
      */
-    private $questionRepository = null;
+    private ?StepRepository $stepRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\QuestionRepository|null
      */
-    private $answerRepository = null;
+    private ?QuestionRepository $questionRepository = null;
+
 
     /**
-     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
+     * @var \RKW\RkwCheckup\Domain\Repository\AnswerRepository|null
      */
-    private $resultRepository = null;
+    private ?AnswerRepository $answerRepository = null;
+
 
     /**
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository|null
      */
-    private $objectManager = null;
+    private ?ResultRepository $resultRepository = null;
+
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager|null
+     */
+    private ?ObjectManager $objectManager = null;
+
 
     /**
      * Setup
@@ -109,8 +119,8 @@ class StepUtilityTest extends FunctionalTestCase
         $this->setUpFrontendRootPage(
             1,
             [
-                'EXT:rkw_basics/Configuration/TypoScript/setup.typoscript',
-                'EXT:rkw_basics/Configuration/TypoScript/constants.typoscript',
+                'EXT:core_extended/Configuration/TypoScript/setup.typoscript',
+                'EXT:core_extended/Configuration/TypoScript/constants.typoscript',
                 'EXT:rkw_checkup/Configuration/TypoScript/setup.typoscript',
                 'EXT:rkw_checkup/Configuration/TypoScript/constants.typoscript',
                 self::FIXTURE_PATH . '/Frontend/Configuration/Rootpage.typoscript',
@@ -135,6 +145,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithShowSectionIntroRemovesThatFlag ()
     {
@@ -163,6 +174,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithShowStepFeedbackRemovesThatFlagToFalse ()
     {
@@ -190,6 +202,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithWithStepThatHaveStepFeedbackSetThatFlagToTrue ()
     {
@@ -218,6 +231,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithWithNothingSpecialSetTheNextStepInsideCurrentSection ()
     {
@@ -248,6 +262,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithWithinTheLastStepInsideSectionSetTheNextStepInsideTheNextSection ()
     {
@@ -278,6 +293,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithWithinTheOverallSecondLastStepSetTheLastStepWithFlag ()
     {
@@ -308,9 +324,9 @@ class StepUtilityTest extends FunctionalTestCase
     }
 
 
-
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithWithinTheLastStepDoesNothing ()
     {
@@ -343,6 +359,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithWithinTheOverallThirdLastStepWithHiddenConditionOfLastStepSetTheLastStepWithFlag ()
     {
@@ -376,6 +393,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithWithinTheOverallSecondLastStepWithStepFeedbackDontTheLastStepWithFlag ()
     {
@@ -406,6 +424,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithWithinTheOverallSecondLastStepWithVisibleConditionShowsThatStep ()
     {
@@ -435,9 +454,9 @@ class StepUtilityTest extends FunctionalTestCase
     }
 
 
-
     /**
      * @test
+     * @throws \Exception
      */
     public function nextWithWithinTheOverallSecondLastStepWithVisibleConditionSkipThatStep ()
     {
@@ -467,9 +486,9 @@ class StepUtilityTest extends FunctionalTestCase
     }
 
 
-
     /**
      * @test
+     * @throws \Exception
      */
     public function nextConditionCheckStep1WithoutResultAnswer ()
     {
@@ -511,6 +530,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextConditionCheckStep1WithResultAnswer ()
     {
@@ -550,6 +570,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextConditionCheckStep2WithResultAnswerWithVisibleCondForStep3 ()
     {
@@ -589,6 +610,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextConditionCheckStep2WithResultAnswerWithHideCondForStep3 ()
     {
@@ -628,6 +650,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextConditionCheckStep3WithResultAnswerWithVisibleCondForSection2 ()
     {
@@ -667,6 +690,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextConditionCheckStep3WithResultAnswerWithoutVisibleCondForSection2 ()
     {
@@ -707,6 +731,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     /**
      * @test
+     * @throws \Exception
      */
     public function nextConditionCheckStep3WithResultAnswerWithVisibleCondForSection2ButHideCondForStep4 ()
     {
@@ -745,9 +770,7 @@ class StepUtilityTest extends FunctionalTestCase
 
     }
 
-
     //===================================================================
-
 
     /**
      * TearDown
