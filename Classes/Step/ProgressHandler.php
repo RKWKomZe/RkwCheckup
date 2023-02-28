@@ -12,7 +12,7 @@ use RKW\RkwCheckup\Domain\Model\Step;
 use RKW\RkwCheckup\Domain\Repository\ResultRepository;
 use RKW\RkwCheckup\Exception;
 use RKW\RkwCheckup\Utility\StepUtility;
-use RKW\RkwRegistration\Domain\Repository\FrontendUserRepository;
+use Madj2k\FeRegister\Domain\Repository\FrontendUserRepository;
 use TYPO3\CMS\Core\Log\Logger;
 use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
