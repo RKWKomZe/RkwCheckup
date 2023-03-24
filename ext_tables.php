@@ -30,8 +30,6 @@ call_user_func(
 
         }
 
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('rkw_checkup', 'Configuration/TypoScript', 'RKW Checkup');
-
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_rkwcheckup_domain_model_checkup', 'EXT:rkw_checkup/Resources/Private/Language/locallang_csh_tx_rkwcheckup_domain_model_checkup.xlf');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_rkwcheckup_domain_model_checkup');
 
