@@ -98,7 +98,7 @@ class ProgressHandlerTest extends FunctionalTestCase
     /**
      * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository|null
      */
-    private ?AnswerRepository $resultRepository = null;
+    private ?ResultRepository $resultRepository = null;
 
 
     /**

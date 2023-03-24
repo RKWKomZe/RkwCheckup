@@ -25,6 +25,7 @@ use RKW\RkwCheckup\Domain\Repository\StepRepository;
 use RKW\RkwCheckup\Utility\AnswerUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -41,10 +42,10 @@ class TcaProcFunc
     /**
      * configurationManager
      *
-     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManager
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected ConfigurationManagerInterface $configurationManager;
+    protected ConfigurationManager $configurationManager;
 
 
     /**

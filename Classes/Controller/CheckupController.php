@@ -198,7 +198,7 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
      *
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
-     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwCheckup\Validation\Validator\ResultValidator", param="result")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("RKW\RkwCheckup\Validation\Validator\ResultValidator", param="result")
      * @throws \Exception
      */
     public function validateAction(Result $result): void

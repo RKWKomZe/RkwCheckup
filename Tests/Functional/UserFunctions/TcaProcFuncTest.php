@@ -128,8 +128,8 @@ class TcaProcFuncTest extends FunctionalTestCase
 
         /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
         $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-
         $this->subject = $this->objectManager->get(TcaProcFunc::class);
+
         // Repository
         $this->checkupRepository = $this->objectManager->get(CheckupRepository::class);
         $this->sectionRepository = $this->objectManager->get(SectionRepository::class);

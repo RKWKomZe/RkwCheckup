@@ -61,9 +61,9 @@ class AnswerUtilityTest extends FunctionalTestCase
 
 
     /**
-     * @var \RKW\RkwCheckup\Utility\StepUtility|null
+     * @var \RKW\RkwCheckup\Utility\AnswerUtility|null
      */
-    private ?StepUtility $subject = null;
+    private ?AnswerUtility $subject = null;
 
 
     /**
