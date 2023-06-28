@@ -77,27 +77,17 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
     /**
      * action new
      *
-     * @param bool $terms
+     * @param bool $dummy
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @throws \Exception
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Madj2k\FeRegister\Validation\Consent\TermsValidator", param="dummy")
      */
-    public function newAction(bool $terms = false): void
+    public function newAction(bool $dummy): void
     {
-        // check terms
-        if (!$terms) {
-            $this->addFlashMessage(
-                LocalizationUtility::translate(
-                    'checkupController.warning.terms',
-                    'rkw_checkup'
-                ),
-                null,
-                AbstractMessage::ERROR
-            );
-            $this->redirect('index');
-        }
 
         /** @var Checkup $checkup */
         $checkup = $this->checkupRepository->findByUid(intval($this->settings['checkup']));
@@ -271,4 +261,16 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
     }
 
 
+
+    /**
+     * A template method for displaying custom error flash messages, or to
+     * display no flash message at all on errors. Override this to customize
+     * the flash message in your action controller.
+     *
+     * @return string|false The flash message or FALSE if no flash message should be set
+     */
+    protected function getErrorFlashMessage()
+    {
+        return false;
+    }
 }

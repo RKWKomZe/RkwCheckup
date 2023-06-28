@@ -272,7 +272,7 @@ return [
             'exclude' => false,
             'label' => 'LLL:EXT:rkw_checkup/Resources/Private/Language/locallang_db.xlf:tx_rkwcheckup_domain_model_result.new_result_answer',
             'config' => [
-                'type' => 'inline',
+                'type' => 'none',
                 'foreign_table' => 'tx_rkwcheckup_domain_model_resultanswer',
                 'minitems' => 0,
                 'maxitems' => 1,
