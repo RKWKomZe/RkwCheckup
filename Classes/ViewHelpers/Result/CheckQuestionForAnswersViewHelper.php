@@ -45,6 +45,7 @@ class CheckQuestionForAnswersViewHelper extends AbstractViewHelper {
         $this->registerArgument('question', Question::class, 'The question to check', true);
     }
 
+
     /**
      * @param array $arguments
      * @param \Closure $renderChildrenClosure

@@ -9,7 +9,6 @@ $EM_CONF[$_EXTKEY] = [
     'state' => 'stable',
     'internal' => '',
     'uploadfolder' => '1',
-    'createDirs' => '',
     'clearCacheOnLoad' => 0,
     'version' => '9.5.2',
     'constraints' => [

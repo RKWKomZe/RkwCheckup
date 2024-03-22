@@ -48,6 +48,7 @@ class AnswerUtilityTest extends FunctionalTestCase
      * @var string[]
      */
     protected $testExtensionsToLoad = [
+        'typo3conf/ext/ajax_api',
         'typo3conf/ext/core_extended',
         'typo3conf/ext/rkw_checkup',
     ];

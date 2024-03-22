@@ -35,7 +35,16 @@ class TcaCond
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected ConfigurationManagerInterface $configurationManager;
+    protected ?ConfigurationManagerInterface $configurationManager = null;
+
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+     */
+    public function injectConfigurationManagerInterface(ConfigurationManagerInterface $configurationManager)
+    {
+        $this->configurationManager = $configurationManager;
+    }
 
 
     /**
