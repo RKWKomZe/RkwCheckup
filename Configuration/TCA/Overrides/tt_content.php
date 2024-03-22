@@ -7,12 +7,12 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 defined('TYPO3_MODE') || die('Access denied.');
 
 call_user_func(
-    function () {
+    function ($extKey) {
         //=================================================================
         // Register Plugin
         //=================================================================
         ExtensionUtility::registerPlugin(
-            'RKW.RkwCheckup',
+            $extKey,
             'Check',
             'RKW CheckUp: Check'
         );
@@ -20,8 +20,6 @@ call_user_func(
         //=================================================================
         // Add Flexforms
         //=================================================================
-        $extKey = 'rkw_checkup';
-
         $extensionName = strtolower(GeneralUtility::underscoredToUpperCamelCase($extKey));
         $pluginName = strtolower('Check');
         $pluginSignature = $extensionName.'_'.$pluginName;
@@ -33,5 +31,6 @@ call_user_func(
             'FILE:EXT:'.$extKey.'/Configuration/FlexForms/flexform_checkup.xml'
         );
 
-    }
+    },
+    'rkw_checkup'
 );

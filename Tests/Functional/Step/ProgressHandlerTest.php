@@ -24,6 +24,7 @@ use RKW\RkwCheckup\Domain\Repository\ResultRepository;
 use RKW\RkwCheckup\Domain\Repository\SectionRepository;
 use RKW\RkwCheckup\Domain\Repository\StepRepository;
 use RKW\RkwCheckup\Step\ProgressHandler;
+use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -47,6 +48,7 @@ class ProgressHandlerTest extends FunctionalTestCase
      * @var string[]
      */
     protected $testExtensionsToLoad = [
+        'typo3conf/ext/ajax_api',
         'typo3conf/ext/core_extended',
         'typo3conf/ext/rkw_checkup',
     ];
@@ -132,6 +134,7 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
         $this->subject = $this->objectManager->get(ProgressHandler::class);
+
         // Repository
         $this->checkupRepository = $this->objectManager->get(CheckupRepository::class);
         $this->sectionRepository = $this->objectManager->get(SectionRepository::class);
@@ -140,6 +143,10 @@ class ProgressHandlerTest extends FunctionalTestCase
         $this->answerRepository = $this->objectManager->get(AnswerRepository::class);
 
         $this->resultRepository = $this->objectManager->get(ResultRepository::class);
+
+        /** @var \TYPO3\CMS\Core\Localization\LanguageService $languageService */
+        $languageService = GeneralUtility::makeInstance(LanguageService::class);
+        $GLOBALS['LANG'] = $languageService;
     }
 
     //===================================================================

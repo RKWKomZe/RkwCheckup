@@ -49,6 +49,7 @@ class CountResultAnswerViewHelper extends AbstractViewHelper {
         $this->registerArgument('question', Question::class, 'The question to count');
     }
 
+
     /**
      * Returns array with answers of given question
      *
@@ -56,6 +57,7 @@ class CountResultAnswerViewHelper extends AbstractViewHelper {
      * @param \Closure $renderChildrenClosure
      * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
      * @return int
+     * @throws \TYPO3\CMS\Extbase\Object\Exception
      */
     public static function renderStatic(
         array $arguments,

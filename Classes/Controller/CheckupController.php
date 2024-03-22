@@ -38,8 +38,7 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
      * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected CheckupRepository $checkupRepository;
-
+    protected ?CheckupRepository $checkupRepository = null;
 
 
     /**
@@ -48,6 +47,16 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
      * @var \RKW\RkwCheckup\Step\ProgressHandler|null
      */
     protected ?ProgressHandler $progressHandler = null;
+
+
+
+    /**
+     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
+     */
+    public function injectCheckupRepository(CheckupRepository $checkupRepository)
+    {
+        $this->checkupRepository = $checkupRepository;
+    }
 
 
     /**
@@ -80,7 +89,6 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
      * @param bool $dummy
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      * @throws \Exception
@@ -110,7 +118,6 @@ class CheckupController extends \Madj2k\AjaxApi\Controller\AjaxAbstractControlle
      * @param \RKW\RkwCheckup\Domain\Model\Result $result
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      */
     public function progressAction(Result $result): void
     {

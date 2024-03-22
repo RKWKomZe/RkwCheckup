@@ -53,6 +53,8 @@ class TcaProcFunc
      *
      * @param array $params
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Object\Exception
+     * @todo SK: this function does not have a return value and the params are not passed as reference - so what does it actually do?
      */
     public function getAnswerList(array $params): void
     {
@@ -70,6 +72,7 @@ class TcaProcFunc
      *
      * @param array $params
      * @return \RKW\RkwCheckup\Domain\Model\Checkup|null $checkup
+     * @throws \TYPO3\CMS\Extbase\Object\Exception
      */
     public function getCheckup(array $params):? Checkup
     {
@@ -111,6 +114,7 @@ class TcaProcFunc
         ) {
             /** @var SectionRepository $sectionRepository */
             $sectionRepository = $objectManager->get(SectionRepository::class);
+
             /** @var Section $section */
             $sectionUid = $sectionUid ?: intval($params['row']['section']);
             $section = $sectionRepository->findByIdentifier($sectionUid);
@@ -124,12 +128,14 @@ class TcaProcFunc
         }
 
         // if it's a section, get it's checkup uid directly
+        $checkup = null;
         if (
             $params['table'] == 'tx_rkwcheckup_domain_model_section'
             || $checkupUid
         ) {
             /** @var CheckupRepository $checkupRepository */
             $checkupRepository = $objectManager->get(CheckupRepository::class);
+
             /** @var Checkup $checkup */
             $checkupUid = $checkupUid ?: intval($params['row']['checkup']);
             $checkup = $checkupRepository->findByIdentifier($checkupUid);
@@ -146,6 +152,7 @@ class TcaProcFunc
      *
      * @param array $params
      * @return \TYPO3\CMS\Extbase\DomainObject\AbstractEntity|null $entity
+     * @throws \TYPO3\CMS\Extbase\Object\Exception
      */
     public function getEntityToStop(array $params):? AbstractEntity
     {
@@ -166,12 +173,14 @@ class TcaProcFunc
             }
         }
 
+        $entityToStop = null;
         if (
             $params['table'] == 'tx_rkwcheckup_domain_model_step'
             || $stepToStopUid
         ) {
             /** @var StepRepository $stepRepository */
             $stepRepository = $objectManager->get(StepRepository::class);
+
             /** @var Step $entityToStop */
             $stepUid = $stepToStopUid ?: intval($params['row']['uid']);
             $entityToStop = $stepRepository->findByIdentifier($stepUid);
@@ -180,6 +189,7 @@ class TcaProcFunc
         if ($params['table'] == 'tx_rkwcheckup_domain_model_section') {
             /** @var SectionRepository $sectionRepository */
             $sectionRepository = $objectManager->get(SectionRepository::class);
+
             /** @var Section $entityToStop */
             $entityToStop = $sectionRepository->findByIdentifier(intval($params['row']['uid']));
         }

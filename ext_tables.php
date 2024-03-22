@@ -2,11 +2,11 @@
 defined('TYPO3_MODE') || die('Access denied.');
 
 call_user_func(
-    function()
+    function($extKey)
     {
 
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-            'RKW.RkwCheckup',
+            $extKey,
             'Check',
             'RKW Checkup: Check'
         );
@@ -14,12 +14,12 @@ call_user_func(
         if (TYPO3_MODE === 'BE') {
 
             \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-                'RKW.RkwCheckup',
+                $extKey,
                 'web', // Make module a submodule of 'web'
                 'statistics', // Submodule key
                 'before:evaluation', // Position
                 [
-                    'Backend' => 'list, show',
+                    \RKW\RkwCheckup\Controller\BackendController::class => 'list, show',
                 ],
                 [
                     'access' => 'user,group',
@@ -54,7 +54,8 @@ call_user_func(
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_rkwcheckup_domain_model_resultanswer', 'EXT:rkw_checkup/Resources/Private/Language/locallang_csh_tx_rkwcheckup_domain_model_resultanswer.xlf');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_rkwcheckup_domain_model_resultanswer');
 
-    }
+    },
+    'rkw_checkup'
 );
 
 $GLOBALS['TBE_STYLES']['skins']['rkw_checkup']['stylesheetDirectories'][] = 'EXT:rkw_checkup/Resources/Public/Styles/Backend/';

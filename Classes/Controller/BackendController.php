@@ -35,7 +35,8 @@ class BackendController extends ActionController
      * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected CheckupRepository $checkupRepository;
+    protected ?CheckupRepository $checkupRepository = null;
+
 
     /**
      * resultRepository
@@ -43,7 +44,25 @@ class BackendController extends ActionController
      * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected ResultRepository $resultRepository;
+    protected ?ResultRepository $resultRepository = null;
+
+
+    /**
+     * @var \RKW\RkwCheckup\Domain\Repository\CheckupRepository
+     */
+    public function injectCheckupRepository(CheckupRepository $checkupRepository)
+    {
+        $this->checkupRepository = $checkupRepository;
+    }
+
+
+    /**
+     * @var \RKW\RkwCheckup\Domain\Repository\ResultRepository
+     */
+    public function injectResultRepository(ResultRepository $resultRepository)
+    {
+        $this->resultRepository = $resultRepository;
+    }
 
 
     /**
