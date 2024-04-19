@@ -22,10 +22,6 @@ return [
         'type' => 'record_type',
 
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, record_, title, description, mandatory, invert_feedback, allow_text_input,
-        title_text_input, sum_to_100, min_check, max_check, max_scale, scale_left, scale_right, hide_cond, visible_cond, answer, feedback',
-    ],
     'types' => [
         '1' => [
             'showitem' => 'record_type, title, description, mandatory, --palette--;;freeTextPalette, answer,
@@ -71,7 +67,6 @@ return [
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',

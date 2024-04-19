@@ -18,9 +18,6 @@ return [
         'searchFields' => 'hash,checkup,current_section,current_step,current_question,result_answer,finished,last_step,show_step_feedback, show_section_intro',
         'iconfile' => 'EXT:rkw_checkup/Resources/Public/Icons/tx_rkwcheckup_domain_model_result.gif'
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, hash, checkup, current_section, current_step, current_question, result_answer,finished,last_step,show_step_feedback,show_section_intro',
-    ],
     'types' => [
         '1' => ['showitem' => 'hash, checkup, current_section, current_step, current_question, result_answer, finished, last_step, show_step_feedback, show_section_intro, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden, starttime, endtime'],
     ],
@@ -44,7 +41,6 @@ return [
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
