@@ -14,7 +14,7 @@ call_user_func(
         if (TYPO3_MODE === 'BE') {
 
             \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-                $extKey,
+                'RKW.' . $extKey,
                 'web', // Make module a submodule of 'web'
                 'statistics', // Submodule key
                 'before:evaluation', // Position
