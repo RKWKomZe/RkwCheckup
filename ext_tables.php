@@ -57,4 +57,4 @@ call_user_func(
     }
 );
 
-$GLOBALS['TBE_STYLES']['skins']['rkw_checkup']['stylesheetDirectories'][] = 'EXT:rkw_checkup/Resources/Public/Styles/Backend/';
+//$GLOBALS['TBE_STYLES']['skins']['rkw_checkup']['stylesheetDirectories'][] = 'EXT:rkw_checkup/Resources/Public/Styles/Backend/';

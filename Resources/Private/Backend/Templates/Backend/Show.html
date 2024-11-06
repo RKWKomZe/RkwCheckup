@@ -15,64 +15,122 @@
     Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
     <f:section name="content">
-    <h1>{checkup.title}</h1>
 
-    <f:flashMessages />
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-        <f:if condition="{checkup}">
-            <f:else>
-                <f:translate key="templates_backend_show.no_check_selected" />
-            </f:else>
-            <f:then>
-                <strong>
-                    <f:translate key="templates_backend_show.finished_checks_total" />: {checkupResultCountTotal}
-                </strong>
-                <br/><br/>
+        <f:be.container
+            includeCssFiles="{0: '{f:uri.resource(path:\'Styles/Backend/Backend.css\')}'}"
+            includeJsFiles="{0: '{f:uri.resource(path:\'JavaScript/Backend/Backend.js\')}'}"
+        >
 
-                <f:for each="{checkup.section}" as="section" iteration="sectionIter">
-                    ##############################################################################################
-                    <p><strong>({sectionIter.cycle}) <f:translate key="templates_backend_show.section" />:</strong> {section.title}</p>
-                    <p>{section.description}</p>
-                    ##############################################################################################
-                    <br/>
-                    <f:for each="{section.step}" as="step" iteration="stepIter">
-                        ##################################################
-                        <p><strong>({stepIter.cycle}) <f:translate key="templates_backend_show.step" />:</strong> {step.title}</p>
-                        <p>{step.description}</p>
-                        ##################################################
-                        <br/>
-                        <f:for each="{step.question}" as="question" iteration="questionIter">
-                            ##########################
-                            <p><strong>({questionIter.cycle})  <f:translate key="templates_backend_show.question" />:</strong> {question.title}</p>
-                            <p>{question.description}</p>
-                            <p>
-                                <f:translate key="templates_backend_show.type" />: <f:translate key="templates_backend_show.record_type.I.{question.recordType}" />
-                                (<f:translate key="templates_backend_show.mandatory" />: <f:if condition="{question.mandatory}"><f:then><f:translate key="templates_backend_show.mandatory.yes" /></f:then><f:else><f:translate key="templates_backend_show.mandatory.no" /></f:else></f:if>)
-                            </p>
-                            ##########################
-                            <f:for each="{question.answer}" as="answer">
-                                <p><f:translate key="templates_backend_show.answer" />: {answer.title}</p>
-                                <p>{answer.description}</p>
-                                <p><strong> <f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:backend.countResultAnswer answer="{answer}" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%)</p>
-                            </f:for>
-                            <!-- Freetext answers -->
-                            <f:if condition="{question.allowTextInput}">
-                                <p><strong><f:translate key="templates_backend_show.answer.freetext" />:</strong></p>
-                                <p><strong><f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:getFreeTextAnswerList question="{question}" count="true" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:getFreeTextAnswerList question='{question}' count='true' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%)</p>
-                                <f:for each="<rkwCheckup:getFreeTextAnswerList question='{question}' />" as="answerResultWithText">
-                                    <p>{answerResultWithText.freeTextInput}</p>
-                                </f:for>
-                            </f:if>
-                            <br/>
-                        </f:for>
+            <h1>{checkup.title}</h1>
+
+            <div id="chart_div"></div>
+
+
+            <f:flashMessages />
+
+            <f:if condition="{checkup}">
+                <f:else>
+                    <f:translate key="templates_backend_show.no_check_selected" />
+                </f:else>
+                <f:then>
+                    <strong>
+                        <f:translate key="templates_backend_show.finished_checks_total" />: {checkupResultCountTotal}
+                    </strong>
+                    <br/><br/>
+
+                    <f:for each="{checkup.section}" as="section" iteration="sectionIter">
+                        <button
+                            id="tablink{sectionIter.cycle}"
+                            class="tablinks{f:if(condition:'{sectionIter.isFirst}', then:' active')}"
+                            onclick="openTab(event, 'tablink{sectionIter.cycle}')"
+                        >
+                            {sectionIter.cycle}. {section.title}
+                        </button>
                     </f:for>
 
+                    <f:for each="{checkup.section}" as="section" iteration="sectionIter">
+                        <div id="content-tablink{sectionIter.cycle}" class="tabcontent{f:if(condition:'{sectionIter.isFirst}', then:' first-element')}">
+                            <h1><strong>({sectionIter.cycle}) <f:translate key="templates_backend_show.section" />:</strong> {section.title}</h1>
+                            <p>{section.description}</p>
 
-                </f:for>
-            </f:then>
-        </f:if>
+                            <f:for each="{section.step}" as="step" iteration="stepIter">
+                                <button
+                                    id="accordion-{sectionIter.cycle}-{stepIter.cycle}"
+                                    class="accordion{f:if(condition:'{stepIter.isFirst}', then:' active')}"
+                                >
+                                    <strong>Schritt {stepIter.cycle}:</strong> {step.title}
+                                    <br/>
+                                    <f:if condition="{step.description}">
+                                        ({step.description})
+                                    </f:if>
+                                </button>
+                                <div id="panel-accordion-{sectionIter.cycle}-{stepIter.cycle}" class="panel{f:if(condition:'{stepIter.isFirst}', then:' first-element')}" style="{f:if(condition:'{stepIter.isFirst}', then:'display: block;')}">
+                                    <f:for each="{step.question}" as="question" iteration="questionIter">
+                                        <div class="questionHeader" style="border: 5px solid orangered; padding: 15px;">
+                                            <h4><strong>({questionIter.cycle})  <f:translate key="templates_backend_show.question" />:</strong> {question.title}</h4>
+                                            <p>{question.description}</p>
+                                            <p>
+                                                <f:translate key="templates_backend_show.type" />: <f:translate key="templates_backend_show.record_type.I.{question.recordType}" />
+                                                (<f:translate key="templates_backend_show.mandatory" />: <f:if condition="{question.mandatory}"><f:then><f:translate key="templates_backend_show.mandatory.yes" /></f:then><f:else><f:translate key="templates_backend_show.mandatory.no" /></f:else></f:if>)
+                                            </p>
+                                        </div>
+                                        <br/>
+
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th>
+                                                    Σ
+                                                </th>
+                                                <th>
+                                                    %
+                                                </th>
+                                                <th>
+                                                    Antwort
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <f:for each="{question.answer}" as="answer">
+                                                    <tr style="border-bottom: 1px solid #ddd;">
+                                                        <td style="min-width: 30px;">
+                                                            <rkwCheckup:backend.countResultAnswer answer="{answer}" />
+                                                        </td>
+                                                        <td style="min-width: 30px;">
+                                                            <rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%
+                                                        </td>
+                                                        <td>
+                                                            {answer.title}
+                                                        </td>
+                                                    </tr>
+                                                </f:for>
+                                            </tbody>
+                                        </table>
+
+
+                                        <!-- Freetext answers -->
+                                        <f:if condition="{question.allowTextInput}">
+                                            <p><strong><f:translate key="templates_backend_show.answer.freetext" />:</strong></p>
+                                            <p><strong><f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:getFreeTextAnswerList question="{question}" count="true" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:getFreeTextAnswerList question='{question}' count='true' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%)</p>
+                                            <f:for each="<rkwCheckup:getFreeTextAnswerList question='{question}' />" as="answerResultWithText">
+                                                <p>{answerResultWithText.freeTextInput}</p>
+                                            </f:for>
+                                        </f:if>
+                                        <br/>
+                                    </f:for>
+                                </div>
+                            </f:for>
+                        </div>
+                    </f:for>
+                </f:then>
+            </f:if>
 
 
 
+        </f:be.container>
     </f:section>
+
 </html>
