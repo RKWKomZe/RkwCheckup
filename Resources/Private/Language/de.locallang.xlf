@@ -140,9 +140,6 @@
                 <source>Step</source>
                 <target>Schritt</target>
             </trans-unit>
-
-
-
             <trans-unit id="templates_backend_show.toggle_steps">
                 <source>Toggle steps</source>
                 <target>Alle Schritte auf- oder zuklappen</target>
