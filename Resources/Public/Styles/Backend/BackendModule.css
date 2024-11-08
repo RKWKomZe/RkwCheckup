@@ -1,6 +1,6 @@
 /*
-            TABS
-             */
+TABS
+ */
 
 /* Style the tab */
 .tab {
@@ -32,13 +32,15 @@
 
 /* Style the tab content */
 .tabcontent {
-    padding: 6px 12px;
+    /*padding: 6px 12px;*/
     border: 1px solid #ccc;
     border-top: none;
 }
 
 .tabcontent:nth-of-type(n+2) {
+    /*
     display: none;
+     */
 }
 
 .tabcontent.first-element {
@@ -57,7 +59,7 @@ ACCORDION
     padding: 18px;
     width: 100%;
     text-align: left;
-    border: none;
+    border-bottom: solid 1px lightgrey;
     outline: none;
     transition: 0.4s;
 }
@@ -88,9 +90,15 @@ TABLE
  */
 
 table {
+
+    margin: 20px 0;
+    /* 93% seems to match the GoogleGraph width */
+    width: 93%;
+
     thead th {
         background-color: orangered;
         text-align: center;
+        min-width: 50px;
     }
 
     tbody tr:nth-child(odd) {
@@ -100,4 +108,30 @@ table {
     tbody tr:nth-child(even) {
         background-color: #ffffff;
     }
+}
+
+.question-header {
+    border: 5px solid orangered;
+    padding: 15px;
+    margin-top: 10px;
+}
+/*
+.question-result {
+    display: flex;
+}
+
+.result-table {
+    width: 60%;
+}
+.result-graph {
+    width: 40%;
+}
+ */
+
+h1 {
+    padding-top: 20px;
+}
+
+button.default-btn {
+    margin: 10px;
 }
