@@ -19,7 +19,7 @@ call_user_func(
                 'statistics', // Submodule key
                 'before:evaluation', // Position
                 [
-                    'Backend' => 'list, show',
+                    'Backend' => 'list, show, csvExport',
                 ],
                 [
                     'access' => 'user,group',

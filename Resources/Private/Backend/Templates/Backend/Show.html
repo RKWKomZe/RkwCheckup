@@ -43,11 +43,18 @@
                     <f:translate key="templates_backend_show.no_check_selected" />
                 </f:else>
                 <f:then>
+                    <f:link.action
+                            action="csvExport"
+                            target="_blank"
+                            arguments="{checkup:checkup}"
+                            style="float: right; background-color: orangered; padding: 5px;">
+                        CSV Export
+                    </f:link.action>
+                    <br/>
                     <strong>
                         <f:translate key="templates_backend_show.finished_checks_total" />: {checkupResultCountTotal}
                     </strong>
                     <br/><br/>
-
                     <f:for each="{checkup.section}" as="section" iteration="sectionIter">
                         <button
                             id="tablink{sectionIter.cycle}"
@@ -199,10 +206,10 @@
             <tbody>
             <f:for each="{question.answer}" as="answer">
                 <tr>
-                    <td style="min-width: 30px;">
+                    <td class="center" style="min-width: 30px;">
                         <rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%
                     </td>
-                    <td style="min-width: 30px;">
+                    <td class="center" style="min-width: 30px;">
                         <rkwCheckup:backend.countResultAnswer answer="{answer}" />
                     </td>
                     <td>

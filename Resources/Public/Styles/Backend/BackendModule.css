@@ -108,6 +108,10 @@ table {
     tbody tr:nth-child(even) {
         background-color: #ffffff;
     }
+
+    tbody tr td.center {
+        text-align: center;
+    }
 }
 
 .question-header {
