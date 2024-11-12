@@ -30,7 +30,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @var int
      *
-     * @todo How to set typecast and default value without overriding systems crdate
+     * @todo How to set typecast and default value without overriding systems crdate? (was always persisted with value "0")
      */
     protected $crdate;
 

@@ -19,7 +19,7 @@ use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
 use RKW\RkwCheckup\Domain\Repository\ResultRepository;
 use RKW\RkwCheckup\Export\CsvExport;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Extbase\Object\Exception;
 
 /**
  * Class BackendController
@@ -68,7 +68,7 @@ class BackendController extends ActionController
     /**
      * action show
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Checkup
+     * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
      * @return void
      */
     public function showAction(Checkup $checkup): void
@@ -83,10 +83,10 @@ class BackendController extends ActionController
      *
      * @param Checkup $checkup
      * @return void
+     * @throws Exception
      */
     public function csvExportAction(Checkup $checkup): void
     {
-
         CsvExport::createCsv($checkup);
         exit;
     }

@@ -61,7 +61,7 @@ class CsvExport
         header("Content-Disposition: attachment; filename=$attachmentName");
         header("Pragma: no-cache");
 
-        // add reservation data
+        // add checkup data
         self::addCheckupDataToCsv($checkup, $separator);
 
         fclose(self::$csv);
@@ -244,7 +244,5 @@ class CsvExport
            }
        }
    }
-
-
 }
 
