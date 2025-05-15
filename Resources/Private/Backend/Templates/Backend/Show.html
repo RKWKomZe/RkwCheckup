@@ -15,64 +15,232 @@
     Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
     <f:section name="content">
-    <h1>{checkup.title}</h1>
 
-    <f:flashMessages />
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-        <f:if condition="{checkup}">
-            <f:else>
-                <f:translate key="templates_backend_show.no_check_selected" />
-            </f:else>
-            <f:then>
-                <strong>
-                    <f:translate key="templates_backend_show.finished_checks_total" />: {checkupResultCountTotal}
-                </strong>
-                <br/><br/>
+        <f:be.container
+            includeCssFiles="{0: '{f:uri.resource(path:\'Styles/Backend/BackendModule.css\')}'}"
+            includeJsFiles="{0: '{f:uri.resource(path:\'JavaScript/Backend/Backend.js\')}'}"
+        >
+            <script type="text/javascript">
+                // Load Charts and the corechart package.
+                google.charts.load('current', {'packages':['corechart']});
+            </script>
 
-                <f:for each="{checkup.section}" as="section" iteration="sectionIter">
-                    ##############################################################################################
-                    <p><strong>({sectionIter.cycle}) <f:translate key="templates_backend_show.section" />:</strong> {section.title}</p>
-                    <p>{section.description}</p>
-                    ##############################################################################################
+            <h1>{checkup.title}</h1>
+
+            <f:comment>
+                <div id="chart_div"></div>
+            </f:comment>
+
+
+
+            <f:flashMessages />
+
+            <f:if condition="{checkup}">
+                <f:else>
+                    <f:translate key="templates_backend_show.no_check_selected" />
+                </f:else>
+                <f:then>
+                    <f:link.action
+                            action="csvExport"
+                            target="_blank"
+                            arguments="{checkup:checkup}"
+                            style="float: right; background-color: #cccccc; border: 1px solid #000000; padding: 5px 10px;">
+                        CSV Export
+                    </f:link.action>
                     <br/>
-                    <f:for each="{section.step}" as="step" iteration="stepIter">
-                        ##################################################
-                        <p><strong>({stepIter.cycle}) <f:translate key="templates_backend_show.step" />:</strong> {step.title}</p>
-                        <p>{step.description}</p>
-                        ##################################################
-                        <br/>
-                        <f:for each="{step.question}" as="question" iteration="questionIter">
-                            ##########################
-                            <p><strong>({questionIter.cycle})  <f:translate key="templates_backend_show.question" />:</strong> {question.title}</p>
-                            <p>{question.description}</p>
-                            <p>
-                                <f:translate key="templates_backend_show.type" />: <f:translate key="templates_backend_show.record_type.I.{question.recordType}" />
-                                (<f:translate key="templates_backend_show.mandatory" />: <f:if condition="{question.mandatory}"><f:then><f:translate key="templates_backend_show.mandatory.yes" /></f:then><f:else><f:translate key="templates_backend_show.mandatory.no" /></f:else></f:if>)
-                            </p>
-                            ##########################
-                            <f:for each="{question.answer}" as="answer">
-                                <p><f:translate key="templates_backend_show.answer" />: {answer.title}</p>
-                                <p>{answer.description}</p>
-                                <p><strong> <f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:backend.countResultAnswer answer="{answer}" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%)</p>
-                            </f:for>
-                            <!-- Freetext answers -->
-                            <f:if condition="{question.allowTextInput}">
-                                <p><strong><f:translate key="templates_backend_show.answer.freetext" />:</strong></p>
-                                <p><strong><f:translate key="templates_backend_show.answer.amount" />:</strong> <rkwCheckup:getFreeTextAnswerList question="{question}" count="true" /> (<rkwCheckup:percentCalc sum="<rkwCheckup:getFreeTextAnswerList question='{question}' count='true' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%)</p>
-                                <f:for each="<rkwCheckup:getFreeTextAnswerList question='{question}' />" as="answerResultWithText">
-                                    <p>{answerResultWithText.freeTextInput}</p>
-                                </f:for>
-                            </f:if>
-                            <br/>
-                        </f:for>
+                    <strong>
+                        <f:translate key="templates_backend_show.finished_checks_total" />: {checkupResultCountTotal}
+                    </strong>
+                    <br/><br/>
+                    <f:for each="{checkup.section}" as="section" iteration="sectionIter">
+                        <button
+                            id="tablink{sectionIter.cycle}"
+                            class="tablinks{f:if(condition:'{sectionIter.isFirst}', then:' active')}"
+                            onclick="openTab(event, 'tablink{sectionIter.cycle}')"
+                        >
+                            {sectionIter.cycle}. {section.title}
+                        </button>
                     </f:for>
 
+                    <f:for each="{checkup.section}" as="section" iteration="sectionIter">
+                        <div id="content-tablink{sectionIter.cycle}" class="tabcontent{f:if(condition:'{sectionIter.isFirst}', then:' first-element')}">
+                            <h1><strong>({sectionIter.cycle}) <f:translate key="templates_backend_show.section" />:</strong> {section.title}</h1>
+                            <p>{section.description}</p>
 
-                </f:for>
-            </f:then>
-        </f:if>
+                            <button
+                                id="toggle-section{sectionIter.cycle}"
+                                class="toggle-accordions default-btn">
+                                <f:translate key="templates_backend_show.toggle_steps" />
+                            </button>
+
+                            <f:for each="{section.step}" as="step" iteration="stepIter">
+                                <button
+                                    id="accordion-{sectionIter.cycle}-{stepIter.cycle}"
+                                    class="accordion active accordion-toggle-section{sectionIter.cycle}"
+                                >
+                                    <strong><f:translate key="templates_backend_show.step" /> {stepIter.cycle}:</strong> {step.title}
+                                    <br/>
+                                    <f:if condition="{step.description}">
+                                        ({step.description})
+                                    </f:if>
+                                </button>
+                                <div id="panel-accordion-{sectionIter.cycle}-{stepIter.cycle}" class="toggle-section{sectionIter.cycle} panel{f:if(condition:'{stepIter.isFirst}', then:' first-element')}" style="display: block;">
+                                    <f:for each="{step.question}" as="question" iteration="questionIter">
+                                        <div class="question-header">
+                                            <h4><strong>({questionIter.cycle})  <f:translate key="templates_backend_show.question" />:</strong> {question.title}</h4>
+                                            <p>{question.description}</p>
+                                            <p>
+                                                <f:translate key="templates_backend_show.type" />: <strong><f:translate key="templates_backend_show.record_type.I.{question.recordType}" /></strong>
+                                                (<f:translate key="templates_backend_show.mandatory" />: <f:if condition="{question.mandatory}"><f:then><f:translate key="templates_backend_show.mandatory.yes" /></f:then><f:else><f:translate key="templates_backend_show.mandatory.no" /></f:else></f:if>)
+                                            </p>
+                                        </div>
+                                        <br/>
+                                        <div class="question-result">
+                                            <f:render section="graph" arguments="{_all}" />
+                                            <f:render section="table" arguments="{_all}" />
+                                            <f:render section="tableFreetext" arguments="{_all}" />
+                                        </div>
+
+                                        <br/>
+                                    </f:for>
+                                </div>
+                            </f:for>
+                        </div>
+                    </f:for>
+                </f:then>
+            </f:if>
 
 
+
+        </f:be.container>
+    </f:section>
+
+
+    <f:section name="graph">
+        <script type="text/javascript">
+
+            var $fnChartName = 'googleGraph{sectionIter.cycle}{stepIter.cycle}';
+
+            google.charts.setOnLoadCallback(fnChartName);
+
+            function fnChartName() {
+                var data = new google.visualization.arrayToDataTable([
+                    ['<f:translate key="templates_backend_show.question" />', '<f:translate key="templates_backend_show.percent" />', { role: 'style' }],
+                    <f:for each="{question.answer}" as="answer">
+                        [
+                        '<rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />% [<rkwCheckup:backend.countResultAnswer answer='{answer}'/>] - {answer.title}',
+                        <rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />,
+                        'color: #cccccc'
+                        ],
+                    </f:for>
+                ]);
+
+                var options = {
+                    title: '% [Σ] - <f:translate key="templates_backend_show.answer" />',
+                    titleTextStyle: {
+                        color: '#000000',
+                    },
+                    hAxis: {
+                        title: '<f:translate key="templates_backend_show.percent" />',
+                        viewWindow: {
+                            /*max: 100,*/
+                            min: 0
+                        },
+                        titleTextStyle: {
+                            color: '#000000',
+                        },
+                    },
+                    vAxis: {
+                        textStyle: {
+                            fontSize: 10,
+                        },
+                        textPosition: "in",
+                    },
+                    width: 1200,
+                    height: 500,
+                    backgroundColor: '#ffffff',
+
+                    legend: {
+                        position: 'none'
+                    },
+                    chartArea: {
+                        width: "90%",
+                        left: "50"
+                    },
+                };
+
+                var chart = new google.visualization.BarChart(document.getElementById('top_x_div-{sectionIter.cycle}-{stepIter.cycle}'));
+                chart.draw(data, options);
+
+            };
+
+
+        </script>
+        <div id="top_x_div-{sectionIter.cycle}-{stepIter.cycle}"></div>
 
     </f:section>
-</html>
+
+    <f:section name="table">
+        <table class="table-content">
+            <thead>
+            <tr>
+                <th>
+                    %
+                </th>
+                <th>
+                    Σ
+                </th>
+                <th>
+                    <f:translate key="templates_backend_show.answer" />
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <f:for each="{question.answer}" as="answer">
+                <tr>
+                    <td style="min-width: 30px; text-align: right;" >
+                        <rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%
+                    </td>
+                    <td style="min-width: 30px; text-align: right;">
+                        <rkwCheckup:backend.countResultAnswer answer="{answer}" />
+                    </td>
+                    <td>
+                        {answer.title}
+                    </td>
+                </tr>
+            </f:for>
+            </tbody>
+        </table>
+    </f:section>
+
+
+
+    <f:section name="tableFreetext">
+
+        <f:if condition="{question.allowTextInput}">
+            <table class="table-content">
+                <thead>
+                <tr>
+                    <th>
+                        <f:translate key="templates_backend_show.answer.freetext" /> (Σ: <rkwCheckup:getFreeTextAnswerList question="{question}" count="true" />)
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <f:for each="<rkwCheckup:getFreeTextAnswerList question='{question}' />" as="answerResultWithText">
+                    <tr>
+                        <td style="min-width: 30px;">
+                            {answerResultWithText.freeTextInput}
+                        </td>
+                    </tr>
+                </f:for>
+                </tbody>
+            </table>
+        </f:if>
+
+    </f:section>
+
+    </html>

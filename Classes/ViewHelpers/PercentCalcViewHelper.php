@@ -51,19 +51,19 @@ class PercentCalcViewHelper extends AbstractViewHelper {
      * @param array $arguments
      * @param \Closure $renderChildrenClosure
      * @param \TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface $renderingContext
-     * @return int
+     * @return float
      */
     public static function renderStatic(
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-    ): int {
+    ): float {
 
         if (
             $arguments['sum']
             && $arguments['maxSum']
         ) {
-            return round($arguments['sum'] / $arguments['maxSum'] * 100);
+            return round($arguments['sum'] / $arguments['maxSum'] * 100, 2);
         }
 
         return 0;

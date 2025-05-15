@@ -29,8 +29,10 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @var int
+     *
+     * @todo How to set typecast and default value without overriding systems crdate? (was always persisted with value "0")
      */
-    protected int $crdate = 0;
+    protected $crdate;
 
 
     /**
@@ -135,15 +137,6 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getCrdate(): int
     {
         return $this->crdate;
-    }
-
-
-    /**
-     * @param int $crdate
-     */
-    public function setCrdate(int $crdate): void
-    {
-        $this->crdate = $crdate;
     }
 
 

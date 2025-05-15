@@ -78,18 +78,21 @@ return [
             ],
         ],
         'crdate' => [
-            'exclude' => false,
+            'exclude' => true,
             'config' => [
-                'type' => 'input',
+                'type' => 'select',
                 'renderType' => 'inputDateTime',
-                'size' => 13,
-                'eval' => 'datetime',
+                'eval' => 'datetime,int',
                 'default' => 0,
+                'range' => [
+                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
+                ],
                 'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
+
 
         'hash' => [
             'exclude' => false,
