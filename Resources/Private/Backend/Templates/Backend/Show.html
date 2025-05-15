@@ -47,7 +47,7 @@
                             action="csvExport"
                             target="_blank"
                             arguments="{checkup:checkup}"
-                            style="float: right; background-color: orangered; padding: 5px;">
+                            style="float: right; background-color: #cccccc; border: 1px solid #000000; padding: 5px 10px;">
                         CSV Export
                     </f:link.action>
                     <br/>
@@ -133,7 +133,7 @@
                         [
                         '<rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />% [<rkwCheckup:backend.countResultAnswer answer='{answer}'/>] - {answer.title}',
                         <rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />,
-                        'color: grey'
+                        'color: #cccccc'
                         ],
                     </f:for>
                 ]);
@@ -141,7 +141,7 @@
                 var options = {
                     title: '% [Σ] - <f:translate key="templates_backend_show.answer" />',
                     titleTextStyle: {
-                        color: 'orangered',
+                        color: '#000000',
                     },
                     hAxis: {
                         title: '<f:translate key="templates_backend_show.percent" />',
@@ -150,23 +150,18 @@
                             min: 0
                         },
                         titleTextStyle: {
-                            color: 'orangered',
+                            color: '#000000',
                         },
                     },
                     vAxis: {
                         textStyle: {
-                            color: 'orangered',
-                            bold: true,
                             fontSize: 10,
                         },
                         textPosition: "in",
-                        titleTextStyle: {
-                            color: 'orangered',
-                        },
                     },
                     width: 1200,
                     height: 500,
-                    backgroundColor: '#0f0f0f',
+                    backgroundColor: '#ffffff',
 
                     legend: {
                         position: 'none'
@@ -189,7 +184,7 @@
     </f:section>
 
     <f:section name="table">
-        <table>
+        <table class="table-content">
             <thead>
             <tr>
                 <th>
@@ -206,10 +201,10 @@
             <tbody>
             <f:for each="{question.answer}" as="answer">
                 <tr>
-                    <td class="center" style="min-width: 30px;">
+                    <td style="min-width: 30px; text-align: right;" >
                         <rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />%
                     </td>
-                    <td class="center" style="min-width: 30px;">
+                    <td style="min-width: 30px; text-align: right;">
                         <rkwCheckup:backend.countResultAnswer answer="{answer}" />
                     </td>
                     <td>
@@ -226,7 +221,7 @@
     <f:section name="tableFreetext">
 
         <f:if condition="{question.allowTextInput}">
-            <table>
+            <table class="table-content">
                 <thead>
                 <tr>
                     <th>
