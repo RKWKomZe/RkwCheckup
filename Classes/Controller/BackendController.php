@@ -17,7 +17,9 @@ namespace RKW\RkwCheckup\Controller;
 use RKW\RkwCheckup\Domain\Model\Checkup;
 use RKW\RkwCheckup\Domain\Repository\CheckupRepository;
 use RKW\RkwCheckup\Domain\Repository\ResultRepository;
+use RKW\RkwCheckup\Export\CsvExport;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Object\Exception;
 
 /**
  * Class BackendController
@@ -85,13 +87,27 @@ class BackendController extends ActionController
     /**
      * action show
      *
-     * @param \RKW\RkwCheckup\Domain\Model\Checkup
+     * @param \RKW\RkwCheckup\Domain\Model\Checkup $checkup
      * @return void
      */
     public function showAction(Checkup $checkup): void
     {
         $this->view->assign('checkupResultCountTotal', $this->resultRepository->getFinishedByCheck($checkup)->count());
         $this->view->assign('checkup', $checkup);
+    }
+
+
+    /**
+     * csvExport
+     *
+     * @param Checkup $checkup
+     * @return void
+     * @throws Exception
+     */
+    public function csvExportAction(Checkup $checkup): void
+    {
+        CsvExport::createCsv($checkup);
+        exit;
     }
 
 }

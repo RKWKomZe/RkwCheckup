@@ -112,6 +112,12 @@
             <trans-unit id="templates_backend_show.step">
                 <source>Step</source>
             </trans-unit>
+            <trans-unit id="templates_backend_show.toggle_steps">
+                <source>Toggle steps</source>
+            </trans-unit>
+            <trans-unit id="templates_backend_show.percent">
+                <source>Percent</source>
+            </trans-unit>
 
             <!--
             =========================== PARTIALS ============================================
