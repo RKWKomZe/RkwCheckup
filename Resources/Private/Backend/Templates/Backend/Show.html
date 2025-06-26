@@ -16,17 +16,25 @@
 
     <f:section name="content">
 
-        <!--Load the AJAX API-->
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <f:if condition="{enableGoogleChart}">
+            <f:then>
+                <!--Load the AJAX API-->
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            </f:then>
+        </f:if>
 
         <f:be.container
             includeCssFiles="{0: '{f:uri.resource(path:\'Styles/Backend/BackendModule.css\')}'}"
             includeJsFiles="{0: '{f:uri.resource(path:\'JavaScript/Backend/Backend.js\')}'}"
         >
-            <script type="text/javascript">
-                // Load Charts and the corechart package.
-                google.charts.load('current', {'packages':['corechart']});
-            </script>
+            <f:if condition="{enableGoogleChart}">
+                <f:then>
+                    <script type="text/javascript">
+                        // Load Charts and the corechart package.
+                        google.charts.load('current', {'packages':['corechart']});
+                    </script>
+                </f:then>
+            </f:if>
 
             <h1>{checkup.title}</h1>
 
@@ -120,66 +128,70 @@
 
 
     <f:section name="graph">
-        <script type="text/javascript">
+        <f:if condition="{enableGoogleChart}">
+            <f:then>
+                <script type="text/javascript">
 
-            var $fnChartName = 'googleGraph{sectionIter.cycle}{stepIter.cycle}';
+                    var $fnChartName = 'googleGraph{sectionIter.cycle}{stepIter.cycle}';
 
-            google.charts.setOnLoadCallback(fnChartName);
+                    google.charts.setOnLoadCallback(fnChartName);
 
-            function fnChartName() {
-                var data = new google.visualization.arrayToDataTable([
-                    ['<f:translate key="templates_backend_show.question" />', '<f:translate key="templates_backend_show.percent" />', { role: 'style' }],
-                    <f:for each="{question.answer}" as="answer">
-                        [
-                        '<rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />% [<rkwCheckup:backend.countResultAnswer answer='{answer}'/>] - {answer.title}',
-                        <rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />,
-                        'color: #cccccc'
-                        ],
-                    </f:for>
-                ]);
+                    function fnChartName() {
+                        var data = new google.visualization.arrayToDataTable([
+                            ['<f:translate key="templates_backend_show.question" />', '<f:translate key="templates_backend_show.percent" />', { role: 'style' }],
+                            <f:for each="{question.answer}" as="answer">
+                                [
+                                '<rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />% [<rkwCheckup:backend.countResultAnswer answer='{answer}'/>] - {answer.title}',
+                                <rkwCheckup:percentCalc sum="<rkwCheckup:backend.countResultAnswer answer='{answer}' />" maxSum="<rkwCheckup:backend.countResultAnswer question='{question}' />" />,
+                                'color: #cccccc'
+                                ],
+                            </f:for>
+                        ]);
 
-                var options = {
-                    title: '% [Σ] - <f:translate key="templates_backend_show.answer" />',
-                    titleTextStyle: {
-                        color: '#000000',
-                    },
-                    hAxis: {
-                        title: '<f:translate key="templates_backend_show.percent" />',
-                        viewWindow: {
-                            /*max: 100,*/
-                            min: 0
-                        },
-                        titleTextStyle: {
-                            color: '#000000',
-                        },
-                    },
-                    vAxis: {
-                        textStyle: {
-                            fontSize: 10,
-                        },
-                        textPosition: "in",
-                    },
-                    width: 1200,
-                    height: 500,
-                    backgroundColor: '#ffffff',
+                        var options = {
+                            title: '% [Σ] - <f:translate key="templates_backend_show.answer" />',
+                            titleTextStyle: {
+                                color: '#000000',
+                            },
+                            hAxis: {
+                                title: '<f:translate key="templates_backend_show.percent" />',
+                                viewWindow: {
+                                    /*max: 100,*/
+                                    min: 0
+                                },
+                                titleTextStyle: {
+                                    color: '#000000',
+                                },
+                            },
+                            vAxis: {
+                                textStyle: {
+                                    fontSize: 10,
+                                },
+                                textPosition: "in",
+                            },
+                            width: 1200,
+                            height: 500,
+                            backgroundColor: '#ffffff',
 
-                    legend: {
-                        position: 'none'
-                    },
-                    chartArea: {
-                        width: "90%",
-                        left: "50"
-                    },
-                };
+                            legend: {
+                                position: 'none'
+                            },
+                            chartArea: {
+                                width: "90%",
+                                left: "50"
+                            },
+                        };
 
-                var chart = new google.visualization.BarChart(document.getElementById('top_x_div-{sectionIter.cycle}-{stepIter.cycle}'));
-                chart.draw(data, options);
+                        var chart = new google.visualization.BarChart(document.getElementById('top_x_div-{sectionIter.cycle}-{stepIter.cycle}'));
+                        chart.draw(data, options);
 
-            };
+                    };
 
 
-        </script>
-        <div id="top_x_div-{sectionIter.cycle}-{stepIter.cycle}"></div>
+                </script>
+                <div id="top_x_div-{sectionIter.cycle}-{stepIter.cycle}"></div>
+            </f:then>
+        </f:if>
 
     </f:section>
 
