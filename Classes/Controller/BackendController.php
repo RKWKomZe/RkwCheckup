@@ -73,7 +73,7 @@ class BackendController extends ActionController
      */
     public function showAction(Checkup $checkup): void
     {
-        $this->view->assign('enableGoogleChart', true);
+        $this->view->assign('enableGoogleChart', false);
         $this->view->assign('checkupResultCountTotal', $this->resultRepository->getFinishedByCheck($checkup)->count());
         $this->view->assign('checkup', $checkup);
     }
